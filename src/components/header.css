@@ -1,0 +1,174 @@
+/* General Styling */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #343a40 !important;
+  padding: 10px 20px;
+  color: white;
+  position: relative;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+  border-radius: 50%; /* Makes the image circular */
+  object-fit: contain; /* Ensures the whole image is visible */
+  border: 1px solid white; /* Optional: Add a border for better visibility */
+  background-color: white; /* Optional: Adds a background color if needed */
+}
+
+.company-name {
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav {
+  display: flex;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white !important; /* Ensure the color is white */
+  padding: 10px 15px;
+  font-size: 16px;
+  transition: color 0.3s ease, font-size 0s ease; /* Disable font size transition */
+}
+
+/* Ensure link color remains white even after focus, visit, or active states */
+.nav-link:focus, .nav-link:visited, .nav-link:active {
+  color: white !important;
+  outline: none; /* Removes focus outline */
+}
+
+.nav-link:hover {
+  color: #4CBB17 !important; /* Hover color */
+}
+
+/* Dropdown Menu Styling */
+.dropdown {
+  cursor: pointer;
+}
+
+.dropdown-toggle {
+  text-decoration: none;
+  color: white !important; /* Ensure Services link is white */
+  display: inline-block; /* Make it behave like a link */
+}
+
+.dropdown-toggle:focus,
+.dropdown-toggle:visited,
+.dropdown-toggle:active {
+  color: white !important;
+  outline: none; /* Removes focus outline */
+}
+
+.dropdown-toggle:hover {
+  color: #4CBB17 !important;
+}
+
+.dropdown-toggle::after {
+  content: " ▼";
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  background-color: #343a40 !important;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: none;
+  flex-direction: column;
+  z-index: 10; /* Ensure it appears above other elements */
+}
+
+.dropdown-menu.show {
+  display: block; /* Show the dropdown when "show" class is added */
+}
+
+.dropdown-item {
+  text-decoration: none;
+  color: white !important;
+  padding: 8px 12px;
+  transition: color 0.3s ease; /* Only transition color */
+}
+
+.dropdown-item:hover {
+  color: #4CBB17 !important;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: flex;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  color: white !important;  /* Ensures the icon color is white */
+  font-size: 30px;
+  cursor: pointer;
+  margin-left: 109px !important;
+  position: absolute;  /* Positioning the icon */
+  transform: translateY(0%) !important;  /* Adjust for perfect vertical centering */
+}
+
+/* Mobile Menu - Show menu toggle on small screens */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block; /* Show the menu icon only on small screens */
+  }
+
+  /* Hide the desktop navigation links on small screens */
+  .nav-links {
+    display: none;
+  }
+}
+
+/* Desktop Menu Visibility - Hide mobile menu on large screens */
+@media (min-width: 769px) { 
+  .menu-toggle {
+    display: none !important; /* Ensure menu icon is hidden on large screens */
+  }
+
+  .nav-links {
+    display: flex; /* Show nav links on large screens */
+  }
+}
+
+/* Drawer styles */
+.drawer {
+  background-color: #343a40;
+  height: 100vh;
+  width: 130px;
+}
+
+/* Show nav links when the menu is open */
+.nav.open {
+  display: block;
+  align-items: end;
+}

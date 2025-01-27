@@ -1,0 +1,142 @@
+/* General Page Layout */
+.cc-services-page {
+  background-color: #f5f5f5;
+  padding: 50px 20px;
+  font-family: 'Open Sans', sans-serif;
+  min-height: 100vh;
+}
+
+/* Heading Styles */
+.cc-services-heading {
+  font-size: 3rem;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  margin-bottom: 50px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+/* Service Categories */
+.cc-service-categories {
+  font-size: 3em;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Make categories wrap on smaller screens */
+}
+
+.cc-services-description {
+  font-size: 1.3rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* Service List Styles */
+.cc-services-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Service Item Styles (List Items) */
+.cc-service-category {
+  margin-bottom: 30px;
+}
+
+/* Service Item Styles */
+.cc-service-item {
+  background-color: #E5E4E2;
+  padding: 20px;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cc-service-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Service Details */
+.cc-service-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.cc-service-details h3 {
+  font-size: 1.6rem;
+  color: #333;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.cc-service-details .c-price {
+  font-size: 1.3rem;
+  color: #f39c12;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .cc-services-heading {
+    font-size: 2.3rem;
+    margin-bottom: 30px; /* Adjust spacing for smaller screens */
+  }
+
+  .cc-services-description {
+    font-size: 1.1rem; /* Smaller description text */
+    margin-bottom: 15px;
+    text-align: justify;
+  }
+
+  .cc-service-categories {
+    font-size: 2em; /* Adjust font size for smaller screens */
+    flex-direction: column; /* Stack service categories */
+    justify-content: flex-start;
+  }
+
+  .cc-service-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px; /* Reduce padding for mobile */
+  }
+
+  .cc-service-details h3 {
+    font-size: 1.4rem; /* Adjust font size */
+  }
+
+  .cc-service-item {
+    margin-bottom: 15px; /* Reduce margin for mobile */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Adjust for smaller mobile screens */
+  .cc-services-heading {
+    font-size: 1.8rem; /* Further reduce heading size */
+    margin-bottom: 20px;
+  }
+
+  .cc-services-description {
+    font-size: 1.1rem; /* Smaller description text */
+    margin-bottom: 15px;
+    text-align: justify;
+  }
+
+  .cc-service-item {
+    padding: 10px; /* Further reduce padding */
+  }
+
+  .cc-service-details h3 {
+    font-size: 1.2rem; /* Adjust font size */
+  }
+}

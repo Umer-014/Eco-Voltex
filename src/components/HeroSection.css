@@ -1,0 +1,330 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+  }
+  
+  .home-page {
+    text-align: center;
+    overflow-x: hidden;
+  }
+  
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(120deg, #28a745, #1c7430);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+  }
+  
+  .hero-overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hero h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  .hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+  
+  .cta-btn {
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .cta-btn:hover {
+    background-color: #e64a19;
+    transform: scale(1.1);
+  }
+  
+  /* Services Section */
+  .services {
+    padding: 50px 20px;
+    background-color: #f4f4f4;
+  }
+  
+  .services h2 {
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .service-cards {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .service-card {
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 280px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .service-card i {
+    font-size: 3rem;
+    color: #28a745;
+    margin-bottom: 20px;
+  }
+  
+  .service-card h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  /* Why Choose Us Section */
+  .why-us {
+    background: linear-gradient(120deg, #218838, #1c7430);
+    color: white;
+    padding: 60px 20px;
+  }
+  
+  .why-us h2 {
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .features {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .feature {
+    text-align: center;
+    max-width: 220px;
+  }
+  
+  .feature i {
+    font-size: 3rem;
+    color: #ffeb3b;
+  }
+  
+  .feature p {
+    margin-top: 20px;
+    font-size: 1.1rem;
+  }
+  
+  /* Testimonials Section */
+  .testimonials {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .testimonials h2 {
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+  }
+  
+  .testimonial {
+    margin-bottom: 30px;
+    font-style: italic;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .client-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .client-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .client-info h4 {
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .client-info p {
+    color: #555;
+    margin-top: 5px;
+  }
+  
+  /* Call to Action Section */
+  .cta-section {
+    padding: 60px 20px;
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .cta-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  .cta-section .cta-btn {
+    background-color: #ff5722;
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .cta-section .cta-btn:hover {
+    background-color: #e64a19;
+    transform: scale(1.1);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Mobile Responsiveness */
+  @media screen and (max-width: 768px) {
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+  
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+  
+    .cta-btn {
+      padding: 12px 25px;
+      font-size: 1rem;
+    }
+  
+    .services h2,
+    .why-us h2,
+    .testimonials h2 {
+      font-size: 2rem;
+    }
+  
+    .service-cards {
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+  
+    .service-card {
+      width: 90%;
+      padding: 20px;
+    }
+  
+    .features {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+  
+    .feature {
+      max-width: 100%;
+    }
+  
+    .testimonial {
+      margin-bottom: 20px;
+    }
+  
+    .client-info {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .client-info img {
+      margin-bottom: 10px;
+    }
+  
+    .cta-section h2 {
+      font-size: 2rem;
+    }
+  
+    .cta-section .cta-btn {
+      padding: 12px 25px;
+      font-size: 1rem;
+    }
+  }
+  
+  /* Small Mobile Responsiveness */
+  @media screen and (max-width: 480px) {
+    .hero h1 {
+      font-size: 2rem;
+    }
+  
+    .hero p {
+      font-size: 1rem;
+    }
+  
+    .cta-btn {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+    }
+  
+    .service-card {
+      width: 100%;
+      padding: 15px;
+    }
+  
+    .service-card i {
+      font-size: 2.5rem;
+    }
+  
+    .feature i {
+      font-size: 2rem;
+    }
+  
+    .cta-section h2 {
+      font-size: 1.8rem;
+    }
+  
+    .cta-section .cta-btn {
+      padding: 10px 20px;
+      font-size: 1rem;
+    }
+  }
+  

@@ -1,0 +1,111 @@
+footer {
+  background-color: #343a40; /* Dark background for footer */
+  padding: 40px 0;
+}
+
+footer h5 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff; /* White text for headers */
+}
+
+footer p, footer ul li a {
+  font-size: 14px;
+  color: #d3d3d3;
+  transition: color 0.3s ease;
+}
+
+footer p a, footer ul li a:hover {
+  color: #25d366 !important; /* Green hover for links */
+}
+
+footer .social-icons a {
+  color: #fff;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+  transform: scale(1.1); /* Slight zoom effect */
+}
+
+
+footer hr {
+  border-top: 1px solid #555;
+  width: 50%;
+  margin: 20px auto;
+}
+
+footer .text-center p {
+  margin: 10px 0;
+  font-size: 14px;
+  color: #d3d3d3;
+}
+
+/* Social Media Icons */
+footer .social-icons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Mobile and Tablet Responsiveness */
+@media (max-width: 768px) {
+  footer h5 {
+    font-size: 18px;
+  }
+
+  footer p, footer ul li a {
+    font-size: 13px;
+  }
+
+  footer .social-icons {
+    gap: 15px;
+  }
+
+  footer .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  footer .col-md-4 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  footer .social-icons a {
+    font-size: 24px;
+  }
+
+  footer .text-center p {
+    font-size: 13px;
+  }
+}
+
+/* Smaller Screen (Mobile) */
+@media (max-width: 576px) {
+  footer h5 {
+    font-size: 16px;
+  }
+
+  footer p, footer ul li a {
+    font-size: 12px;
+  }
+
+  footer .social-icons a {
+    font-size: 20px;
+  }
+
+  footer .social-icons {
+    gap: 10px;
+  }
+
+  footer .container {
+    padding: 0 10px;
+  }
+
+  footer .text-center p {
+    font-size: 12px;
+  }
+}

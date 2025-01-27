@@ -1,0 +1,164 @@
+/* General Container Styles */
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.main-heading {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.intro-text {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 2rem;
+  text-align: center; /* Change this to 'left', 'center', 'right', or 'justify' */
+}
+
+.section {
+  margin-bottom: 4rem;
+}
+
+.section-heading {
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 1rem;
+}
+
+.section-text {
+  font-size: 1.125rem;
+  color: #555;
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+}
+
+.service-list {
+  list-style-type: disc;
+  margin-left: 2rem;
+  font-size: 1.125rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.grid-item {
+  background-color: #D3D3D3;
+  border: 1px solid #ddd;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.sub-heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.grid-text {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+  margin-top: 1rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .main-heading {
+      font-size: 2.75rem;
+  }
+
+  .intro-text {
+      font-size: 1rem;
+  }
+
+  .section-heading {
+      font-size: 2.125rem;
+  }
+
+  .grid-item {
+      padding: 1.25rem;
+  }
+
+  .sub-heading {
+      font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-heading {
+      font-size: 2.5rem;
+  }
+
+  .section-heading {
+      font-size: 2rem;
+  }
+
+  .sub-heading {
+      font-size: 1.25rem;
+  }
+
+  .service-list {
+      margin-left: 1.5rem;
+  }
+
+  .grid-container {
+      grid-template-columns: 1fr; /* Stacks items vertically */
+  }
+
+  .grid-item {
+      padding: 1rem;
+  }
+
+  .intro-text {
+      font-size: 1rem;
+      text-align: justify;
+  }
+
+  .section-text {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-heading {
+      font-size: 2rem;
+  }
+
+  .intro-text {
+      font-size: 0.95rem;
+  }
+
+  .section-heading {
+      font-size: 1.75rem;
+  }
+
+  .sub-heading {
+      font-size: 1.125rem;
+  }
+
+  .service-list {
+      margin-left: 1rem;
+      font-size: 1rem;
+  }
+
+  .grid-item {
+      padding: 0.8rem;
+  }
+
+  .grid-text {
+      font-size: 0.95rem;
+  }
+}

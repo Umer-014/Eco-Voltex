@@ -1,0 +1,144 @@
+/* General Page Layout */
+.r-services-page {
+  background-color: #f5f5f5;
+  padding: 50px 20px;
+  font-family: 'Open Sans', sans-serif;
+  min-height: 100vh;
+}
+
+/* Heading Styles */
+.r-services-heading {
+  font-size: 3rem;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  margin-bottom: 50px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+/* Service Categories */
+.r-service-categories {
+  font-size: 3em;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Make categories wrap on smaller screens */
+}
+
+.r-services-description {
+  font-size: 1.3rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* Service List Styles */
+.r-services-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Service Item Styles (List Items) */
+.r-service-category {
+  margin-bottom: 30px;
+}
+
+/* Service Item Styles */
+.r-service-item {
+  background-color: #E5E4E2;
+  padding: 20px;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.r-service-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Service Details */
+.r-service-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.r-service-details h3 {
+  font-size: 1.6rem;
+  color: #333;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.r-service-details .r-price {
+  font-size: 1.3rem;
+  color: #f39c12;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .r-services-heading {
+    font-size: 2.3rem;
+    margin-bottom: 30px; /* Adjust spacing for smaller screens */
+  }
+
+  .r-services-description {
+    font-size: 1.1rem; /* Smaller description text */
+    margin-bottom: 15px;
+    text-align: justify;
+  }
+
+  .r-service-categories {
+    font-size: 2em; /* Adjust font size for smaller screens */
+    flex-direction: column; /* Stack service categories */
+    justify-content: flex-start;
+  }
+
+  .r-service-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px; /* Reduce padding for mobile */
+  }
+
+  .r-service-details h3 {
+    font-size: 1.4rem; /* Adjust font size */
+  }
+
+  .r-service-item {
+    margin-bottom: 15px; /* Reduce margin for mobile */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Adjust for smaller mobile screens */
+  .r-services-heading {
+    font-size: 1.8rem; /* Further reduce heading size */
+    margin-bottom: 20px;
+  }
+
+  .r-services-description {
+    font-size: 1.1rem; /* Smaller description text */
+    margin-bottom: 15px;
+    text-align: justify;
+  }
+
+  .r-service-item {
+    padding: 10px; /* Further reduce padding */
+  }
+
+  .r-service-details h3 {
+    font-size: 1.2rem; /* Adjust font size */
+  }
+}
+
+

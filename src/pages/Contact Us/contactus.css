@@ -1,0 +1,48 @@
+.contact-us-page {
+    background-color: #f9f9f9; /* Light gray background */
+  }
+  
+  .card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .alert {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    width: 50%;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .form-label {
+    color: #333;
+  }
+  
+  .form-control {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .form-control:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 6px rgba(40, 167, 69, 0.2);
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn-success:hover {
+    background-color: #218838;
+    box-shadow: 0px 4px 6px rgba(40, 167, 69, 0.3);
+  }
+  
