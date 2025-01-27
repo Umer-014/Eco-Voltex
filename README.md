@@ -1,70 +1,101 @@
-# Getting Started with Create React App
+# Eco Voltex
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Eco Voltex is a provider of comprehensive electrical services, offering solutions in residential, commercial, and industrial sectors. Our services also include the installation of fire alarms, CCTV systems, and various certification services. This project is designed to promote Eco Voltex online and provide easy access to our services.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [About](#about)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Setup Instructions](#setup-instructions)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-### `npm start`
+## About
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Eco Voltex provides a wide range of electrical services aimed at making homes, businesses, and industries safer and more efficient. This repository includes the code for our official website.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- **Home Page**: Introduction to Eco Voltex, featuring a brief overview of services.
+- **Services Page**: Information on available services including Residential, Commercial, Industrial, Fire Alarms, CCTV, and Certification.
+- **Get in Touch**: Direct contact via WhatsApp for quick customer inquiries.
+- **Responsive Design**: Fully responsive website for mobile, tablet, and desktop users.
+- **Footer with Navigation**: Easy navigation to key parts of the website.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
 
-### `npm run build`
+- **Frontend**: React.js
+- **Backend**: Node.js (for API handling, if applicable)
+- **Styling**: CSS, Bootstrap (or Material-UI, Tailwind CSS, etc.)
+- **Database**: MongoDB (if applicable)
+- **Cloud Integration**: Cloudinary (for image storage)
+- **Hosting**: AWS (for server deployment)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Setup Instructions
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository to your local machine:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    ```bash
+    git clone https://github.com/Umer-014/Eco-Voltex.git
+    ```
 
-### `npm run eject`
+2. Navigate into the project folder:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    ```bash
+    cd eco-voltex
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Install dependencies for the frontend:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    ```bash
+    cd client
+    npm install
+    ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. If there’s a backend setup, navigate to the backend directory and install dependencies:
 
-## Learn More
+    ```bash
+    cd server
+    npm install
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. For frontend development, run:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    ```bash
+    npm start
+    ```
 
-### Code Splitting
+6. For backend (if applicable), run:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    ```bash
+    npm run server
+    ```
 
-### Analyzing the Bundle Size
+7. Open your browser and visit `http://localhost:3000` (or any other port specified).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Usage
 
-### Making a Progressive Web App
+Once the setup is complete, the website will be available on your local server. You can navigate through the pages, view services, and reach out for further inquiries.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Contributing
 
-### Advanced Configuration
+We welcome contributions! If you have any suggestions or improvements, please fork the repository, create a new branch, and submit a pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+To contribute:
 
-### Deployment
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-name`).
+3. Make your changes and commit (`git commit -am 'Add feature'`).
+4. Push to the branch (`git push origin feature-name`).
+5. Create a new pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## License
 
-### `npm run build` fails to minify
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contact
+
+For more information or inquiries, please contact us via email or reach out directly on our website.
