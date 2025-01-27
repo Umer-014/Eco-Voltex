@@ -73,7 +73,7 @@ body {
     display: flex;
     justify-content: space-around;
     gap: 20px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Allows wrapping of items */
   }
   
   .service-card {
@@ -86,7 +86,6 @@ body {
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  
   .service-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
@@ -103,6 +102,33 @@ body {
     color: #333;
     margin-bottom: 15px;
   }
+
+  .service-card button {
+    background-color:#218838; /* Primary blue color */
+    color: #ffffff; /* White text */
+    border: none;
+    padding: 10px 20px; /* Padding for a good button size */
+    font-size: 16px; /* Readable font size */
+    border-radius: 5px; /* Slightly rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
+  }
+  
+  .service-card button:hover {
+    background-color:#1c7430; /* Darker blue for hover */
+    transform: translateY(-2px); /* Subtle lift effect on hover */
+  }
+  
+  .service-card button:active {
+    background-color: #1c7430; /* Even darker blue for active state */
+    transform: translateY(0); /* Reset lift effect */
+  }
+  
+  .service-card button:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add focus shadow */
+  }
+  
   
   /* Why Choose Us Section */
   .why-us {
@@ -229,7 +255,32 @@ body {
       font-size: 2.5rem;
       margin-bottom: 10px;
     }
-  
+    .service-card button {
+      background-color: #1c7430; /* Primary blue color */
+      color: #ffffff; /* White text */
+      border: none;
+      padding: 10px 20px; /* Padding for a good button size */
+      font-size: 16px; /* Readable font size */
+      border-radius: 5px; /* Slightly rounded corners */
+      cursor: pointer; /* Pointer cursor on hover */
+      transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
+    }
+    
+    .service-card button:hover {
+      background-color: #1c7430; /* Darker blue for hover */
+      transform: translateY(-2px); /* Subtle lift effect on hover */
+    }
+    
+    .service-card button:active {
+      background-color: #1c7430; /* Even darker blue for active state */
+      transform: translateY(0); /* Reset lift effect */
+    }
+    
+    .service-card button:focus {
+      outline: none; /* Remove default outline */
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add focus shadow */
+    }
+    
     .hero p {
       font-size: 1.2rem;
       margin-bottom: 20px;
@@ -247,7 +298,8 @@ body {
     }
   
     .service-cards {
-      flex-direction: column;
+      justify-content: space-evenly;
+      flex-direction: row;
       align-items: center;
       gap: 30px;
     }
@@ -295,6 +347,33 @@ body {
     .hero h1 {
       font-size: 2rem;
     }
+
+    .service-card button {
+      background-color: #007bff; /* Primary blue color */
+      color: #ffffff; /* White text */
+      border: none;
+      padding: 10px 20px; /* Padding for a good button size */
+      font-size: 16px; /* Readable font size */
+      border-radius: 5px; /* Slightly rounded corners */
+      cursor: pointer; /* Pointer cursor on hover */
+      transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
+    }
+    
+    .service-card button:hover {
+      background-color: #1c7430; /* Darker blue for hover */
+      transform: translateY(-2px); /* Subtle lift effect on hover */
+    }
+    
+    .service-card button:active {
+      background-color: #1c7430; /* Even darker blue for active state */
+      transform: translateY(0); /* Reset lift effect */
+    }
+    
+    .service-card button:focus {
+      outline: none; /* Remove default outline */
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add focus shadow */
+    }
+    
   
     .hero p {
       font-size: 1rem;
@@ -303,6 +382,13 @@ body {
     .cta-btn {
       padding: 10px 20px;
       font-size: 0.9rem;
+    }
+
+    .service-cards {
+      justify-content: space-evenly;
+      flex-direction: row;
+      align-items: center;
+      gap: 30px;
     }
   
     .service-card {

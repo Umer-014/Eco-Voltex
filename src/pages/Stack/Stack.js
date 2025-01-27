@@ -10,10 +10,12 @@ import CCTV from "../Services/CCTV/CCTV";
 import ContactUsPage from "../Contact Us/ContactUsPage";
 import FAQPage from "../FAQ/FAQPage";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ScrollToTop from "../../components/ScrollToTop";
 
 const Stack = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         {/* Route Definitions */}
         <Route path="/" element={<HomePage />} />
