@@ -11,11 +11,13 @@ import ContactUsPage from "../Contact Us/ContactUsPage";
 import FAQPage from "../FAQ/FAQPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ScrollToTop from "../../components/ScrollToTop";
+import LiveChat from '../../components/LiveChat';
 
 const Stack = () => {
   return (
     <Router>
       <ScrollToTop />
+      <LiveChat />
       <Routes>
         {/* Route Definitions */}
         <Route path="/" element={<HomePage />} />

@@ -12,7 +12,7 @@ body {
   /* Hero Section */
   .hero {
     background: linear-gradient(120deg, #28a745, #1c7430);
-    height: 100vh;
+    height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,11 +81,12 @@ body {
     border: 1px solid #ddd;
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
     padding: 30px;
-    width: 280px;
+    width: calc(33.33% - 20px); /* Ensures 3 cards per row */
     border-radius: 12px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
+
   .service-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
@@ -349,7 +350,7 @@ body {
     }
 
     .service-card button {
-      background-color: #007bff; /* Primary blue color */
+      background-color: #1c7430; /* Primary blue color */
       color: #ffffff; /* White text */
       border: none;
       padding: 10px 20px; /* Padding for a good button size */

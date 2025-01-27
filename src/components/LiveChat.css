@@ -1,0 +1,19 @@
+/* Style for the live chat icon */
+.chat-icon {
+    position: fixed;
+    bottom: 20px;  /* Distance from the bottom of the page */
+    right: 20px;   /* Distance from the right side */
+    z-index: 1000; /* Ensures the icon is always on top */
+    background-color: #25d366; /* WhatsApp green color */
+    border-radius: 50%;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+/* Ensure the icon is responsive and looks good on small screens */
+@media (max-width: 768px) {
+    .chat-icon {
+        padding: 12px;
+    }
+}
