@@ -18,7 +18,7 @@ const ContactUs = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Use EmailJS to send the email
+    // Use EilJS to send the email
     emailjs
       .sendForm("service_zu4vrhd", "template_1649nft", e.target, "zdAhM19MmtKrK5LWB") // Replace with your actual credentials
       .then(
