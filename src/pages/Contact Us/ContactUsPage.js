@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "./contactus.css";
-import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
+import emailjs from "emailjs-com"; // Import EmailJS
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -15,24 +15,29 @@ const ContactUs = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      const response = await axios.post("http://localhost:4000/send-email", formData);
-      if (response.status === 200) {
-        setPopupMessage("Your request has been sent!"); // Success message
-        setPopupClass("alert-success"); // Success class for green color
-        setFormData({ name: "", email: "", message: "" }); // Reset form
-      }
-    } catch (error) {
-      setPopupMessage("Failed to send your message. Please try again."); // Error message
-      setPopupClass("alert-danger"); // Error class for red color
-      console.error("Error sending email:", error);
-    } finally {
-      setShowPopup(true); // Show the popup
-      setTimeout(() => setShowPopup(false), 3000); // Hide the message after 3 seconds
-    }
+    // Use EmailJS to send the email
+    emailjs
+      .sendForm("service_zu4vrhd", "template_1649nft", e.target, "zdAhM19MmtKrK5LWB") // Replace with your actual credentials
+      .then(
+        (result) => {
+          console.log(result.text);
+          setPopupMessage("Your request has been sent!");
+          setPopupClass("alert-success");
+          setFormData({ name: "", email: "", message: "" });
+        },
+        (error) => {
+          console.log(error.text);
+          setPopupMessage("Failed to send your message. Please try again.");
+          setPopupClass("alert-danger");
+        }
+      )
+      .finally(() => {
+        setShowPopup(true);
+        setTimeout(() => setShowPopup(false), 3000);
+      });
   };
 
   return (
