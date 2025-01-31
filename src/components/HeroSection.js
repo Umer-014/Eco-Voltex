@@ -1,8 +1,17 @@
-import React from "react";
 import "./HeroSection.css";
 import { useNavigate } from "react-router-dom";
+import React, { useRef } from 'react';
+import LiveChat from './LiveChat'; // Import LiveChat componen
 
 const HeroSection = () => {
+  const liveChatRef = useRef(null);
+
+  const handleButtonClick = () => {
+    if (liveChatRef.current) {
+      liveChatRef.current.handleClick(); // Trigger LiveChat's handleClick method
+    }
+  };
+
   const navigate = useNavigate();
 
   const navigateTo = (path) => {
@@ -106,39 +115,18 @@ const HeroSection = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="testimonials">
-        <h2>What Our Clients Say</h2>
-        <div className="testimonial">
-          <p>
-            "Eco Voltex transformed our electrical systems with such
-            professionalism and efficiency. Highly recommend!"
-          </p>
-          <div className="client-info">
-            <img src="client1.jpg" alt="client 1" />
-            <h4>Sarah Johnson</h4>
-            <p>Homeowner</p>
-          </div>
-        </div>
-        <div className="testimonial">
-          <p>
-            "Their team handled our office electrical upgrades seamlessly. They
-            were fast, reliable, and affordable."
-          </p>
-          <div className="client-info">
-            <img src="client2.jpg" alt="client 2" />
-            <h4>Michael Lee</h4>
-            <p>Business Owner</p>
-          </div>
-        </div>
-      </section>
-
       {/* Call to Action Section */}
       <section className="cta-section">
         <h2>Let’s Power Up Your Projects</h2>
         <p>Contact us today for a free consultation and personalized quote.</p>
-        <button className="cta-btn">Request a Free Quote</button>
+        <button className="cta-btn" onClick={handleButtonClick}>
+          Request a Free Quote
+        </button>
       </section>
+
+      {/* LiveChat Component */}
+      <LiveChat ref={liveChatRef} />
+
     </div>
   );
 };
