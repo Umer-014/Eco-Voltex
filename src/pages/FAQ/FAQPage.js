@@ -10,7 +10,6 @@ const FAQPage = () => {
       category: "General Questions",
       faqs: [
         { question: "What services does Eco Voltex provide?", answer: "We offer residential, commercial, and industrial electrical services, including fire alarm and CCTV installations, and electrical certifications." },
-        { question: "Do you offer both residential and commercial electrical services?", answer: "Yes, we provide electrical solutions for both residential and commercial properties." },
         { question: "Where is Eco Voltex located, and which areas do you serve?", answer: "We are based in [Your Location] and provide services across multiple regions. Contact us to check availability in your area." },
         { question: "Are your electricians licensed and insured?", answer: "Yes, all our electricians are fully licensed, certified, and insured for your safety." }
       ],
