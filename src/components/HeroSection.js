@@ -1,7 +1,7 @@
 import "./HeroSection.css";
 import { useNavigate } from "react-router-dom";
-import React, { useRef } from 'react';
-import LiveChat from './LiveChat'; // Import LiveChat componen
+import React, { useRef } from "react";
+import LiveChat from "./LiveChat"; // Import LiveChat componen
 
 const HeroSection = () => {
   const liveChatRef = useRef(null);
@@ -17,6 +17,7 @@ const HeroSection = () => {
   const navigateTo = (path) => {
     navigate(path, { replace: true }); // Replace the current history entry
   };
+
   return (
     <div className="home-page">
       {/* Hero Section */}
@@ -126,7 +127,6 @@ const HeroSection = () => {
 
       {/* LiveChat Component */}
       <LiveChat ref={liveChatRef} />
-
     </div>
   );
 };
