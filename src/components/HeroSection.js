@@ -120,7 +120,7 @@ const HeroSection = () => {
       <section className="cta-section">
         <h2>Let’s Power Up Your Projects</h2>
         <p>Contact us today for a free consultation and personalized quote.</p>
-        <button className="cta-btn" onClick={handleButtonClick}>
+        <button className="cta-btn" onClick={() => navigateTo("/contact")}>
           Request a Free Quote
         </button>
       </section>
