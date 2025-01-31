@@ -75,7 +75,7 @@ const HeroSection = () => {
               Reliable fire alarm systems to ensure safety and early detection
               of hazards.
             </p>
-            <button onClick={() => navigateTo("/services/FireAlarm")}>
+            <button onClick={() => navigateTo("/services/Fire-alarms")}>
               Read More
             </button>
           </div>
