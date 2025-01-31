@@ -15,7 +15,7 @@ const HeroSection = () => {
   const navigate = useNavigate();
 
   const navigateTo = (path) => {
-    navigate(path, { replace: true }); // Replace the current history entry
+    navigate(path); // No replace, so the path will be added to the history stack
   };
 
   return (
