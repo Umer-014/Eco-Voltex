@@ -26,16 +26,21 @@ const Footer = () => {
             </p>
             <p>
               <FaMapMarkerAlt className="me-2" />
-              123 Eco Street, Green City
+              9A Oak Road Romford, RM30PH
             </p>
             <p>
-              <FaPhone className="me-2" />
-              +1 234 567 890
-            </p>
-            <p>
-              <FaEnvelope className="me-2" />
-              info@ecovoltex.com
-            </p>
+  <FaPhone className="me-2" />
+  <a href="tel:+447930558824" className="text-decoration-none text-white">
+    +44 7930 558824
+  </a>
+</p>
+<p>
+  <FaPhone className="me-2" />
+  <a href="tel:+447947767758" className="text-decoration-none text-white">
+    +44 7947 767758
+  </a>
+</p>
+
           </div>
 
           {/* Quick Links Section */}
