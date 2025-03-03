@@ -4,7 +4,7 @@ import "./LiveChat.css";
 
 const LiveChat = forwardRef((props, ref) => {
   const handleClick = () => {
-    const phoneNumber = '+923208431556'; // Replace with your WhatsApp phone number
+    const phoneNumber = '+447930558824'; // Replace with your WhatsApp phone number
     const message = 'Hi';  // Default message
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
