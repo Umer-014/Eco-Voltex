@@ -151,11 +151,11 @@ const Footer = () => {
                 <FaLinkedin size={30} />
               </a>
             </div>
-            <p className="mt-3">Monday: 9:00 AM - 6:00 PM</p>
-            <p className="mt-3">Tuesday: 9:00 AM - 6:00 PM</p>
-            <p className="mt-3">Wednesday: 9:00 AM - 6:00 PM</p>
-            <p className="mt-3">Thusday: 9:00 AM - 6:00 PM</p>
-            <p className="mt-3">Friday: 9:00 AM - 6:00 PM</p>
+            <p className="mt-3">Monday: 8:00 AM - 5:00 PM</p>
+            <p className="mt-3">Tuesday: 8:00 AM - 5:00 PM</p>
+            <p className="mt-3">Wednesday: 8:00 AM - 5:00 PM</p>
+            <p className="mt-3">Thusday: 8:00 AM - 5:00 PM</p>
+            <p className="mt-3">Friday: 8:00 AM - 5:00 PM</p>
           </div>
         </div>
 
