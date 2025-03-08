@@ -1,16 +1,13 @@
 import "./HeroSection.css";
 import { useNavigate } from "react-router-dom";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import LiveChat from "./LiveChat"; // Import LiveChat componen
 
 const HeroSection = () => {
   const liveChatRef = useRef(null);
+  const [isElectricalExpanded, setElectricalExpanded] = useState(false);
 
-  const handleButtonClick = () => {
-    if (liveChatRef.current) {
-      liveChatRef.current.handleClick(); // Trigger LiveChat's handleClick method
-    }
-  };
+
 
   const navigate = useNavigate();
 
@@ -24,12 +21,10 @@ const HeroSection = () => {
       <section className="hero">
         <div className="hero-overlay">
           <div className="hero-content">
-            <h1>
-              Empowering Your Future with Sustainable Electrical Solutions
-            </h1>
+            <h1>Empowering Your Future with Sustainable Solutions</h1>
             <p>
               Your trusted partner for residential, commercial, and industrial
-              electrical services.
+              services
             </p>
           </div>
         </div>
@@ -37,43 +32,67 @@ const HeroSection = () => {
 
       {/* Services Section */}
       <section className="services">
-        <h2>Our Expertise in Electrical Services</h2>
+        <h2>What we Offer</h2>
         <div className="service-cards">
-          <div className="service-card">
-            <i className="fas fa-home"></i>
-            <h3>Residential</h3>
+          {/* Electrical Installation & Maintenance Services */}
+          <div className="service-card electrical-card">
+            <h3>Electrical Installation and Maintenance Services</h3>
+            <div
+              className="service-image"
+              style={{
+                backgroundImage: `url(${require("../assets/images/electrical-background.jpg")})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                height: "400px",
+                width: "100%",
+                borderRadius: "8px",
+                margin: "10px 0",
+              }}
+            />
             <p>
-              Seamless electrical solutions tailored to fit your home’s needs.
+              Professional electrical installations and maintenance for homes
+              and businesses.
             </p>
-            <button onClick={() => navigateTo("/services/Residential")}>
+            <button
+              onClick={() => setElectricalExpanded(!isElectricalExpanded)}
+            >
               Read More
             </button>
+            {isElectricalExpanded && (
+              <div
+                className="sub-services"
+                style={{ display: "flex", gap: "6px", marginTop: "10px" }}
+              >
+                <button onClick={() => navigate("/services/Residential")}>
+                  Residential Read More
+                </button>
+                <button onClick={() => navigate("/services/Commercial")}>
+                  Commercial
+                </button>
+                <button onClick={() => navigate("/services/Industrial")}>
+                  Industrial
+                </button>
+              </div>
+            )}
           </div>
-          <div className="service-card">
-            <i className="fas fa-building"></i>
-            <h3>Commercial</h3>
-            <p>Efficient, scalable solutions for businesses of all sizes.</p>
-            <button onClick={() => navigateTo("/services/Commercial")}>
-              Read More
-            </button>
-          </div>
-          <div className="service-card">
-            <i className="fas fa-industry"></i>
-            <h3>Industrial</h3>
-            <p>
-              Advanced electrical systems designed for heavy-duty industrial
-              setups.
-            </p>
-            <button onClick={() => navigateTo("/services/Industrial")}>
-              Read More
-            </button>
-          </div>
+
           <div className="service-card">
             <i className="fas fa-fire"></i>
             <h3>Fire Alarm</h3>
+            <div
+              className="service-image"
+              style={{
+                backgroundImage: `url(${require("../assets/images/fire-background.jpg")})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                height: "400px",
+                width: "100%",
+                borderRadius: "8px",
+                margin: "10px 0",
+              }}
+            />
             <p>
-              Reliable fire alarm systems to ensure safety and early detection
-              of hazards.
+              Custom fire alarm solutions to protect your life and property.
             </p>
             <button onClick={() => navigateTo("/services/Fire-alarms")}>
               Read More
@@ -82,9 +101,41 @@ const HeroSection = () => {
           <div className="service-card">
             <i className="fas fa-video"></i>
             <h3>CCTV</h3>
+            <div
+              className="service-image"
+              style={{
+                backgroundImage: `url(${require("../assets/images/cctv-background.jpg")})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                height: "400px",
+                width: "100%",
+                borderRadius: "8px",
+                margin: "10px 0",
+              }}
+            />
+            <p>Advanced CCTV and security systems for enhanced safety.</p>
+            <button onClick={() => navigateTo("/services/CCTV")}>
+              Read More
+            </button>
+          </div>
+          <div className="service-card">
+            <i className="fas fa-video"></i>
+            <h3>Portable Appliance Testing (PAT)</h3>
+            <div
+              className="service-image"
+              style={{
+                backgroundImage: `url(${require("../assets/images/pat-background.jpg")})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                height: "400px",
+                width: "100%",
+                borderRadius: "8px",
+                margin: "10px 0",
+              }}
+            />
             <p>
-              Advanced CCTV solutions for 24/7 surveillance and security
-              monitoring.
+              Ensure safety and compliance with our certified PAT testing
+              services.
             </p>
             <button onClick={() => navigateTo("/services/CCTV")}>
               Read More
@@ -92,7 +143,6 @@ const HeroSection = () => {
           </div>
         </div>
       </section>
-
       {/* Why Choose Us Section */}
       <section className="why-us">
         <h2>Why Eco Voltex?</h2>
@@ -115,7 +165,6 @@ const HeroSection = () => {
           </div>
         </div>
       </section>
-
       {/* Call to Action Section */}
       <section className="cta-section">
         <h2>Let’s Power Up Your Projects</h2>
@@ -124,7 +173,6 @@ const HeroSection = () => {
           Request a Free Quote
         </button>
       </section>
-
       {/* LiveChat Component */}
       <LiveChat ref={liveChatRef} />
     </div>
