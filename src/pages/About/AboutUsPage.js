@@ -62,7 +62,7 @@ const AboutUsPage = () => {
         <section className="section">
           <h2 className="section-heading">Our Journey</h2>
           <p className="section-text">
-            Eco Voltex was founded in [Year], and since then, we have been delivering high-quality electrical solutions across the UK. With thousands of satisfied clients, our reputation for reliability, safety, and sustainability continues to grow. We are committed to providing innovative and energy-efficient solutions that meet the ever-evolving needs of our clients.
+            Eco Voltex was founded in 2024, and since then, we have been delivering high-quality electrical solutions across the UK. With thousands of satisfied clients, our reputation for reliability, safety, and sustainability continues to grow. We are committed to providing innovative and energy-efficient solutions that meet the ever-evolving needs of our clients.
           </p>
         </section>
       </main>
