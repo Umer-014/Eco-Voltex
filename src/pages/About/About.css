@@ -21,7 +21,7 @@
   text-align: center; /* Change this to 'left', 'center', 'right', or 'justify' */
 }
 
-.section {
+.section-about {
   margin-bottom: 4rem;
 }
 
@@ -60,7 +60,7 @@
   border-radius: 8px;
 }
 
-.sub-heading {
+.sub-heading-about {
   font-size: 1.5rem;
   font-weight: bold;
   color: #333;
@@ -91,7 +91,7 @@
       padding: 1.25rem;
   }
 
-  .sub-heading {
+  .sub-heading-about {
       font-size: 1.25rem;
   }
 }
@@ -105,7 +105,7 @@
       font-size: 2rem;
   }
 
-  .sub-heading {
+  .sub-heading-about {
       font-size: 1.25rem;
   }
 
@@ -145,7 +145,7 @@
       font-size: 1.75rem;
   }
 
-  .sub-heading {
+  .sub-heading-about {
       font-size: 1.125rem;
   }
 
