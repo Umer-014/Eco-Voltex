@@ -2,6 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "../Home Page/HomePage";
 import AboutUsPage from "../About/AboutUsPage";
+import Service1 from "../Services/Electrical Installation & Maintenance/service";
+import Service2 from "../Services/PAT/Service2";
 import Residential from "../Services/Residential/Residential";
 import Commercial from "../Services/Commercial/Commercial";
 import Industrial from "../Services/Industrial/Industrial";
@@ -22,6 +24,8 @@ const Stack = () => {
         {/* Route Definitions */}
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutUsPage />} />
+        <Route path="/services/service" element={<Service1 />} />
+        <Route path="/services/PAT-testing" element={<Service2 />} />
         <Route path="/services/Residential" element={<Residential />} />
         <Route path="/services/Commercial" element={<Commercial />} />
         <Route path="/services/Industrial" element={<Industrial />} />

@@ -1,0 +1,106 @@
+.service-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  .subtitle {
+    color: #0073e6;
+    font-weight: bold;
+  }
+  
+  .section {
+    margin-top: 30px;
+    padding: 15px;
+    border-left: 4px solid #0073e6;
+    background: #f9f9f9;
+    border-radius: 5px;
+  }
+  
+  h3 {
+    color: #0073e6;
+    border-bottom: 2px solid #0073e6;
+    padding-bottom: 5px;
+  }
+  
+  .work-scope {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .work-category {
+    flex: 1 1 45%;
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .work-category h4 {
+    color: #0073e6;
+  }
+  
+  .step-process {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .step {
+    background: white;
+    padding: 15px;
+    border-left: 4px solid #0073e6;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .upgrade-section {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .upgrade-section h4 {
+    color: #d9534f;
+  }
+  
+  .fix-it {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .book-button {
+    background-color: #0073e6;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .book-button:hover {
+    background-color: #005bb5;
+  }
+  
+  .includes {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .faq {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .faq h4 {
+    color: #0073e6;
+  }
+  

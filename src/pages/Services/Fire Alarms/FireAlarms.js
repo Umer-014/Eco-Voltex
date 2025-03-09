@@ -2,86 +2,196 @@ import React from "react";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import "./FireAlarms.css";
-
-const servicesData = {
-  "Fire Alarms": {
-    items: [
-      {
-        name: "Fire Alarm Installation",
-        price: 300,
-        description: "Our expert team installs state-of-the-art fire alarm systems that are highly sensitive and reliable, ensuring your property is equipped with the latest technology for early fire detection and rapid response. Installation is tailored to meet the specific needs of your building's layout, ensuring maximum coverage and safety."
-      },
-      {
-        name: "Fire Alarm Maintenance and Servicing",
-        price: 250,
-        description: "We provide comprehensive fire alarm maintenance and servicing, including regular inspections and updates to keep your system functioning optimally. Our service ensures your alarms are responsive and ready to detect any fire hazards, minimizing risks and ensuring compliance with safety standards."
-      },
-      {
-        name: "Smoke Detector Installation and Certification",
-        price: 200,
-        description: "Our smoke detector installation service ensures that your property is equipped with high-quality, certified smoke detectors strategically placed for maximum coverage. These detectors are critical for early fire detection, offering you the best chance of preventing damage or injury in the event of a fire."
-      },
-      {
-        name: "Fire Alarm Testing and Certification",
-        price: 150,
-        description: "Our fire alarm testing service ensures your system is working as it should. We run extensive tests on every component and issue a certification confirming that your system meets all necessary safety standards, helping you stay compliant with local fire regulations and enhancing the safety of your property."
-      },
-      {
-        name: "Emergency Lighting Installation",
-        price: 400,
-        description: "Our emergency lighting installation service provides lighting that activates automatically during power failures, guiding occupants safely out of your building. These lights are installed in accordance with building regulations to ensure your premises are fully equipped for emergencies, particularly in high-traffic areas and escape routes."
-      },
-      {
-        name: "Emergency Lighting Testing and Maintenance",
-        price: 350,
-        description: "We offer professional testing and maintenance of your emergency lighting system to ensure it functions correctly when needed most. Our service includes battery checks, lamp replacements, and ensuring that all lights are placed in accordance with safety guidelines, so your property is always prepared for an emergency."
-      },
-      {
-        name: "Battery Backup Replacement for Emergency Lighting",
-        price: 300,
-        description: "Our battery backup replacement service ensures that your emergency lighting systems are always ready for use, even during power outages. We replace old or depleted batteries with high-performance alternatives to maintain the functionality of your emergency lighting and keep your building safe."
-      },
-      {
-        name: "Electrical Safety Upgrades for Fire Systems",
-        price: 450,
-        description: "We provide electrical safety upgrades to ensure that your fire alarm and emergency lighting systems are integrated with the latest electrical safety technologies. This includes upgrading wiring, adding surge protection, and improving the system's overall resilience to electrical faults, minimizing the risk of fire due to electrical issues."
-      },
-    ],
-  },
-};
-
+import { useNavigate } from "react-router-dom";
 
 const FireAlarms = () => {
+  const navigate = useNavigate();
+
+  const navigateTo = (path) => {
+    navigate(path); // No replace, so the path will be added to the history stack
+  };
   return (
     <>
       <Header />
-      <div className="f-services-page">
-        <h1 className="f-services-heading">Fire Alarm Services</h1>
-        <p className="f-services-description">
-          <strong>Eco Voltex </strong>offers cutting-edge Fire Alarm systems designed to protect
-          your property from the dangers of fire. Our advanced fire detection
-          and alarm solutions are engineered to meet the highest safety
-          standards, ensuring early detection and rapid response in case of an
-          emergency. From installation to ongoing maintenance, our skilled team
-          provides comprehensive services to ensure your property is safeguarded
-          24/7. With customizable solutions, we offer peace of mind by ensuring
-          your premises are always prepared for any fire-related threat. Explore
-          our Fire Alarm services to find the perfect fit for your safety needs.
-        </p>
-        <ul className="f-services-list">
-          {Object.keys(servicesData).map((category) => (
-            <div key={category} className="f-service-category">
-              {servicesData[category].items.map((service, index) => (
-                <li key={index} className="f-service-item">
-                  <div className="f-service-details">
-                    <h3>{service.name}</h3>
-                    <p>{service.description}</p>
-                  </div>
+      <div className="service-container">
+        <header className="service-header">
+          <h1>Fire Alarm Systems</h1>
+          <h2>Your First Line of Defense Against Fire Hazards</h2>
+        </header>
+
+        <section className="service-intro">
+          <h3>🔥 The Reality:</h3>
+          <ul>
+            <li>
+              UK fires cause <strong>£1.3 billion</strong> in damages annually
+              (Home Office Report).
+            </li>
+            <li>
+              80% of fire-related deaths occur in properties{" "}
+              <strong>without working alarms</strong>.
+            </li>
+          </ul>
+
+          <h3>🔥 Our Promise:</h3>
+          <ul>
+            <li>
+              <strong>Tailored Protection:</strong> Systems designed for your
+              property size, layout, and risks.
+            </li>
+            <li>
+              <strong>Zero Compromise:</strong> Full compliance with UK law and
+              insurance requirements.
+            </li>
+          </ul>
+        </section>
+
+        <section className="steps">
+          <h2>How Our Fire Alarm Systems Work</h2>
+
+          <div className="step">
+            <h3>Step 1: Risk Assessment</h3>
+            <ul>
+              <li>
+                We identify fire hazards (e.g., kitchens, electrical rooms,
+                storage areas).
+              </li>
+              <li>Recommend detector types:</li>
+              <ul>
+                <li>
+                  🔥 <strong>Smoke Detectors:</strong> Early warnings in
+                  offices, corridors.
                 </li>
-              ))}
-            </div>
-          ))}
-        </ul>
+                <li>
+                  🔥 <strong>Heat Detectors:</strong> Ideal for kitchens,
+                  garages (ignores cooking fumes).
+                </li>
+                <li>
+                  🔥 <strong>CO Detectors:</strong> Essential for boiler rooms
+                  or gas-powered spaces.
+                </li>
+              </ul>
+            </ul>
+          </div>
+
+          <div className="step">
+            <h3>Step 2: System Design</h3>
+            <ul>
+              <li>
+                📍 <strong>Conventional Systems:</strong> Best for small shops,
+                cafes, or apartments.
+              </li>
+              <li>
+                📍 <strong>Addressable Systems:</strong> Pinpoint device
+                locations (ideal for large buildings).
+              </li>
+              <li>
+                📍 <strong>Wireless Systems:</strong> No messy cables, encrypted
+                signals, quick retrofits.
+              </li>
+            </ul>
+          </div>
+
+          <div className="step">
+            <h3>Step 3: Installation & Testing</h3>
+            <ul>
+              <li>
+                🔧 <strong>Discreet Placement:</strong> Alarms installed in
+                ceilings or walls.
+              </li>
+              <li>
+                🔊 <strong>Sound Testing:</strong> Alarms reach 65dB+ in all
+                rooms.
+              </li>
+              <li>
+                💡 <strong>Emergency Lighting:</strong> Ensures safe exit during
+                power failure.
+              </li>
+            </ul>
+          </div>
+
+          <div className="step">
+            <h3>Step 4: 24/7 Monitoring & Maintenance</h3>
+            <ul>
+              <li>
+                🔄 <strong>Annual Maintenance:</strong> Sensor cleaning, battery
+                checks, software updates.
+              </li>
+              <li>
+                🚨 <strong>Emergency Repairs:</strong> Faulty detectors replaced
+                within 4 hours.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section className="booking-info">
+          <h2>🔧 What Action Do You Need to Take?</h2>
+          <p>Before we begin, please ensure:</p>
+          <ul>
+            <li>
+              🔹 We have access to all areas (attics, basements, server rooms).
+            </li>
+            <li>🔹 Floor plans are available to streamline design.</li>
+            <li>
+              🔹 High-risk zones (e.g., kitchens, electrical rooms) are noted.
+            </li>
+            <li>🔹 Power outlets are accessible for control panels.</li>
+          </ul>
+
+          <h3>🔥 Critical Stats:</h3>
+          <ul>
+            <li>
+              📉 <strong>60%</strong> of UK businesses never recover after a
+              major fire.
+            </li>
+            <li>
+              ⚡ Interlinked alarms reduce evacuation time by{" "}
+              <strong>50%</strong>.
+            </li>
+          </ul>
+        </section>
+
+        <section className="cta">
+          <h2>📞 Don’t Risk Fines or Fires!</h2>
+          <p>
+            👉 <strong>Get Your Free Fire Safety Audit Today!</strong>
+          </p>
+          <button className="cta-button" onClick={() => navigateTo("/contact")}>
+            Schedule Free Risk Assessment →
+          </button>
+        </section>
+
+        <section className="faqs">
+          <h2>FAQs: Demystifying Fire Alarms</h2>
+          <div className="faq">
+            <h4>❓ "How often should fire alarms be tested?"</h4>
+            <p>
+              ✅ "Test weekly using the ‘test button.’ Full system checks are
+              done annually."
+            </p>
+          </div>
+          <div className="faq">
+            <h4>❓ "Can I silence a false alarm?"</h4>
+            <p>
+              ✅ "Yes—modern systems have ‘hush buttons’ and multi-sensor
+              technology to reduce false triggers."
+            </p>
+          </div>
+          <div className="faq">
+            <h4>❓ "What’s the lifespan of a fire alarm?"</h4>
+            <p>
+              ✅ "Detectors last 10 years, and batteries should be replaced
+              every 1–2 years."
+            </p>
+          </div>
+          <div className="faq">
+            <h4>❓ "Do landlords need fire alarms?"</h4>
+            <p>
+              ✅ "Yes—rental properties require interlinked alarms in living
+              areas and kitchens (by law)."
+            </p>
+          </div>
+        </section>
       </div>
       <Footer />
     </>

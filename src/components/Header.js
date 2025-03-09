@@ -111,20 +111,17 @@ const Header = () => {
             </button>
             {dropdownOpen && (
               <div className="dropdown-menu">
-                <Link to="/services/Residential" className="dropdown-item">
-                  Residential
-                </Link>
-                <Link to="/services/Commercial" className="dropdown-item">
-                  Commercial
-                </Link>
-                <Link to="/services/Industrial" className="dropdown-item">
-                  Industrial
+                <Link to="/services/service" className="dropdown-item">
+                Electrical Installation & Maintenance
                 </Link>
                 <Link to="/services/Fire-alarms" className="dropdown-item">
-                  Fire Alarms
+                Fire Alarm Systems
                 </Link>
                 <Link to="/services/CCTV" className="dropdown-item">
-                  CCTV
+                CCTV & Security Systems
+                </Link>
+                <Link to="/services/PAT-testing" className="dropdown-item">
+                PAT Testing
                 </Link>
               </div>
             )}
