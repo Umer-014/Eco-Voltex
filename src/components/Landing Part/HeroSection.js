@@ -1,11 +1,9 @@
 import "./HeroSection.css";
 import { useNavigate } from "react-router-dom";
-import React, { useRef, useState } from "react";
-import LiveChat from "../Chat Icon/LiveChat"; // Import LiveChat componen
+import React from "react"; 
+
 
 const HeroSection = () => {
-  const liveChatRef = useRef(null);
-  const [isElectricalExpanded, setElectricalExpanded] = useState(false);
 
 
 
@@ -18,9 +16,9 @@ const HeroSection = () => {
   return (
     <div className="home-page">
       {/* Hero Section */}
-      <section className="hero">
-        <div className="hero-overlay">
-          <div className="hero-content">
+      <section className="home-hero">
+        <div className="home-hero-overlay">
+          <div className="home-hero-content">
             <h1>Empowering Your Future with Sustainable Solutions</h1>
             <p>
               Your trusted partner for residential, commercial, and industrial
@@ -31,14 +29,14 @@ const HeroSection = () => {
       </section>
 
       {/* Services Section */}
-      <section className="services">
+      <section className="home-services">
         <h2>What we Offer</h2>
-        <div className="service-cards">
+        <div className="home-service-cards">
           {/* Electrical Installation & Maintenance Services */}
-          <div className="service-card electrical-card">
+          <div className="home-service-card home-electrical-card">
             <h3>Electrical Installation and Maintenance Services</h3>
             <div
-              className="service-image"
+              className="home-service-image"
               style={{
                 backgroundImage: `url(${require("../../assets/images/electrical-background.jpg")})`,
                 backgroundSize: "cover",
@@ -54,33 +52,17 @@ const HeroSection = () => {
               and businesses.
             </p>
             <button
-              onClick={() => setElectricalExpanded(!isElectricalExpanded)}
+             onClick={() => navigateTo("/services/Installation-Maintenance")}
             >
               Read More
             </button>
-            {isElectricalExpanded && (
-              <div
-                className="sub-services"
-                style={{ display: "flex", gap: "6px", marginTop: "10px" }}
-              >
-                <button onClick={() => navigate("/services/Residential")}>
-                  Residential Read More
-                </button>
-                <button onClick={() => navigate("/services/Commercial")}>
-                  Commercial
-                </button>
-                <button onClick={() => navigate("/services/Industrial")}>
-                  Industrial
-                </button>
-              </div>
-            )}
           </div>
 
-          <div className="service-card">
+          <div className="home-service-card">
             <i className="fas fa-fire"></i>
             <h3>Fire Alarm</h3>
             <div
-              className="service-image"
+              className="home-service-image"
               style={{
                 backgroundImage: `url(${require("../../assets/images/fire-background.jpg")})`,
                 backgroundSize: "cover",
@@ -98,11 +80,11 @@ const HeroSection = () => {
               Read More
             </button>
           </div>
-          <div className="service-card">
+          <div className="home-service-card">
             <i className="fas fa-video"></i>
             <h3>CCTV</h3>
             <div
-              className="service-image"
+              className="home-service-image"
               style={{
                 backgroundImage: `url(${require("../../assets/images/cctv-background.jpg")})`,
                 backgroundSize: "cover",
@@ -118,11 +100,11 @@ const HeroSection = () => {
               Read More
             </button>
           </div>
-          <div className="service-card">
+          <div className="home-service-card">
             <i className="fas fa-video"></i>
             <h3>Portable Appliance Testing (PAT)</h3>
             <div
-              className="service-image"
+              className="home-service-image"
               style={{
                 backgroundImage: `url(${require("../../assets/images/pat-background.jpg")})`,
                 backgroundSize: "cover",
@@ -137,44 +119,43 @@ const HeroSection = () => {
               Ensure safety and compliance with our certified PAT testing
               services.
             </p>
-            <button onClick={() => navigateTo("/services/CCTV")}>
+            <button onClick={() => navigateTo("/services/PAT-testing")}>
               Read More
             </button>
           </div>
         </div>
       </section>
       {/* Why Choose Us Section */}
-      <section className="why-us">
+      <section className="home-why-us">
         <h2>Why Eco Voltex?</h2>
-        <div className="features">
-          <div className="feature">
+        <div className="home-features">
+          <div className="home-feature">
             <i className="fas fa-cogs"></i>
             <p>Expert Technicians</p>
           </div>
-          <div className="feature">
+          <div className="home-feature">
             <i className="fas fa-leaf"></i>
             <p>Sustainable Solutions</p>
           </div>
-          <div className="feature">
+          <div className="home-feature">
             <i className="fas fa-trophy"></i>
             <p>Proven Excellence</p>
           </div>
-          <div className="feature">
+          <div className="home-feature">
             <i className="fas fa-dollar-sign"></i>
             <p>Affordable Pricing</p>
           </div>
         </div>
       </section>
       {/* Call to Action Section */}
-      <section className="cta-section">
+      <section className="home-cta-section">
         <h2>Let’s Power Up Your Projects</h2>
         <p>Contact us today for a free consultation and personalized quote.</p>
-        <button className="cta-btn" onClick={() => navigateTo("/contact")}>
+        <button className="home-cta-btn" onClick={() => navigateTo("/contact")}>
           Request a Free Quote
         </button>
       </section>
-      {/* LiveChat Component */}
-      <LiveChat ref={liveChatRef} />
+
     </div>
   );
 };
