@@ -190,7 +190,6 @@
 
 /* working on the upgrate section */
 
-
 .InstallationMaintenance-ready-to-upgrade {
   background-color: white;
   text-align: center;
@@ -259,9 +258,23 @@
   color: #1c7430;
 }
 
+/* Pulse animation keyframes */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .InstallationMaintenance-book-button {
-  background-color: #1c7430;
+  background-color: #ff4500;
   color: white;
+  font-weight: bold;
   padding: 16px 32px;
   border: none;
   border-radius: 6px;
@@ -271,10 +284,10 @@
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   font-weight: 600;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: pulse 2s infinite;
 }
 
 .InstallationMaintenance-book-button:hover {
-  background-color: #155724;
   transform: translateY(-2px);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
