@@ -4,198 +4,237 @@ import Footer from "../../../components/Footer/Footer";
 import "./InstallationMaintenance.css";
 import { useNavigate } from "react-router-dom";
 
-const faqs = [
-  // General Electrical Questions
+
+const categorizedFaqs = [
   {
-    question: "What are the signs that my home needs rewiring?",
-    answer:
-      "Frequent breaker trips, flickering lights, burning smells, or old rubber/fabric wiring.",
+    category: "General Electrical Questions",
+    faqs: [
+      {
+        question: "What are the signs that my home needs rewiring?",
+        answer:
+          "Frequent breaker trips, flickering lights, burning smells, or old rubber/fabric wiring.",
+      },
+      {
+        question: "How long does a full house rewire take?",
+        answer:
+          "Typically 5-10 days, depending on property size and complexity.",
+      },
+      {
+        question: "Is my property safe if my fuse box is old?",
+        answer:
+          "Older fuse boxes may lack essential safety features. Upgrading to an RCBO consumer unit enhances protection.",
+      },
+      {
+        question: "How do I know if my home’s electrical system is safe?",
+        answer:
+          "Regular inspections, no burning smells, no frequent breaker trips, and up-to-date wiring.",
+      },
+      {
+        question: "What does it mean to comply with BS 7671 regulations?",
+        answer:
+          "It ensures that your electrical system meets the UK’s latest safety standards, reducing fire and shock risks.",
+      },
+      {
+        question: "How often should I have my electrical system checked?",
+        answer:
+          "Every 10 years for homeowners, every 5 years for rental properties, or sooner if issues arise.",
+      },
+      {
+        question: "What should I do in case of an electrical emergency?",
+        answer:
+          "Turn off the power at the consumer unit and call an electrician immediately.",
+      },
+      {
+        question: "Do you provide emergency electrical repair services?",
+        answer:
+          "Yes, we offer urgent repairs for power outages, tripping circuits, and electrical hazards.",
+      },
+    ],
   },
   {
-    question: "How long does a full house rewire take?",
-    answer: "Typically 5-10 days, depending on property size and complexity.",
+    category: "Installation & Upgrades",
+    faqs: [
+      {
+        question: "Do I need an electrician to install an EV charger at home?",
+        answer:
+          "Yes, EV chargers require professional installation to meet safety regulations.",
+      },
+      {
+        question: "Can I upgrade my old sockets and switches without rewiring?",
+        answer:
+          "Yes, modern sockets can be installed if the existing wiring is in good condition.",
+      },
+      {
+        question: "What’s the benefit of surge protection?",
+        answer:
+          "It prevents damage to appliances caused by voltage spikes and lightning strikes.",
+      },
+      {
+        question: "When should I upgrade my fuse box?",
+        answer:
+          "If it has outdated fuses, lacks RCD protection, or frequently trips.",
+      },
+      {
+        question: "Can I install additional sockets without rewiring my home?",
+        answer:
+          "Yes, extra sockets can be installed if your wiring is safe and up to code.",
+      },
+      {
+        question: "How much does a full house rewire cost?",
+        answer:
+          "Costs vary based on house size, wiring condition, and complexity—contact us for a quote.",
+      },
+      {
+        question: "Do you install energy-efficient lighting?",
+        answer:
+          "Yes, we provide LED lighting solutions to lower energy bills and enhance brightness.",
+      },
+      {
+        question: "Can I install an EV charger at home?",
+        answer:
+          "Yes, we install home EV charging stations with safe and compliant wiring.",
+      },
+    ],
   },
   {
-    question: "Is my property safe if my fuse box is old?",
-    answer:
-      "Older fuse boxes may lack essential safety features. Upgrading to an RCBO consumer unit enhances protection.",
-  },
-  // Installation & Upgrades
-  {
-    question: "Do I need an electrician to install an EV charger at home?",
-    answer:
-      "Yes, EV chargers require professional installation to meet safety regulations.",
-  },
-  {
-    question: "Can I upgrade my old sockets and switches without rewiring?",
-    answer:
-      "Yes, modern sockets can be installed if the existing wiring is in good condition.",
-  },
-  {
-    question: "What’s the benefit of surge protection?",
-    answer:
-      "It prevents damage to appliances caused by voltage spikes and lightning strikes.",
-  },
-  // Maintenance & Repairs
-  {
-    question: "Why do my circuit breakers keep tripping?",
-    answer:
-      "Possible causes include overloaded circuits, faulty wiring, or damaged appliances.",
-  },
-  {
-    question: "What should I do if I smell burning from an outlet?",
-    answer:
-      "Switch off the power immediately and call a qualified electrician.",
+    category: "Maintenance & Repairs",
+    faqs: [
+      {
+        question: "Why do my circuit breakers keep tripping?",
+        answer:
+          "Possible causes include overloaded circuits, faulty wiring, or damaged appliances.",
+      },
+      {
+        question: "What should I do if I smell burning from an outlet?",
+        answer:
+          "Switch off the power immediately and call a qualified electrician.",
+      },
+      {
+        question: "Why are my lights flickering?",
+        answer:
+          "Loose wiring, overloaded circuits, or faulty bulbs may be the cause.",
+      },
+      {
+        question: "Why do my plugs and sockets feel hot?",
+        answer:
+          "This may indicate an overloaded circuit or faulty wiring that needs urgent attention.",
+      },
+      {
+        question: "What are the dangers of old electrical wiring?",
+        answer:
+          "Risks include electrical fires, shocks, and inefficiencies that increase energy costs.",
+      },
+    ],
   },
   {
-    question: "Why are my lights flickering?",
-    answer:
-      "Loose wiring, overloaded circuits, or faulty bulbs may be the cause.",
-  },
-  // EICR & Landlord Inspections
-  {
-    question: "How often should I get an EICR report?",
-    answer:
-      "Every 5 years for rental properties and 10 years for owner-occupied homes.",
-  },
-  {
-    question: "What happens if my property fails an EICR test?",
-    answer:
-      "Necessary repairs must be completed to bring the installation up to standard.",
-  },
-  {
-    question: "Is an EICR required when selling a house?",
-    answer:
-      "Not legally required, but it reassures buyers of electrical safety.",
-  },
-  // Outdoor & Smart Home Electrical Work
-  {
-    question: "Can you install security lighting outside my home?",
-    answer: "Yes, we offer motion-sensor and dusk-to-dawn security lighting.",
-  },
-  {
-    question: "Do you install smart home systems?",
-    answer:
-      "Yes, we install smart lighting, thermostats, and home automation systems.",
-  },
-  {
-    question:
-      "How do I make my home more energy-efficient with electrical upgrades?",
-    answer:
-      "Upgrading to LED lighting, installing smart thermostats, and ensuring modern wiring can reduce energy bills.",
-  },
-  // Additional FAQs from the 20-question bank
-  {
-    question: "How do I know if my home’s electrical system is safe?",
-    answer:
-      "Regular inspections, no burning smells, no frequent breaker trips, and up-to-date wiring.",
+    category: "EICR & Landlord Inspections",
+    faqs: [
+      {
+        question: "How often should I get an EICR report?",
+        answer:
+          "Every 5 years for rental properties and 10 years for owner-occupied homes.",
+      },
+      {
+        question: "What happens if my property fails an EICR test?",
+        answer:
+          "Necessary repairs must be completed to bring the installation up to standard.",
+      },
+      {
+        question: "Is an EICR required when selling a house?",
+        answer:
+          "Not legally required, but it reassures buyers of electrical safety.",
+      },
+      {
+        question: "Do landlords need an EICR certificate?",
+        answer:
+          "Yes, UK law requires landlords to have an Electrical Installation Condition Report every 5 years.",
+      },
+      {
+        question: "What happens if my EICR report fails?",
+        answer:
+          "You must carry out the necessary remedial work to make the installation safe.",
+      },
+      {
+        question:
+          "Can I get an EICR certificate for my home even if I’m not renting it out?",
+        answer:
+          "Yes, it’s a great way to ensure your home’s electrical system is safe.",
+      },
+    ],
   },
   {
-    question: "What does it mean to comply with BS 7671 regulations?",
-    answer:
-      "It ensures that your electrical system meets the UK’s latest safety standards, reducing fire and shock risks.",
+    category: "Outdoor & Smart Home Electrical Work",
+    faqs: [
+      {
+        question: "Can you install security lighting outside my home?",
+        answer:
+          "Yes, we offer motion-sensor and dusk-to-dawn security lighting.",
+      },
+      {
+        question: "Do you install smart home systems?",
+        answer:
+          "Yes, we install smart lighting, thermostats, and home automation systems.",
+      },
+      {
+        question:
+          "How do I make my home more energy-efficient with electrical upgrades?",
+        answer:
+          "Upgrading to LED lighting, installing smart thermostats, and ensuring modern wiring can reduce energy bills.",
+      },
+      {
+        question: "Do you install security lighting and outdoor sockets?",
+        answer:
+          "Yes, we install weatherproof outdoor lighting, motion sensors, and garden sockets.",
+      },
+      {
+        question:
+          "Can you integrate smart home systems like automated lighting and thermostats?",
+        answer:
+          "Yes, we install smart home technology for convenience, security, and energy efficiency.",
+      },
+    ],
   },
   {
-    question: "How often should I have my electrical system checked?",
-    answer:
-      "Every 10 years for homeowners, every 5 years for rental properties, or sooner if issues arise.",
-  },
-  {
-    question: "What should I do in case of an electrical emergency?",
-    answer:
-      "Turn off the power at the consumer unit and call an electrician immediately.",
-  },
-  {
-    question: "Do you provide emergency electrical repair services?",
-    answer:
-      "Yes, we offer urgent repairs for power outages, tripping circuits, and electrical hazards.",
-  },
-  {
-    question: "When should I upgrade my fuse box?",
-    answer:
-      "If it has outdated fuses, lacks RCD protection, or frequently trips.",
-  },
-  {
-    question: "Can I install additional sockets without rewiring my home?",
-    answer:
-      "Yes, extra sockets can be installed if your wiring is safe and up to code.",
-  },
-  {
-    question: "How much does a full house rewire cost?",
-    answer:
-      "Costs vary based on house size, wiring condition, and complexity—contact us for a quote.",
-  },
-  {
-    question: "Do you install energy-efficient lighting?",
-    answer:
-      "Yes, we provide LED lighting solutions to lower energy bills and enhance brightness.",
-  },
-  {
-    question: "Can I install an EV charger at home?",
-    answer:
-      "Yes, we install home EV charging stations with safe and compliant wiring.",
-  },
-  {
-    question: "Why do my plugs and sockets feel hot?",
-    answer:
-      "This may indicate an overloaded circuit or faulty wiring that needs urgent attention.",
-  },
-  {
-    question: "What are the dangers of old electrical wiring?",
-    answer:
-      "Risks include electrical fires, shocks, and inefficiencies that increase energy costs.",
-  },
-  {
-    question: "Do landlords need an EICR certificate?",
-    answer:
-      "Yes, UK law requires landlords to have an Electrical Installation Condition Report every 5 years.",
-  },
-  {
-    question: "What happens if my EICR report fails?",
-    answer:
-      "You must carry out the necessary remedial work to make the installation safe.",
-  },
-  {
-    question:
-      "Can I get an EICR certificate for my home even if I’m not renting it out?",
-    answer:
-      "Yes, it’s a great way to ensure your home’s electrical system is safe.",
-  },
-  {
-    question: "Do you install security lighting and outdoor sockets?",
-    answer:
-      "Yes, we install weatherproof outdoor lighting, motion sensors, and garden sockets.",
-  },
-  {
-    question:
-      "Can you integrate smart home systems like automated lighting and thermostats?",
-    answer:
-      "Yes, we install smart home technology for convenience, security, and energy efficiency.",
-  },
-  {
-    question: "How long does a full rewiring take?",
-    answer:
-      "Most 3-bed homes take 3-5 days. We work room-by-room to minimise disruption: Day 1: Safety checks & temporary power setup. Days 2-4: Remove old wires & install new circuits. Day 5: Final testing + certification.",
-  },
-  {
-    question: "Why are your quotes higher than others?",
-    answer:
-      "We use BS 7671-compliant materials (e.g., Hager consumer units) and certified labour. Cheap quotes often cut corners:\n❌ Substandard cables (fire risk).\n❌ No testing/certification (voids insurance).\n✅ Our guarantee: 12-month warranty on all work.",
-  },
-  {
-    question: "Can I stay in my home during rewiring?",
-    answer:
-      "Yes! We’ll work from 8 AM – 4 PM (no overnight disruption), keep 1-2 rooms powered at all times, and clean up daily.",
+    category: "Rewiring Service Specifics & Pricing",
+    faqs: [
+      {
+        question: "How long does a full rewiring take?",
+        answer:
+          "Most 3-bed homes take 3-5 days. We work room-by-room to minimise disruption: Day 1: Safety checks & temporary power setup. Days 2-4: Remove old wires & install new circuits. Day 5: Final testing + certification.",
+      },
+      {
+        question: "Why are your quotes higher than others?",
+        answer:
+          "We use BS 7671-compliant materials (e.g., Hager consumer units) and certified labour. Cheap quotes often cut corners:\n❌ Substandard cables (fire risk).\n❌ No testing/certification (voids insurance).\n✅ Our guarantee: 12-month warranty on all work.",
+      },
+      {
+        question: "Can I stay in my home during rewiring?",
+        answer:
+          "Yes! We’ll work from 8 AM – 4 PM (no overnight disruption), keep 1-2 rooms powered at all times, and clean up daily.",
+      },
+    ],
   },
 ];
 
-const InstallationMaintenance = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
 
-  const toggleFAQ = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
+const InstallationMaintenance = () => {
+  const [expandedCategories, setExpandedCategories] = useState({});
+  const [activeFAQIndex, setActiveFAQIndex] = useState({});
   const navigate = useNavigate();
+
+  const toggleFAQ = (catIndex, faqIndex) => {
+    setActiveFAQIndex((prev) => ({
+      ...prev,
+      [catIndex]: prev[catIndex] === faqIndex ? null : faqIndex,
+    }));
+  };
+
+  const toggleCategoryExpand = (catIndex) => {
+    setExpandedCategories((prev) => ({
+      ...prev,
+      [catIndex]: !prev[catIndex],
+    }));
+  };
 
   return (
     <>
@@ -320,28 +359,15 @@ const InstallationMaintenance = () => {
               <li>Breaker Tripping</li>
               <li>Overloaded Circuit</li>
               <li>Lights Flickering</li>
-              <li>Dimming Lights</li>
               <li>Burning Smell</li>
-              <li>Scorch Marks</li>
               <li>Sparks Flying</li>
-              <li>Electrical Sparks</li>
               <li>Partial Blackout</li>
-              <li>Power Gone</li>
-              <li>Buzzing Sounds</li>
               <li>Hot Outlets</li>
-              <li>Switches Heating</li>
               <li>Old Wiring</li>
-              <li>Outdated System</li>
-              <li>Renovating Danger</li>
-              <li>Storm Damage</li>
-              <li>Flooded Wires</li>
-              <li>Dead Outlets</li>
-              <li>Switches Dead</li>
-              <li>High Energy Bills</li>
-              <li>Inefficient System</li>
+              <li>Partial Blackout</li>
               <li>Electrical Emergency</li>
-              <li>Fix It Fast</li>
             </ul>
+
             <button
               className="InstallationMaintenance-book-button"
               onClick={() => navigate("/contact")}
@@ -354,29 +380,53 @@ const InstallationMaintenance = () => {
 
         <section className="InstallationMaintenance-faq-section">
           <h3>FAQs</h3>
-          <div className="InstallationMaintenance-faq">
-            {faqs.map((faq, index) => (
-              <div key={index} className="InstallationMaintenance-faq-item">
-                <button
-                  className="InstallationMaintenance-faq-question"
-                  onClick={() => toggleFAQ(index)}
-                >
-                  {faq.question}
-                  <span className="InstallationMaintenance-faq-icon">
-                    {activeIndex === index ? "−" : "+"}
-                  </span>
-                </button>
-                <div
-                  className={`InstallationMaintenance-faq-answer ${
-                    activeIndex === index ? "open" : ""
-                  }`}
-                >
-                  <p>{faq.answer}</p>
-                </div>
+          {categorizedFaqs.map((cat, catIndex) => (
+            <div key={catIndex} className="faq-category">
+              <h4>{cat.category}</h4>
+              <div className="InstallationMaintenance-faq">
+                {cat.faqs
+                  .slice(
+                    0,
+                    expandedCategories[catIndex]
+                      ? cat.faqs.length
+                      : 3
+                  )
+                  .map((faq, faqIndex) => (
+                    <div
+                      key={faqIndex}
+                      className="InstallationMaintenance-faq-item"
+                    >
+                      <button
+                        className="InstallationMaintenance-faq-question"
+                        onClick={() => toggleFAQ(catIndex, faqIndex)}
+                      >
+                        {faq.question}
+                        <span className="InstallationMaintenance-faq-icon">
+                          {activeFAQIndex[catIndex] === faqIndex ? "−" : "+"}
+                        </span>
+                      </button>
+                      <div
+                        className={`InstallationMaintenance-faq-answer ${
+                          activeFAQIndex[catIndex] === faqIndex ? "open" : ""
+                        }`}
+                      >
+                        <p>{faq.answer}</p>
+                      </div>
+                    </div>
+                  ))}
+                {cat.faqs.length > 3 && !expandedCategories[catIndex] && (
+                  <button
+                    className="read-more-button"
+                    onClick={() => toggleCategoryExpand(catIndex)}
+                  >
+                    Read More
+                  </button>
+                )}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </section>
+
       </div>
       <Footer />
     </>

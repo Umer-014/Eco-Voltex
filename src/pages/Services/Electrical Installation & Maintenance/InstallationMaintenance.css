@@ -227,8 +227,8 @@
 
 .InstallationMaintenance-red-flags-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(2, 0.5fr);
+  gap: 15px;
   list-style-type: none;
   padding: 0;
   margin-bottom: 20px;
@@ -282,13 +282,12 @@
 
 /*FAQ section*/
 
-
 /* FAQ Section Container */
 .InstallationMaintenance-faq-section {
   background-color: #A0A0A0;
   padding: 40px 20px;
   width: 100%;
-  margin: 40px 0; /* top and bottom margin */
+  margin: 40px 0;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -302,6 +301,29 @@
   font-weight: 700;
 }
 
+/* Category Buttons */
+.faq-categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.faq-category-button {
+  background: #1c7430;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.faq-category-button:hover {
+  background-color: #155724;
+}
+
 /* FAQ Container */
 .InstallationMaintenance-faq {
   display: flex;
@@ -309,16 +331,29 @@
   gap: 20px;
 }
 
-/* FAQ Item - Each Q&A appears as a card */
+/* FAQ Item */
+
+/* FAQ Category Container */
+.faq-category {
+  margin-bottom: 2rem;
+}
+
+/* FAQ Category Heading */
+.faq-category h4 {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
 .InstallationMaintenance-faq-item {
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   overflow: hidden;
+  margin-bottom: 1rem; /* Adds spacing between FAQ items */
 }
 
-/* Enhance shadow and lift on hover */
 .InstallationMaintenance-faq-item:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
@@ -341,7 +376,6 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Change background on hover for question */
 .InstallationMaintenance-faq-question:hover {
   background-color: #eef9ee;
   color: #155724;
@@ -364,7 +398,7 @@
 
 /* FAQ Answer (visible when open) */
 .InstallationMaintenance-faq-answer.open {
-  max-height: 500px; /* adjust as needed */
+  max-height: 500px;
   padding: 15px;
 }
 
@@ -375,3 +409,21 @@
   color: #555;
   line-height: 1.5;
 }
+
+/* Read More Button */
+.read-more-button {
+  background: #1c7430;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  align-self: center;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.read-more-button:hover {
+  background-color: #155724;
+}
+
