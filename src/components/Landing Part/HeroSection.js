@@ -1,7 +1,7 @@
 import "./HeroSection.css";
 import { useNavigate } from "react-router-dom";
 import React, { useRef, useState } from "react";
-import LiveChat from "./LiveChat"; // Import LiveChat componen
+import LiveChat from "../Chat Icon/LiveChat"; // Import LiveChat componen
 
 const HeroSection = () => {
   const liveChatRef = useRef(null);
@@ -40,7 +40,7 @@ const HeroSection = () => {
             <div
               className="service-image"
               style={{
-                backgroundImage: `url(${require("../assets/images/electrical-background.jpg")})`,
+                backgroundImage: `url(${require("../../assets/images/electrical-background.jpg")})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 height: "400px",
@@ -82,7 +82,7 @@ const HeroSection = () => {
             <div
               className="service-image"
               style={{
-                backgroundImage: `url(${require("../assets/images/fire-background.jpg")})`,
+                backgroundImage: `url(${require("../../assets/images/fire-background.jpg")})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 height: "400px",
@@ -104,7 +104,7 @@ const HeroSection = () => {
             <div
               className="service-image"
               style={{
-                backgroundImage: `url(${require("../assets/images/cctv-background.jpg")})`,
+                backgroundImage: `url(${require("../../assets/images/cctv-background.jpg")})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 height: "400px",
@@ -124,7 +124,7 @@ const HeroSection = () => {
             <div
               className="service-image"
               style={{
-                backgroundImage: `url(${require("../assets/images/pat-background.jpg")})`,
+                backgroundImage: `url(${require("../../assets/images/pat-background.jpg")})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 height: "400px",

@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "../../../components/Header";
-import Footer from "../../../components/Footer";
-import "./service.css";
+import Header from "../../../components/Header/Header";
+import Footer from "../../../components/Footer/Footer";
+import "./InstallationMaintenance.css";
 import { useNavigate } from "react-router-dom";
 
-const Service1 = () => {
+const InstallationMaintenance = () => {
 
       const navigate = useNavigate();
     
@@ -136,4 +136,4 @@ const Service1 = () => {
   );
 };
 
-export default Service1;
+export default InstallationMaintenance;

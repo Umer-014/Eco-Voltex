@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./FAQPage.css"
 import { FaChevronDown, FaChevronUp } from "react-icons/fa"; // Icons for expand/collapse
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 
 const FAQPage = () => {
   const faqSections = [

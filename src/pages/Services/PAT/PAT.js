@@ -1,10 +1,10 @@
 import React from "react";
-import "./Service2.css";
-import Header from "../../../components/Header";
-import Footer from "../../../components/Footer";
+import "./PAT.css";
+import Header from "../../../components/Header/Header";
+import Footer from "../../../components/Footer/Footer";
 import { useNavigate } from "react-router-dom";
 
-const Service2 = () => {
+const PAT = () => {
   const navigate = useNavigate();
 
   const navigateTo = (path) => {
@@ -182,4 +182,4 @@ const Service2 = () => {
   );
 };
 
-export default Service2;
+export default PAT;

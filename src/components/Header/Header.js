@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Drawer, List, ListItem, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import logo from "../assets/logo.jpg";
+import logo from "../../assets/logo.jpg";
 import "./header.css";
 
 const Header = () => {
@@ -111,7 +111,7 @@ const Header = () => {
             </button>
             {dropdownOpen && (
               <div className="dropdown-menu">
-                <Link to="/services/service" className="dropdown-item">
+                <Link to="/services/Installation-Maintenance" className="dropdown-item">
                 Electrical Installation & Maintenance
                 </Link>
                 <Link to="/services/Fire-alarms" className="dropdown-item">

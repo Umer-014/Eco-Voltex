@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "../Home Page/HomePage";
 import AboutUsPage from "../About/AboutUsPage";
-import Service1 from "../Services/Electrical Installation & Maintenance/service";
-import Service2 from "../Services/PAT/Service2";
+import InstallationMaintenance from "../Services/Electrical Installation & Maintenance/InstallationMaintenance";
+import PAT from "../Services/PAT/PAT";
 import Residential from "../Services/Residential/Residential";
 import Commercial from "../Services/Commercial/Commercial";
 import Industrial from "../Services/Industrial/Industrial";
@@ -12,8 +12,8 @@ import CCTV from "../Services/CCTV/CCTV";
 import ContactUsPage from "../Contact Us/ContactUsPage";
 import FAQPage from "../FAQ/FAQPage";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ScrollToTop from "../../components/ScrollToTop";
-import LiveChat from '../../components/LiveChat';
+import ScrollToTop from "../../components/Top/ScrollToTop";
+import LiveChat from '../../components/Chat Icon/LiveChat';
 
 const Stack = () => {
   return (
@@ -24,8 +24,8 @@ const Stack = () => {
         {/* Route Definitions */}
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutUsPage />} />
-        <Route path="/services/service" element={<Service1 />} />
-        <Route path="/services/PAT-testing" element={<Service2 />} />
+        <Route path="/services/Installation-Maintenance" element={<InstallationMaintenance />} />
+        <Route path="/services/PAT-testing" element={<PAT />} />
         <Route path="/services/Residential" element={<Residential />} />
         <Route path="/services/Commercial" element={<Commercial />} />
         <Route path="/services/Industrial" element={<Industrial />} />
