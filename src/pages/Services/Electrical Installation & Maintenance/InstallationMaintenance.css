@@ -1,106 +1,377 @@
-.service-container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    color: #333;
+
+
+.InstallationMaintenance-service-container {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background: var(--background-light);
+}
+
+.InstallationMaintenance-hero-section {
+  background-color: #1c7430; /* Dark green background */
+  padding: 40px 20px; /* Add padding for spacing */
+  text-align: center; /* Center-align the text */
+  width: 100%; /* Full width */
+  margin: 0; /* Remove default margin */
+  box-sizing: border-box; /* Include padding in width calculation */
+  height: 50vh; /* Set height to 50% of the viewport height */
+  display: flex;
+  flex-direction: column; /* Stack h1 and h2 vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  color: white; /* Default text color for the section */
+  position: relative; /* For any absolute-positioned child elements */
+}
+
+.InstallationMaintenance-hero-section h1 {
+  font-size: 3rem; /* Large font size for h1 */
+  margin-bottom: 10px; /* Space between h1 and h2 */
+  font-weight: bold; /* Make the heading bold */
+  opacity: 0; /* Start with invisible text */
+  animation: fadeIn 2s ease-in-out forwards; /* Apply fade-in animation */
+  animation-delay: 0.5s; /* Delay the animation by 1 second */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Start with 0 opacity */
   }
-  
-  .subtitle {
-    color: #0073e6;
-    font-weight: bold;
+  to {
+    opacity: 1; /* End with full opacity */
   }
-  
-  .section {
-    margin-top: 30px;
-    padding: 15px;
-    border-left: 4px solid #0073e6;
-    background: #f9f9f9;
-    border-radius: 5px;
-  }
-  
-  h3 {
-    color: #0073e6;
-    border-bottom: 2px solid #0073e6;
-    padding-bottom: 5px;
-  }
-  
+}
+
+.InstallationMaintenance-hero-section .InstallationMaintenance-subtitle {
+  font-size: 1.5rem; /* Smaller font size for h2 */
+  margin: 0; /* Remove default margin */
+  font-weight: normal; /* Normal weight for subtitle */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .work-scope {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .work-category {
-    flex: 1 1 45%;
-    background: white;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .work-category h4 {
-    color: #0073e6;
-  }
-  
-  .step-process {
-    display: flex;
     flex-direction: column;
-    gap: 15px;
   }
-  
-  .step {
-    background: white;
-    padding: 15px;
-    border-left: 4px solid #0073e6;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  .work-category {
+    flex: 1 1 100%;
   }
-  
-  .upgrade-section {
-    background: white;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  .InstallationMaintenance-service-container {
+    padding: 10px;
   }
-  
-  .upgrade-section h4 {
-    color: #d9534f;
+
+  h1 {
+    font-size: 1.5rem;
   }
-  
-  .fix-it {
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 10px;
+
+  h2.subtitle {
+    font-size: 1.2rem;
   }
-  
-  .book-button {
-    background-color: #0073e6;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
+}
+
+.InstallationMaintenance-what-we-do {
+  background-color: white; /* Same green background */
+  padding: 40px 20px; /* Add padding for spacing */
+  text-align: center; /* Center-align the text */
+  width: 100%; /* Full width */
+  margin: 0; /* Remove default margin */
+  box-sizing: border-box; /* Include padding in width calculation */
+  color: white; /* White text for the section */
+}
+
+.InstallationMaintenance-what-we-do h3 {
+  color: black;
+  font-weight: bold;
+  font-size: 2.5rem; /* Large font size for the heading */
+  margin-bottom: 20px; /* Space below the heading */
+}
+
+.InstallationMaintenance-work-scope {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between cards */
+  justify-content: center; /* Center the cards horizontally */
+}
+
+.InstallationMaintenance-work-category {
+  background: #C0C0C0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  flex: 1 1 calc(50% - 40px);
+  max-width: calc(50% - 20px);
+  color: #333;
+}
+
+.InstallationMaintenance-work-category h4 {
+  color: black;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.InstallationMaintenance-work-category ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.InstallationMaintenance-work-category li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  text-align: left;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .InstallationMaintenance-work-category {
+    flex: 1 1 100%;
+    max-width: 100%;
   }
-  
-  .book-button:hover {
-    background-color: #005bb5;
+}
+
+.InstallationMaintenance-why-choose-us {
+  background-color: #1c7430; /* Green background */
+  padding: 40px 20px; /* Add padding for spacing */
+  text-align: center; /* Center-align the text */
+  width: 100%; /* Full width */
+  margin: 0; /* Remove default margin */
+  box-sizing: border-box; /* Include padding in width calculation */
+  color: white; /* White text for the section */
+}
+
+.InstallationMaintenance-why-choose-us h3 {
+  color: white;
+  font-weight: bold;
+  font-size: 2.5rem; /* Large font size for the heading */
+  margin-bottom: 20px; /* Space below the heading */
+}
+
+.InstallationMaintenance-step-process {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between steps */
+  justify-content: center; /* Center the steps horizontally */
+}
+
+.InstallationMaintenance-step {
+  background: #C0C0C0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  flex: 1 1 calc(50% - 40px);
+  max-width: calc(50% - 20px);
+  color: #333;
+}
+
+.InstallationMaintenance-step h4 {
+  color: black;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.InstallationMaintenance-step p {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  text-align: left;
+
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .InstallationMaintenance-step {
+    flex: 1 1 100%; /* 1 card per row on mobile */
+    max-width: 100%; /* Full width on mobile */
   }
-  
-  .includes {
-    font-size: 14px;
-    color: #555;
-  }
-  
-  .faq {
-    background: white;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .faq h4 {
-    color: #0073e6;
-  }
-  
+}
+
+
+/* working on the upgrate section */
+
+
+.InstallationMaintenance-ready-to-upgrade {
+  background-color: white;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  color: #333;
+  padding: 20px 0;
+}
+
+.InstallationMaintenance-ready-to-upgrade h3 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: black;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.InstallationMaintenance-upgrade-section {
+  background: white;
+  padding: 30px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.InstallationMaintenance-upgrade-section h4 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #ff0000;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.InstallationMaintenance-red-flags-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.InstallationMaintenance-red-flags-list li {
+  font-size: 1rem;
+  color: #333;
+  background: linear-gradient(135deg, #ffffff, #f0f0f0);
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.InstallationMaintenance-red-flags-list li:hover {
+  background-color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.InstallationMaintenance-fix-it {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #1c7430;
+}
+
+.InstallationMaintenance-book-button {
+  background-color: #1c7430;
+  color: white;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.125rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.InstallationMaintenance-book-button:hover {
+  background-color: #155724;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+/*FAQ section*/
+
+
+/* FAQ Section Container */
+.InstallationMaintenance-faq-section {
+  background-color: #A0A0A0;
+  padding: 40px 20px;
+  width: 100%;
+  margin: 40px 0; /* top and bottom margin */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* FAQ Heading */
+.InstallationMaintenance-faq-section h3 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #333;
+  font-weight: 700;
+}
+
+/* FAQ Container */
+.InstallationMaintenance-faq {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* FAQ Item - Each Q&A appears as a card */
+.InstallationMaintenance-faq-item {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
+}
+
+/* Enhance shadow and lift on hover */
+.InstallationMaintenance-faq-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* FAQ Question Button */
+.InstallationMaintenance-faq-question {
+  width: 100%;
+  background: #f8f8f8;
+  border: none;
+  text-align: left;
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #1c7430;
+  cursor: pointer;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Change background on hover for question */
+.InstallationMaintenance-faq-question:hover {
+  background-color: #eef9ee;
+  color: #155724;
+}
+
+/* FAQ Icon */
+.InstallationMaintenance-faq-icon {
+  font-size: 1.5rem;
+  margin-left: 10px;
+  color: #1c7430;
+}
+
+/* FAQ Answer (hidden by default) */
+.InstallationMaintenance-faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  background: #fff;
+}
+
+/* FAQ Answer (visible when open) */
+.InstallationMaintenance-faq-answer.open {
+  max-height: 500px; /* adjust as needed */
+  padding: 15px;
+}
+
+/* FAQ Answer Paragraph */
+.InstallationMaintenance-faq-answer p {
+  margin: 0;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
