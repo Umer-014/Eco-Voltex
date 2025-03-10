@@ -1,117 +1,416 @@
-.service-container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    color: #333;
+.PAT-hero-section {
+  background-color: #1c7430; /* Dark green background */
+  padding: 40px 20px; /* Add padding for spacing */
+  text-align: center; /* Center-align the text */
+  width: 100%; /* Full width */
+  margin: 0; /* Remove default margin */
+  box-sizing: border-box; /* Include padding in width calculation */
+  height: 50vh; /* Set height to 50% of the viewport height */
+  display: flex;
+  flex-direction: column; /* Stack h1 and h2 vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  color: white; /* Default text color for the section */
+  position: relative; /* For any absolute-positioned child elements */
+}
+
+.PAT-hero-section h1 {
+  font-size: 3rem; /* Large font size for h1 */
+  margin-bottom: 10px; /* Space between h1 and h2 */
+  font-weight: bold; /* Make the heading bold */
+  opacity: 0; /* Start with invisible text */
+  animation: fadeIn 2s ease-in-out forwards; /* Apply fade-in animation */
+  animation-delay: 0.5s; /* Delay the animation by 1 second */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Start with 0 opacity */
+  }
+  to {
+    opacity: 1; /* End with full opacity */
+  }
+}
+
+.PAT-hero-section .PAT-subtitle {
+  font-size: 1.5rem; /* Smaller font size for h2 */
+  margin: 0; /* Remove default margin */
+  font-weight: normal; /* Normal weight for subtitle */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .PAT-hero-section h1 {
+    font-size: 1.5rem;
+  }
+
+  .PAT-hero-section .PAT-subtitle {
+    font-size: 1.2rem;
+  }
+}
+
+
+
+/*for the why chose section*/
+
+.PAT-what-we-do {
+  background-color: white; /* White background */
+  padding: 40px 20px; /* Add padding for spacing */
+  text-align: center; /* Center-align the text */
+  width: 100%; /* Full width */
+  margin: 0; /* Remove default margin */
+  box-sizing: border-box; /* Include padding in width calculation */
+  color: black; /* Set text color */
+}
+
+.PAT-what-we-do h3 {
+  font-weight: bold;
+  font-size: 2.5rem; /* Large font size for the heading */
+  margin-bottom: 20px; /* Space below the heading */
+}
+
+.PAT-work-scope {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between cards */
+  justify-content: center; /* Center the cards horizontally */
+}
+
+.PAT-work-category {
+  background: #C0C0C0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  flex: 1 1 calc(50% - 40px);
+  max-width: calc(50% - 20px);
+  color: #333;
+}
+
+.PAT-work-category h4 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.PAT-work-category ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+  text-align: left;
+}
+
+.PAT-work-category li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .PAT-work-category {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .PAT-what-we-do h3 {
+    font-size: 2rem;
+  }
+}
+
+
+/*why it is essitional*/
+
+.PAT-essential {
+  background: #1c7430; /* Professional green gradient */
+  padding: 60px 20px;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  color: white;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.PAT-essential h3 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Container for text content to improve readability */
+.PAT-legal, 
+.PAT-testing-guide {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  text-align: left;
+}
+
+.PAT-legal h4,
+.PAT-testing-guide h4 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+
+}
+
+.PAT-legal p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.PAT-testing-guide {
+  margin-top: 20px;
+}
+
+/* Table Styling */
+.PAT-testing-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  color: #333;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.PAT-testing-table thead {
+  background-color: #388E3C;
+}
+
+.PAT-testing-table thead th {
+  padding: 15px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.PAT-testing-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.PAT-testing-table tbody td {
+  padding: 12px;
+  font-size: 1rem;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+.PAT-testing-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .PAT-essential h3 {
+    font-size: 2.2rem;
   }
   
-  .subtitle {
-    color: #0073e6;
-    font-weight: bold;
+  .PAT-legal h4,
+  .PAT-testing-guide h4 {
+    font-size: 1.6rem;
   }
   
-  .section {
-    margin-top: 30px;
-    padding: 15px;
-    border-left: 4px solid #0073e6;
-    background: #f9f9f9;
-    border-radius: 5px;
+  .PAT-legal p {
+    font-size: 1rem;
   }
   
-  h3 {
-    color: #0073e6;
-    border-bottom: 2px solid #0073e6;
-    padding-bottom: 5px;
-  }
-  
-  .service-details {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .service-item {
-    flex: 1 1 45%;
-    background: white;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .service-item h4 {
-    color: #0073e6;
-  }
-  
-  .testing-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-  }
-  
-  .testing-table th, .testing-table td {
-    border: 1px solid #ddd;
+  .PAT-testing-table thead th, 
+  .PAT-testing-table tbody td {
     padding: 10px;
-    text-align: left;
+    font-size: 0.9rem;
+  }
+}
+
+
+/*Works in 3 Easy Steps*/
+.PAT-how-it-works {
+  background-color: white;
+  padding: 60px 20px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+.PAT-how-it-works h3 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #333;
+}
+
+.PAT-steps {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.PAT-step {
+  background-color: #d7dbdd;
+  border: 2px solid #e0e0e0; /* Light colored border */
+  border-radius: 8px;
+  color: black;
+  font-weight: bold;
+  padding: 20px;
+  width: 200px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+/* Diagonal Offset for each block */
+.PAT-step:nth-child(1) {
+  transform: translateY(0) rotate(2deg);
+}
+.PAT-step:nth-child(2) {
+  transform: translateY(-10px) rotate(-2deg);
+}
+.PAT-step:nth-child(3) {
+  transform: translateY(-20px) rotate(2deg);
+}
+
+.PAT-step:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .PAT-how-it-works h3 {
+    font-size: 2.2rem;
+  }
+  .PAT-steps {
+    flex-direction: column;
+    align-items: center;
+  }
+  .PAT-step {
+    width: 80%;
+  }
+}
+
+
+/* ready to upgrade*/
+
+/* Pulse animation keyframes for the button */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.PAT-upgrade-section {
+  background-color: white;
+  padding: 60px 20px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+.PAT-upgrade-section h3 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #333;
+}
+
+.PAT-upgrade-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.PAT-red-flags {
+  color: red; /* Bold red for emphasis */
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Updated CSS for the red flags list */
+.PAT-red-flags-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+
+.PAT-red-flags-list li {
+  font-size: 1rem;
+  color: #333;
+  background:  #d7dbdd;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.PAT-red-flags-list li:hover {
+  background-color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.PAT-fix-it {
+  font-size: 1.2rem;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.PAT-book-button {
+  background-color: #ff4500;
+  color: white;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.125rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: pulse 2s infinite;
+}
+
+.PAT-book-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .PAT-upgrade-section h3 {
+    font-size: 2.2rem;
+  }
+  .PAT-red-flags {
+    font-size: 1.6rem;
+  }
+  .PAT-red-flags-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
   
-  .testing-table th {
-    background-color: #0073e6;
-    color: white;
+  .PAT-book-button {
+    font-size: 1rem;
+    padding: 12px 24px;
   }
-  
-  .faq {
-    background: white;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .faq h4 {
-    color: #0073e6;
-  }
-  
-  .red-flags {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .red-flags li {
-    background: #ffe0e0;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 5px;
-  }
-  
-  .steps {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .steps li {
-    padding: 10px;
-    background: white;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-top: 5px;
-  }
-  
-  .cta-section {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .cta-button {
-    background-color: #d9534f;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .cta-button:hover {
-    background-color: #c9302c;
-  }
-  
+}

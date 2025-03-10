@@ -13,25 +13,27 @@ const PAT = () => {
   return (
     <>
       <Header />
-      <div className="service-container">
-        <h1>PAT Testing</h1>
-        <h2 className="subtitle">
-          Legally Compliant Testing for Appliances & Equipment
-        </h2>
+      <div className="PAT-service-container">
+        <div className="PAT-hero-section">
+          <h1>PAT Testing</h1>
+          <h2 className="PAT-subtitle">
+            Legally Compliant Testing for Appliances & Equipment
+          </h2>
+        </div>
 
-        <section className="section">
+        <section className="PAT-what-we-do">
           <h3>What We Do</h3>
-          <div className="service-details">
-            <div className="service-item">
-              <h4>✅ Visual Inspections:</h4>
+          <div className="PAT-work-scope">
+            <div className="PAT-work-category">
+              <h4>Visual Inspections</h4>
               <ul>
                 <li>Check for damage (cracks, frayed wires, loose plugs).</li>
                 <li>Verify correct fuse ratings and secure cable grips.</li>
               </ul>
             </div>
 
-            <div className="service-item">
-              <h4>✅ Electrical Tests:</h4>
+            <div className="PAT-work-category">
+              <h4>Electrical Tests</h4>
               <ul>
                 <li>
                   <strong>Earth Continuity:</strong> Ensures appliances are
@@ -47,8 +49,8 @@ const PAT = () => {
               </ul>
             </div>
 
-            <div className="service-item">
-              <h4>✅ Labelling & Reporting:</h4>
+            <div className="PAT-work-category">
+              <h4>Labelling & Reporting</h4>
               <ul>
                 <li>Passed appliances receive a dated PAT sticker.</li>
                 <li>Failed items are tagged and quarantined.</li>
@@ -58,92 +60,85 @@ const PAT = () => {
           </div>
         </section>
 
-        <section className="section">
+        <section className="PAT-essential">
           <h3>Why It’s Essential</h3>
-          <h4>Legal Requirements:</h4>
-          <p>
-            PAT testing is mandatory under the{" "}
-            <strong>UK Health and Safety at Work Act (1974)</strong>.
-          </p>
-          <p>
-            Landlords must test all portable appliances in rental properties
-            under the <strong>Electrical Safety Standards (2020)</strong>.
-          </p>
 
-          <h4>Testing Frequency Guide:</h4>
-          <table className="testing-table">
-            <thead>
-              <tr>
-                <th>Environment</th>
-                <th>Testing Interval</th>
-                <th>High-Risk Appliances</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Offices/Shops</td>
-                <td>12–24 months</td>
-                <td>Kettles, heaters, printers</td>
-              </tr>
-              <tr>
-                <td>Construction Sites</td>
-                <td>3–6 months</td>
-                <td>Power tools, extension leads</td>
-              </tr>
-              <tr>
-                <td>Schools/Hospitals</td>
-                <td>6–12 months</td>
-                <td>Medical devices, IT equipment</td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="PAT-legal">
+            <h4>Legal Requirements:</h4>
+            <p>
+              PAT testing is mandatory under the{" "}
+              <strong>UK Health and Safety at Work Act (1974)</strong>.
+            </p>
+            <p>
+              Landlords must test all portable appliances in rental properties
+              under the <strong>Electrical Safety Standards (2020)</strong>.
+            </p>
+          </div>
+
+          <div className="PAT-testing-guide">
+            <h4>Testing Frequency Guide:</h4>
+            <table className="PAT-testing-table">
+              <thead>
+                <tr>
+                  <th>Environment</th>
+                  <th>Testing Interval</th>
+                  <th>High-Risk Appliances</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Offices/Shops</td>
+                  <td>12–24 months</td>
+                  <td>Kettles, heaters, printers</td>
+                </tr>
+                <tr>
+                  <td>Construction Sites</td>
+                  <td>3–6 months</td>
+                  <td>Power tools, extension leads</td>
+                </tr>
+                <tr>
+                  <td>Schools/Hospitals</td>
+                  <td>6–12 months</td>
+                  <td>Medical devices, IT equipment</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
-        <section className="section">
-          <h3>✅ How It Works in 3 Easy Steps:</h3>
-          <ul className="steps">
-            <li>
-              <strong>1. Book Online –</strong> Pick a date (same-day slots
-              available!).
-            </li>
-            <li>
-              <strong>2. We Test & Tag –</strong> Minimal disruption; we’ll work
-              around you.
-            </li>
-            <li>
-              <strong>3. Get Compliant –</strong> Download your certificate
-              instantly.
-            </li>
-          </ul>
+        <section className="PAT-how-it-works">
+          <h3>How It Works in 3 Easy Steps:</h3>
+          <div className="PAT-steps">
+            <div className="PAT-step">
+              <strong>1. Book Online</strong>
+            </div>
+            <div className="PAT-step">
+              <strong>2. We Test & Tag</strong>
+            </div>
+            <div className="PAT-step">
+              <strong>3. Get Compliant</strong>
+            </div>
+          </div>
         </section>
 
-        <section className="section">
-          <h3>🛎 Ready to Upgrade?</h3>
-          <div className="upgrade-section">
-            <h4>🔍 Spot These Red Flags?</h4>
-            <ul>
+        <section className="PAT-upgrade-section">
+          <h3>Ready to Upgrade?</h3>
+          <div className="PAT-upgrade-content">
+            <h4 className="PAT-red-flags">
+              Experiencing these issues? If you see any of the problems below,
+              then book us!
+            </h4>
+            <ul className="PAT-red-flags-list">
               <li>Burning smells from plugs.</li>
               <li>Lights that dim when you turn on appliances.</li>
               <li>Plugs/wires that feel warm.</li>
             </ul>
-
-            <p className="fix-it">
-              👉 <strong>Let’s Fix It Together!</strong>
-            </p>
             <button
-              className="book-button"
+              className="PAT-book-button"
               onClick={() => navigateTo("/contact")}
             >
-              Book Your PAT Testing Today or get Free Quote!
+              Book Now - Secure Your Home Today!
             </button>
-            <br></br>
-
-            <h3>💡 Did You Know?</h3>
-            <p>
-              PAT testing takes less time than a coffee break per appliance. For
-              a small office (20 devices), you’re fully compliant in under 2
-              hours!
-            </p>
           </div>
         </section>
 
