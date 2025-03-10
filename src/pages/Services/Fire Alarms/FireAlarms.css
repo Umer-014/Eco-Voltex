@@ -1,57 +1,300 @@
-.service-container {
-  max-width: 900px;
-  margin: auto;
+/*header section*/
+
+.FireAlarm-header {
+  background-color: #1c7430; /* Dark green background */
+  padding: 40px 20px; /* Add padding for spacing */
+  text-align: center; /* Center-align the text */
+  width: 100%; /* Full width */
+  margin: 0; /* Remove default margin */
+  box-sizing: border-box; /* Include padding in width calculation */
+  height: 50vh; /* Set height to 50% of the viewport height */
+  display: flex;
+  flex-direction: column; /* Stack h1 and h2 vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  color: white; /* Default text color for the section */
+  position: relative; /* For any absolute-positioned child elements */
+}
+
+.FireAlarm-header h1 {
+  font-size: 3rem; /* Large font size for h1 */
+  margin-bottom: 10px; /* Space between h1 and h2 */
+  font-weight: bold; /* Make the heading bold */
+  opacity: 0; /* Start with invisible text */
+  animation: fadeIn 2s ease-in-out forwards; /* Apply fade-in animation */
+  animation-delay: 0.5s; /* Delay the animation by 0.5s */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Start with 0 opacity */
+  }
+  to {
+    opacity: 1; /* End with full opacity */
+  }
+}
+
+.FireAlarm-header h2 {
+  font-size: 1.5rem; /* Smaller font size for h2 */
+  margin: 0; /* Remove default margin */
+  font-weight: normal; /* Normal weight for subtitle */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .FireAlarm-header h1 {
+    font-size: 1.5rem;
+  }
+  .FireAlarm-header h2 {
+    font-size: 1.2rem;
+  }
+}
+
+/*reality and promise section*/
+
+.FireAlarm-intro {
+  padding: 40px 20px;
+  background-color: #fff;
+}
+
+.FireAlarm-intro-cards {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.FireAlarm-intro-card {
+  background-color:  #d7dbdd;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
   padding: 20px;
-  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 45%; /* Adjust width as needed */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+/* Initial Diagonal Offset */
+.FireAlarm-intro-card:nth-child(1) {
+  transform: translateY(0) rotate(2deg);
+}
+.FireAlarm-intro-card:nth-child(2) {
+  transform: translateY(-10px) rotate(-2deg);
+}
+
+/* Hover Effect: Straighten the card */
+.FireAlarm-intro-card:hover {
+  transform: translateY(0) rotate(0deg);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.FireAlarm-intro-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
   color: #333;
 }
 
-.service-header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.service-header h1 {
-  color: #d9534f;
-}
-
-.service-header h2 {
-  font-size: 20px;
+.FireAlarm-intro-card ul {
+  list-style: disc;
+  margin-left: 20px;
   color: #555;
 }
 
-.steps .step {
-  margin-bottom: 20px;
-  padding: 15px;
-  background: #f8f9fa;
-  border-left: 5px solid #d9534f;
-}
-
-.faqs {
-  margin-top: 30px;
-}
-
-.faq {
-  padding: 10px;
-  background: #f1f1f1;
+.FireAlarm-intro-card li {
   margin-bottom: 10px;
-  border-radius: 5px;
+  font-size: 1.1rem;
 }
 
-.cta {
+/* Responsive: On smaller screens, stack the cards vertically */
+@media (max-width: 768px) {
+  .FireAlarm-intro-cards {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .FireAlarm-intro-card {
+    width: 100%;
+  }
+}
+
+
+/*for the steps sections*/
+
+.FireAlarm-steps {
+  padding: 40px 20px;
+  background-color: #d7dbdd; /* Container background set to #d7dbdd */
+}
+
+.FireAlarm-steps h2 {
   text-align: center;
-  margin-top: 30px;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #333;
 }
 
-.cta-button {
-  background: #d9534f;
+.FireAlarm-step-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns per row */
+  gap: 20px;
+}
+
+.FireAlarm-step {
+  background-color: #fff; /* Each card now has white background */
+  color: #000; /* Text in the boxes is black */
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.FireAlarm-step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.FireAlarm-step h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  font-weight: bold; /* Heading is bold */
+  color: #000; /* Heading text is black */
+}
+
+.FireAlarm-step ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.FireAlarm-step li {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  color: #000;
+}
+
+/* For nested lists, adjust margin and style */
+.FireAlarm-step ul ul {
+  margin-left: 20px;
+  list-style-type: circle;
+}
+
+/* Ensure two columns remain even on small screens */
+@media (max-width: 768px) {
+  .FireAlarm-step-cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/*section of what we needed to take*/
+/* Combined Section Container */
+.FireAlarm-booking-cta {
+  padding: 40px 20px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Changed from flex-start to center */
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Booking Info Styles */
+.FireAlarm-booking-info {
+  flex: 1;
+  min-width: 300px;
+  color: #333;
+}
+
+.FireAlarm-booking-info h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.FireAlarm-booking-info p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.FireAlarm-booking-info ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.FireAlarm-booking-info h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #333;
+}
+
+.FireAlarm-booking-info li {
+  margin-bottom: 10px;
+}
+
+/* Call to Action Styles */
+.FireAlarm-cta {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.FireAlarm-cta h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.FireAlarm-cta p {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Button Styles (Using provided code) */
+.FireAlarm-cta-button {
+  background-color: #ff4500;
   color: white;
-  padding: 12px 20px;
-  font-size: 16px;
+  padding: 16px 32px;
   border: none;
+  border-radius: 6px;
+  font-size: 1.125rem;
   cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: pulse 2s infinite;
 }
 
-.cta-button:hover {
-  background: #c9302c;
+.FireAlarm-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Pulse Animation Keyframes */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .FireAlarm-booking-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+  .FireAlarm-booking-info,
+  .FireAlarm-cta {
+    width: 100%;
+    text-align: center;
+  }
 }
