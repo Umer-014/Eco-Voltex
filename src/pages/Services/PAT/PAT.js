@@ -152,36 +152,40 @@ const PAT = () => {
           <h3>What We Do</h3>
           <div className="PAT-work-scope">
             <div className="PAT-work-category">
-              <h4>Visual Inspections</h4>
+              <h4>Comprehensive Visual Inspection
+              </h4>
               <ul>
-                <li>Check for damage (cracks, frayed wires, loose plugs).</li>
-                <li>Verify correct fuse ratings and secure cable grips.</li>
+                <li>Cracked or damaged casings</li>
+                <li>Frayed or exposed wiring</li>
+                <li>Loose or worn plugs and sockets</li>
+                <li>Inadequate cable grips and strain relief</li>
               </ul>
             </div>
 
             <div className="PAT-work-category">
-              <h4>Electrical Tests</h4>
+              <h4>Advanced Electrical Testing</h4>
               <ul>
                 <li>
-                  <strong>Earth Continuity:</strong> Ensures appliances are
+                  <strong>Earth Continuity Test</strong>
                   grounded.
                 </li>
                 <li>
-                  <strong>Insulation Resistance:</strong> Detects current leaks.
+                  <strong>Insulation Resistance Test</strong>
                 </li>
                 <li>
-                  <strong>Lead Polarity:</strong> Confirms live/neutral wires
-                  are correctly connected.
+                  <strong>Polarity Check</strong>
                 </li>
               </ul>
             </div>
 
             <div className="PAT-work-category">
-              <h4>Labelling & Reporting</h4>
+              <h4>Labelling, Reporting & Certification
+              </h4>
               <ul>
-                <li>Passed appliances receive a dated PAT sticker.</li>
-                <li>Failed items are tagged and quarantined.</li>
-                <li>Digital certificate for audits (stored for 5+ years).</li>
+                <li>Pass/Fail Labelling</li>
+                <li>Digital Compliance Certificate</li>
+                <li>Action Plan for Failed Items</li>
+                <li>Record Keeping</li>
               </ul>
             </div>
           </div>
