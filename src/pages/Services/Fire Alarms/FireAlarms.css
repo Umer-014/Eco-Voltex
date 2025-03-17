@@ -303,3 +303,207 @@
     margin-left: 20px; /* Or adjust as needed */
   }
 }
+
+
+/*FAQ Section*/
+
+
+/* FAQ Section Container */
+.Fire-faq-section {
+  background-color: #A0A0A0;
+  padding: 40px 20px;
+  width: 100%;
+  margin: 40px 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* FAQ Heading */
+.Fire-faq-section h3 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #333;
+  font-weight: 700;
+}
+
+/* Category Buttons */
+.faq-categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.faq-category-button {
+  background: #1c7430;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.faq-category-button:hover {
+  background-color: #155724;
+}
+
+/* FAQ Container */
+.Fire-faq {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* FAQ Item */
+
+/* FAQ Category Container */
+.faq-category {
+  margin-bottom: 2rem;
+}
+
+/* FAQ Category Heading */
+.faq-category h4 {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.Fire-faq-item {
+  background: #fff;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
+  margin-bottom: 1rem; /* Adds spacing between FAQ items */
+}
+
+.Fire-faq-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* FAQ Question Button */
+.Fire-faq-question {
+  width: 100%;
+  background: #f8f8f8;
+  border: none;
+  text-align: left;
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #1c7430;
+  cursor: pointer;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.Fire-faq-question:hover {
+  background-color: #eef9ee;
+  color: #155724;
+}
+
+/* FAQ Icon */
+.Fire-faq-icon {
+  font-size: 1.5rem;
+  margin-left: 10px;
+  color: #1c7430;
+}
+
+/* FAQ Answer (hidden by default) */
+.Fire-faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  background: #fff;
+}
+
+/* FAQ Answer (visible when open) */
+.Fire-faq-answer.open {
+  max-height: 500px;
+  padding: 15px;
+}
+
+/* FAQ Answer Paragraph */
+.Fire-faq-answer p {
+  margin: 0;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Read More Button */
+.read-more-button {
+  background: #1c7430;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  align-self: center;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.read-more-button:hover {
+  background-color: #155724;
+}
+
+/*why us*/
+/* Main container styling */
+.fire-section-why-us {
+  background-color: #1c7430; /* Div background color */
+  padding: 20px;
+  color: white; /* Default text color for content */
+  font-family: Arial, sans-serif;
+}
+
+/* Headings styling */
+.fire-section-why-us h2 {
+  font-weight: bold;
+  color: white;
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* List container styling - display list items in a single row */
+.fire-section-why-us ul {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+}
+
+/* List items styling with hover effect */
+.fire-section-why-us li {
+  color: white;
+  margin-bottom: 10px;
+  transition: font-size 0.3s ease;
+  cursor: pointer;
+}
+
+
+/* Responsive styling for mobile view */
+@media (max-width: 600px) {
+  .fire-section-why-us {
+    padding: 15px;
+  }
+  .fire-section-why-us h2 {
+    font-size: 1.5rem;
+  }
+  /* On small screens, wrap list items into two rows */
+  .fire-section-why-us ul {
+    flex-wrap: wrap;
+  }
+  .fire-section-why-us li {
+    flex: 0 0 50%;  /* Each list item takes 50% of the width */
+    font-size: 1rem; /* Base font size on mobile; hover will increase it */
+    text-align: center;
+  }
+}
