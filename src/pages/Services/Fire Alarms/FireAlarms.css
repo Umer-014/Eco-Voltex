@@ -54,7 +54,15 @@
 
 .FireAlarm-intro {
   padding: 40px 20px;
-  background-color: #fff;
+  background-color: #1c7430;
+}
+
+.FireAlarm-intro h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: white;
+  font-weight: bold;
 }
 
 .FireAlarm-intro-cards {
@@ -76,19 +84,7 @@
   position: relative;
 }
 
-/* Initial Diagonal Offset */
-.FireAlarm-intro-card:nth-child(1) {
-  transform: translateY(0) rotate(2deg);
-}
-.FireAlarm-intro-card:nth-child(2) {
-  transform: translateY(-10px) rotate(-2deg);
-}
 
-/* Hover Effect: Straighten the card */
-.FireAlarm-intro-card:hover {
-  transform: translateY(0) rotate(0deg);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
 
 .FireAlarm-intro-card h3 {
   font-size: 1.8rem;
@@ -119,11 +115,12 @@
 }
 
 
+
 /*for the steps sections*/
 
 .FireAlarm-steps {
   padding: 40px 20px;
-  background-color: #d7dbdd; /* Container background set to #d7dbdd */
+  background-color: white; /* Container background set to #d7dbdd */
 }
 
 .FireAlarm-steps h2 {
@@ -140,7 +137,7 @@
 }
 
 .FireAlarm-step {
-  background-color: #fff; /* Each card now has white background */
+  background-color: #d7dbdd; /* Each card now has white background */
   color: #000; /* Text in the boxes is black */
   padding: 20px;
   border: 2px solid #ccc;
@@ -191,7 +188,7 @@
 /* Combined Section Container */
 .FireAlarm-booking-cta {
   padding: 40px 20px;
-  background-color: #fff;
+  background-color: #1c7430;
   display: flex;
   flex-direction: column;
   align-items: center; /* Changed from flex-start to center */
@@ -201,9 +198,10 @@
 
 /* Booking Info Styles */
 .FireAlarm-booking-info {
+  
   flex: 1;
   min-width: 300px;
-  color: #333;
+  color: white;
 }
 
 .FireAlarm-booking-info h2 {
@@ -221,7 +219,7 @@
   margin-left: 20px;
   margin-bottom: 20px;
   font-size: 1.1rem;
-  color: #333;
+  color: white;
 }
 
 .FireAlarm-booking-info h3 {
@@ -454,18 +452,19 @@
 }
 
 /*why us*/
+
 /* Main container styling */
 .fire-section-why-us {
-  background-color: #1c7430; /* Div background color */
+  background-color: white; /* Div background color */
   padding: 20px;
-  color: white; /* Default text color for content */
+  color: Black; /* Default text color for content */
   font-family: Arial, sans-serif;
 }
 
 /* Headings styling */
 .fire-section-why-us h2 {
   font-weight: bold;
-  color: white;
+  color: black;
   margin-top: 0;
   margin-bottom: 20px;
   text-align: center;
@@ -482,10 +481,12 @@
 
 /* List items styling with hover effect */
 .fire-section-why-us li {
-  color: white;
+  color: black;
+  font-size: medium;
   margin-bottom: 10px;
   transition: font-size 0.3s ease;
   cursor: pointer;
+  font-weight: bold;
 }
 
 

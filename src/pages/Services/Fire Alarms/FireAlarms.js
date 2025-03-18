@@ -238,10 +238,98 @@ const FireAlarms = () => {
           <h2>Your First Line of Defense Against Fire Hazards</h2>
         </header>
 
+        <section className="FireAlarm-steps">
+          <h2>Revolutionizing Fire Safety in 4 Steps</h2>
+          <div className="FireAlarm-step-cards">
+            <div className="FireAlarm-step">
+              <h3>Step 1: Risk Assessment</h3>
+              <ul>
+                <li>
+                  <strong>Identify Areas:</strong> Kitchens, electrical rooms,
+                  and storage areas.
+                </li>
+                <li>
+                  <strong>Assess Layout:</strong> Determine system type based on
+                  building size.
+                </li>
+                <li>
+                  <strong>Detector Choice:</strong> Use smoke, heat, or CO
+                  detectors as needed.
+                </li>
+              </ul>
+            </div>
+
+            <div className="FireAlarm-step">
+              <h3>Step 2: System Design</h3>
+              <ul>
+                <li>
+                  <strong>Conventional:</strong> For small spaces like cafés or
+                  apartments.
+                </li>
+                <li>
+                  <strong>Addressable:</strong> For large buildings needing
+                  pinpoint detection.
+                </li>
+                <li>
+                  <strong>Wireless:</strong> Ideal for historic or rented
+                  properties.
+                </li>
+                <li>
+                  <strong>Upgrades:</strong> Modernize outdated systems.
+                </li>
+              </ul>
+            </div>
+
+            <div className="FireAlarm-step">
+              <h3>Step 3: Installation & Testing</h3>
+              <ul>
+                <li>
+                  <strong>Expert Setup:</strong> Installed per BS 5839
+                  standards.
+                </li>
+                <li>
+                  <strong>Thorough Testing:</strong> Ensure detectors and alarms
+                  perform reliably.
+                </li>
+                <li>
+                  <strong>Emergency Lighting:</strong> Optional, for enhanced
+                  safety.
+                </li>
+                <li>
+                  <strong>Certification:</strong> Official compliance document
+                  provided.
+                </li>
+              </ul>
+            </div>
+
+            <div className="FireAlarm-step">
+              <h3>Step 4: 24/7 Monitoring & Maintenance</h3>
+              <ul>
+                <li>
+                  <strong>Regular Maintenance:</strong> Annual checks, cleaning,
+                  and updates.
+                </li>
+                <li>
+                  <strong>Quick Repairs:</strong> Faulty detectors replaced
+                  within 4 hours.
+                </li>
+                <li>
+                  <strong>Compliance Support:</strong> Meets BS 5839 standards
+                  and insurance requirements.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+
         <section className="FireAlarm-intro">
+          <h2>
+          Our Lifesaving Mission Born from Harsh Reality
+          </h2>
           <div className="FireAlarm-intro-cards">
             <div className="FireAlarm-intro-card">
-              <h3>The Reality:</h3>
+              <h3>The Burning Truth</h3>
               <ul>
                 <li>
                   UK fires cause <strong>£1.3 billion</strong> in damages
@@ -258,133 +346,19 @@ const FireAlarms = () => {
               </ul>
             </div>
             <div className="FireAlarm-intro-card">
-              <h3>Our Mission:</h3>
+              <h3>Our Lifesaving Mission</h3>
               <ul>
                 <li>
-                  To provide tailored, legally compliant, and reliable fire
-                  alarm systems that keep your family, tenants, employees, and
-                  property safe.
-                </li>
-                <li>Designed for your property’s unique risks.</li>
-                <li>Meets UK fire safety laws &amp; insurance requirements.</li>
-                <li>
-                  Installed &amp; maintained by certified fire safety engineers.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section className="FireAlarm-steps">
-          <h2>How Our Fire Alarm Systems Work</h2>
-          <div className="FireAlarm-step-cards">
-            <div className="FireAlarm-step">
-              <h3>Step 1: Risk Assessment</h3>
-              <ul>
-                <li>
-                  <strong>Identify High-Risk Areas:</strong> Kitchens (prone to
-                  cooking fires and overheating appliances), Electrical Rooms
-                  (risk of circuit overloads and faulty wiring), and Storage
-                  Areas (flammable materials, paper, and chemicals).
+                  Every second counts – our fire alarms provide crucial early
+                  warnings.
                 </li>
                 <li>
-                  <strong>Assess Building Size & Layout:</strong> Large
-                  buildings may require networked or addressable systems, while
-                  smaller properties might use conventional or wireless
-                  solutions.
+                  We deliver tailored, compliant systems designed to protect
+                  your property’s unique risks.
                 </li>
                 <li>
-                  <strong>Recommend Detector Types:</strong>
-                  <ul>
-                    <li>
-                      <strong>Smoke Detectors:</strong> Provide early warnings,
-                      ideal for offices, living spaces, and corridors.
-                    </li>
-                    <li>
-                      <strong>Heat Detectors:</strong> Prevent false alarms in
-                      kitchens and garages by ignoring cooking fumes.
-                    </li>
-                    <li>
-                      <strong>CO Detectors:</strong> Essential for boiler rooms,
-                      gas appliances, and enclosed areas to reduce CO poisoning
-                      risks.
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-
-            <div className="FireAlarm-step">
-              <h3>Step 2: System Design</h3>
-              <ul>
-                <li>
-                  <strong>Conventional Systems:</strong> Ideal for small
-                  businesses, cafés, and apartments; these systems divide
-                  buildings into zones (e.g., kitchen, hallway, storeroom) and
-                  are cost-effective.
-                </li>
-                <li>
-                  <strong>Addressable Systems:</strong> Perfect for large
-                  commercial buildings, hotels, and offices; each detector has a
-                  unique address, enabling pinpoint location identification and
-                  faster response times.
-                </li>
-                <li>
-                  <strong>Wireless Systems:</strong> Suitable for historical
-                  buildings, rented properties, and quick installations; they
-                  offer encrypted wireless signals without the hassle of cables.
-                </li>
-                <li>
-                  <strong>System Upgrades:</strong> We upgrade outdated fire
-                  alarms to modern, compliant, high-sensitivity systems.
-                </li>
-              </ul>
-            </div>
-
-            <div className="FireAlarm-step">
-              <h3>Step 3: Installation & Testing</h3>
-              <ul>
-                <li>
-                  <strong>Expert Installation:</strong> Certified fire safety
-                  engineers install the system in accordance with BS 5839
-                  standards, ensuring strategic placement for complete coverage
-                  and minimal false alarms.
-                </li>
-                <li>
-                  <strong>Comprehensive Testing:</strong> Sound checks confirm
-                  alarms reach 65dB (75dB in sleeping areas) and all detectors
-                  (smoke, heat, and CO) are accurately tested.
-                </li>
-                <li>
-                  <strong>Emergency Lighting (Optional):</strong> Integrated to
-                  illuminate escape routes during power failures, essential for
-                  commercial and rental properties.
-                </li>
-                <li>
-                  <strong>Certification:</strong> Receive an official Fire Alarm
-                  Installation Certificate confirming compliance with UK
-                  regulations and insurance requirements.
-                </li>
-              </ul>
-            </div>
-
-            <div className="FireAlarm-step">
-              <h3>Step 4: 24/7 Monitoring & Maintenance</h3>
-              <ul>
-                <li>
-                  <strong>Annual Maintenance & Inspections:</strong> Routine
-                  battery replacements, sensor cleaning, software updates, and
-                  full system tests ensure continuous compliance.
-                </li>
-                <li>
-                  <strong>Emergency Repairs:</strong> Faulty or damaged
-                  detectors are replaced within 4 hours, with immediate
-                  diagnostics and troubleshooting.
-                </li>
-                <li>
-                  <strong>Compliance Support:</strong> We ensure your fire alarm
-                  system meets BS 5839-1 and BS 5839-6 standards, aligning with
-                  UK safety laws and insurance policies.
+                  Our certified engineers ensure expert installation and
+                  continuous maintenance for total safety.
                 </li>
               </ul>
             </div>
@@ -399,13 +373,6 @@ const FireAlarms = () => {
               <li>Fully Compliant Systems</li>
               <li>Hassle-Free Installation</li>
               <li>Tailored for Your Property</li>
-            </ul>
-            <h2>Signs You Need a Fire Alarm Upgrade</h2>
-            <ul>
-              <li>Frequent False Alarms</li>
-              <li>Delayed Response</li>
-              <li>Battery Warnings</li>
-              <li>Outdated System</li>
             </ul>
           </div>
         </section>
@@ -425,8 +392,9 @@ const FireAlarms = () => {
               <li>Power outlets are accessible for control panels.</li>
             </ul>
           </div>
+        </section>
 
-          <div className="FireAlarm-cta">
+        <div className="FireAlarm-cta">
             <h2>Don’t Risk Fines or Fires!</h2>
             <button
               className="FireAlarm-cta-button"
@@ -435,7 +403,6 @@ const FireAlarms = () => {
               Book Now - Secure Your Home Today!
             </button>
           </div>
-        </section>
 
         <section className="Fire-faq-section">
           <h3>FAQs</h3>
