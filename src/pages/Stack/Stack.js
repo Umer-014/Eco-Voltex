@@ -4,9 +4,6 @@ import HomePage from "../Home Page/HomePage";
 import AboutUsPage from "../About/AboutUsPage";
 import InstallationMaintenance from "../Services/Electrical Installation & Maintenance/InstallationMaintenance";
 import PAT from "../Services/PAT/PAT";
-import Residential from "../Services/Residential/Residential";
-import Commercial from "../Services/Commercial/Commercial";
-import Industrial from "../Services/Industrial/Industrial";
 import FireAlarms from "../Services/Fire Alarms/FireAlarms";
 import CCTV from "../Services/CCTV/CCTV";
 import ContactUsPage from "../Contact Us/ContactUsPage";
@@ -26,9 +23,6 @@ const Stack = () => {
         <Route path="/about" element={<AboutUsPage />} />
         <Route path="/services/Installation-Maintenance" element={<InstallationMaintenance />} />
         <Route path="/services/PAT-testing" element={<PAT />} />
-        <Route path="/services/Residential" element={<Residential />} />
-        <Route path="/services/Commercial" element={<Commercial />} />
-        <Route path="/services/Industrial" element={<Industrial />} />
         <Route path="/services/Fire-alarms" element={<FireAlarms />} />
         <Route path="/services/CCTV" element={<CCTV />} />
         <Route path="/contact" element={<ContactUsPage />} />
