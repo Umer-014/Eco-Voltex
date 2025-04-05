@@ -71,3 +71,147 @@
 
 /*why choose us*/
 
+.cctv-why-choose {
+  background-color: #1c7430;
+  padding: 20px;
+  text-align: center;
+}
+
+.cctv-why-choose h2 {
+  color: white;
+  font-size: 30px; /* You can adjust the size as needed */
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.cctv-why-choose ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 100px; /* Increased gap between points for more spacing */
+}
+
+.cctv-why-choose li {
+  margin: 0;
+}
+
+.cctv-why-choose strong {
+  color: white;
+  font-weight: bold;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  .cctv-why-choose ul {
+    flex-wrap: wrap;
+    justify-content: space-around; /* Adjust the items to fit smaller screens */
+    gap: 20px; /* Decrease the gap on smaller screens */
+  }
+
+  .cctv-why-choose li {
+    width: 45%; /* Each item will take up 45% of the row, making it 2 per row */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+  }
+}
+
+
+/*what ew do*/
+
+.cctv-what-we-do {
+  background-color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* Title Styling */
+.cctv-what-we-do h2 {
+  color: #333;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* Card Block Layout */
+.cctv-what-we-do .cctv-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+/* Individual Card Styling */
+.cctv-what-we-do .cctv-card {
+  background-color: #C0C0C0;  /* Card background color */
+  padding: 20px;
+  border-radius: 8px;
+  width: 48%;  /* Two blocks per row */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: white; /* Text color in cards */
+  text-align: left; /* Align the points to the left */
+}
+
+/* Card Heading Styling */
+.cctv-what-we-do .cctv-card h3 {
+  color: black;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center; /* Center the heading */
+}
+
+/* List Items Inside the Card */
+.cctv-what-we-do .cctv-card ul {
+  padding: 0;
+  list-style: none;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Centering Text in the Card */
+.cctv-what-we-do .cctv-card strong {
+  display: block;
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  /* On smaller screens, make the cards take full width */
+  .cctv-what-we-do .cctv-card {
+    width: 100%;
+  }
+
+  .cctv-what-we-do h3 {
+    font-size: 24px;
+  }
+
+  .cctv-what-we-do .cctv-card h3 {
+    font-size: 20px;
+  }
+
+  .cctv-what-we-do .cctv-card ul {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cctv-what-we-do h2 {
+    font-size: 28px;
+  }
+
+  .cctv-what-we-do h3 {
+    font-size: 20px;
+  }
+
+  .cctv-what-we-do .cctv-card h3 {
+    font-size: 18px;
+  }
+
+  .cctv-what-we-do .cctv-card ul {
+    font-size: 14px;
+  }
+}

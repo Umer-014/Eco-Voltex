@@ -24,91 +24,86 @@ const CCTV = () => {
           </p>
         </div>
 
+        
+
+        {/* What We Do Section */}
+        <section className="cctv-what-we-do">
+          <h2>What We Do</h2>
+
+          <div className="cctv-card-container">
+            <div className="cctv-card">
+              <h3> Camera Installation & Setup</h3>
+              <ul>
+                <li>
+                  <strong>Seamless Camera Installation</strong>
+                </li>
+                <li>
+                  <strong>Professional Wiring & Configuration</strong>
+                </li>
+                <li>
+                  <strong>Power Over Ethernet (PoE) Integration</strong>
+                </li>
+              </ul>
+            </div>
+
+            <div className="cctv-card">
+              <h3> NVR/DVR Setup & Integration</h3>
+              <ul>
+                <li>
+                  <strong>Advanced NVR Systems</strong>
+                </li>
+                <li>
+                  <strong>Reliable DVR Solutions</strong>
+                </li>
+                <li>
+                  <strong>Comprehensive System Integration</strong>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="cctv-card-container">
+            <div className="cctv-card">
+              <h3> Maintenance & Support</h3>
+              <ul>
+                <li>
+                  <strong>Continuous Maintenance</strong>
+                </li>
+                <li>
+                  <strong>Instant Technical Support</strong>
+                </li>
+              </ul>
+            </div>
+
+            <div className="cctv-card">
+              <h3> Security Solutions</h3>
+              <ul>
+                <li>
+                  <strong>Personalized Security Design</strong>
+                </li>
+                <li>
+                  <strong>Remote Monitoring</strong>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         {/* Why Choose Us Section */}
-        <section className="why-choose">
+        <section className="cctv-why-choose">
           <h2>Why Choose Our CCTV Systems?</h2>
           <ul>
             <li>
-              ✅ <strong>Crime Deterrence:</strong> Visible cameras reduce
-              burglary risk by 50% (UK Crime Statistics).
+              <strong>Crime Deterrence</strong>
             </li>
             <li>
-              ✅ <strong>Remote Monitoring:</strong> Watch live footage on your
-              phone, tablet, or PC—anytime, anywhere.
+              <strong>Remote Monitoring</strong>
             </li>
             <li>
-              ✅ <strong>Legal Compliance:</strong> GDPR-compliant systems with
-              signage, encryption, and data protection.
+              <strong>Legal Compliance</strong>
             </li>
             <li>
-              ✅ <strong>Future-Proof Tech:</strong> Upgrade with AI analytics,
-              facial recognition, or thermal imaging.
-            </li>
-          </ul>
-        </section>
-
-        {/* How It Works Section */}
-        <section className="how-it-works">
-          <h2>How It Works: Your Custom Security Ecosystem</h2>
-
-          <h3>1. Camera Types for Every Need</h3>
-          <ul>
-            <li>
-              <strong>Dome Cameras:</strong> Discreet, vandal-proof design.
-              Ideal for shops, reception areas, offices.
-            </li>
-            <li>
-              <strong>Bullet Cameras:</strong> Long-range, weatherproof
-              (IP67-rated). Ideal for car parks, warehouses.
-            </li>
-            <li>
-              <strong>PTZ Cameras:</strong> Remote-controlled to track movement.
-              Best for large sites, construction yards.
-            </li>
-            <li>
-              <strong>Covert Cameras:</strong> Hidden in clocks, smoke
-              detectors, signage. Great for high-risk zones.
-            </li>
-          </ul>
-
-          <h3>2. Advanced Features</h3>
-          <ul>
-            <li>
-              🎥 <strong>4K Ultra-HD Resolution:</strong> Capture license plates
-              or faces up to 25 meters away.
-            </li>
-            <li>
-              🌙 <strong>Night Vision:</strong> Infrared LEDs for clear footage
-              in total darkness (up to 30m range).
-            </li>
-            <li>
-              🤖 <strong>AI-Powered Analytics:</strong> Detect loitering,
-              abandoned objects, unauthorized access. Ignores false alarms from
-              animals or moving trees.
-            </li>
-          </ul>
-
-          <h3>3. Storage & Access</h3>
-          <ul>
-            <li>
-              <strong>On-Site Storage:</strong> NVR/DVR systems with 1TB–8TB
-              storage (30–90 days of footage).
-            </li>
-            <li>
-              <strong>Cloud Storage:</strong> GDPR-compliant, encrypted backups.
-              Instant playback via smartphone app.
-            </li>
-          </ul>
-
-          <h3>4. Access Control Integration</h3>
-          <ul>
-            <li>
-              🔒 <strong>Smart Locks:</strong> Keyless entry via fingerprint,
-              PIN, or smartphone.
-            </li>
-            <li>
-              ⏳ <strong>Time-Based Access:</strong> Restrict entry hours for
-              cleaners, contractors, or staff.
+              <strong>Future-Proof Tech</strong>
             </li>
           </ul>
         </section>
