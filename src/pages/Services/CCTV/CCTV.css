@@ -1,142 +1,73 @@
-/* General Page Layout */
-.cc-services-page {
-  background-color: #f5f5f5;
-  padding: 50px 20px;
-  font-family: 'Open Sans', sans-serif;
-  min-height: 100vh;
-}
-
-/* Heading Styles */
-.cc-services-heading {
-  font-size: 3rem;
+.CCTV-service-container {
+  font-family: Arial, sans-serif;
   color: #333;
-  font-family: 'Poppins', sans-serif;
-  text-align: center;
-  margin-bottom: 50px;
-  letter-spacing: 1px;
-  font-weight: bold;
+  background: var(--background-light);
 }
 
-/* Service Categories */
-.cc-service-categories {
-  font-size: 3em;
-  align-items: center;
+.CCTV-hero-section {
+  background-color: #1c7430; /* Dark green background */
+  padding: 40px 20px; /* Add padding for spacing */
+  text-align: center; /* Center-align the text */
+  width: 100%; /* Full width */
+  margin: 0; /* Remove default margin */
+  box-sizing: border-box; /* Include padding in width calculation */
+  height: 50vh; /* Set height to 50% of the viewport height */
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap; /* Make categories wrap on smaller screens */
+  flex-direction: column; /* Stack h1 and h2 vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  color: white; /* Default text color for the section */
+  position: relative; /* For any absolute-positioned child elements */
 }
 
-.cc-services-description {
-  font-size: 1.3rem;
-  color: #333;
-  text-align: center;
-  margin-bottom: 20px;
-  font-weight: 300;
-  line-height: 1.6;
+.CCTV-hero-section h1 {
+  font-size: 3rem; /* Large font size for h1 */
+  margin-bottom: 10px; /* Space between h1 and h2 */
+  font-weight: bold; /* Make the heading bold */
+  opacity: 0; /* Start with invisible text */
+  animation: fadeIn 2s ease-in-out forwards; /* Apply fade-in animation */
+  animation-delay: 0.5s; /* Delay the animation by 1 second */
 }
 
-/* Service List Styles */
-.cc-services-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Start with 0 opacity */
+  }
+  to {
+    opacity: 1; /* End with full opacity */
+  }
 }
 
-/* Service Item Styles (List Items) */
-.cc-service-category {
-  margin-bottom: 30px;
-}
-
-/* Service Item Styles */
-.cc-service-item {
-  background-color: #E5E4E2;
-  padding: 20px;
-  border-radius: 30px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cc-service-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-/* Service Details */
-.cc-service-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.cc-service-details h3 {
-  font-size: 1.6rem;
-  color: #333;
-  font-family: 'Montserrat', sans-serif;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
-
-.cc-service-details .c-price {
-  font-size: 1.3rem;
-  color: #f39c12;
-  font-weight: bold;
+.CCTV-hero-section .CCTV-subtitle {
+  font-size: 1.5rem; /* Smaller font size for h2 */
+  margin: 0; /* Remove default margin */
+  font-weight: normal; /* Normal weight for subtitle */
 }
 
 /* Responsive Design */
-@media screen and (max-width: 768px) {
-  .cc-services-heading {
-    font-size: 2.3rem;
-    margin-bottom: 30px; /* Adjust spacing for smaller screens */
-  }
-
-  .cc-services-description {
-    font-size: 1.1rem; /* Smaller description text */
-    margin-bottom: 15px;
-    text-align: justify;
-  }
-
-  .cc-service-categories {
-    font-size: 2em; /* Adjust font size for smaller screens */
-    flex-direction: column; /* Stack service categories */
-    justify-content: flex-start;
-  }
-
-  .cc-service-item {
+@media (max-width: 768px) {
+  .work-scope {
     flex-direction: column;
-    align-items: flex-start;
-    padding: 15px; /* Reduce padding for mobile */
   }
 
-  .cc-service-details h3 {
-    font-size: 1.4rem; /* Adjust font size */
+  .work-category {
+    flex: 1 1 100%;
   }
 
-  .cc-service-item {
-    margin-bottom: 15px; /* Reduce margin for mobile */
+  .CCTV-service-container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2.subtitle {
+    font-size: 1.2rem;
   }
 }
 
-@media screen and (max-width: 480px) {
-  /* Adjust for smaller mobile screens */
-  .cc-services-heading {
-    font-size: 1.8rem; /* Further reduce heading size */
-    margin-bottom: 20px;
-  }
 
-  .cc-services-description {
-    font-size: 1.1rem; /* Smaller description text */
-    margin-bottom: 15px;
-    text-align: justify;
-  }
 
-  .cc-service-item {
-    padding: 10px; /* Further reduce padding */
-  }
+/*why choose us*/
 
-  .cc-service-details h3 {
-    font-size: 1.2rem; /* Adjust font size */
-  }
-}
