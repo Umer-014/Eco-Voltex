@@ -63,6 +63,22 @@ const Footer = () => {
               </li>
               <li>
                 <Link
+                  to="/services/Installation-Maintenance"
+                  className="text-light text-decoration-none"
+                >
+                  Electrical Installation & Maintenance
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/services/PAT-testing"
+                  className="text-light text-decoration-none"
+                >
+                  PAT Testing Services
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/services/Fire-alarms"
                   className="text-light text-decoration-none"
                 >
