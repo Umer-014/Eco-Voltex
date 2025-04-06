@@ -75,6 +75,7 @@ const Footer = () => {
                   className="text-light text-decoration-none"
                 >
                   PAT Testing Services
+                  
                 </Link>
               </li>
               <li>
