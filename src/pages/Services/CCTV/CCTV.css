@@ -418,15 +418,3 @@
     padding: 12px 24px;
   }
 }
-@media (max-width: 480px) {
-  .cctv-upgrade-section h3 {
-    font-size: 1.8rem;
-  }
-  .cctv-red-flags {
-    font-size: 1.4rem;
-  }
-  .cctv-book-button {
-    font-size: 0.9rem;
-    padding: 10px 20px;
-  }
-}
