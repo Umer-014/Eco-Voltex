@@ -24,8 +24,6 @@ const CCTV = () => {
           </p>
         </div>
 
-        
-
         {/* What We Do Section */}
         <section className="cctv-what-we-do">
           <h2>What We Do</h2>
@@ -109,66 +107,83 @@ const CCTV = () => {
         </section>
 
         {/* What Action to Take */}
-        <section className="action-steps">
-          <h2>What Action Do You Need to Take?</h2>
+        <section className="cctv-action-steps">
+          <h2>What You Get With Us</h2>
 
-          <h3>Before Installation:</h3>
-          <ul>
-            <li>
-              📍 <strong>Site Survey:</strong> Walk your property to identify
-              blind spots.
-            </li>
-            <li>
-              📶 <strong>Internet Setup:</strong> Ensure stable Wi-Fi for cloud
-              storage and remote access.
-            </li>
-            <li>
-              ⚖ <strong>Legal Compliance:</strong> Review GDPR rules for CCTV
-              signage in public areas.
-            </li>
-          </ul>
+          <div className="cctv-action-grid">
+            {/* Before Installation */}
+            <div className="cctv-action-card">
+              <h3>Before Installation</h3>
+              <ul>
+                <li>
+                  <strong>On-Site Survey:</strong> We visit your location to
+                  assess coverage, lighting, and camera placement.
+                </li>
+                <li>
+                  <strong>Customized Planning:</strong> We design a tailored
+                  CCTV solution based on your specific needs.
+                </li>
+                <li>
+                  <strong>Wiring & Power Check:</strong> We evaluate existing
+                  wiring and power sources for smooth integration.
+                </li>
+                <li>
+                  <strong>Privacy & Legal Advice:</strong> We guide you on GDPR
+                  compliance and proper signage placement.
+                </li>
+              </ul>
+            </div>
 
-          <h3>Did You Know?</h3>
-          <ul>
-            <li>
-              💰 <strong>Insurance Savings:</strong> Certified CCTV systems can
-              reduce business insurance premiums by 15–20%.
-            </li>
-            <li>
-              📼 <strong>Remote Evidence:</strong> Footage can resolve disputes
-              (e.g., accidents, theft) in minutes.
-            </li>
-          </ul>
+            {/* After Installation */}
+            <div className="cctv-action-card">
+              <h3>After Installation</h3>
+              <ul>
+                <li>
+                  <strong>Full System Setup:</strong> Cameras, NVR/DVR, PoE, and
+                  app integration — all configured & tested.
+                </li>
+                <li>
+                  <strong>Live Monitoring Access:</strong> Get remote access via
+                  smartphone or PC from anywhere, anytime.
+                </li>
+                <li>
+                  <strong>Customer Training:</strong> We teach you how to use
+                  your system, playback footage, and manage alerts.
+                </li>
+                <li>
+                  <strong>Ongoing Support:</strong> Fast tech support and
+                  optional maintenance plans for peace of mind.
+                </li>
+              </ul>
+            </div>
+          </div>
         </section>
 
-        {/* Booking Checklist */}
-        <section className="booking-checklist">
-          <h2>Booking Checklist</h2>
-          <h3>✅ Prepare for Installation:</h3>
-          <ul>
-            <li>Sketch your property layout.</li>
-            <li>Note high-risk zones (e.g., entrances, cash registers).</li>
-            <li>Confirm power outlets and Wi-Fi access.</li>
-          </ul>
-
-          <h3>✅ Post-Installation Steps:</h3>
-          <ul>
-            <li>Test remote access via the app.</li>
-            <li>Train staff on basic controls (e.g., playback, alerts).</li>
-          </ul>
-        </section>
-
-        {/* CTA Buttons */}
-        <section className="cta-buttons">
-          <button className="cta-button" onClick={() => navigateTo("/contact")}>
-            📅 Schedule Your Free Consultation
-          </button>
-          <button
-            className="cta-button"
-            onClick={() => navigateTo("/services")}
-          >
-            🔍 Explore More Security Solutions
-          </button>
+        <section className="cctv-upgrade-section">
+          <h3>Time to Upgrade Your CCTV System?</h3>
+          <div className="cctv-upgrade-content">
+            <h4 className="cctv-red-flags">
+              Experiencing These CCTV Issues? Let’s Fix Them!
+            </h4>
+            <ul className="cctv-red-flags-list">
+              <li>Blurry or Outdated Footage</li>
+              <li>Frequent System Freezes</li>
+              <li>Broken or Exposed Wiring</li>
+              <li>No Night Vision</li>
+              <li>Camera Not Recording</li>
+              <li>Unstable Connection</li>
+              <li>Outdated DVR/NVR</li>
+              <li>No Remote Access</li>
+              <li>Low Storage Capacity</li>
+              <li>Physical Damage to Cameras</li>
+            </ul>
+            <button
+              className="cctv-book-button"
+              onClick={() => navigateTo("/contact")}
+            >
+              Book Now – Secure Your Property Today!
+            </button>
+          </div>
         </section>
 
         {/* FAQ Section */}

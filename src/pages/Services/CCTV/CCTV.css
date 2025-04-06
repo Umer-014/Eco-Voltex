@@ -215,3 +215,218 @@
     font-size: 14px;
   }
 }
+
+
+/* what action we takes*/
+
+.cctv-action-steps {
+  background-color: #fff;
+  padding: 20px 20px;
+  text-align: center;
+}
+
+.cctv-action-steps h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: #111;
+}
+
+.cctv-action-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.cctv-action-card {
+  background-color: #C0C0C0;
+  color: white;
+  padding: 30px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  text-align: left;
+}
+
+.cctv-action-card h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: black;
+}
+
+.cctv-action-card ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.cctv-action-card li {
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.cctv-action-card strong {
+  color: black;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cctv-action-card {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .cctv-action-steps h2 {
+    font-size: 26px;
+  }
+
+  .cctv-action-card h3 {
+    font-size: 20px;
+  }
+
+  .cctv-action-card li {
+    font-size: 14px;
+  }
+}
+@media (max-width: 480px) {
+  .cctv-action-steps h2 {
+    font-size: 24px;
+  }
+
+  .cctv-action-card h3 {
+    font-size: 18px;
+  }
+
+  .cctv-action-card li {
+    font-size: 12px;
+  }
+}
+
+/* ready to upgrade */
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.cctv-upgrade-section {
+  background-color: white;
+  padding: 60px 20px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+.cctv-upgrade-section h3 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #333;
+}
+
+.cctv-upgrade-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cctv-red-flags {
+  color: red;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.cctv-red-flags-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.cctv-red-flags-list li {
+  font-size: 1rem;
+  color: #333;
+  background: #C0C0C0;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cctv-red-flags-list li:hover {
+  background-color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.cctv-book-button {
+  background-color: #ff4500;
+  color: white;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.125rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: pulse 2s infinite;
+}
+
+.cctv-book-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .cctv-upgrade-section h3 {
+    font-size: 2.2rem;
+  }
+  .cctv-red-flags {
+    font-size: 1.6rem;
+  }
+  .cctv-red-flags-list {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+  }
+  .cctv-book-button {
+    font-size: 1rem;
+    padding: 12px 24px;
+  }
+}
+@media (max-width: 480px) {
+  .cctv-upgrade-section h3 {
+    font-size: 1.8rem;
+  }
+  .cctv-red-flags {
+    font-size: 1.4rem;
+  }
+  .cctv-book-button {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+}
