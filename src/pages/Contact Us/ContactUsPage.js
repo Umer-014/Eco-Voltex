@@ -1,15 +1,16 @@
 import React, { useState } from "react";
+import emailjs from "emailjs-com";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./contactus.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import emailjs from "emailjs-com"; // Import EmailJS
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
   const [popupClass, setPopupClass] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,26 +18,30 @@ const ContactUs = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setShowPopup(false);
 
-    // Use EilJS to send the email
     emailjs
-      .sendForm("service_zu4vrhd", "template_1649nft", e.target, "zdAhM19MmtKrK5LWB") // Replace with your actual credentials
+      .send(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        formData,
+        process.env.REACT_APP_EMAILJS_USER_ID
+      )
       .then(
         (result) => {
-          console.log(result.text);
-          setPopupMessage("Your request has been sent!");
+          setPopupMessage("Thank you! Your message has been sent successfully.");
           setPopupClass("alert-success");
           setFormData({ name: "", email: "", message: "" });
         },
         (error) => {
-          console.log(error.text);
-          setPopupMessage("Failed to send your message. Please try again.");
+          setPopupMessage("Failed to send your message. Please try again later.");
           setPopupClass("alert-danger");
         }
       )
       .finally(() => {
         setShowPopup(true);
-        setTimeout(() => setShowPopup(false), 3000);
+        setIsSubmitting(false);
       });
   };
 
@@ -95,7 +100,13 @@ const ContactUs = () => {
                       required
                     ></textarea>
                   </div>
-                  <button type="submit" className="btn btn-success w-100 py-2 fw-bold">Send Message</button>
+                  <button
+                    type="submit"
+                    className="btn btn-success w-100 py-2 fw-bold"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Sending..." : "Send Message"}
+                  </button>
                 </form>
               </div>
             </div>
