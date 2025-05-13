@@ -76,7 +76,7 @@ const HeroSection = () => {
             <div
               className="home-service-image"
               style={{
-                backgroundImage: `url(${require("../../assets/images/electrical-background.jpg")})`,
+                backgroundImage: `url(${require("../../assets/images/cctv-background.webp")})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 height: "400px",
