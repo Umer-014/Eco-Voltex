@@ -6,6 +6,7 @@ import "./About.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import '../../components/touchPolyfill'; // Import the touch polyfill
 
 const AboutUsPage = () => {
   const [isMobile, setIsMobile] = useState(false);
