@@ -32,17 +32,25 @@ const AboutUsPage = () => {
     </button>
   );
 
-  const carouselSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: isMobile,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    adaptiveHeight: true
-  };
+const carouselSettings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: isMobile,
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
+  adaptiveHeight: true,
+  // iOS-specific fixes:
+  swipe: true,
+  swipeToSlide: true,
+  touchThreshold: 10,
+  touchMove: true,
+  cssEase: 'linear',
+  useCSS: false, // Important for iOS
+  useTransform: true
+};
 
   // Grid items data
   const gridItems = [

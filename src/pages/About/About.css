@@ -328,3 +328,23 @@
     color: #333;
   }
 }
+
+@media (max-width: 768px) {
+  /* Add these properties to your existing slick-list */
+  .slick-list {
+    -webkit-overflow-scrolling: touch; /* Enables momentum scrolling on iOS */
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  /* iOS touch area enhancement */
+  .slick-slide {
+    touch-action: pan-y; /* Improves touch responsiveness */
+  }
+
+  /* Prevent iOS text selection during swipe */
+  .grid-item-mobile {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
