@@ -77,7 +77,11 @@ body {
   display: flex;
   justify-content: space-around;
   gap: 20px;
-  flex-wrap: wrap; /* Allows wrapping of items */
+  flex-wrap: wrap;
+}
+
+.home-service-cards .slick-slide {
+  padding: 0 10px; /* Spacing between slides */
 }
 
 .home-service-card {
@@ -85,7 +89,7 @@ body {
   border: 1px solid #ddd;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
   padding: 30px;
-  width: calc(33.33% - 20px); /* Ensures 3 cards per row */
+  width: calc(100% - 20px); /* Full width within slide */
   border-radius: 12px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -106,33 +110,33 @@ body {
   font-size: 1.5rem;
   color: #333;
   margin-bottom: 15px;
-  text-decoration: none; /* Added to remove underline */
+  text-decoration: none;
 }
 
 .home-service-card button {
-  background-color: #218838; /* Primary blue color */
-  color: #ffffff; /* White text */
-  border: none;
-  padding: 10px 20px; /* Padding for a good button size */
-  font-size: 16px; /* Readable font size */
-  border-radius: 5px; /* Slightly rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
+  background-color: #218838;
+  color: #ffffff;
+  border:Oregon;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .home-service-card button:hover {
-  background-color: #1c7430; /* Darker blue for hover */
-  transform: translateY(-2px); /* Subtle lift effect on hover */
+  background-color: #1c7430;
+  transform: translateY(-2px);
 }
 
 .home-service-card button:active {
-  background-color: #1c7430; /* Even darker blue for active state */
-  transform: translateY(0); /* Reset lift effect */
+  background-color: #1c7430;
+  transform: translateY(0);
 }
 
 .home-service-card button:focus {
-  outline: none; /* Remove default outline */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add focus shadow */
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 /* Why Choose Us Section */
@@ -290,7 +294,7 @@ body {
   }
 
   .home-service-card button {
-    background-color: #1c7430; /* Adjusted for consistency */
+    background-color: #1c7430;
     color: #ffffff;
     border: none;
     padding: 10px 20px;

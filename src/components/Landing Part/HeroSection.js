@@ -1,16 +1,48 @@
 import "./HeroSection.css";
 import { useNavigate } from "react-router-dom";
-import React from "react"; 
-
+import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { motion } from "framer-motion";
 
 const HeroSection = () => {
-
-
-
   const navigate = useNavigate();
 
   const navigateTo = (path) => {
-    navigate(path); // No replace, so the path will be added to the history stack
+    navigate(path);
+  };
+
+  // Slider settings for the carousel
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
+  // Animation variants for service cards
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
   return (
@@ -31,9 +63,15 @@ const HeroSection = () => {
       {/* Services Section */}
       <section className="home-services">
         <h2>What we Offer</h2>
-        <div className="home-service-cards">
+        <Slider {...sliderSettings} className="home-service-cards">
           {/* Electrical Installation & Maintenance Services */}
-          <div className="home-service-card home-electrical-card">
+          <motion.div
+            className="home-service-card home-electrical-card"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={cardVariants}
+          >
             <h3>Electrical Installation and Maintenance Services</h3>
             <div
               className="home-service-image"
@@ -52,13 +90,20 @@ const HeroSection = () => {
               and businesses.
             </p>
             <button
-             onClick={() => navigateTo("/services/Installation-Maintenance")}
+              onClick={() => navigateTo("/services/Installation-Maintenance")}
             >
               Read More
             </button>
-          </div>
+          </motion.div>
 
-          <div className="home-service-card">
+          {/* Fire Alarm */}
+          <motion.div
+            className="home-service-card"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={cardVariants}
+          >
             <i className="fas fa-fire"></i>
             <h3>Fire Alarm</h3>
             <div
@@ -79,8 +124,16 @@ const HeroSection = () => {
             <button onClick={() => navigateTo("/services/Fire-alarms")}>
               Read More
             </button>
-          </div>
-          <div className="home-service-card">
+          </motion.div>
+
+          {/* CCTV */}
+          <motion.div
+            className="home-service-card"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={cardVariants}
+          >
             <i className="fas fa-video"></i>
             <h3>CCTV</h3>
             <div
@@ -99,8 +152,16 @@ const HeroSection = () => {
             <button onClick={() => navigateTo("/services/CCTV")}>
               Read More
             </button>
-          </div>
-          <div className="home-service-card">
+          </motion.div>
+
+          {/* Portable Appliance Testing (PAT) */}
+          <motion.div
+            className="home-service-card"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={cardVariants}
+          >
             <i className="fas fa-video"></i>
             <h3>Portable Appliance Testing (PAT)</h3>
             <div
@@ -122,12 +183,13 @@ const HeroSection = () => {
             <button onClick={() => navigateTo("/services/PAT-testing")}>
               Read More
             </button>
-          </div>
-        </div>
+          </motion.div>
+        </Slider>
       </section>
+
       {/* Why Choose Us Section */}
       <section className="home-why-us">
-        <h2>Why Eco Voltex?</h2>
+        <h2>Why  Why Eco Voltex?</h2>
         <div className="home-features">
           <div className="home-feature">
             <i className="fas fa-cogs"></i>
@@ -147,6 +209,7 @@ const HeroSection = () => {
           </div>
         </div>
       </section>
+
       {/* Call to Action Section */}
       <section className="home-cta-section">
         <h2>Let’s Power Up Your Projects</h2>
@@ -155,7 +218,6 @@ const HeroSection = () => {
           Request a Free Quote
         </button>
       </section>
-
     </div>
   );
 };
