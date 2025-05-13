@@ -30,6 +30,7 @@
   font-weight: bold;
   color: black;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .section-text {
@@ -162,3 +163,44 @@
       font-size: 0.95rem;
   }
 }
+
+/* Keep all your existing styles */
+
+/* Add these new styles for the carousel */
+@media (max-width: 768px) {
+  /* Slick Carousel Customizations */
+  .slick-slider {
+    margin: 0 -0.5rem;
+  }
+
+  .slick-list {
+    padding: 1rem 0;
+    overflow: visible; /* Allows for box-shadow etc. */
+  }
+
+  .slick-slide > div {
+    padding: 0 0.5rem;
+  }
+
+  .slick-dots {
+    bottom: -25px;
+  }
+
+  .slick-dots li button:before {
+    font-size: 10px;
+    color: #555;
+  }
+
+  .slick-dots li.slick-active button:before {
+    color: #333;
+  }
+
+  /* Adjust grid item for carousel */
+  .grid-item {
+    height: 100%;
+    margin: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+}
+
+/* Remove the previous grid-container mobile styles since we're using slick now */

@@ -1,9 +1,59 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import Slider from "react-slick";
 import "./About.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const AboutUsPage = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    // Set initial value
+    handleResize();
+
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+
+    // Clean up
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Slick carousel settings for mobile only
+  const carouselSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    adaptiveHeight: true
+  };
+
+  // Grid items data
+  const gridItems = [
+    {
+      title: "Certified Professionals",
+      content: "Our team consists of fully certified, highly experienced electricians who specialize in both residential and commercial projects."
+    },
+    {
+      title: "Sustainability Focused",
+      content: "At Eco Voltex, we strive to minimize environmental impact by offering energy-efficient solutions that save you money and reduce your carbon footprint."
+    },
+    {
+      title: "Timely & Reliable Service",
+      content: "We understand the importance of deadlines. Our team ensures your project is completed on time without compromising on quality or safety."
+    },
+    {
+      title: "Tailored Solutions",
+      content: "Every project is unique, and we offer customized solutions that cater to your specific needs and budget."
+    }
+  ];
   return (
     <>
       <Header />
@@ -31,32 +81,26 @@ const AboutUsPage = () => {
 
         <section className="section-about">
           <h2 className="section-heading">Why Choose Eco Voltex?</h2>
-          <div className="grid-container">
-            <div className="grid-item">
-              <h3 className="sub-heading-about">Certified Professionals</h3>
-              <p className="grid-text">
-                Our team consists of fully certified, highly experienced electricians who specialize in both residential and commercial projects.
-              </p>
+          
+          {isMobile ? (
+            <Slider {...carouselSettings}>
+              {gridItems.map((item, index) => (
+                <div key={index} className="grid-item">
+                  <h3 className="sub-heading-about">{item.title}</h3>
+                  <p className="grid-text">{item.content}</p>
+                </div>
+              ))}
+            </Slider>
+          ) : (
+            <div className="grid-container">
+              {gridItems.map((item, index) => (
+                <div key={index} className="grid-item">
+                  <h3 className="sub-heading-about">{item.title}</h3>
+                  <p className="grid-text">{item.content}</p>
+                </div>
+              ))}
             </div>
-            <div className="grid-item">
-              <h3 className="sub-heading-about">Sustainability Focused</h3>
-              <p className="grid-text">
-                At Eco Voltex, we strive to minimize environmental impact by offering energy-efficient solutions that save you money and reduce your carbon footprint.
-              </p>
-            </div>
-            <div className="grid-item">
-              <h3 className="sub-heading-about">Timely & Reliable Service</h3>
-              <p className="grid-text">
-                We understand the importance of deadlines. Our team ensures your project is completed on time without compromising on quality or safety.
-              </p>
-            </div>
-            <div className="grid-item">
-              <h3 className="sub-heading-about">Tailored Solutions</h3>
-              <p className="grid-text">
-                Every project is unique, and we offer customized solutions that cater to your specific needs and budget.
-              </p>
-            </div>
-          </div>
+          )}
         </section>
 
         <section className="section-about">
