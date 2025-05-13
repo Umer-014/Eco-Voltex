@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import "./About.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const AboutUsPage = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -14,24 +15,32 @@ const AboutUsPage = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    // Set initial value
     handleResize();
-
-    // Add event listener
     window.addEventListener('resize', handleResize);
-
-    // Clean up
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Slick carousel settings for mobile only
+  const NextArrow = ({ onClick }) => (
+    <button className="slick-arrow slick-next" onClick={onClick} aria-label="Next">
+      <FaChevronRight />
+    </button>
+  );
+
+  const PrevArrow = ({ onClick }) => (
+    <button className="slick-arrow slick-prev" onClick={onClick} aria-label="Previous">
+      <FaChevronLeft />
+    </button>
+  );
+
   const carouselSettings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: false,
+    arrows: isMobile,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     adaptiveHeight: true
   };
 
@@ -54,6 +63,7 @@ const AboutUsPage = () => {
       content: "Every project is unique, and we offer customized solutions that cater to your specific needs and budget."
     }
   ];
+
   return (
     <>
       <Header />
@@ -83,14 +93,16 @@ const AboutUsPage = () => {
           <h2 className="section-heading">Why Choose Eco Voltex?</h2>
           
           {isMobile ? (
-            <Slider {...carouselSettings}>
-              {gridItems.map((item, index) => (
-                <div key={index} className="grid-item">
-                  <h3 className="sub-heading-about">{item.title}</h3>
-                  <p className="grid-text">{item.content}</p>
-                </div>
-              ))}
-            </Slider>
+            <div className="mobile-carousel-wrapper">
+              <Slider {...carouselSettings}>
+                {gridItems.map((item, index) => (
+                  <div key={index} className="grid-item-mobile">
+                    <h3 className="sub-heading-about">{item.title}</h3>
+                    <p className="grid-text">{item.content}</p>
+                  </div>
+                ))}
+              </Slider>
+            </div>
           ) : (
             <div className="grid-container">
               {gridItems.map((item, index) => (
