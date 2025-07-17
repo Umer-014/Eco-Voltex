@@ -1,4 +1,27 @@
 body {
+/* London Badge Styles */
+.london-badge {
+  display: inline-block;
+  background: linear-gradient(90deg, #ff5722, #ffc107);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 8px 24px;
+  border-radius: 30px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.15);
+  letter-spacing: 1px;
+  animation: badgePulse 1.5s infinite alternate;
+}
+.london-badge span {
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+@keyframes badgePulse {
+  0% { transform: scale(1); box-shadow: 0 2px 8px rgba(44,62,80,0.15); }
+  100% { transform: scale(1.08); box-shadow: 0 4px 16px rgba(44,62,80,0.25); }
+}
   margin: 0;
   font-family: 'Poppins', sans-serif;
   color: #333;
@@ -30,14 +53,18 @@ body {
 }
 
 .home-hero-content h1 {
-  font-size: 4rem;
-  margin-bottom: 20px;
+  font-size: 2.8rem;
+  margin-bottom: 18px;
   animation: fadeIn 2s ease-in-out;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 1px;
 }
 
 .home-hero-content p {
-  font-size: 1.5rem;
-  margin-bottom: 30px;
+  font-size: 1.2rem;
+  margin-bottom: 24px;
+  color: #f5f5f5;
 }
 
 .home-cta-btn {
@@ -113,66 +140,26 @@ body {
   text-decoration: none;
 }
 
+/* Add or update this for all "Read More" buttons in service cards */
 .home-service-card button {
-  background-color: #218838;
-  color: #ffffff;
-  border:Oregon;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
+  background: #757575;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 22px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background 0.2s, transform 0.2s;
+  margin-top: 10px;
 }
 
-.home-service-card button:hover {
-  background-color: #1c7430;
-  transform: translateY(-2px);
-}
-
-.home-service-card button:active {
-  background-color: #1c7430;
-  transform: translateY(0);
-}
-
+.home-service-card button:hover,
 .home-service-card button:focus {
-  outline: none;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  background: #616161;
+  transform: translateY(-2px) scale(1.04);
 }
 
-/* Why Choose Us Section */
-.home-why-us {
-  background: linear-gradient(120deg, #218838, #1c7430);
-  color: white;
-  padding: 60px 20px;
-}
-
-.home-why-us h2 {
-  margin-bottom: 40px;
-  font-size: 2.5rem;
-  font-weight: bold;
-}
-
-.home-features {
-  display: flex;
-  justify-content: space-around;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.home-feature {
-  text-align: center;
-  max-width: 220px;
-}
-
-.home-feature i {
-  font-size: 3rem;
-  color: #ffeb3b;
-}
-
-.home-feature p {
-  margin-top: 20px;
-  font-size: 1.1rem;
-}
 
 /* Testimonials Section */
 .home-testimonials {
@@ -185,26 +172,31 @@ body {
   font-size: 2.5rem;
 }
 
+/* Testimonials Row Layout */
+.home-testimonials-row {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .home-testimonial {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(44, 62, 80, 0.08);
+  padding: 28px 22px;
   margin-bottom: 30px;
   font-style: italic;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 340px;
+  flex: 1 1 300px;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .home-client-info {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.home-client-info img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 10px;
+  margin-top: 18px;
 }
 
 .home-client-info h4 {
@@ -217,47 +209,26 @@ body {
   margin-top: 5px;
 }
 
-/* Call to Action Section */
-.home-cta-section {
-  padding: 60px 20px;
-  background-color: #28a745;
-  color: white;
-}
-
-.home-cta-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-}
-
-.home-cta-section p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-}
-
-.home-cta-section .home-cta-btn {
-  background-color: #ff5722;
-  padding: 15px 35px;
-  font-size: 1.2rem;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.home-cta-section .home-cta-btn:hover {
-  background-color: #e64a19;
-  transform: scale(1.1);
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+@media (max-width: 600px) {
+  .home-service-card,
+  .home-testimonial {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
   }
-  to {
-    opacity: 1;
+  .home-service-cards,
+  .home-testimonials-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+  }
+  body, .home-page {
+    overflow-x: hidden;
   }
 }
-
 /* Mobile Responsiveness */
 @media screen and (max-width: 768px) {
   .home-hero-content h1 {
@@ -294,29 +265,22 @@ body {
   }
 
   .home-service-card button {
-    background-color: #1c7430;
-    color: #ffffff;
+    background: #757575;
+    color: #fff;
     border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
+    padding: 12px 28px;
+    border-radius: 22px;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background 0.2s, transform 0.2s;
+    margin-top: 10px;
   }
 
-  .home-service-card button:hover {
-    background-color: #1c7430;
-    transform: translateY(-2px);
-  }
-
-  .home-service-card button:active {
-    background-color: #1c7430;
-    transform: translateY(0);
-  }
-
+  .home-service-card button:hover,
   .home-service-card button:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    background: #616161;
+    transform: translateY(-2px) scale(1.04);
   }
 
   .home-features {
@@ -384,29 +348,22 @@ body {
   }
 
   .home-service-card button {
-    background-color: #1c7430;
-    color: #ffffff;
+    background: #757575;
+    color: #fff;
     border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
+    padding: 12px 28px;
+    border-radius: 22px;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background 0.2s, transform 0.2s;
+    margin-top: 10px;
   }
 
-  .home-service-card button:hover {
-    background-color: #1c7430;
-    transform: translateY(-2px);
-  }
-
-  .home-service-card button:active {
-    background-color: #1c7430;
-    transform: translateY(0);
-  }
-
+  .home-service-card button:hover,
   .home-service-card button:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    background: #616161;
+    transform: translateY(-2px) scale(1.04);
   }
 
   .home-feature i {

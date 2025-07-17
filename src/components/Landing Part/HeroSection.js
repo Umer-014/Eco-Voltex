@@ -48,17 +48,31 @@ const HeroSection = () => {
   return (
     <div className="home-page">
       {/* Hero Section */}
-      <section className="home-hero">
+      <section
+        className="home-hero"
+        style={{
+          backgroundImage: `url(${require('../../assets/images/electrical-background.jpg')})`,
+          backgroundSize: 'cover',
+          backgroundPosition:'all center',
+        }}
+      >
         <div className="home-hero-overlay">
           <div className="home-hero-content">
-            <h1>Empowering Your Future with Sustainable Solutions</h1>
+            <h1>Eco Voltex Sustainable Electrical Solutions for London</h1>
             <p>
-              Your trusted partner for residential, commercial, and industrial
-              services
+              Your trusted partner for residential, commercial, and industrial services in London
             </p>
+            <button
+              className="home-cta-btn"
+              onClick={() => navigateTo("/contact")}
+            >
+              Request a Free Quote
+            </button>
           </div>
         </div>
       </section>
+
+      
 
       {/* Services Section */}
       <section className="home-services">
@@ -76,7 +90,7 @@ const HeroSection = () => {
             <div
               className="home-service-image"
               style={{
-                backgroundImage: `url(${require("../../assets/images/cctv-background.webp")})`,
+                backgroundImage: `url(${require("../../assets/images/electrical-background.jpg")})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 height: "400px",
@@ -186,38 +200,98 @@ const HeroSection = () => {
           </motion.div>
         </Slider>
       </section>
-
-      {/* Why Choose Us Section */}
-      <section className="home-why-us">
-        <h2>Why  Why Eco Voltex?</h2>
-        <div className="home-features">
-          <div className="home-feature">
-            <i className="fas fa-cogs"></i>
-            <p>Expert Technicians</p>
+      
+      {/* Testimonials Section */}
+      <section className="home-testimonials">
+        <h2>What Our Clients Say</h2>
+        <Slider
+          className="home-testimonials-row"
+          dots={true}
+          infinite={true}
+          speed={500}
+          slidesToShow={3}
+          slidesToScroll={1}
+          arrows={true}
+          responsive={[
+            { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
+            { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+          ]}
+        >
+          <div className="home-testimonial">
+            "Eco Voltex provided outstanding electrical services for our office in London. The team was professional, efficient, and friendly. Highly recommended!"
+            <div className="home-client-info">
+              <div>
+                <h4>Sarah J.</h4>
+                <p>Business Owner, London</p>
+              </div>
+            </div>
           </div>
-          <div className="home-feature">
-            <i className="fas fa-leaf"></i>
-            <p>Sustainable Solutions</p>
+          <div className="home-testimonial">
+            "Quick response and excellent workmanship. I feel much safer with the new fire alarm system installed by Eco Voltex."
+            <div className="home-client-info">
+              <div>
+                <h4>Michael B.</h4>
+                <p>Homeowner, London</p>
+              </div>
+            </div>
           </div>
-          <div className="home-feature">
-            <i className="fas fa-trophy"></i>
-            <p>Proven Excellence</p>
+          <div className="home-testimonial">
+            "Professional, reliable, and affordable. The PAT testing was quick and thorough. Will use Eco Voltex again!"
+            <div className="home-client-info">
+              <div>
+                <h4>Linda K.</h4>
+                <p>Landlord, London</p>
+              </div>
+            </div>
           </div>
-          <div className="home-feature">
-            <i className="fas fa-dollar-sign"></i>
-            <p>Affordable Pricing</p>
+          <div className="home-testimonial">
+            "The Eco Voltex team explained everything clearly and finished the job on time. Great service!"
+            <div className="home-client-info">
+              <div>
+                <h4>James T.</h4>
+                <p>Restaurant Owner, London</p>
+              </div>
+            </div>
           </div>
-        </div>
+          <div className="home-testimonial">
+            "Very friendly staff and excellent aftercare. Highly recommend for any electrical work."
+            <div className="home-client-info">
+              <div>
+                <h4>Priya S.</h4>
+                <p>Shop Manager, London</p>
+              </div>
+            </div>
+          </div>
+          <div className="home-testimonial">
+            "They upgraded our lighting system and helped us save on energy bills. Thank you, Eco Voltex!"
+            <div className="home-client-info">
+              <div>
+                <h4>Omar R.</h4>
+                <p>Office Manager, London</p>
+              </div>
+            </div>
+          </div>
+          <div className="home-testimonial">
+            "Prompt, polite, and very knowledgeable. The best electrical company in London!"
+            <div className="home-client-info">
+              <div>
+                <h4>Emily W.</h4>
+                <p>Homeowner, London</p>
+              </div>
+            </div>
+          </div>
+          <div className="home-testimonial">
+            "From booking to completion, everything was smooth and stress-free. Will use again."
+            <div className="home-client-info">
+              <div>
+                <h4>David L.</h4>
+                <p>Landlord, London</p>
+              </div>
+            </div>
+          </div>
+        </Slider>
       </section>
 
-      {/* Call to Action Section */}
-      <section className="home-cta-section">
-        <h2>Let’s Power Up Your Projects</h2>
-        <p>Contact us today for a free consultation and personalized quote.</p>
-        <button className="home-cta-btn" onClick={() => navigateTo("/contact")}>
-          Request a Free Quote
-        </button>
-      </section>
     </div>
   );
 };
