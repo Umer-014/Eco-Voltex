@@ -306,7 +306,7 @@ const CCTV = () => {
             </div>
           </div>
         </section>
-
+        {/* Contact Section */}
         <section className="cctv-upgrade-section">
           <h3>Time to Upgrade Your CCTV System?</h3>
           <div className="cctv-upgrade-content">
@@ -333,7 +333,7 @@ const CCTV = () => {
             </button>
           </div>
         </section>
-
+        {/* FAQs Section */}
         <section className="cctv-faq-section">
           <h3>FAQs</h3>
           {categorizedFaqs.map((cat, catIndex) => (

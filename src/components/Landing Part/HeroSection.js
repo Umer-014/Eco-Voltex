@@ -58,9 +58,9 @@ const HeroSection = () => {
       >
         <div className="home-hero-overlay">
           <div className="home-hero-content">
-            <h1>Eco Voltex Sustainable Electrical Solutions for London</h1>
+            <h1>Eco Voltex Sustainable Electrical Solutions</h1>
             <p>
-              Your trusted partner for residential, commercial, and industrial services in London
+              Your trusted partner for residential, commercial, and industrial services.
             </p>
             <button
               className="home-cta-btn"
