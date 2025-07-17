@@ -162,7 +162,7 @@ body {
 
 /* Drawer styles */
 .drawer {
-  background-color: white;
+  background-color: #343a40;
   height: 100vh;
   width: 310px;
 }
