@@ -25,7 +25,8 @@ const Footer = () => {
             </p>
             <p>
               <FaMapMarkerAlt className="me-2" />
-              9A Oak Road Romford, RM30PH
+              5-7 Vine Street, Uxbridge, UB81QE
+    
             </p>
             <p>
               <FaPhone className="me-2" />
