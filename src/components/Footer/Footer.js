@@ -25,7 +25,7 @@ const Footer = () => {
             </p>
             <p>
               <FaMapMarkerAlt className="me-2" />
-              5-7 Vine Street, Uxbridge, UB81QE
+              5-7 Vine Street, Uxbridgeb London, UB81QE, United Kingdom 
     
             </p>
             <p>
