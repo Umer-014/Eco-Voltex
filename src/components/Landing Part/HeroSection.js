@@ -123,7 +123,7 @@ const HeroSection = () => {
             <div
               className="home-service-image"
               style={{
-                backgroundImage: `url(${require("../../assets/images/fire-background.jpg")})`,
+                backgroundImage: `url('https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto,w_1200/v1754988695/Fire_Alarm_gfmbqk.jpg')`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 height: "400px",
@@ -132,6 +132,7 @@ const HeroSection = () => {
                 margin: "10px 0",
               }}
             />
+
             <p>
               Custom fire alarm solutions to protect your life and property.
             </p>
@@ -153,7 +154,7 @@ const HeroSection = () => {
             <div
               className="home-service-image"
               style={{
-                backgroundImage: `url(${require("../../assets/images/cctv-background.jpg")})`,
+                backgroundImage: `url('https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto,w_1200/v1754988695/CCTV_eknsb9.jpg')`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 height: "400px",
@@ -162,6 +163,7 @@ const HeroSection = () => {
                 margin: "10px 0",
               }}
             />
+
             <p>Advanced CCTV and security systems for enhanced safety.</p>
             <button onClick={() => navigateTo("/services/CCTV")}>
               Read More
@@ -181,7 +183,7 @@ const HeroSection = () => {
             <div
               className="home-service-image"
               style={{
-                backgroundImage: `url(${require("../../assets/images/pat-background.jpg")})`,
+                backgroundImage: `url('https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto,w_1200/v1754988695/PAT_vmgkj5.jpg')`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 height: "400px",
