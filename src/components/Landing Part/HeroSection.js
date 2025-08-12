@@ -51,16 +51,17 @@ const HeroSection = () => {
       <section
         className="home-hero"
         style={{
-          backgroundImage: `url(${require('../../assets/images/electrical-background.jpg')})`,
-          backgroundSize: 'cover',
-          backgroundPosition:'all center',
+          backgroundImage: `url(${require("../../assets/images/electrical-background.jpg")})`,
+          backgroundSize: "cover",
+          backgroundPosition: "all center",
         }}
       >
         <div className="home-hero-overlay">
           <div className="home-hero-content">
             <h1>Eco Voltex Sustainable Electrical Solutions</h1>
             <p>
-              Your trusted partner for residential, commercial, and industrial services.
+              Your trusted partner for residential, commercial, and industrial
+              services.
             </p>
             <button
               className="home-cta-btn"
@@ -71,8 +72,6 @@ const HeroSection = () => {
           </div>
         </div>
       </section>
-
-      
 
       {/* Services Section */}
       <section className="home-services">
@@ -90,7 +89,7 @@ const HeroSection = () => {
             <div
               className="home-service-image"
               style={{
-                backgroundImage: `url(${require("../../assets/images/electrical-background.jpg")})`,
+                backgroundImage: `url('https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto,w_1200/v1754988697/Electric_nlvv5l.png')`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 height: "400px",
@@ -99,6 +98,7 @@ const HeroSection = () => {
                 margin: "10px 0",
               }}
             />
+
             <p>
               Professional electrical installations and maintenance for homes
               and businesses.
@@ -200,7 +200,7 @@ const HeroSection = () => {
           </motion.div>
         </Slider>
       </section>
-      
+
       {/* Testimonials Section */}
       <section className="home-testimonials">
         <h2>What Our Clients Say</h2>
@@ -213,12 +213,20 @@ const HeroSection = () => {
           slidesToScroll={1}
           arrows={true}
           responsive={[
-            { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-            { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+            {
+              breakpoint: 1024,
+              settings: { slidesToShow: 2, slidesToScroll: 1 },
+            },
+            {
+              breakpoint: 768,
+              settings: { slidesToShow: 1, slidesToScroll: 1 },
+            },
           ]}
         >
           <div className="home-testimonial">
-            "Eco Voltex provided outstanding electrical services for our office in London. The team was professional, efficient, and friendly. Highly recommended!"
+            "Eco Voltex provided outstanding electrical services for our office
+            in London. The team was professional, efficient, and friendly.
+            Highly recommended!"
             <div className="home-client-info">
               <div>
                 <h4>Sarah J.</h4>
@@ -227,7 +235,8 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="home-testimonial">
-            "Quick response and excellent workmanship. I feel much safer with the new fire alarm system installed by Eco Voltex."
+            "Quick response and excellent workmanship. I feel much safer with
+            the new fire alarm system installed by Eco Voltex."
             <div className="home-client-info">
               <div>
                 <h4>Michael B.</h4>
@@ -236,7 +245,8 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="home-testimonial">
-            "Professional, reliable, and affordable. The PAT testing was quick and thorough. Will use Eco Voltex again!"
+            "Professional, reliable, and affordable. The PAT testing was quick
+            and thorough. Will use Eco Voltex again!"
             <div className="home-client-info">
               <div>
                 <h4>Linda K.</h4>
@@ -245,7 +255,8 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="home-testimonial">
-            "The Eco Voltex team explained everything clearly and finished the job on time. Great service!"
+            "The Eco Voltex team explained everything clearly and finished the
+            job on time. Great service!"
             <div className="home-client-info">
               <div>
                 <h4>James T.</h4>
@@ -254,7 +265,8 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="home-testimonial">
-            "Very friendly staff and excellent aftercare. Highly recommend for any electrical work."
+            "Very friendly staff and excellent aftercare. Highly recommend for
+            any electrical work."
             <div className="home-client-info">
               <div>
                 <h4>Priya S.</h4>
@@ -263,7 +275,8 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="home-testimonial">
-            "They upgraded our lighting system and helped us save on energy bills. Thank you, Eco Voltex!"
+            "They upgraded our lighting system and helped us save on energy
+            bills. Thank you, Eco Voltex!"
             <div className="home-client-info">
               <div>
                 <h4>Omar R.</h4>
@@ -272,7 +285,8 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="home-testimonial">
-            "Prompt, polite, and very knowledgeable. The best electrical company in London!"
+            "Prompt, polite, and very knowledgeable. The best electrical company
+            in London!"
             <div className="home-client-info">
               <div>
                 <h4>Emily W.</h4>
@@ -281,7 +295,8 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="home-testimonial">
-            "From booking to completion, everything was smooth and stress-free. Will use again."
+            "From booking to completion, everything was smooth and stress-free.
+            Will use again."
             <div className="home-client-info">
               <div>
                 <h4>David L.</h4>
@@ -291,7 +306,6 @@ const HeroSection = () => {
           </div>
         </Slider>
       </section>
-
     </div>
   );
 };
