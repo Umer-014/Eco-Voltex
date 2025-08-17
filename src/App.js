@@ -6,10 +6,10 @@ import { Analytics } from "@vercel/analytics/react"
 
 const App = () => {
     useEffect(() => {
-    ReactGA.initialize("G-XXXXXXXXXX"); // replace with your ID
+    ReactGA.initialize("G-PHJ9KG43FT"); // replace with your ID
     ReactGA.send("pageview"); // log first page load
   }, []);
-  
+
   return (
     <>
     <Analytics/>
