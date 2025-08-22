@@ -10,7 +10,7 @@ import {
   FaLinkedin,
   FaMapMarkerAlt,
   FaPhone,
-  
+  FaEnvelope as Mail,
 } from "react-icons/fa";
 
 const Footer = () => {
@@ -30,10 +30,10 @@ const Footer = () => {
               5-7 Vine Street, Uxbridgeb London, UB81QE, United Kingdom
             </p>
             <p>
-              <a href="mailto:info@ecovoltex.co.uk" className="flex items-center text-blue-600 hover:underline">
+             
                 <Mail className="me-2" />
                 info@ecovoltex.co.uk
-              </a>
+             
             </p>
           </div>
 
