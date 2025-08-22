@@ -5,10 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react"
 
 const App = () => {
-    useEffect(() => {
-    ReactGA.initialize("G-PHJ9KG43FT"); // replace with your ID
-    ReactGA.send("pageview"); // log first page load
-  }, []);
+
 
   return (
     <>

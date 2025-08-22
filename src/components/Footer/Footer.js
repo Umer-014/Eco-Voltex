@@ -29,22 +29,8 @@ const Footer = () => {
     
             </p>
             <p>
-              <FaPhone className="me-2" />
-              <a
-                href="tel:+447930558824"
-                className="text-decoration-none text-white"
-              >
-                +44 7930 558824
-              </a>
-            </p>
-            <p>
-              <FaPhone className="me-2" />
-              <a
-                href="tel:+447947767758"
-                className="text-decoration-none text-white"
-              >
-                +44 7947 767758
-              </a>
+              <email className="me-2" />
+              info@ecovoltex.co.uk
             </p>
           </div>
 
