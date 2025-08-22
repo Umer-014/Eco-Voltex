@@ -25,12 +25,16 @@ const Footer = () => {
             </p>
             <p>
               <FaMapMarkerAlt className="me-2" />
-              5-7 Vine Street, Uxbridgeb London, UB81QE, United Kingdom 
-    
+              5-7 Vine Street, Uxbridgeb London, UB81QE, United Kingdom
             </p>
             <p>
-              <email className="me-2" />
-              info@ecovoltex.co.uk
+              <a
+                href="mailto:info@ecovoltex.co.uk"
+                className="flex items-center text-blue-600 hover:underline"
+              >
+                <email className="me-2" />
+                info@ecovoltex.co.uk
+              </a>
             </p>
           </div>
 
@@ -62,7 +66,6 @@ const Footer = () => {
                   className="text-light text-decoration-none"
                 >
                   PAT Testing Services
-                  
                 </Link>
               </li>
               <li>
