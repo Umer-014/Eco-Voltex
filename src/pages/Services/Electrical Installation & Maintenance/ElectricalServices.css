@@ -1,0 +1,330 @@
+.electrical-container {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #222;
+  margin: auto;
+  padding: 0;
+}
+
+/* Hero */
+.electrical-hero {
+  background: #14532d; /* deep green */
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+}
+.electrical-hero-overlay h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+.electrical-hero-overlay p {
+  font-size: 1.2rem;
+}
+
+.electrical-intro{
+  text-align: center;
+  padding: 50px 70px; 
+}
+/* Highlight */
+.highlight {
+  font-weight: bold;
+  color: #d97706; /* golden amber */
+}
+
+/* Sections */
+.electrical-section {
+  margin: 50px auto;
+  padding: 0 20px;
+  max-width: 1100px;
+}
+.electrical-section h2 {
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  color: #14532d;
+  font-size: bold;
+  text-align: center;
+}
+.electrical-section p {
+  margin-bottom: 15px;
+}
+
+/* What We Do */
+.what-we-do-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: stretch;
+}
+
+.what-we-do-text {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.what-we-do-block h3 {
+  color: #d97706; /* golden amber */
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.what-we-do-block p {
+  margin-bottom: 12px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.what-we-do-block ul {
+  padding-left: 20px;
+}
+.what-we-do-block li {
+  margin-bottom: 8px;
+}
+
+.what-we-do-highlight {
+  margin-top: 40px;
+  background: #f9fafb;
+  border-left: 4px solid #14532d;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+  color: #222;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .what-we-do-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .what-we-do-highlight {
+    margin-top: 20px;
+  }
+}
+
+/* Service Grid */
+.electrical-service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.electrical-service-card {
+  background: #D3D3D3;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  transition: 0.3s ease;
+}
+.electrical-service-card:hover {
+  background: #f1f1f1;
+  transform: translateY(-5px);
+}
+.electrical-service-card h3 {
+  color: #d97706; /* golden amber */
+  margin-bottom: 10px;
+}
+
+/* Why Choose Us */
+.why-choose-us {
+  background: #f9fafb; /* light subtle background */
+  padding: 40px 10px;
+  border-radius: 12px;
+}
+
+.why-choose-us h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #14532d;
+}
+
+.why-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;         /* removes auto-centering */
+}
+
+.why-list li {
+  margin: 12px 0;
+  padding-left: 15px;
+  border-left: 3px solid #d97706; /* golden accent */
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* --- Process (light & professional) --- */
+.electrical-process {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Container for steps */
+.electrical-process-steps {
+  position: relative;
+  display: flex;
+  gap: 28px;
+  padding: 24px 0 0 0;
+  margin: 0;
+  list-style: none;
+  align-items: flex-start;
+}
+
+/* subtle connector line behind badges (desktop) */
+.electrical-process-steps::before {
+  content: "";
+  position: absolute;
+  left: 2.5%;
+  right: 2.5%;
+  top: 28px; /* aligns with badge center */
+  height: 2px;
+  background: #ebebea; /* light neutral line */
+  z-index: 0;
+  border-radius: 2px;
+  opacity: 1;
+}
+
+/* each step */
+.electrical-process-step {
+  flex: 1 1 0;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  min-width: 0; /* prevent overflow */
+  z-index: 1;   /* keep steps above the connector */
+}
+
+/* numbered badge */
+.electrical-step-badge {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #d97706; /* amber accent */
+  color: #d97706;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 6px 14px rgba(20,83,45,0.06); /* subtle depth */
+}
+
+/* content */
+.electrical-step-body {
+  min-width: 10px;
+}
+.electrical-step-title {
+  margin: 0 0 6px 0;
+  font-size: 1rem;
+  color: #14532d; /* deep green */
+  font-weight: 600;
+}
+.electrical-step-text {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.5;
+  opacity: 0.95;
+}
+
+/* subtle hover lift for desktop */
+.electrical-process-step:hover .electrical-step-badge {
+  transform: translateY(-3px);
+  transition: transform .18s ease;
+}
+.electrical-process-step:hover .electrical-step-body {
+  transform: translateY(-2px);
+  transition: transform .18s ease;
+}
+
+/* small screens — stack vertically */
+@media (max-width: 820px) {
+  .electrical-process-steps {
+    display: block;
+    padding: 0;
+  }
+  .electrical-process-steps::before { display: none; } /* remove horizontal line */
+  .electrical-process-step {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 18px;
+    align-items: flex-start;
+  }
+  .electrical-step-badge {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    font-size: 0.95rem;
+  }
+  .electrical-step-title { font-size: 1rem; }
+  .electrical-step-text { font-size: 0.95rem; color: #444; }
+}
+
+
+
+/* CTA */
+.electrical-cta {
+  background: #14532d;
+  color: #fff;
+  text-align: center;
+  padding: 50px 20px;
+
+}
+
+
+.electrical-cta h2 {
+    color: white;
+  font-size: bold;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+.electrical-cta p {
+  margin-bottom: 20px;
+}
+.electrical-cta-btn {
+  display: inline-block;
+  padding: 12px 25px;
+  background: #d97706;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+.electrical-cta-btn:hover {
+  background: #b45309;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .electrical-hero {
+    padding: 80px 20px;
+  }
+  .electrical-hero-overlay h1 {
+    font-size: 2rem;
+  }
+  .electrical-hero-overlay p {
+    font-size: 1rem;
+  }
+  .electrical-cta h2 {
+    font-size: 1.6rem;
+  }
+}
+@media (max-width: 480px) {
+  .electrical-intro {
+    padding: 20px 10px;
+  }
+  .electrical-hero {
+    padding: 70px 10px;
+  }
+  .electrical-hero-overlay h1 {
+    font-size: 1.5rem;
+  }
+  .electrical-hero-overlay p {
+    font-size: 0.9rem;
+  }
+  .electrical-section {
+    padding: 0 10px;
+  }
+}

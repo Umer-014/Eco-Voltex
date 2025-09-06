@@ -11,6 +11,7 @@ import FAQPage from "../FAQ/FAQPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ScrollToTop from "../../components/Top/ScrollToTop";
 import LiveChat from '../../components/Chat Icon/LiveChat';
+import ElectricalServicesl from "../Services/Electrical Installation & Maintenance/ElectricalServices";
 
 const Stack = () => {
   return (
@@ -27,6 +28,7 @@ const Stack = () => {
         <Route path="/services/CCTV" element={<CCTV />} />
         <Route path="/contact" element={<ContactUsPage />} />
         <Route path="/faq" element={<FAQPage />} />
+        <Route path="/services/electrical" element={<ElectricalServicesl />} />
       </Routes>
     </Router>
   );
