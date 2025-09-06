@@ -8,210 +8,189 @@ const ElectricalServices = () => {
   return (
     <>
       <Helmet>
-        <title>
-          Electrical Installation & Maintenance in London | Eco Voltex
-        </title>
+        <title>Expert Electrical Services in London | Eco Voltex</title>
         <meta
           name="description"
-          content="Eco Voltex provides professional electrical installation and maintenance services across London and nearby areas. Certified, reliable, and energy-efficient solutions for homes and businesses."
+          content="Eco Voltex offers professional electrical installation and maintenance services in London and nearby areas. Certified, energy-efficient solutions for homes and businesses."
         />
         <meta
           name="keywords"
-          content="Electrical installation London, electrical maintenance London, Eco Voltex, certified electricians UK, reliable electrical services"
+          content="electrical installation London, electrical maintenance London, Eco Voltex, certified electricians UK, energy-efficient electrical solutions"
         />
       </Helmet>
 
       <Header />
-      <div className="electrical-container">
+      <div className="service-container">
         {/* Hero Section */}
-        <header className="electrical-hero">
-          <div className="electrical-hero-overlay">
-            <h1>Eco Voltex – Electrical Installation & Maintenance</h1>
+        <header className="service-hero">
+          <div className="service-hero-overlay">
+            <h1>Eco Voltex Electrical Services</h1>
             <p>
-              Expert electrical services for homes, businesses, and industries
+              Powering your home and business with safe, efficient solutions
             </p>
           </div>
         </header>
 
         {/* Intro */}
-        <section className="electrical-intro">
+        <section className="service-intro">
           <p>
-            At <span className="highlight">Eco Voltex</span>, we deliver expert{" "}
-            <strong>electrical installation and maintenance services</strong>{" "}
-            for residential, commercial, and industrial clients across London.
-            All of our work is carried out by certified professionals in line
-            with <strong>UK electrical safety standards</strong>.
+            At <span className="highlight">Eco Voltex</span>, we deliver{" "}
+            <strong>expert electrical installation and maintenance</strong>{" "}
+            across London. Our certified electricians ensure your systems are
+            safe, efficient, and compliant with{" "}
+            <strong>UK electrical standards</strong>.
           </p>
         </section>
 
         {/* What We Do */}
-        <section className="electrical-section what-we-do">
-          <h2>What We Do</h2>
-
+        <section className="service-section what-we-do">
+          <h2>Our Electrical Expertise</h2>
           <div className="what-we-do-text">
             <div className="what-we-do-block">
               <h3>Electrical Installation</h3>
               <p>
-                Eco Voltex delivers safe, efficient, and fully compliant
-                electrical installation services across London and nearby areas.
-                From complete wiring projects to advanced power systems, we
-                ensure every installation meets the highest professional
-                standards.
+                From new builds to renovations, we provide tailored electrical
+                installations that prioritize safety and efficiency.
               </p>
               <ul>
-                <li>
-                  New installations for homes, offices, and industrial sites
-                </li>
-                <li>System upgrades and rewiring solutions</li>
-                <li>Custom-designed electrical systems</li>
+                <li>Complete wiring for homes and commercial spaces</li>
+                <li>Smart lighting and energy-efficient systems</li>
+                <li>Custom power solutions for industrial sites</li>
               </ul>
             </div>
-
             <div className="what-we-do-block">
-              <h3>Electrical Maintenance</h3>
+              <h3>Maintenance & Repairs</h3>
               <p>
-                Our tailored maintenance programs reduce risks, lower operating
-                costs, and extend the life of your electrical infrastructure.
-                Regular inspections and preventive care help prevent downtime
-                and ensure ongoing safety.
+                Our proactive maintenance plans keep your electrical systems
+                reliable, minimizing downtime and ensuring safety.
               </p>
               <ul>
-                <li>Planned preventive maintenance schedules</li>
-                <li>Routine inspections and compliance checks</li>
-                <li>Rapid fault detection and emergency support</li>
+                <li>Regular inspections and compliance checks</li>
+                <li>Fast fault diagnosis and repairs</li>
+                <li>24/7 emergency electrical support</li>
               </ul>
             </div>
           </div>
         </section>
 
         {/* Services */}
-        <section className="electrical-section">
-          <h2>Our Services</h2>
-          <div className="electrical-service-grid">
-            <div className="electrical-service-card">
-              <h3>Electrical Installation</h3>
+        <section className="service-section">
+          <h2>Our Electrical Services</h2>
+          <div className="service-grid">
+            <div className="service-card">
+              <h3>Installation Solutions</h3>
               <ul>
-                <li>New installations for homes & offices</li>
-                <li>Full rewiring & upgrades</li>
-                <li>Custom lighting & system integration</li>
+                <li>New builds and full rewiring</li>
+                <li>Smart home and office integrations</li>
+                <li>Energy-efficient lighting design</li>
               </ul>
             </div>
-            <div className="electrical-service-card">
-              <h3>Maintenance & Repairs</h3>
+            <div className="service-card">
+              <h3>Maintenance Programs</h3>
               <ul>
-                <li>Routine inspections & testing</li>
-                <li>Preventive maintenance programs</li>
-                <li>24/7 emergency callouts</li>
+                <li>Preventive maintenance schedules</li>
+                <li>Safety inspections and testing</li>
+                <li>Emergency repair services</li>
               </ul>
             </div>
-            <div className="electrical-service-card">
+            <div className="service-card">
               <h3>Safety & Compliance</h3>
               <ul>
-                <li>Electrical Installation Condition Reports (EICR)</li>
-                <li>Surge protection & grounding</li>
-                <li>Compliance with UK regulations</li>
+                <li>EICR (Electrical Installation Condition Reports)</li>
+                <li>Surge protection and grounding systems</li>
+                <li>Full compliance with UK regulations</li>
               </ul>
             </div>
           </div>
         </section>
 
         {/* Why Choose Us */}
-        <section className="electrical-section why-choose-us">
+        <section className="service-section why-choose-us">
           <h2>Why Choose Eco Voltex?</h2>
           <ul className="why-list">
-            <li>Certified electricians with proven experience</li>
-            <li>Tailored solutions for homes, businesses, and industries</li>
-            <li>Strong commitment to safety and compliance</li>
-            <li>Energy-efficient designs that save costs long term</li>
-            <li>Reliable service trusted across London</li>
+            <li>Certified electricians with extensive expertise</li>
+            <li>Custom solutions for all property types</li>
+            <li>Commitment to safety and regulatory compliance</li>
+            <li>Energy-efficient designs to reduce costs</li>
+            <li>Trusted across London for reliable service</li>
           </ul>
         </section>
 
-        {/* Importance of Maintenance */}
-        <section className="electrical-section">
-          <h2>Why Regular Maintenance Matters</h2>
+        {/* Importance of Electrical Services */}
+        <section className="service-section">
+          <h2>Why Electrical Services Matter</h2>
           <p>
-            Small electrical issues can turn into major problems if left
-            unchecked. Routine maintenance helps prevent hazards, reduce
-            downtime, and keep your systems running efficiently. With Eco
-            Voltex, you get peace of mind that your property is safe and
-            compliant.
+            Safe and efficient electrical systems are critical for your
+            property’s functionality and safety. Eco Voltex ensures your
+            installations and maintenance meet the highest standards, preventing
+            hazards and optimizing performance.
           </p>
         </section>
 
         {/* How We Work */}
         <section
-          className="electrical-section electrical-process"
+          className="service-section service-process"
           aria-labelledby="how-we-work-title"
         >
-          <h2 id="how-we-work-title">How We Work</h2>
-
+          <h2 id="how-we-work-title">Our Process</h2>
           <ol
-            className="electrical-process-steps"
-            aria-label="Eco Voltex process"
+            className="service-process-steps"
+            aria-label="Eco Voltex electrical process"
           >
-            <li className="electrical-process-step">
-              <div className="electrical-step-badge" aria-hidden>
+            <li className="service-process-step">
+              <div className="service-step-badge" aria-hidden>
                 1
               </div>
-              <div className="electrical-step-body">
-                <h3 className="electrical-step-title">
-                  Consultation & assessment
-                </h3>
-                <p className="electrical-step-text">
-                  Site review and a clear written quotation.
+              <div className="service-step-body">
+                <h3 className="service-step-title">Site Assessment</h3>
+                <p className="service-step-text">
+                  Detailed consultation and transparent quotation.
                 </p>
               </div>
             </li>
-
-            <li className="electrical-process-step">
-              <div className="electrical-step-badge" aria-hidden>
+            <li className="service-process-step">
+              <div className="service-step-badge" aria-hidden>
                 2
               </div>
-              <div className="electrical-step-body">
-                <h3 className="electrical-step-title">Design & planning</h3>
-                <p className="electrical-step-text">
-                  Practical proposals with cost and programme.
+              <div className="service-step-body">
+                <h3 className="service-step-title">System Design</h3>
+                <p className="service-step-text">
+                  Customized electrical plans for your needs.
                 </p>
               </div>
             </li>
-
-            <li className="electrical-process-step">
-              <div className="electrical-step-badge" aria-hidden>
+            <li className="service-process-step">
+              <div className="service-step-badge" aria-hidden>
                 3
               </div>
-              <div className="electrical-step-body">
-                <h3 className="electrical-step-title">
-                  Professional installation
+              <div className="service-step-body">
+                <h3 className="service-step-title">
+                  Professional Installation
                 </h3>
-                <p className="electrical-step-text">
-                  Neat, safe work with minimal disruption.
+                <p className="service-step-text">
+                  Expert installation with minimal disruption.
                 </p>
               </div>
             </li>
-
-            <li className="electrical-process-step">
-              <div className="electrical-step-badge" aria-hidden>
+            <li className="service-process-step">
+              <div className="service-step-badge" aria-hidden>
                 4
               </div>
-              <div className="electrical-step-body">
-                <h3 className="electrical-step-title">
-                  Inspection & certification
-                </h3>
-                <p className="electrical-step-text">
-                  Final tests, documentation and formal handover.
+              <div className="service-step-body">
+                <h3 className="service-step-title">Testing & Certification</h3>
+                <p className="service-step-text">
+                  Thorough testing and compliance documentation.
                 </p>
               </div>
             </li>
-
-            <li className="electrical-process-step">
-              <div className="electrical-step-badge" aria-hidden>
+            <li className="service-process-step">
+              <div className="service-step-badge" aria-hidden>
                 5
               </div>
-              <div className="electrical-step-body">
-                <h3 className="electrical-step-title">Ongoing support</h3>
-                <p className="electrical-step-text">
-                  Optional maintenance plans and rapid follow-up.
+              <div className="service-step-body">
+                <h3 className="service-step-title">Ongoing Support</h3>
+                <p className="service-step-text">
+                  Maintenance plans and rapid response services.
                 </p>
               </div>
             </li>
@@ -219,14 +198,14 @@ const ElectricalServices = () => {
         </section>
 
         {/* Call To Action */}
-        <section className="electrical-cta">
-          <h2>Power Up Your Property with Eco Voltex</h2>
+        <section className="service-cta">
+          <h2>Power Up with Eco Voltex</h2>
           <p>
-            Contact us today for trusted electrical installation and maintenance
-            services across London and surrounding areas.
+            Contact us for expert electrical services across London and
+            surrounding areas.
           </p>
-          <a href="/contact" className="electrical-cta-btn">
-            Get in Touch
+          <a href="/contact" className="service-cta-btn">
+            Request a Quote
           </a>
         </section>
       </div>
