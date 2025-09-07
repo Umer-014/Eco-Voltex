@@ -48,19 +48,14 @@ const HeroSection = () => {
   return (
     <div className="home-page">
       {/* Hero Section */}
-      <section
-        className="home-hero"
-        style={{
-          backgroundImage: `url("https://res.cloudinary.com/dug1siluu/image/upload/v1757270478/ChatGPT_Image_Sep_7_2025_11_38_54_PM_p0d9l6.png")`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-        }}
-      >
+      <section className="home-hero">
+        <img
+          src="https://res.cloudinary.com/dug1siluu/image/upload/v1757270478/ChatGPT_Image_Sep_7_2025_11_38_54_PM_p0d9l6.png"
+          alt="Hero background"
+          className="home-hero-image"
+        />
         <div className="home-hero-overlay">
-          <div className="home-hero-content">
-            
-          </div>
+          <div className="home-hero-content">{/* Your content here */}</div>
         </div>
       </section>
 
