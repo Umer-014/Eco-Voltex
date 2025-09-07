@@ -49,10 +49,24 @@ const HeroSection = () => {
     <div className="home-page">
       {/* Hero Section */}
       <section className="home-hero">
-      <img
-        src="https://res.cloudinary.com/dug1siluu/image/upload/v1757276792/ChatGPT_Image_Sep_8_2025_01_25_22_AM_cx4pre.png"
-        alt="Hero Image"
-      />
+      <div className="hero-content">
+        <div className="hero-text">
+          <h2>Our Mission</h2>
+          <p>
+            Our mission is to empower innovation and drive progress by delivering cutting-edge solutions that transform industries and improve lives. We are committed to fostering creativity, collaboration, and sustainability in everything we do, ensuring a positive impact on our communities and the world.
+          </p>
+          <h2>Our Vision</h2>
+          <p>
+            We envision a future where technology seamlessly integrates with human aspirations, creating opportunities for growth and discovery. Our goal is to lead the way in building a connected, inclusive, and forward-thinking world, where every challenge is met with bold ideas and transformative solutions.
+          </p>
+        </div>
+        <div className="hero-image">
+          <img
+            src="https://res.cloudinary.com/dug1siluu/image/upload/v1757276792/ChatGPT_Image_Sep_8_2025_01_25_22_AM_cx4pre.png"
+            alt="Hero Image"
+          />
+        </div>
+      </div>
     </section>
 
 

@@ -35,27 +35,71 @@ body {
 /* Hero Section */
 .home-hero {
   width: 100%;
-  height: 200vh;
+  margin-top: 3rem; /* Gap above the hero section */
+  padding: 2rem 0; /* Additional padding for spacing */
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5; /* Light background for contrast */
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  max-width: 1200px; /* Max width for larger screens */
+  align-items: center;
+  gap: 2rem; /* Space between text and image */
+}
+
+.hero-text {
+  flex: 1; /* Takes up remaining space on the left */
+  padding: 1rem;
+  text-align: left;
+}
+
+.hero-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.hero-text p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.hero-image {
+  flex: 1; /* Takes up equal space on the right */
   position: relative;
+  height: 50vh; /* Maintains height for desktop */
   overflow: hidden;
 }
 
-.home-hero img {
+.hero-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures image covers the section without distortion */
+  object-fit: contain; /* Ensures entire image is visible */
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0; /* Aligns image to the right */
 }
 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
-  .home-hero {
-    height: 70vh; /* Slightly shorter height for mobile */
+  .hero-content {
+    flex-direction: column; /* Stack text and image vertically on mobile */
+    width: 95%;
+  }
+
+  .hero-image {
+    height: 40vh; /* Shorter height for mobile */
+    width: 100%; /* Full width on mobile */
+  }
+
+  .hero-text {
+    text-align: center; /* Center text for better mobile display */
   }
 }
 
