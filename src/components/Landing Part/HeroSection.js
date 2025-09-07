@@ -51,7 +51,7 @@ const HeroSection = () => {
       <section
         className="home-hero"
         style={{
-          backgroundImage: `url(${require("../../assets/images/electrical-background.jpg")})`,
+          backgroundImage: `url("https://res.cloudinary.com/dug1siluu/image/upload/v1757266929/ChatGPT_Image_Sep_7_2025_10_39_51_PM_z7oyd7.png")`,
           backgroundSize: "cover",
           backgroundPosition: "all center",
         }}
