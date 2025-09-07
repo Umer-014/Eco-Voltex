@@ -51,10 +51,10 @@ const HeroSection = () => {
       <section
   className="home-hero"
   style={{
-    backgroundImage: `url("https://res.cloudinary.com/dug1siluu/image/upload/v1757266929/ChatGPT_Image_Sep_7_2025_10_39_51_PM_z7oyd7.png")`,
-    backgroundSize: "cover",       // fills section naturally
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",  // keeps image centered
+    backgroundImage: `url("https://res.cloudinary.com/dug1siluu/image/upload/v1757270478/ChatGPT_Image_Sep_7_2025_11_38_54_PM_p0d9l6.png")`,
+    backgroundSize: "cover",     
+    backgroundRepeat: "no-repeat", 
+    backgroundPosition: "center",  
   }}
 >
   <div className="home-hero-overlay">
@@ -72,6 +72,7 @@ const HeroSection = () => {
     </div>
   </div>
 </section>
+
 
 
       {/* Services Section */}

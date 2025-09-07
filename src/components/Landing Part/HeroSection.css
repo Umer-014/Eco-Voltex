@@ -32,16 +32,15 @@ body {
   overflow-x: hidden;
 }
 
-/* Hero Section */
 .home-hero {
-  background: linear-gradient(120deg, #28a745, #1c7430);
-  height: 50vh;
+  height: 100vh;  /* take full screen height */
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   position: relative;
 }
+
 
 .home-hero-overlay {
   width: 100%;
