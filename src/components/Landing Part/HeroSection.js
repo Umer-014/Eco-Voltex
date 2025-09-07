@@ -49,31 +49,20 @@ const HeroSection = () => {
     <div className="home-page">
       {/* Hero Section */}
       <section
-  className="home-hero"
-  style={{
-    backgroundImage: `url("https://res.cloudinary.com/dug1siluu/image/upload/v1757270478/ChatGPT_Image_Sep_7_2025_11_38_54_PM_p0d9l6.png")`,
-    backgroundSize: "cover",     
-    backgroundRepeat: "no-repeat", 
-    backgroundPosition: "center",  
-  }}
->
-  <div className="home-hero-overlay">
-    <div className="home-hero-content">
-      <h1>Eco Voltex Sustainable Electrical Solutions</h1>
-      <p>
-        Your trusted partner for residential, commercial, and industrial services.
-      </p>
-      <button
-        className="home-cta-btn"
-        onClick={() => navigateTo("/contact")}
+        className="home-hero"
+        style={{
+          backgroundImage: `url("https://res.cloudinary.com/dug1siluu/image/upload/v1757270478/ChatGPT_Image_Sep_7_2025_11_38_54_PM_p0d9l6.png")`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+        }}
       >
-        Request a Free Quote
-      </button>
-    </div>
-  </div>
-</section>
-
-
+        <div className="home-hero-overlay">
+          <div className="home-hero-content">
+            
+          </div>
+        </div>
+      </section>
 
       {/* Services Section */}
       <section className="home-services">
