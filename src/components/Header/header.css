@@ -23,17 +23,30 @@ body {
   width: 60px;
   height: 60px;
   margin-right: 10px;
-  border-radius: 50%; /* Makes the image circular */
-  object-fit: contain; /* Ensures the whole image is visible */
-  border: 1px solid white; /* Optional: Add a border for better visibility */
-  background-color: white; /* Optional: Adds a background color if needed */
+  border-radius: 50%;
+  object-fit: contain;
+  border: 1px solid white;
+  background-color: white;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column; /* stack name and tagline vertically */
 }
 
 .company-name {
-  margin-left: 10px;
   font-size: 20px;
   font-weight: bold;
+  margin: 0; /* remove default spacing */
 }
+
+.tagline {
+  font-size: 12px;
+  font-style: italic;
+  color: #ccc;
+  margin: 2px 0 0 0; /* small space below name */
+}
+
 
 .nav {
   display: flex;

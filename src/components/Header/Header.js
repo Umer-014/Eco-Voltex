@@ -26,7 +26,10 @@ const Header = () => {
     <header className="header">
       <div className="logo">
         <img src={logo} alt="Eco Voltex Logo" className="logo-image" />
-        <span className="company-name">Eco Voltex</span>
+        <div className="text-container">
+          <h1 className="company-name">Eco Voltex</h1>
+          <p className="tagline">Sustainable Electrical Solutions</p>
+        </div>
       </div>
 
       {/* Mobile Menu Button using Material-UI IconButton */}
@@ -41,7 +44,11 @@ const Header = () => {
         onClose={() => toggleDrawer(false)}
       >
         <List className="drawer">
-          <ListItem style={{width: "300px"}} button onClick={() => toggleDrawer(false)}>
+          <ListItem
+            style={{ width: "300px" }}
+            button
+            onClick={() => toggleDrawer(false)}
+          >
             <Link to="/" className="nav-link">
               Home
             </Link>
@@ -59,16 +66,16 @@ const Header = () => {
               className={`dropdown-menu ${drawerDropdownOpen ? "show" : ""}`}
             >
               <Link to="/services/electrical" className="dropdown-item">
-              Electrical Installation & Maintenance
+                Electrical Installation & Maintenance
               </Link>
               <Link to="/services/Fire-alarms" className="dropdown-item">
-              Fire Alarm Systems
+                Fire Alarm Systems
               </Link>
               <Link to="/services/CCTV" className="dropdown-item">
-              CCTV & Security Systems
+                CCTV & Security Systems
               </Link>
               <Link to="/services/PAT-testing" className="dropdown-item">
-              PAT Testing
+                PAT Testing
               </Link>
             </div>
           </ListItem>
@@ -109,16 +116,16 @@ const Header = () => {
             {dropdownOpen && (
               <div className="dropdown-menu">
                 <Link to="/services/electrical" className="dropdown-item">
-                Electrical Installation & Maintenance
+                  Electrical Installation & Maintenance
                 </Link>
                 <Link to="/services/Fire-alarms" className="dropdown-item">
-                Fire Alarm Systems
+                  Fire Alarm Systems
                 </Link>
                 <Link to="/services/CCTV" className="dropdown-item">
-                CCTV & Security Systems
+                  CCTV & Security Systems
                 </Link>
                 <Link to="/services/PAT-testing" className="dropdown-item">
-                PAT Testing
+                  PAT Testing
                 </Link>
               </div>
             )}
