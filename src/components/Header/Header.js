@@ -25,11 +25,13 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo">
-        <img src={logo} alt="Eco Voltex Logo" className="logo-image" />
-        <div className="text-container">
-          <h1 className="company-name">Eco Voltex</h1>
-          <p className="tagline">Sustainable Electrical Solutions</p>
-        </div>
+        <a href="/" className="logo">
+          <img src={logo} alt="Eco Voltex Logo" className="logo-image" />
+          <div className="text-container">
+            <h1 className="company-name">Eco Voltex</h1>
+            <p className="tagline">Sustainable Electrical Solutions</p>
+          </div>
+        </a>
       </div>
 
       {/* Mobile Menu Button using Material-UI IconButton */}

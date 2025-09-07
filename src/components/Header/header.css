@@ -17,6 +17,8 @@ body {
 .logo {
   display: flex;
   align-items: center;
+  text-decoration: none; /* remove underline from link */
+  color: inherit;        /* keep text color natural */
 }
 
 .logo-image {
@@ -31,20 +33,20 @@ body {
 
 .text-container {
   display: flex;
-  flex-direction: column; /* stack name and tagline vertically */
+  flex-direction: column; /* stack name & tagline vertically */
 }
 
 .company-name {
   font-size: 20px;
   font-weight: bold;
-  margin: 0; /* remove default spacing */
+  margin: 0;
 }
 
 .tagline {
   font-size: 12px;
   font-style: italic;
   color: #ccc;
-  margin: 2px 0 0 0; /* small space below name */
+  margin: 2px 0 0 0;
 }
 
 
