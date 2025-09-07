@@ -6,19 +6,29 @@ import "./About.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import "../../components/touchPolyfill"; // Import the touch polyfill
+import "../../components/touchPolyfill"; // keep your polyfill
 
 const AboutUsPage = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
+    if (typeof window === "undefined") return;
 
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    const mq = window.matchMedia("(max-width: 768px)");
+    const onChange = (e) => setIsMobile(e.matches);
+
+    // set initial
+    setIsMobile(mq.matches);
+    // listen to changes
+    mq.addEventListener
+      ? mq.addEventListener("change", onChange)
+      : mq.addListener(onChange);
+
+    return () => {
+      mq.removeEventListener
+        ? mq.removeEventListener("change", onChange)
+        : mq.removeListener(onChange);
+    };
   }, []);
 
   const NextArrow = ({ onClick }) => (
@@ -44,24 +54,23 @@ const AboutUsPage = () => {
   const carouselSettings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 400,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: isMobile,
+    arrows: !isMobile, // arrows on desktop, dots on mobile
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     adaptiveHeight: true,
-    // iOS-specific fixes:
     swipe: true,
     swipeToSlide: true,
-    touchThreshold: 10,
+    touchThreshold: 12,
     touchMove: true,
     cssEase: "linear",
-    useCSS: false, // Important for iOS
+    // Slick/iOS stability:
+    useCSS: true,
     useTransform: true,
   };
 
-  // Grid items data
   const gridItems = [
     {
       title: "Certified Professionals",
@@ -88,73 +97,92 @@ const AboutUsPage = () => {
   return (
     <>
       <Header />
-      <main className="about-container">
-        <h1 className="main-heading">About Us</h1>
-        <p className="intro-text">
+      <main className="about max-wrap">
+        <h1 className="about__title">About Us</h1>
+
+        <p className="about__intro">
           Welcome to Eco Voltex, your trusted partner for professional
           electrical services in the UK. With a strong commitment to excellence,
           safety, and sustainability, we offer cutting-edge solutions for
-          residential, commercial, and industrial clients 24/7. Our goal is to help
-          you create energy-efficient, secure, and future-ready environments.
+          residential, commercial, and industrial clients 24/7. Our goal is to
+          help you create energy-efficient, secure, and future-ready
+          environments.
         </p>
 
-        <section className="section-about">
-          <h2 className="section-heading">Our Services</h2>
-          <div className="about-container">
-            <div className="about-text">
-              <p className="section-text">
-                From home electrical repairs to large-scale commercial projects,
-                Eco Voltex is equipped to handle any electrical service with
-                precision. Our services include:
+        <section className="section">
+          <h2 className="section__title">Our Services</h2>
+
+          {/* renamed to avoid clashing with the outer container */}
+          <div className="about-flex">
+            <div className="about-flex__text">
+              <p className="section__text">
+                From domestic electrical works to large-scale commercial and
+                industrial projects, Eco Voltex is equipped to deliver a
+                complete range of services with precision, reliability, and
+                professionalism. All works are carried out in compliance with BS
+                7671 (IET Wiring Regulations) and relevant UK building
+                standards, ensuring the highest levels of safety and quality.
               </p>
+
               <ul className="service-list">
-                <li>Energy Management & Sustainability Solutions</li>
-                <li>Smart Home Automation & Integration</li>
-                <li>Lighting Design & Installation</li>
-                <li>Fire Alarm Systems & Emergency Lighting</li>
-                <li>EV Charger Installations</li>
-                <li>Advanced Security Systems (CCTV, Intruder Alarms)</li>
-                <li>Commercial & Industrial Electrical Installations</li>
+                <li>Full and partial rewiring</li>
+                <li>Bespoke lighting design and installation</li>
+                <li>Smart home automation and system integration</li>
+                <li>
+                  Safety inspections and Electrical Installation Condition
+                  Reports (EICRs)
+                </li>
+                <li>Tailored electrical fit-outs and installations</li>
+                <li>Planned and reactive maintenance programmes</li>
+                <li>Energy management and sustainable power solutions</li>
+                <li>
+                  Fire alarm systems, emergency lighting, and advanced security
+                  (CCTV, intruder alarms)
+                </li>
+                <li>24/7 emergency call-out response for urgent issues</li>
+                <li>EV charge point installations for homes and businesses</li>
               </ul>
             </div>
-            <div className="about-image">
+
+            <div className="about-flex__image">
               <img
                 src="https://res.cloudinary.com/dug1siluu/image/upload/v1757276792/ChatGPT_Image_Sep_8_2025_01_25_22_AM_cx4pre.png"
                 alt="Eco Voltex Services"
+                loading="lazy"
               />
             </div>
           </div>
         </section>
 
-        <section className="section-about">
-          <h2 className="section-heading">Why Choose Eco Voltex?</h2>
+        <section className="section">
+          <h2 className="section__title">Why Choose Eco Voltex?</h2>
 
           {isMobile ? (
-            <div className="mobile-carousel-wrapper">
+            <div className="mobile-carousel">
               <Slider {...carouselSettings}>
-                {gridItems.map((item, index) => (
-                  <div key={index} className="grid-item-mobile">
-                    <h3 className="sub-heading-about">{item.title}</h3>
-                    <p className="grid-text">{item.content}</p>
+                {gridItems.map((item, idx) => (
+                  <div key={idx} className="card card--mobile">
+                    <h3 className="card__title">{item.title}</h3>
+                    <p className="card__text">{item.content}</p>
                   </div>
                 ))}
               </Slider>
             </div>
           ) : (
-            <div className="grid-container">
-              {gridItems.map((item, index) => (
-                <div key={index} className="grid-item">
-                  <h3 className="sub-heading-about">{item.title}</h3>
-                  <p className="grid-text">{item.content}</p>
+            <div className="grid">
+              {gridItems.map((item, idx) => (
+                <div key={idx} className="card">
+                  <h3 className="card__title">{item.title}</h3>
+                  <p className="card__text">{item.content}</p>
                 </div>
               ))}
             </div>
           )}
         </section>
 
-        <section className="section-about">
-          <h2 className="section-heading">Our Journey</h2>
-          <p className="section-text">
+        <section className="section">
+          <h2 className="section__title">Our Journey</h2>
+          <p className="section__text">
             Eco Voltex was founded in 2024, and since then, we have been
             delivering high-quality electrical solutions across the UK. With
             thousands of satisfied clients, our reputation for reliability,

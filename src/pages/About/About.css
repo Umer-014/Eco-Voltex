@@ -1,389 +1,180 @@
-/* General Container Styles */
-.about-container {
+/* Layout helpers */
+.max-wrap {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
-.main-heading {
-  font-size: 3rem;
-  font-weight: bold;
+/* Headings & text */
+.about__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
   text-align: center;
   color: #333;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-.intro-text {
-  font-size: 1.125rem;
+.about__intro {
+  font-size: 1rem;
   line-height: 1.8;
   color: #555;
   margin-bottom: 2rem;
-  text-align: center; /* Change this to 'left', 'center', 'right', or 'justify' */
+  text-align: left;
 }
 
-.section-about {
-  margin-bottom: 4rem;
+.section {
+  margin-bottom: 3rem;
 }
 
-.about-container {
+.section__title {
+  font-size: clamp(1.75rem, 3.2vw, 2.25rem);
+  font-weight: 700;
+  color: #000;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.section__text {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+}
+
+/* Services block (mobile-first) */
+.about-flex {
   display: flex;
-  align-items: start;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap; /* Helps with responsiveness */
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
-.about-text {
-  flex: 1;
-  min-width: 300px;
+.about-flex__text {
+  min-width: 0;
 }
 
-.about-image {
-  flex: 1;
+.service-list {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin: 0.5rem 0 1.25rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+.about-flex__image {
   display: flex;
   justify-content: center;
 }
 
-.about-image img {
+.about-flex__image img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
 }
 
-/* Tablet and smaller: stack items */
-@media (max-width: 768px) {
-  .about-container {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .about-image {
-    margin-top: 1.5rem;
-  }
-}
-
-.section-heading {
-  font-size: 2.25rem;
-  font-weight: bold;
-  color: black;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.section-text {
-  font-size: 1.125rem;
-  color: #555;
-  line-height: 1.75;
-  margin-bottom: 1.5rem;
-}
-
-.service-list {
-  list-style-type: disc;
-  margin-left: 2rem;
-  font-size: 1.125rem;
-  color: #555;
-  margin-bottom: 1.5rem;
-}
-
-
-.grid-container {
+/* Cards & grid */
+.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.25rem;
 }
 
-.grid-item {
-  background-color: #D3D3D3;
+.card {
+  grid-column: span 12;
+  background: #d3d3d3;
   border: 1px solid #ddd;
-  padding: 1.5rem;
-  border-radius: 8px;
+  border-radius: 10px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.06);
 }
 
-.sub-heading-about {
-  font-size: 1.5rem;
-  font-weight: bold;
+.card__title {
+  font-size: 1.25rem;
+  font-weight: 700;
   color: #333;
 }
 
-.grid-text {
+.card__text {
   font-size: 1rem;
   color: #555;
-  line-height: 1.5;
-  margin-top: 1rem;
+  line-height: 1.6;
+  margin-top: 0.75rem;
 }
 
-/* Responsive Styles */
-@media (max-width: 1024px) {
-  .main-heading {
-      font-size: 2.75rem;
-  }
-
-  .intro-text {
-      font-size: 1rem;
-  }
-
-  .section-heading {
-      font-size: 2.125rem;
-  }
-
-  .grid-item {
-      padding: 1.25rem;
-  }
-
-  .sub-heading-about {
-      font-size: 1.25rem;
-  }
+/* Slick mobile wrapper */
+.mobile-carousel {
+  width: 100%;
 }
 
-@media (max-width: 768px) {
-  .main-heading {
-      font-size: 2.5rem;
-  }
-
-  .section-heading {
-      font-size: 2rem;
-  }
-
-  .sub-heading-about {
-      font-size: 1.25rem;
-  }
-
-  .service-list {
-      margin-left: 1.5rem;
-  }
-
-  .grid-container {
-      grid-template-columns: 1fr; /* Stacks items vertically */
-  }
-
-  .grid-item {
-      padding: 1rem;
-  }
-
-  .intro-text {
-      font-size: 1rem;
-      text-align: justify;
-  }
-
-  .section-text {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-  }
+/* Slick basics (safe tweaks) */
+.slick-slider { width: 100%; }
+.slick-list {
+  overflow: hidden;
+  padding: 10px 0;
+  -webkit-overflow-scrolling: touch;
+}
+.slick-track { display: flex; }
+.slick-slide { touch-action: pan-y; }
+.card--mobile {
+  width: 100% !important;
+  box-sizing: border-box;
 }
 
-@media (max-width: 480px) {
-  .main-heading {
-      font-size: 2rem;
-  }
-
-  .intro-text {
-      font-size: 0.95rem;
-  }
-
-  .section-heading {
-      font-size: 1.75rem;
-  }
-
-  .sub-heading-about {
-      font-size: 1.125rem;
-  }
-
-  .service-list {
-      margin-left: 1rem;
-      font-size: 1rem;
-  }
-
-  .grid-item {
-      padding: 0.8rem;
-  }
-
-  .grid-text {
-      font-size: 0.95rem;
-  }
+/* Dots */
+.slick-dots { bottom: -20px; }
+.slick-dots li button:before {
+  font-size: 10px;
+  color: #777;
+}
+.slick-dots li.slick-active button:before {
+  color: #333;
 }
 
-/* Keep all your existing styles */
+/* Arrows (visible mainly on desktop since we hide via JS for mobile) */
+.slick-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  border: none;
+  background: #f5f5f5;
+  border-radius: 50%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+.slick-prev { left: 8px; }
+.slick-next { right: 8px; }
+.slick-arrow svg { font-size: 18px; color: #333; }
 
-/* Add these new styles for the carousel */
-@media (max-width: 768px) {
-  .mobile-carousel-container {
-    position: relative;
-    padding: 0 30px; /* Space for arrows */
-  }
-
-  /* Slick Carousel Customizations */
-  .slick-slider {
-    margin: 0 -0.5rem;
-  }
-
-  .slick-list {
-    padding: 1rem 0;
-    overflow: visible;
-  }
-
-  .slick-slide > div {
-    padding: 0 0.5rem;
-  }
-
-  .slick-dots {
-    bottom: -25px;
-  }
-
-  .slick-dots li button:before {
-    font-size: 10px;
-    color: #555;
-  }
-
-  .slick-dots li.slick-active button:before {
-    color: #333;
-  }
-
-  /* Navigation arrows */
-  .slick-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-    border: none;
-    background: #f5f5f5;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 1;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-  }
-
-  .slick-arrow:hover {
-    background: #e0e0e0;
-  }
-
-  .slick-arrow:focus {
-    outline: none;
-  }
-
-  .slick-prev {
-    left: 5px;
-  }
-
-  .slick-next {
-    right: 5px;
-  }
-
-  .slick-arrow svg {
-    color: #333;
-    font-size: 16px;
-  }
-
-  /* Adjust grid item for carousel */
-  .grid-item {
-    height: 100%;
-    margin: 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    padding: 1.5rem;
-  }
+/* ---------- Breakpoints ---------- */
+@media (min-width: 600px) {
+  .about__intro { font-size: 1.0625rem; }
+  .section__text { font-size: 1.0625rem; }
 }
 
-/* Remove the previous grid-container mobile styles since we're using slick now */
-
-/* Keep all existing desktop styles */
-
-/* Mobile Carousel Styles */
-@media (max-width: 768px) {
-  .mobile-carousel-wrapper {
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    padding: 0 40px; /* Space for arrows */
+@media (min-width: 768px) {
+  /* Services layout becomes two-column */
+  .about-flex {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
   }
+  .about-flex__text, .about-flex__image { flex: 1; }
 
-  .slick-slider {
-    width: 100%;
-  }
+  /* Grid becomes 2 columns */
+  .card { grid-column: span 6; }
 
-  .slick-list {
-    overflow: hidden;
-    padding: 10px 0;
-  }
-
-  .slick-track {
-    display: flex;
-  }
-
-  .grid-item-mobile {
-    width: 100% !important;
-    padding: 1.5rem;
-    margin: 0 5px;
-    background-color: #D3D3D3;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-sizing: border-box;
-  }
-
-  /* Navigation arrows */
-  .slick-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-    border: none;
-    background: #f5f5f5;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 1;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
-
-  .slick-prev {
-    left: 5px;
-  }
-
-  .slick-next {
-    right: 5px;
-  }
-
-  /* Dots styling */
-  .slick-dots {
-    bottom: -25px;
-  }
-
-  .slick-dots li button:before {
-    font-size: 10px;
-    color: #555;
-  }
-
-  .slick-dots li.slick-active button:before {
-    color: #333;
-  }
+  .service-list { padding-left: 1.5rem; }
 }
 
-@media (max-width: 768px) {
-  /* Add these properties to your existing slick-list */
-  .slick-list {
-    -webkit-overflow-scrolling: touch; /* Enables momentum scrolling on iOS */
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
+@media (min-width: 1024px) {
+  /* Grid becomes 4 columns on large screens */
+  .card { grid-column: span 3; }
 
-  /* iOS touch area enhancement */
-  .slick-slide {
-    touch-action: pan-y; /* Improves touch responsiveness */
-  }
-
-  /* Prevent iOS text selection during swipe */
-  .grid-item-mobile {
-    -webkit-user-select: none;
-    user-select: none;
-  }
+  .about__intro { font-size: 1.125rem; }
+  .section__text { font-size: 1.125rem; }
 }
-
