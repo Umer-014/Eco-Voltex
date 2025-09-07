@@ -33,23 +33,26 @@ body {
 }
 
 .home-hero {
-  height: 100vh; /* full screen */
+  height: 100vh;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* hide overflow if img is bigger */
+  overflow: hidden;
 }
 
 .home-hero-image {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* fills area without stretching */
-  z-index: -1; /* send image behind content */
+  width: 100%;         /* always full width */
+  height: auto;        /* keep natural aspect ratio */
+  min-height: 100%;    /* makes sure it also fills tall screens */
+  object-fit: cover;   /* keeps it covering */
+  object-position: center;
+  z-index: -1;
 }
+
 
 .home-hero-overlay {
   position: relative;
