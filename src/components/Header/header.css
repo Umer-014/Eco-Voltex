@@ -71,6 +71,7 @@ body {
   padding: 10px 15px;
   font-size: 16px;
   transition: color 0.3s ease, font-size 0s ease; /* Disable font size transition */
+  color: inherit;   
 }
 
 /* Ensure link color remains white even after focus, visit, or active states */
