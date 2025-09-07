@@ -51,11 +51,12 @@ const HeroSection = () => {
       <section
         className="home-hero"
         style={{
-          backgroundImage: `url("https://res.cloudinary.com/dug1siluu/image/upload/v1757266929/ChatGPT_Image_Sep_7_2025_10_39_51_PM_z7oyd7.png")`,
-          backgroundSize: "contain", // shows the whole image
-          backgroundRepeat: "no-repeat", // prevents tiling
-          backgroundPosition: "center", // keeps it centered
-        }}
+  backgroundImage: `url("https://res.cloudinary.com/dug1siluu/image/upload/v1757266929/ChatGPT_Image_Sep_7_2025_10_39_51_PM_z7oyd7.png")`,
+  backgroundSize: "cover",    // fill container
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "center",
+}}
+
       >
         <div className="home-hero-overlay">
           <div className="home-hero-content">
