@@ -49,23 +49,11 @@ const HeroSection = () => {
     <div className="home-page">
       {/* Hero Section */}
       <section className="home-hero">
-        <div className="home-hero-overlay">
-          <div className="home-hero-content">
-            <h1>Eco Voltex Sustainable Electrical Solutions</h1>
-            <p>
-              Your trusted partner for residential, commercial, and industrial
-              services.
-            </p>
-            <button
-              className="home-cta-btn"
-              onClick={() => navigateTo("/contact")}
-            >
-              Request a Free Quote
-            </button>
-          </div>
-        </div>
-      </section>
-
+      <img
+        src="https://res.cloudinary.com/dug1siluu/image/upload/v1757276792/ChatGPT_Image_Sep_8_2025_01_25_22_AM_cx4pre.png"
+        alt="Hero Image"
+      />
+    </section>
 
 
       {/* Services Section */}
