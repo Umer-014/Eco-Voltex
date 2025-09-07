@@ -35,7 +35,7 @@ body {
 /* Hero Section */
 .home-hero {
   background: linear-gradient(120deg, #28a745, #1c7430);
-  height: 100vh;
+  height: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;
