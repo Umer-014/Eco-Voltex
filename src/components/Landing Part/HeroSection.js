@@ -54,7 +54,7 @@ const HeroSection = () => {
   backgroundImage: `url("https://res.cloudinary.com/dug1siluu/image/upload/v1757266929/ChatGPT_Image_Sep_7_2025_10_39_51_PM_z7oyd7.png")`,
   backgroundSize: "cover",    // fill container
   backgroundRepeat: "no-repeat",
-  backgroundPosition: "center",
+  backgroundPosition: "70% ",
 }}
 
       >
