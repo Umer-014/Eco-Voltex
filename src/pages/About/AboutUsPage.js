@@ -94,14 +94,14 @@ const AboutUsPage = () => {
           Welcome to Eco Voltex, your trusted partner for professional
           electrical services in the UK. With a strong commitment to excellence,
           safety, and sustainability, we offer cutting-edge solutions for
-          residential, commercial, and industrial clients. Our goal is to help
+          residential, commercial, and industrial clients 24/7. Our goal is to help
           you create energy-efficient, secure, and future-ready environments.
         </p>
 
         <section className="section-about">
+          <h2 className="section-heading">Our Services</h2>
           <div className="about-container">
             <div className="about-text">
-              <h2 className="section-heading">Our Services</h2>
               <p className="section-text">
                 From home electrical repairs to large-scale commercial projects,
                 Eco Voltex is equipped to handle any electrical service with
