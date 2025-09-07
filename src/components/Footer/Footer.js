@@ -132,17 +132,12 @@ const Footer = () => {
                 <FaLinkedin size={30} />
               </a>
             </div>
-            <p className="mt-3">Monday: 8:00 AM - 5:00 PM</p>
-            <p className="mt-3">Tuesday: 8:00 AM - 5:00 PM</p>
-            <p className="mt-3">Wednesday: 8:00 AM - 5:00 PM</p>
-            <p className="mt-3">Thusday: 8:00 AM - 5:00 PM</p>
-            <p className="mt-3">Friday: 8:00 AM - 5:00 PM</p>
+              <p className="mt-3 fw-bold">24 Hour Service</p>
           </div>
         </div>
 
         {/* Bottom Footer */}
         <div className="text-center mt-4">
-          <hr className="text-light" />
           <p className="mb-0">&copy; 2025 Eco Voltex. All Rights Reserved.</p>
         </div>
       </div>

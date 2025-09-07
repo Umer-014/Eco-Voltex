@@ -1,10 +1,9 @@
 footer {
   background-color: #343a40; /* Dark background for footer */
-  padding: 40px 0;
+  
 }
 
 footer h5 {
-  margin-bottom: 20px;
   font-size: 20px;
   font-weight: 600;
   color: #ffffff; /* White text for headers */
@@ -37,7 +36,6 @@ footer hr {
 }
 
 footer .text-center p {
-  margin: 10px 0;
   font-size: 14px;
   color: #d3d3d3;
 }
