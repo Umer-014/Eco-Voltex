@@ -267,6 +267,116 @@ const AboutUsPage = () => {
             ever-evolving needs of our clients.
           </p>
         </section>
+
+        {/* Testimonials Section */}
+        <section className="home-testimonials">
+          <h2 className="section__title">What Our Clients Say</h2>
+          <Slider
+            className="home-testimonials-row"
+            dots={true}
+            infinite={true}
+            speed={500}
+            slidesToShow={3}
+            slidesToScroll={1}
+            arrows={false}
+            autoplay={true}
+            autoplaySpeed={2000}
+            pauseOnHover={true}
+            adaptiveHeight={true}
+            responsive={[
+              {
+                breakpoint: 1024,
+                settings: { slidesToShow: 2, slidesToScroll: 1 },
+              },
+              {
+                breakpoint: 768,
+                settings: { slidesToShow: 1, slidesToScroll: 1 },
+              },
+            ]}
+          >
+            <div className="home-testimonial">
+              "Eco Voltex provided outstanding electrical services for our
+              office in London. The team was professional, efficient, and
+              friendly. Highly recommended!"
+              <div className="home-client-info">
+                <div>
+                  <h4>Sarah J.</h4>
+                  <p>Business Owner, London</p>
+                </div>
+              </div>
+            </div>
+            <div className="home-testimonial">
+              "Quick response and excellent workmanship. I feel much safer with
+              the new fire alarm system installed by Eco Voltex."
+              <div className="home-client-info">
+                <div>
+                  <h4>Michael B.</h4>
+                  <p>Homeowner, London</p>
+                </div>
+              </div>
+            </div>
+            <div className="home-testimonial">
+              "Professional, reliable, and affordable. The PAT testing was quick
+              and thorough. Will use Eco Voltex again!"
+              <div className="home-client-info">
+                <div>
+                  <h4>Linda K.</h4>
+                  <p>Landlord, London</p>
+                </div>
+              </div>
+            </div>
+            <div className="home-testimonial">
+              "The Eco Voltex team explained everything clearly and finished the
+              job on time. Great service!"
+              <div className="home-client-info">
+                <div>
+                  <h4>James T.</h4>
+                  <p>Restaurant Owner, London</p>
+                </div>
+              </div>
+            </div>
+            <div className="home-testimonial">
+              "Very friendly staff and excellent aftercare. Highly recommend for
+              any electrical work."
+              <div className="home-client-info">
+                <div>
+                  <h4>Priya S.</h4>
+                  <p>Shop Manager, London</p>
+                </div>
+              </div>
+            </div>
+            <div className="home-testimonial">
+              "They upgraded our lighting system and helped us save on energy
+              bills. Thank you, Eco Voltex!"
+              <div className="home-client-info">
+                <div>
+                  <h4>Omar R.</h4>
+                  <p>Office Manager, London</p>
+                </div>
+              </div>
+            </div>
+            <div className="home-testimonial">
+              "Prompt, polite, and very knowledgeable. The best electrical
+              company in London!"
+              <div className="home-client-info">
+                <div>
+                  <h4>Emily W.</h4>
+                  <p>Homeowner, London</p>
+                </div>
+              </div>
+            </div>
+            <div className="home-testimonial">
+              "From booking to completion, everything was smooth and
+              stress-free. Will use again."
+              <div className="home-client-info">
+                <div>
+                  <h4>David L.</h4>
+                  <p>Landlord, London</p>
+                </div>
+              </div>
+            </div>
+          </Slider>
+        </section>
       </main>
       <Footer />
     </>

@@ -48,7 +48,7 @@ const HeroSection = () => {
   return (
     <div className="home-page">
       {/* Hero Section */}
-      
+
       <section className="home-hero">
         <div className="home-hero-overlay">
           <div className="home-hero-content">
@@ -66,7 +66,6 @@ const HeroSection = () => {
           </div>
         </div>
       </section>
-
 
       {/* Services Section */}
       <section className="home-services">
@@ -209,6 +208,10 @@ const HeroSection = () => {
           slidesToShow={3}
           slidesToScroll={1}
           arrows={true}
+          autoplay={true}
+          autoplaySpeed={2000}
+          pauseOnHover={true}
+          adaptiveHeight={true}
           responsive={[
             {
               breakpoint: 1024,
