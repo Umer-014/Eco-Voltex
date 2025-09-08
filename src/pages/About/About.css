@@ -221,3 +221,22 @@
   .section__text { font-size: 1.125rem; }
 }
 
+/* Mobile layout */
+@media (max-width: 767px) {
+  .about-flex-mine {
+    flex-direction: column; /* Stack text and image vertically on mobile */
+  }
+
+  .about-flex__text {
+    max-width: 100%; /* Full width for text on mobile */
+  }
+
+  .about-flex__image {
+    justify-content: center; /* Center image on mobile */
+    margin-top: 1rem; /* Add spacing above image */
+  }
+
+  .about-flex__image img {
+    height: auto; /* Adjust image height for mobile */
+  }
+}
