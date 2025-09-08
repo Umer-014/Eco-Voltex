@@ -79,7 +79,7 @@
 }
 .card {
   grid-column: span 12;
-  background-color: gray !important; /* Changed from #000 to red */
+  background-color: #D3D3D3 !important; /* Changed from #000 to red */
   border-radius: 10px;
   padding: 1.25rem;
   box-shadow: 0 2px 5px rgba(0,0,0,0.06);
@@ -93,7 +93,7 @@
 
 .card__text {
   font-size: 1rem;
-  color: white;
+  color: black;
   line-height: 1.6;
   margin-top: 0.75rem;
 }
