@@ -101,12 +101,19 @@ const AboutUsPage = () => {
         <h1 className="about__title">About Us</h1>
 
         <p className="about__intro">
-          Welcome to Eco Voltex, your trusted partner for professional
-          electrical services in the UK. With a strong commitment to excellence,
-          safety, and sustainability, we offer cutting-edge solutions for
-          residential, commercial, and industrial clients 24/7. Our goal is to
-          help you create energy-efficient, secure, and future-ready
-          environments.
+          Welcome to{" "}
+          <a href="/about" className="about__link">
+            <strong> Eco Voltex</strong>
+          </a>
+          , your trusted partner for professional electrical services in the UK.
+          With a strong commitment to excellence, safety, and sustainability, we
+          offer cutting-edge solutions for residential, commercial, and
+          industrial clients{" "}
+          <a href="/contact" className="about__link">
+            <strong>24/7</strong>
+          </a>
+          . Our goal is to help you create energy-efficient, secure, and
+          future-ready environments.
         </p>
 
         <section className="section">
@@ -116,39 +123,109 @@ const AboutUsPage = () => {
           <div className="about-flex">
             <div className="about-flex__text">
               <p className="section__text">
-                From domestic electrical works to large-scale commercial and
-                industrial projects, Eco Voltex is equipped to deliver a
-                complete range of services with precision, reliability, and
-                professionalism. All works are carried out in compliance with BS
-                7671 (IET Wiring Regulations) and relevant UK building
-                standards, ensuring the highest levels of safety and quality.
+                At{" "}
+                <a href="/about" className="about__link">
+                  <strong> Eco Voltex</strong>
+                </a>
+                , we power homes, businesses, and industries with safe,
+                reliable, and future-ready electrical solutions. Every project
+                is carried out in line with{" "}
+                <strong>BS 7671 (IET Wiring Regulations)</strong> and UK
+                building standards, ensuring the highest levels of safety and
+                quality.
               </p>
+              <div className="about-flex-mine">
+                <ul className="service-list">
+                  <p className="service-list__title_1">
+                    <a href="/contact" className="about__link">
+                      <strong>Homes</strong>
+                    </a>
+                  </p>
+                  <li className="list">Full and partial rewiring</li>
+                  <li className="list">
+                    Bespoke lighting design and installation
+                  </li>
+                  <li className="list">
+                    Smart home automation and system integration
+                  </li>
+                  <li className="list">
+                    Safety inspections and Electrical Installation Condition
+                    Reports (EICRs)
+                  </li>
+                  <li className="list">
+                    PAT Testing (Portable Appliance Testing)
+                  </li>
+                  <li className="list">
+                    24/7 emergency call-out response for urgent issues
+                  </li>
+                  <p className="service-list__title_2">
+                    <a href="/contact" className="about__link">
+                      <strong>Businesses</strong>
+                    </a>
+                  </p>
+                  <li className="list">
+                    EV charge point installations for homes
+                  </li>
+                  <li className="list">
+                    Tailored electrical fit-outs and installations
+                  </li>
+                  <li className="list">
+                    Planned and reactive maintenance programmes
+                  </li>
+                  <li className="list">
+                    Energy management and sustainable power solutions
+                  </li>
+                  <li className="list">
+                    Fire alarm systems, emergency lighting, and advanced
+                    security (CCTV, intruder alarms)
+                  </li>
+                  <li className="list">
+                    Safety inspections and Electrical Installation Condition
+                    Reports (EICRs)
+                  </li>
 
-              <ul className="service-list">
-                <li>Full and partial rewiring</li>
-                <li>Bespoke lighting design and installation</li>
-                <li>Smart home automation and system integration</li>
-                <li>
-                  Safety inspections and Electrical Installation Condition
-                  Reports (EICRs)
-                </li>
-                <li>Tailored electrical fit-outs and installations</li>
-                <li>Planned and reactive maintenance programmes</li>
-                <li>Energy management and sustainable power solutions</li>
-                <li>
-                  Fire alarm systems, emergency lighting, and advanced security
-                  (CCTV, intruder alarms)
-                </li>
-                <li>24/7 emergency call-out response for urgent issues</li>
-                <li>EV charge point installations for homes and businesses</li>
-              </ul>
-            </div>
+                  <li className="list">
+                    PAT Testing (Portable Appliance Testing)
+                  </li>
+                  <li className="list">
+                    24/7 emergency call-out response for urgent issues
+                  </li>
 
-            <div className="about-flex__image">
-              <img
-                src="https://res.cloudinary.com/dug1siluu/image/upload/v1757342482/ChatGPT_Image_Sep_8_2025_07_33_54_PM_pkgwsr.png"                alt="Eco Voltex Services"
-                loading="lazy"
-              />
+                  <p className="service-list__title_3">
+                    <a href="/contact" className="about__link">
+                      <strong>Industry</strong>
+                    </a>
+                  </p>
+                  <li className="list">
+                    Large-scale rewiring and industrial installations
+                  </li>
+                  <li className="list">
+                    Custom electrical fit-outs for warehouses and factories
+                  </li>
+                  <li className="list">
+                    Planned and reactive maintenance programmes
+                  </li>
+                  <li className="list">
+                    Energy management and sustainable power systems
+                  </li>
+                  <li className="list">
+                    Fire alarm systems, emergency lighting, and advanced
+                    security (CCTV, intruder alarms)
+                  </li>
+                  <li className="list">
+                    PAT Testing (Portable Appliance Testing)
+                  </li>
+                  <li className="list">24/7 emergency call-out response</li>
+                </ul>
+
+                <div className="about-flex__image">
+                  <img
+                    src="https://res.cloudinary.com/dug1siluu/image/upload/v1757342482/ChatGPT_Image_Sep_8_2025_07_33_54_PM_pkgwsr.png"
+                    alt="Eco Voltex Services"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -161,8 +238,8 @@ const AboutUsPage = () => {
               <Slider {...carouselSettings}>
                 {gridItems.map((item, idx) => (
                   <div key={idx} className="card card--mobile">
-                    <h3 className="card__title">{item.title}</h3>
-                    <p className="card__text">{item.content}</p>
+                    <h3 className="card__title_about">{item.title}</h3>
+                    <p className="card__text_about">{item.content}</p>
                   </div>
                 ))}
               </Slider>
@@ -170,9 +247,9 @@ const AboutUsPage = () => {
           ) : (
             <div className="grid">
               {gridItems.map((item, idx) => (
-                <div className="card">
-                  <h3 className="card__title">{item.title}</h3>
-                  <p className="card__text">{item.content}</p>
+                <div className="card_about">
+                  <h3 className="card__title_about">{item.title}</h3>
+                  <p className="card__text_about">{item.content}</p>
                 </div>
               ))}
             </div>
