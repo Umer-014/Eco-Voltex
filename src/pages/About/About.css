@@ -77,11 +77,9 @@
   grid-template-columns: repeat(12, 1fr);
   gap: 1.25rem;
 }
-
 .card {
   grid-column: span 12;
-  background: #D3D3D3;
-  border: 1px solid #ddd;
+  background-color: gray !important; /* Changed from #000 to red */
   border-radius: 10px;
   padding: 1.25rem;
   box-shadow: 0 2px 5px rgba(0,0,0,0.06);
@@ -95,11 +93,10 @@
 
 .card__text {
   font-size: 1rem;
-  color: #555;
+  color: white;
   line-height: 1.6;
   margin-top: 0.75rem;
 }
-
 /* Slick mobile wrapper */
 .mobile-carousel {
   width: 100%;
@@ -178,3 +175,4 @@
   .about__intro { font-size: 1.125rem; }
   .section__text { font-size: 1.125rem; }
 }
+

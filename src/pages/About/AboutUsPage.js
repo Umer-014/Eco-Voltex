@@ -171,7 +171,7 @@ const AboutUsPage = () => {
           ) : (
             <div className="grid">
               {gridItems.map((item, idx) => (
-                <div key={idx} className="card">
+                <div className="card">
                   <h3 className="card__title">{item.title}</h3>
                   <p className="card__text">{item.content}</p>
                 </div>
