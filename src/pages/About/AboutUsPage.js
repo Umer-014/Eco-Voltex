@@ -146,8 +146,7 @@ const AboutUsPage = () => {
 
             <div className="about-flex__image">
               <img
-                src="https://res.cloudinary.com/dug1siluu/image/upload/v1757276792/ChatGPT_Image_Sep_8_2025_01_25_22_AM_cx4pre.png"
-                alt="Eco Voltex Services"
+                src="https://res.cloudinary.com/dug1siluu/image/upload/v1757342482/ChatGPT_Image_Sep_8_2025_07_33_54_PM_pkgwsr.png"                alt="Eco Voltex Services"
                 loading="lazy"
               />
             </div>

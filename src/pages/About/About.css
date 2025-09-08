@@ -67,7 +67,7 @@
 
 .about-flex__image img {
   max-width: 100%;
-  height: auto;
+  height:70vh;
   border-radius: 8px;
 }
 
@@ -86,6 +86,9 @@
 }
 
 .card__title {
+  align-content: center !important;
+  align-items: center !important;
+  justify-content: center !important;
   font-size: 1.25rem;
   font-weight: 700;
   color: #333;
