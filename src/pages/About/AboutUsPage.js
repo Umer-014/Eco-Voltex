@@ -51,25 +51,6 @@ const AboutUsPage = () => {
     </button>
   );
 
-  const carouselSettings = {
-    dots: true,
-    infinite: true,
-    speed: 400,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: !isMobile, // arrows on desktop, dots on mobile
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    adaptiveHeight: true,
-    swipe: true,
-    swipeToSlide: true,
-    touchThreshold: 12,
-    touchMove: true,
-    cssEase: "linear",
-    // Slick/iOS stability:
-    useCSS: true,
-    useTransform: true,
-  };
 
   const gridItems = [
     {
@@ -231,29 +212,35 @@ const AboutUsPage = () => {
         </section>
 
         <section className="section">
-          <h2 className="section__title">Why Choose Eco Voltex?</h2>
-
-          {isMobile ? (
-            <div className="mobile-carousel">
-              <Slider {...carouselSettings}>
+          <h2 className="section__title text-3xl font-bold mb-6">
+            Why Choose Eco Voltex?
+          </h2>
+          <p>
+            At Eco Voltex, our roots are built on <strong>trust, expertise, and innovation</strong>. Every branch of our work is dedicated to powering your
+            home or business the right way.
+          </p>
+          <div className="about-why-choose-container">
+            <div className="about-why-choose-item">
+              <div className="grid">
                 {gridItems.map((item, idx) => (
-                  <div key={idx} className="card card--mobile">
-                    <h3 className="card__title_about">{item.title}</h3>
+                  <div className="card_about">
+                    <br />
+
+                    <h3 className="service-list__title_3">
+                      {item.title}
+                    </h3>
                     <p className="card__text_about">{item.content}</p>
                   </div>
                 ))}
-              </Slider>
+              </div>
             </div>
-          ) : (
-            <div className="grid">
-              {gridItems.map((item, idx) => (
-                <div className="card_about">
-                  <h3 className="card__title_about">{item.title}</h3>
-                  <p className="card__text_about">{item.content}</p>
-                </div>
-              ))}
+            <div className="about-flex__image">
+              <img
+                src="https://res.cloudinary.com/dug1siluu/image/upload/v1757354106/ChatGPT_Image_Sep_8_2025_10_52_27_PM_krwpik.png"
+                alt="Eco Voltex Feature"
+              />
             </div>
-          )}
+          </div>
         </section>
 
         <section className="section">
