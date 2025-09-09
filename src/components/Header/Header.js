@@ -83,6 +83,12 @@ const Header = () => {
           </ListItem>
 
           <ListItem button onClick={() => toggleDrawer(false)}>
+            <Link to="/location" className="nav-link">
+              Location
+            </Link>
+          </ListItem>
+
+          <ListItem button onClick={() => toggleDrawer(false)}>
             <Link to="/faq" className="nav-link">
               FAQ
             </Link>
@@ -132,6 +138,13 @@ const Header = () => {
               </div>
             )}
           </li>
+
+          <li className="nav-item">
+            <Link to="/location" className="nav-link">
+              Location
+            </Link>
+          </li>
+          
           <li className="nav-item">
             <Link to="/faq" className="nav-link">
               FAQ
