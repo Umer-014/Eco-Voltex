@@ -214,8 +214,10 @@ const Location = () => {
           {/* Content area */}
           <div className="location-list">
             <p className="intro">
-              At <strong>Eco Voltex</strong>, we cover London and its
-              surrounding areas. Choose a region to see the specific areas we
+              At <a href="/" style={{ textDecoration: "none", color: "inherit" }}>
+                <strong>Eco Voltex</strong>
+              </a>
+              , we cover London and its surrounding areas. Choose a region to see the specific areas we
               serve.
             </p>
 
