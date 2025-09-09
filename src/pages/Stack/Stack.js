@@ -12,7 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ScrollToTop from "../../components/Top/ScrollToTop";
 import LiveChat from '../../components/Chat Icon/LiveChat';
 import ElectricalServicesl from "../Services/Electrical Installation & Maintenance/ElectricalServices";
-import Location from "../Locaation/Location";
+import Location from "../Locations/Location";
 
 const Stack = () => {
   return (

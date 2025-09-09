@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./Location.css";
+
 const Location = () => {
   return (
     <>
@@ -13,3 +14,4 @@ const Location = () => {
     </>
   );
 }
+export default Location;
