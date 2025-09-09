@@ -83,7 +83,7 @@ const HeroSection = () => {
             <div
               className="home-service-image"
               style={{
-                backgroundImage: `url('https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto,w_1200/v1754988697/Electric_nlvv5l.png')`,
+                backgroundImage: `url('https://res.cloudinary.com/dug1siluu/image/upload/v1757451431/ChatGPT_Image_Sep_8_2025_07_39_13_PM_bmxeky.png')`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 height: "400px",
@@ -117,7 +117,7 @@ const HeroSection = () => {
             <div
               className="home-service-image"
               style={{
-                backgroundImage: `url('https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto,w_1200/v1754988695/Fire_Alarm_gfmbqk.jpg')`,
+                backgroundImage: `url('https://res.cloudinary.com/dug1siluu/image/upload/v1757451432/ChatGPT_Image_Sep_8_2025_07_39_01_PM_krb6wi.png')`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 height: "400px",
@@ -148,7 +148,7 @@ const HeroSection = () => {
             <div
               className="home-service-image"
               style={{
-                backgroundImage: `url('https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto,w_1200/v1754988695/CCTV_eknsb9.jpg')`,
+                backgroundImage: `url('https://res.cloudinary.com/dug1siluu/image/upload/v1757451433/ChatGPT_Image_Sep_8_2025_07_36_29_PM_rhmrgt.png')`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 height: "400px",
