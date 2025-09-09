@@ -1,55 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Slider from "react-slick";
 import "./About.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import "../../components/touchPolyfill"; // keep your polyfill
 
 const AboutUsPage = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const mq = window.matchMedia("(max-width: 768px)");
-    const onChange = (e) => setIsMobile(e.matches);
-
-    // set initial
-    setIsMobile(mq.matches);
-    // listen to changes
-    mq.addEventListener
-      ? mq.addEventListener("change", onChange)
-      : mq.addListener(onChange);
-
-    return () => {
-      mq.removeEventListener
-        ? mq.removeEventListener("change", onChange)
-        : mq.removeListener(onChange);
-    };
-  }, []);
-
-  const NextArrow = ({ onClick }) => (
-    <button
-      className="slick-arrow slick-next"
-      onClick={onClick}
-      aria-label="Next"
-    >
-      <FaChevronRight />
-    </button>
-  );
-
-  const PrevArrow = ({ onClick }) => (
-    <button
-      className="slick-arrow slick-prev"
-      onClick={onClick}
-      aria-label="Previous"
-    >
-      <FaChevronLeft />
-    </button>
-  );
+ 
 
 
   const gridItems = [
@@ -216,8 +175,10 @@ const AboutUsPage = () => {
             Why Choose Eco Voltex?
           </h2>
           <p>
-            At Eco Voltex, our roots are built on <strong>trust, expertise, and innovation</strong>. Every branch of our work is dedicated to powering your
-            home or business the right way.
+            At Eco Voltex, our roots are built on{" "}
+            <strong>trust, expertise, and innovation</strong>. Every branch of
+            our work is dedicated to powering your home or business the right
+            way.
           </p>
           <div className="about-why-choose-container">
             <div className="about-why-choose-item">
@@ -225,10 +186,7 @@ const AboutUsPage = () => {
                 {gridItems.map((item, idx) => (
                   <div className="card_about">
                     <br />
-
-                    <h3 className="service-list__title_3">
-                      {item.title}
-                    </h3>
+                    <h3 className="service-list__title_3">{item.title}</h3>
                     <p className="card__text_about">{item.content}</p>
                   </div>
                 ))}
@@ -246,12 +204,17 @@ const AboutUsPage = () => {
         <section className="section">
           <h2 className="section__title">Our Journey</h2>
           <p className="section__text">
-            Eco Voltex was founded in 2024, and since then, we have been
-            delivering high-quality electrical solutions across the UK. With
-            thousands of satisfied clients, our reputation for reliability,
-            safety, and sustainability continues to grow. We are committed to
-            providing innovative and energy-efficient solutions that meet the
-            ever-evolving needs of our clients.
+            <a href="/about" className="about__link">
+              <strong> Eco Voltex</strong>
+            </a>{" "}
+            was founded in 2024 with a clear vision: to provide safe,
+            reliable, and sustainable electrical solutions across the UK. From
+            day one, we’ve focused on delivering quality services tailored to
+            the needs of our clients. Over time, our reputation has grown
+            stronger, built on trust, innovation, and energy-efficient
+            practices. Today, we continue to expand our reach, supporting an
+            ever-growing community of satisfied clients while shaping a smarter,
+            more sustainable future.
           </p>
         </section>
 
