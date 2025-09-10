@@ -79,7 +79,7 @@ const HeroSection = () => {
             viewport={{ once: true }}
             variants={cardVariants}
           >
-            <h3>Electrical Installation and Maintenance Services</h3>
+            <h3>Electrical Installation</h3>
             <div
               className="home-service-image"
               style={{
