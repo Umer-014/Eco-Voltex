@@ -18,6 +18,9 @@ export default function LocationsPreview() {
   });
 
   const contactHref = "/contact"; // change if your contact page path differs
+  const mapImageUrl =
+    "https://res.cloudinary.com/dug1siluu/image/upload/v1757539643/ChatGPT_Image_Sep_11_2025_02_26_16_AM_cprzxz.png";
+
   const palette = {
     central: "#16a34a",
     north: "#0ea5e9",
@@ -33,194 +36,194 @@ export default function LocationsPreview() {
   const postcodeIndex = useMemo(
     () => ({
       // EAST (E, IG, RM)
-      E1:{area:"Whitechapel / Aldgate",region:"East London",id:"east"},
-      E2:{area:"Bethnal Green / Shoreditch",region:"East London",id:"east"},
-      E3:{area:"Bow / Mile End",region:"East London",id:"east"},
-      E4:{area:"Chingford",region:"East London",id:"east"},
-      E5:{area:"Clapton",region:"East London",id:"east"},
-      E6:{area:"East Ham / Beckton",region:"East London",id:"east"},
-      E7:{area:"Forest Gate",region:"East London",id:"east"},
-      E8:{area:"Dalston / Haggerston",region:"East London",id:"east"},
-      E9:{area:"Homerton / Hackney",region:"East London",id:"east"},
-      E10:{area:"Leyton",region:"East London",id:"east"},
-      E11:{area:"Leytonstone / Wanstead",region:"East London",id:"east"},
-      E12:{area:"Manor Park",region:"East London",id:"east"},
-      E13:{area:"Plaistow / Upton Park",region:"East London",id:"east"},
-      E14:{area:"Canary Wharf / Poplar",region:"East London",id:"east"},
-      E15:{area:"Stratford / West Ham",region:"East London",id:"east"},
-      E16:{area:"Canning Town / Royal Docks",region:"East London",id:"east"},
-      E17:{area:"Walthamstow",region:"East London",id:"east"},
-      E18:{area:"South Woodford",region:"East London",id:"east"},
-      IG1:{area:"Ilford",region:"East London",id:"east"},
-      IG2:{area:"Gants Hill / Newbury Park",region:"East London",id:"east"},
-      IG3:{area:"Seven Kings",region:"East London",id:"east"},
-      IG4:{area:"Redbridge",region:"East London",id:"east"},
-      IG5:{area:"Clayhall",region:"East London",id:"east"},
-      IG6:{area:"Barkingside / Fairlop",region:"East London",id:"east"},
-      IG7:{area:"Chigwell",region:"East London",id:"east"},
-      IG8:{area:"Woodford Green",region:"East London",id:"east"},
-      IG9:{area:"Buckhurst Hill",region:"East London",id:"east"},
-      IG10:{area:"Loughton",region:"East London",id:"east"},
-      IG11:{area:"Barking",region:"East London",id:"east"},
-      RM1:{area:"Romford",region:"East London",id:"east"},
-      RM2:{area:"Gidea Park",region:"East London",id:"east"},
-      RM3:{area:"Harold Wood",region:"East London",id:"east"},
-      RM5:{area:"Collier Row",region:"East London",id:"east"},
-      RM6:{area:"Chadwell Heath",region:"East London",id:"east"},
-      RM7:{area:"Rush Green",region:"East London",id:"east"},
-      RM8:{area:"Dagenham (north)",region:"East London",id:"east"},
-      RM9:{area:"Dagenham (central)",region:"East London",id:"east"},
-      RM10:{area:"Dagenham (south)",region:"East London",id:"east"},
+      E1: { area: "Whitechapel / Aldgate", region: "East London", id: "east" },
+      E2: { area: "Bethnal Green / Shoreditch", region: "East London", id: "east" },
+      E3: { area: "Bow / Mile End", region: "East London", id: "east" },
+      E4: { area: "Chingford", region: "East London", id: "east" },
+      E5: { area: "Clapton", region: "East London", id: "east" },
+      E6: { area: "East Ham / Beckton", region: "East London", id: "east" },
+      E7: { area: "Forest Gate", region: "East London", id: "east" },
+      E8: { area: "Dalston / Haggerston", region: "East London", id: "east" },
+      E9: { area: "Homerton / Hackney", region: "East London", id: "east" },
+      E10: { area: "Leyton", region: "East London", id: "east" },
+      E11: { area: "Leytonstone / Wanstead", region: "East London", id: "east" },
+      E12: { area: "Manor Park", region: "East London", id: "east" },
+      E13: { area: "Plaistow / Upton Park", region: "East London", id: "east" },
+      E14: { area: "Canary Wharf / Poplar", region: "East London", id: "east" },
+      E15: { area: "Stratford / West Ham", region: "East London", id: "east" },
+      E16: { area: "Canning Town / Royal Docks", region: "East London", id: "east" },
+      E17: { area: "Walthamstow", region: "East London", id: "east" },
+      E18: { area: "South Woodford", region: "East London", id: "east" },
+      IG1: { area: "Ilford", region: "East London", id: "east" },
+      IG2: { area: "Gants Hill / Newbury Park", region: "East London", id: "east" },
+      IG3: { area: "Seven Kings", region: "East London", id: "east" },
+      IG4: { area: "Redbridge", region: "East London", id: "east" },
+      IG5: { area: "Clayhall", region: "East London", id: "east" },
+      IG6: { area: "Barkingside / Fairlop", region: "East London", id: "east" },
+      IG7: { area: "Chigwell", region: "East London", id: "east" },
+      IG8: { area: "Woodford Green", region: "East London", id: "east" },
+      IG9: { area: "Buckhurst Hill", region: "East London", id: "east" },
+      IG10: { area: "Loughton", region: "East London", id: "east" },
+      IG11: { area: "Barking", region: "East London", id: "east" },
+      RM1: { area: "Romford", region: "East London", id: "east" },
+      RM2: { area: "Gidea Park", region: "East London", id: "east" },
+      RM3: { area: "Harold Wood", region: "East London", id: "east" },
+      RM5: { area: "Collier Row", region: "East London", id: "east" },
+      RM6: { area: "Chadwell Heath", region: "East London", id: "east" },
+      RM7: { area: "Rush Green", region: "East London", id: "east" },
+      RM8: { area: "Dagenham (north)", region: "East London", id: "east" },
+      RM9: { area: "Dagenham (central)", region: "East London", id: "east" },
+      RM10: { area: "Dagenham (south)", region: "East London", id: "east" },
 
       // WEST (W, UB, TW)
-      W1:{area:"Marylebone / Soho",region:"Central London",id:"central"},
-      W2:{area:"Paddington / Bayswater",region:"West London",id:"west"},
-      W3:{area:"Acton",region:"West London",id:"west"},
-      W4:{area:"Chiswick",region:"West London",id:"west"},
-      W5:{area:"Ealing",region:"West London",id:"west"},
-      W6:{area:"Hammersmith",region:"West London",id:"west"},
-      W7:{area:"Hanwell",region:"West London",id:"west"},
-      W8:{area:"Kensington",region:"West London",id:"west"},
-      W9:{area:"Maida Vale",region:"West London",id:"west"},
-      W10:{area:"Ladbroke Grove",region:"West London",id:"west"},
-      W11:{area:"Notting Hill",region:"West London",id:"west"},
-      W12:{area:"Shepherd’s Bush",region:"West London",id:"west"},
-      W13:{area:"West Ealing",region:"West London",id:"west"},
-      W14:{area:"West Kensington",region:"West London",id:"west"},
-      UB1:{area:"Southall",region:"West London",id:"west"},
-      UB2:{area:"Southall (Norwood Green)",region:"West London",id:"west"},
-      UB3:{area:"Hayes",region:"West London",id:"west"},
-      UB4:{area:"Yeading",region:"West London",id:"west"},
-      UB5:{area:"Northolt",region:"West London",id:"west"},
-      UB6:{area:"Greenford / Perivale",region:"West London",id:"west"},
-      UB7:{area:"West Drayton",region:"West London",id:"west"},
-      UB8:{area:"Uxbridge",region:"West London",id:"west"},
-      UB9:{area:"Denham / Harefield",region:"West London",id:"west"},
-      UB10:{area:"Ickenham / Hillingdon",region:"West London",id:"west"},
-      UB11:{area:"Stockley Park",region:"West London",id:"west"},
-      TW1:{area:"Twickenham",region:"Greater London",id:"greater"},
-      TW2:{area:"Whitton",region:"Greater London",id:"greater"},
-      TW3:{area:"Hounslow",region:"West London",id:"west"},
-      TW4:{area:"Hounslow West",region:"West London",id:"west"},
-      TW5:{area:"Heston",region:"West London",id:"west"},
-      TW7:{area:"Isleworth",region:"West London",id:"west"},
-      TW8:{area:"Brentford",region:"West London",id:"west"},
+      W1: { area: "Marylebone / Soho", region: "Central London", id: "central" },
+      W2: { area: "Paddington / Bayswater", region: "West London", id: "west" },
+      W3: { area: "Acton", region: "West London", id: "west" },
+      W4: { area: "Chiswick", region: "West London", id: "west" },
+      W5: { area: "Ealing", region: "West London", id: "west" },
+      W6: { area: "Hammersmith", region: "West London", id: "west" },
+      W7: { area: "Hanwell", region: "West London", id: "west" },
+      W8: { area: "Kensington", region: "West London", id: "west" },
+      W9: { area: "Maida Vale", region: "West London", id: "west" },
+      W10: { area: "Ladbroke Grove", region: "West London", id: "west" },
+      W11: { area: "Notting Hill", region: "West London", id: "west" },
+      W12: { area: "Shepherd’s Bush", region: "West London", id: "west" },
+      W13: { area: "West Ealing", region: "West London", id: "west" },
+      W14: { area: "West Kensington", region: "West London", id: "west" },
+      UB1: { area: "Southall", region: "West London", id: "west" },
+      UB2: { area: "Southall (Norwood Green)", region: "West London", id: "west" },
+      UB3: { area: "Hayes", region: "West London", id: "west" },
+      UB4: { area: "Yeading", region: "West London", id: "west" },
+      UB5: { area: "Northolt", region: "West London", id: "west" },
+      UB6: { area: "Greenford / Perivale", region: "West London", id: "west" },
+      UB7: { area: "West Drayton", region: "West London", id: "west" },
+      UB8: { area: "Uxbridge", region: "West London", id: "west" },
+      UB9: { area: "Denham / Harefield", region: "West London", id: "west" },
+      UB10: { area: "Ickenham / Hillingdon", region: "West London", id: "west" },
+      UB11: { area: "Stockley Park", region: "West London", id: "west" },
+      TW1: { area: "Twickenham", region: "Greater London", id: "greater" },
+      TW2: { area: "Whitton", region: "Greater London", id: "greater" },
+      TW3: { area: "Hounslow", region: "West London", id: "west" },
+      TW4: { area: "Hounslow West", region: "West London", id: "west" },
+      TW5: { area: "Heston", region: "West London", id: "west" },
+      TW7: { area: "Isleworth", region: "West London", id: "west" },
+      TW8: { area: "Brentford", region: "West London", id: "west" },
 
       // NORTH / NORTH-WEST (N, NW, HA, EN)
-      N1:{area:"Islington",region:"North & North-West London",id:"north"},
-      N2:{area:"East Finchley",region:"North & North-West London",id:"north"},
-      N3:{area:"Finchley Central",region:"North & North-West London",id:"north"},
-      N4:{area:"Finsbury Park",region:"North & North-West London",id:"north"},
-      N5:{area:"Highbury",region:"North & North-West London",id:"north"},
-      N6:{area:"Highgate",region:"North & North-West London",id:"north"},
-      N7:{area:"Holloway",region:"North & North-West London",id:"north"},
-      N8:{area:"Crouch End",region:"North & North-West London",id:"north"},
-      N9:{area:"Lower Edmonton",region:"North & North-West London",id:"north"},
-      N10:{area:"Muswell Hill",region:"North & North-West London",id:"north"},
-      N11:{area:"New Southgate",region:"North & North-West London",id:"north"},
-      N12:{area:"North Finchley",region:"North & North-West London",id:"north"},
-      N13:{area:"Palmers Green",region:"North & North-West London",id:"north"},
-      N14:{area:"Southgate",region:"North & North-West London",id:"north"},
-      N15:{area:"Seven Sisters",region:"North & North-West London",id:"north"},
-      N16:{area:"Stoke Newington",region:"North & North-West London",id:"north"},
-      N17:{area:"Tottenham",region:"North & North-West London",id:"north"},
-      N18:{area:"Upper Edmonton",region:"North & North-West London",id:"north"},
-      N19:{area:"Archway",region:"North & North-West London",id:"north"},
-      N20:{area:"Whetstone",region:"North & North-West London",id:"north"},
-      N21:{area:"Winchmore Hill",region:"North & North-West London",id:"north"},
-      N22:{area:"Wood Green",region:"North & North-West London",id:"north"},
-      NW1:{area:"Camden Town / Regent’s Park",region:"North & North-West London",id:"north"},
-      NW2:{area:"Cricklewood / Dollis Hill",region:"North & North-West London",id:"north"},
-      NW3:{area:"Hampstead",region:"North & North-West London",id:"north"},
-      NW4:{area:"Hendon",region:"North & North-West London",id:"north"},
-      NW5:{area:"Kentish Town / Gospel Oak",region:"North & North-West London",id:"north"},
-      NW6:{area:"Kilburn / West Hampstead",region:"North & North-West London",id:"north"},
-      NW7:{area:"Mill Hill",region:"North & North-West London",id:"north"},
-      NW8:{area:"St John’s Wood",region:"North & North-West London",id:"north"},
-      NW9:{area:"Colindale / Kingsbury",region:"North & North-West London",id:"north"},
-      NW10:{area:"Willesden / Harlesden / Park Royal",region:"North & North-West London",id:"north"},
-      NW11:{area:"Golders Green",region:"North & North-West London",id:"north"},
-      HA0:{area:"Wembley Central",region:"North & North-West London",id:"north"},
-      HA1:{area:"Harrow",region:"North & North-West London",id:"north"},
-      HA2:{area:"South Harrow",region:"North & North-West London",id:"north"},
-      HA3:{area:"Harrow / Wealdstone",region:"North & North-West London",id:"north"},
-      HA4:{area:"Ruislip",region:"North & North-West London",id:"north"},
-      HA5:{area:"Pinner",region:"North & North-West London",id:"north"},
-      HA6:{area:"Northwood",region:"North & North-West London",id:"north"},
-      HA7:{area:"Stanmore",region:"North & North-West London",id:"north"},
-      HA8:{area:"Edgware",region:"North & North-West London",id:"north"},
-      HA9:{area:"Wembley Stadium",region:"North & North-West London",id:"north"},
-      EN1:{area:"Enfield Town",region:"North & North-West London",id:"north"},
-      EN2:{area:"Enfield Chase",region:"North & North-West London",id:"north"},
-      EN3:{area:"Ponders End",region:"North & North-West London",id:"north"},
+      N1: { area: "Islington", region: "North & North-West London", id: "north" },
+      N2: { area: "East Finchley", region: "North & North-West London", id: "north" },
+      N3: { area: "Finchley Central", region: "North & North-West London", id: "north" },
+      N4: { area: "Finsbury Park", region: "North & North-West London", id: "north" },
+      N5: { area: "Highbury", region: "North & North-West London", id: "north" },
+      N6: { area: "Highgate", region: "North & North-West London", id: "north" },
+      N7: { area: "Holloway", region: "North & North-West London", id: "north" },
+      N8: { area: "Crouch End", region: "North & North-West London", id: "north" },
+      N9: { area: "Lower Edmonton", region: "North & North-West London", id: "north" },
+      N10: { area: "Muswell Hill", region: "North & North-West London", id: "north" },
+      N11: { area: "New Southgate", region: "North & North-West London", id: "north" },
+      N12: { area: "North Finchley", region: "North & North-West London", id: "north" },
+      N13: { area: "Palmers Green", region: "North & North-West London", id: "north" },
+      N14: { area: "Southgate", region: "North & North-West London", id: "north" },
+      N15: { area: "Seven Sisters", region: "North & North-West London", id: "north" },
+      N16: { area: "Stoke Newington", region: "North & North-West London", id: "north" },
+      N17: { area: "Tottenham", region: "North & North-West London", id: "north" },
+      N18: { area: "Upper Edmonton", region: "North & North-West London", id: "north" },
+      N19: { area: "Archway", region: "North & North-West London", id: "north" },
+      N20: { area: "Whetstone", region: "North & North-West London", id: "north" },
+      N21: { area: "Winchmore Hill", region: "North & North-West London", id: "north" },
+      N22: { area: "Wood Green", region: "North & North-West London", id: "north" },
+      NW1: { area: "Camden Town / Regent’s Park", region: "North & North-West London", id: "north" },
+      NW2: { area: "Cricklewood / Dollis Hill", region: "North & North-West London", id: "north" },
+      NW3: { area: "Hampstead", region: "North & North-West London", id: "north" },
+      NW4: { area: "Hendon", region: "North & North-West London", id: "north" },
+      NW5: { area: "Kentish Town / Gospel Oak", region: "North & North-West London", id: "north" },
+      NW6: { area: "Kilburn / West Hampstead", region: "North & North-West London", id: "north" },
+      NW7: { area: "Mill Hill", region: "North & North-West London", id: "north" },
+      NW8: { area: "St John’s Wood", region: "North & North-West London", id: "north" },
+      NW9: { area: "Colindale / Kingsbury", region: "North & North-West London", id: "north" },
+      NW10: { area: "Willesden / Harlesden / Park Royal", region: "North & North-West London", id: "north" },
+      NW11:{ area: "Golders Green", region: "North & North-West London", id: "north" },
+      HA0: { area: "Wembley Central", region: "North & North-West London", id: "north" },
+      HA1: { area: "Harrow", region: "North & North-West London", id: "north" },
+      HA2: { area: "South Harrow", region: "North & North-West London", id: "north" },
+      HA3: { area: "Harrow / Wealdstone", region: "North & North-West London", id: "north" },
+      HA4: { area: "Ruislip", region: "North & North-West London", id: "north" },
+      HA5: { area: "Pinner", region: "North & North-West London", id: "north" },
+      HA6: { area: "Northwood", region: "North & North-West London", id: "north" },
+      HA7: { area: "Stanmore", region: "North & North-West London", id: "north" },
+      HA8: { area: "Edgware", region: "North & North-West London", id: "north" },
+      HA9: { area: "Wembley Stadium", region: "North & North-West London", id: "north" },
+      EN1: { area: "Enfield Town", region: "North & North-West London", id: "north" },
+      EN2: { area: "Enfield Chase", region: "North & North-West London", id: "north" },
+      EN3: { area: "Ponders End", region: "North & North-West London", id: "north" },
 
       // SOUTH-EAST (SE, BR, DA)
-      SE1:{area:"Waterloo / London Bridge",region:"South-East London",id:"se"},
-      SE2:{area:"Abbey Wood",region:"South-East London",id:"se"},
-      SE3:{area:"Blackheath",region:"South-East London",id:"se"},
-      SE4:{area:"Brockley",region:"South-East London",id:"se"},
-      SE5:{area:"Camberwell",region:"South-East London",id:"se"},
-      SE6:{area:"Catford / Hither Green",region:"South-East London",id:"se"},
-      SE7:{area:"Charlton",region:"South-East London",id:"se"},
-      SE8:{area:"Deptford",region:"South-East London",id:"se"},
-      SE9:{area:"Eltham",region:"South-East London",id:"se"},
-      SE10:{area:"Greenwich",region:"South-East London",id:"se"},
-      SE12:{area:"Lee / Grove Park",region:"South-East London",id:"se"},
-      SE13:{area:"Lewisham",region:"South-East London",id:"se"},
-      SE14:{area:"New Cross",region:"South-East London",id:"se"},
-      SE15:{area:"Peckham / Nunhead",region:"South-East London",id:"se"},
-      SE16:{area:"Surrey Quays / Rotherhithe",region:"South-East London",id:"se"},
-      SE17:{area:"Walworth / Elephant",region:"South-East London",id:"se"},
-      SE18:{area:"Woolwich / Plumstead",region:"South-East London",id:"se"},
-      SE23:{area:"Forest Hill",region:"South-East London",id:"se"},
-      SE26:{area:"Sydenham",region:"South-East London",id:"se"},
-      BR1:{area:"Bromley",region:"South-East London",id:"se"},
-      BR2:{area:"Bromley Common / Keston",region:"South-East London",id:"se"},
-      BR3:{area:"Beckenham",region:"South-East London",id:"se"},
-      BR7:{area:"Chislehurst",region:"South-East London",id:"se"},
-      DA1:{area:"Dartford",region:"South-East London",id:"se"},
-      DA5:{area:"Bexley",region:"South-East London",id:"se"},
-      DA6:{area:"Bexleyheath",region:"South-East London",id:"se"},
+      SE1: { area: "Waterloo / London Bridge", region: "South-East London", id: "se" },
+      SE2: { area: "Abbey Wood", region: "South-East London", id: "se" },
+      SE3: { area: "Blackheath", region: "South-East London", id: "se" },
+      SE4: { area: "Brockley", region: "South-East London", id: "se" },
+      SE5: { area: "Camberwell", region: "South-East London", id: "se" },
+      SE6: { area: "Catford / Hither Green", region: "South-East London", id: "se" },
+      SE7: { area: "Charlton", region: "South-East London", id: "se" },
+      SE8: { area: "Deptford", region: "South-East London", id: "se" },
+      SE9: { area: "Eltham", region: "South-East London", id: "se" },
+      SE10:{ area: "Greenwich", region: "South-East London", id: "se" },
+      SE12:{ area: "Lee / Grove Park", region: "South-East London", id: "se" },
+      SE13:{ area: "Lewisham", region: "South-East London", id: "se" },
+      SE14:{ area: "New Cross", region: "South-East London", id: "se" },
+      SE15:{ area: "Peckham / Nunhead", region: "South-East London", id: "se" },
+      SE16:{ area: "Surrey Quays / Rotherhithe", region: "South-East London", id: "se" },
+      SE17:{ area: "Walworth / Elephant", region: "South-East London", id: "se" },
+      SE18:{ area: "Woolwich / Plumstead", region: "South-East London", id: "se" },
+      SE23:{ area: "Forest Hill", region: "South-East London", id: "se" },
+      SE26:{ area: "Sydenham", region: "South-East London", id: "se" },
+      BR1: { area: "Bromley", region: "South-East London", id: "se" },
+      BR2: { area: "Bromley Common / Keston", region: "South-East London", id: "se" },
+      BR3: { area: "Beckenham", region: "South-East London", id: "se" },
+      BR7: { area: "Chislehurst", region: "South-East London", id: "se" },
+      DA1: { area: "Dartford", region: "South-East London", id: "se" },
+      DA5: { area: "Bexley", region: "South-East London", id: "se" },
+      DA6: { area: "Bexleyheath", region: "South-East London", id: "se" },
 
       // SOUTH-WEST (SW, KT, CR slice)
-      SW1:{area:"Westminster / Victoria",region:"Central London",id:"central"},
-      SW2:{area:"Brixton",region:"South-West London",id:"sw"},
-      SW3:{area:"Chelsea",region:"South-West London",id:"sw"},
-      SW4:{area:"Clapham",region:"South-West London",id:"sw"},
-      SW5:{area:"Earls Court",region:"South-West London",id:"sw"},
-      SW6:{area:"Fulham",region:"South-West London",id:"sw"},
-      SW7:{area:"South Kensington",region:"South-West London",id:"sw"},
-      SW8:{area:"Nine Elms / Vauxhall",region:"South-West London",id:"sw"},
-      SW9:{area:"Stockwell",region:"South-West London",id:"sw"},
-      SW10:{area:"West Brompton / World’s End",region:"South-West London",id:"sw"},
-      SW11:{area:"Battersea",region:"South-West London",id:"sw"},
-      SW12:{area:"Balham",region:"South-West London",id:"sw"},
-      SW13:{area:"Barnes",region:"South-West London",id:"sw"},
-      SW14:{area:"Mortlake / East Sheen",region:"South-West London",id:"sw"},
-      SW15:{area:"Putney / Roehampton",region:"South-West London",id:"sw"},
-      SW16:{area:"Streatham",region:"South-West London",id:"sw"},
-      SW17:{area:"Tooting",region:"South-West London",id:"sw"},
-      SW18:{area:"Wandsworth / Earlsfield",region:"South-West London",id:"sw"},
-      SW19:{area:"Wimbledon",region:"South-West London",id:"sw"},
-      SW20:{area:"Raynes Park",region:"South-West London",id:"sw"},
-      KT1:{area:"Kingston upon Thames",region:"South-West London",id:"sw"},
-      KT2:{area:"Kingston (North)",region:"South-West London",id:"sw"},
-      KT3:{area:"New Malden",region:"South-West London",id:"sw"},
-      KT4:{area:"Worcester Park",region:"South-West London",id:"sw"},
-      KT5:{area:"Surbiton (Berrylands)",region:"South-West London",id:"sw"},
-      KT6:{area:"Surbiton",region:"South-West London",id:"sw"},
-      KT7:{area:"Thames Ditton",region:"South-West London",id:"sw"},
-      CR0:{area:"Croydon",region:"Greater London",id:"greater"},
-      CR4:{area:"Mitcham",region:"South-West London",id:"sw"},
+      SW1: { area: "Westminster / Victoria", region: "Central London", id: "central" },
+      SW2: { area: "Brixton", region: "South-West London", id: "sw" },
+      SW3: { area: "Chelsea", region: "South-West London", id: "sw" },
+      SW4: { area: "Clapham", region: "South-West London", id: "sw" },
+      SW5: { area: "Earls Court", region: "South-West London", id: "sw" },
+      SW6: { area: "Fulham", region: "South-West London", id: "sw" },
+      SW7: { area: "South Kensington", region: "South-West London", id: "sw" },
+      SW8: { area: "Nine Elms / Vauxhall", region: "South-West London", id: "sw" },
+      SW9: { area: "Stockwell", region: "South-West London", id: "sw" },
+      SW10:{ area: "West Brompton / World’s End", region: "South-West London", id: "sw" },
+      SW11:{ area: "Battersea", region: "South-West London", id: "sw" },
+      SW12:{ area: "Balham", region: "South-West London", id: "sw" },
+      SW13:{ area: "Barnes", region: "South-West London", id: "sw" },
+      SW14:{ area: "Mortlake / East Sheen", region: "South-West London", id: "sw" },
+      SW15:{ area: "Putney / Roehampton", region: "South-West London", id: "sw" },
+      SW16:{ area: "Streatham", region: "South-West London", id: "sw" },
+      SW17:{ area: "Tooting", region: "South-West London", id: "sw" },
+      SW18:{ area: "Wandsworth / Earlsfield", region: "South-West London", id: "sw" },
+      SW19:{ area: "Wimbledon", region: "South-West London", id: "sw" },
+      SW20:{ area: "Raynes Park", region: "South-West London", id: "sw" },
+      KT1: { area: "Kingston upon Thames", region: "South-West London", id: "sw" },
+      KT2: { area: "Kingston (North)", region: "South-West London", id: "sw" },
+      KT3: { area: "New Malden", region: "South-West London", id: "sw" },
+      KT4: { area: "Worcester Park", region: "South-West London", id: "sw" },
+      KT5: { area: "Surbiton (Berrylands)", region: "South-West London", id: "sw" },
+      KT6: { area: "Surbiton", region: "South-West London", id: "sw" },
+      KT7: { area: "Thames Ditton", region: "South-West London", id: "sw" },
+      CR0: { area: "Croydon", region: "Greater London", id: "greater" },
+      CR4: { area: "Mitcham", region: "South-West London", id: "sw" },
 
       // CENTRAL (WC, EC)
-      WC1:{area:"Bloomsbury",region:"Central London",id:"central"},
-      WC2:{area:"Covent Garden / Strand",region:"Central London",id:"central"},
-      EC1:{area:"Clerkenwell / Farringdon",region:"Central London",id:"central"},
-      EC1A:{area:"Smithfield",region:"Central London",id:"central"},
-      EC2:{area:"Bank / Moorgate",region:"Central London",id:"central"},
-      EC3:{area:"Monument / Tower",region:"Central London",id:"central"},
-      EC4:{area:"St Paul’s / Blackfriars",region:"Central London",id:"central"},
+      WC1: { area: "Bloomsbury", region: "Central London", id: "central" },
+      WC2: { area: "Covent Garden / Strand", region: "Central London", id: "central" },
+      EC1: { area: "Clerkenwell / Farringdon", region: "Central London", id: "central" },
+      EC1A: { area: "Smithfield", region: "Central London", id: "central" },
+      EC2: { area: "Bank / Moorgate", region: "Central London", id: "central" },
+      EC3: { area: "Monument / Tower", region: "Central London", id: "central" },
+      EC4: { area: "St Paul’s / Blackfriars", region: "Central London", id: "central" },
     }),
     []
   );
@@ -252,14 +255,14 @@ export default function LocationsPreview() {
     }
     const prefix = key.replace(/\d.*$/, "").toUpperCase();
     const heur = {
-      EC:{region:"Central London",id:"central"},
-      WC:{region:"Central London",id:"central"},
-      E:{region:"East London",id:"east"}, IG:{region:"East London",id:"east"}, RM:{region:"East London",id:"east"},
-      SE:{region:"South-East London",id:"se"}, BR:{region:"South-East London",id:"se"}, DA:{region:"South-East London",id:"se"},
-      SW:{region:"South-West London",id:"sw"}, KT:{region:"South-West London",id:"sw"}, CR:{region:"Greater London",id:"greater"},
-      W:{region:"West London",id:"west"}, UB:{region:"West London",id:"west"}, TW:{region:"West London",id:"west"},
-      N:{region:"North & North-West London",id:"north"}, EN:{region:"North & North-West London",id:"north"},
-      NW:{region:"North & North-West London",id:"north"}, HA:{region:"North & North-West London",id:"north"},
+      EC: { region: "Central London", id: "central" },
+      WC: { region: "Central London", id: "central" },
+      E: { region: "East London", id: "east" }, IG: { region: "East London", id: "east" }, RM: { region: "East London", id: "east" },
+      SE: { region: "South-East London", id: "se" }, BR: { region: "South-East London", id: "se" }, DA: { region: "South-East London", id: "se" },
+      SW: { region: "South-West London", id: "sw" }, KT: { region: "South-West London", id: "sw" }, CR: { region: "Greater London", id: "greater" },
+      W: { region: "West London", id: "west" }, UB: { region: "West London", id: "west" }, TW: { region: "West London", id: "west" },
+      N: { region: "North & North-West London", id: "north" }, EN: { region: "North & North-West London", id: "north" },
+      NW: { region: "North & North-West London", id: "north" }, HA: { region: "North & North-West London", id: "north" },
     };
     const h = heur[prefix];
     if (h) {
@@ -372,7 +375,10 @@ export default function LocationsPreview() {
       region,
     });
   };
-  const openNotFoundModal = (title = "Area Not Found", message = "We couldn’t find your area. Please contact us and we’ll confirm coverage right away.") => {
+  const openNotFoundModal = (
+    title = "Area Not Found",
+    message = "We couldn’t find your area. Please contact us and we’ll confirm coverage right away."
+  ) => {
     setModal({
       open: true,
       type: "not-found",
@@ -383,12 +389,11 @@ export default function LocationsPreview() {
   };
   const closeModal = () => setModal((m) => ({ ...m, open: false }));
 
-  // Press Enter inside the area search to trigger "not found" modal if no results
+  // Press Enter inside the area search to trigger modal if no results
   const areaInputRef = useRef(null);
   const onAreaKeyDown = (e) => {
     if (e.key === "Enter") {
       if (filtered.length > 0) {
-        // If there are results, treat Enter as selecting the first result
         const first = filtered[0];
         setActive(first.id);
         document.getElementById(`region-${first.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -406,101 +411,116 @@ export default function LocationsPreview() {
       <div className="ev-wrap">
         <style>{styles(palette)}</style>
 
+        {/* HERO GRID: left = search; right = image (desktop). On mobile it stacks and image goes under search. */}
         <header className="hero">
-          <h1>Proudly Serving London & Surrounding Areas</h1>
-          <p>
-            Eco Voltex delivers reliable, professional, and sustainable electrical solutions across
-            Greater London and neighbouring counties. Our certified electricians are ready to power your
-            projects with precision — wherever you are.
-          </p>
+          <div className="hero-grid">
+            <div className="hero-left">
+              <h1>Proudly Serving London & Surrounding Areas</h1>
+              <p>
+                Eco Voltex delivers reliable, professional, and sustainable electrical solutions across
+                Greater London and neighbouring counties. Our certified electricians are ready to power your
+                projects with precision — wherever you are.
+              </p>
 
-          {/* Area search */}
-          <div className="search">
-            <label htmlFor="area-search">Find your area</label>
-            <input
-              id="area-search"
-              type="text"
-              inputMode="search"
-              placeholder="Type a borough, town, or landmark (e.g. Upton Park, Uxbridge, Southall)"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={onAreaKeyDown}
-              aria-autocomplete="list"
-              aria-controls="results"
-              ref={areaInputRef}
-            />
-            {query && (
-              <div id="results" className="search-results" role="listbox">
-                {filtered.length === 0 ? (
-                  <div className="empty">
-                    No matches found. <strong>If you don’t see your area, please contact our team.</strong>
-                    <div className="inline-actions">
-                      <a className="btn ghost" href="mailto:info@ecovoltex.co.uk">Email us</a>
-                      <a className="btn ghost" href="tel:07930558824">Call 07930 558824</a>
-                      <button className="btn ghost" onClick={() => openNotFoundModal()}>
-                        Open contact dialog
-                      </button>
-                    </div>
+              {/* Area search */}
+              <div className="search">
+                <label htmlFor="area-search">Find your area</label>
+                <input
+                  id="area-search"
+                  type="text"
+                  inputMode="search"
+                  placeholder="Type a borough, town, or landmark (e.g. Upton Park, Uxbridge, Southall)"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  onKeyDown={onAreaKeyDown}
+                  aria-autocomplete="list"
+                  aria-controls="results"
+                  ref={areaInputRef}
+                />
+                {query && (
+                  <div id="results" className="search-results" role="listbox">
+                    {filtered.length === 0 ? (
+                      <div className="empty">
+                        No matches found. <strong>If you don’t see your area, please contact our team.</strong>
+                        <div className="inline-actions">
+                          <a className="btn ghost" href="mailto:info@ecovoltex.co.uk">Email us</a>
+                          <a className="btn ghost" href="tel:07930558824">Call 07930 558824</a>
+                          <button className="btn ghost" onClick={() => openNotFoundModal()}>
+                            Open contact dialog
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      filtered.map((item, i) => (
+                        <button
+                          key={`${item.area}-${i}`}
+                          className="result"
+                          onClick={() => {
+                            setActive(item.id);
+                            document.getElementById(`region-${item.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+                            openFoundModal(item.region, `We found your area (${item.area}) in this region.`);
+                          }}
+                          role="option"
+                        >
+                          <span className="area">{item.area}</span>
+                          <span className="region">{item.region}</span>
+                        </button>
+                      ))
+                    )}
                   </div>
-                ) : (
-                  filtered.map((item, i) => (
-                    <button
-                      key={`${item.area}-${i}`}
-                      className="result"
-                      onClick={() => {
-                        setActive(item.id);
-                        document.getElementById(`region-${item.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
-                        openFoundModal(item.region, `We found your area (${item.area}) in this region.`);
-                      }}
-                      role="option"
-                    >
-                      <span className="area">{item.area}</span>
-                      <span className="region">{item.region}</span>
-                    </button>
-                  ))
                 )}
               </div>
-            )}
-          </div>
 
-          {/* Postcode checker */}
-          <div className="postcode">
-            <label htmlFor="pc">Or check by postcode</label>
-            <div className="pc-row">
-              <input
-                id="pc"
-                type="text"
-                placeholder="e.g. E13 9AB, UB8 1, SE16"
-                value={postcode}
-                onChange={(e) => setPostcode(e.target.value)}
-              />
-              <button className="btn" onClick={searchPostcode}>Check coverage</button>
-            </div>
-            {pcResult && (
-              <div className={`pc-result ${pcResult.status}`}>
-                {pcResult.status === "invalid" && (
-                  <span>Please enter a valid UK postcode (e.g. E13 9AB or UB8).</span>
-                )}
-                {pcResult.status === "covered" && (
-                  <span>
-                    
-                    <button
-                      className="link"
-                      onClick={() => {
-                        setActive(pcResult.id);
-                        document.getElementById(`region-${pcResult.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
-                      }}
-                    > </button>
-                  </span>
-                )}
-                {pcResult.status === "unknown" && (
-                  <span>
-                    Likely covered near <strong>{pcResult.key}</strong>. If you don’t see your exact area,
-                    <a className="link" href={contactHref}> contact us</a> and we’ll confirm.
-                  </span>
+              {/* Postcode checker */}
+              <div className="postcode">
+                <label htmlFor="pc">Or check by postcode</label>
+                <div className="pc-row">
+                  <input
+                    id="pc"
+                    type="text"
+                    placeholder="e.g. E13 9AB, UB8 1, SE16"
+                    value={postcode}
+                    onChange={(e) => setPostcode(e.target.value)}
+                  />
+                  <button className="btn" onClick={searchPostcode}>Check coverage</button>
+                </div>
+                {pcResult && (
+                  <div className={`pc-result ${pcResult.status}`}>
+                    {pcResult.status === "invalid" && (
+                      <span>Please enter a valid UK postcode (e.g. E13 9AB or UB8).</span>
+                    )}
+                    {pcResult.status === "covered" && (
+                      <span>
+                        
+                        <button
+                          className="link"
+                          onClick={() => {
+                            setActive(pcResult.id);
+                            document.getElementById(`region-${pcResult.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+                          }}
+                        ></button>
+                      </span>
+                    )}
+                    {pcResult.status === "unknown" && (
+                      <span>
+                        Likely covered near <strong>{pcResult.key}</strong>. If you don’t see your exact area,
+                        <a className="link" href={contactHref}> contact us</a> and we’ll confirm.
+                      </span>
+                    )}
+                  </div>
                 )}
               </div>
-            )}
+            </div>
+
+            {/* RIGHT IMAGE (desktop). On mobile it appears under the search section. */}
+            <figure className="hero-map">
+              <img
+                src={mapImageUrl}
+                alt="Eco Voltex coverage—London map with company logo"
+                loading="eager"
+              />
+              
+            </figure>
           </div>
         </header>
 
@@ -575,17 +595,23 @@ function Modal({ children, onClose }) {
   );
 }
 
-function styles(palette){
+function styles(palette) {
   return `
   :root { --text:#111827; --muted:#4b5563; --line:#e5e7eb; --bg:#f6faf7; --chip:#ffffff; }
   * { box-sizing: border-box; }
   .ev-wrap { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color: var(--text); }
 
-  .hero { text-align: center; padding: 60px 16px 28px; background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 60%); }
-  .hero h1 { margin: 0 0 12px; font-size: clamp(30px, 4vw, 44px); font-weight: 800; letter-spacing: -0.02em; }
-  .hero p { margin: 0 auto; max-width: 900px; color: var(--muted); font-size: clamp(16px, 2.4vw, 18px); }
+  .hero { padding: 40px 16px 28px; background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 60%); }
+  .hero-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items: center; }
+  .hero-left { text-align: left; }
+  .hero h1 { margin: 0 0 10px; font-size: clamp(28px, 4vw, 42px); font-weight: 800; letter-spacing: -0.02em; }
+  .hero p { margin: 0 0 12px; max-width: 900px; color: var(--muted); font-size: clamp(16px, 2.4vw, 18px); }
 
-  .search { max-width: 900px; margin: 28px auto 0; position: relative; text-align: left; }
+  /* Right-side image on desktop, stacks below on mobile */
+  .hero-map { margin: 0; }
+  .hero-map img { width: 100%; height: auto; display: block; border-radius: 18px; box-shadow: 0 18px 36px rgba(0,0,0,0.12); border: 1px solid #e5e7eb; background:#fff; }
+
+  .search { margin-top: 16px; position: relative; text-align: left; }
   .search label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
   .search input { width: 100%; padding: 14px; border: 1px solid var(--line); border-radius: 14px; font-size: 16px; outline: none; background: #fff; }
   .search input:focus { border-color: ${palette.central}; box-shadow: 0 0 0 4px rgba(22,163,74,0.15); }
@@ -597,7 +623,7 @@ function styles(palette){
   .result .area { font-weight: 600; }
   .result .region { color: var(--muted); font-size: 13px; }
 
-  .postcode { max-width: 900px; margin: 18px auto 0; text-align: left; }
+  .postcode { margin-top: 18px; text-align: left; }
   .postcode label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
   .pc-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
   .pc-row input { padding: 14px; border: 1px solid var(--line); border-radius: 14px; font-size: 16px; }
@@ -629,16 +655,11 @@ function styles(palette){
   .grid { list-style: none; margin: 10px 0 18px; padding: 0 12px 16px; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
   .chip { background: #fff; padding: 10px 12px; border: 1px solid var(--line); border-radius: 999px; text-align: center; font-size: 14px; }
 
-  .cta { text-align: center; background: #111827; color: #fff; border-radius: 22px; padding: 28px 18px; margin-top: 28px; }
-  .cta h2 { margin: 0 0 8px; font-size: clamp(22px, 3.2vw, 28px); }
-  .cta a { color: #a7f3d0; text-decoration: none; font-weight: 700; }
-
   .mini-footer { text-align: center; padding: 28px 12px; color: var(--muted); }
 
   /* Mobile tweaks */
-  @media (max-width: 520px) {
-    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .chip { font-size: 13px; padding: 8px 10px; }
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 18px; }
     .search-results { top: 78px; }
     .pc-row { grid-template-columns: 1fr; }
   }
