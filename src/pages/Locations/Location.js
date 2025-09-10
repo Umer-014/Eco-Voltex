@@ -1,7 +1,6 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect, useRef } from "react";
 import Header from "../../components/Header/Header.js";
 import Footer from "../../components/Footer/Footer.js";
-
 
 export default function LocationsPreview() {
   const [active, setActive] = useState("central");
@@ -9,6 +8,16 @@ export default function LocationsPreview() {
   const [postcode, setPostcode] = useState("");
   const [pcResult, setPcResult] = useState(null);
 
+  // Modal state
+  const [modal, setModal] = useState({
+    open: false,
+    type: "found", // 'found' | 'not-found'
+    title: "",
+    message: "",
+    region: "",
+  });
+
+  const contactHref = "/contact"; // change if your contact page path differs
   const palette = {
     central: "#16a34a",
     north: "#0ea5e9",
@@ -226,7 +235,11 @@ export default function LocationsPreview() {
   // Smart postcode search with regional fallback
   const searchPostcode = () => {
     const key = outward(postcode);
-    if (!key) { setPcResult({ status: "invalid" }); return; }
+    if (!key) {
+      setPcResult({ status: "invalid" });
+      openNotFoundModal("Invalid postcode", "Please enter a valid UK postcode (e.g. E13 9AB or UB8).");
+      return;
+    }
     const hit = postcodeIndex[key];
     if (hit) {
       setPcResult({ status: "covered", ...hit });
@@ -234,6 +247,7 @@ export default function LocationsPreview() {
       setTimeout(() => {
         document.getElementById(`region-${hit.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 40);
+      openFoundModal(hit.region, `We found your area (${hit.area}) in this region.`);
       return;
     }
     const prefix = key.replace(/\d.*$/, "").toUpperCase();
@@ -254,8 +268,13 @@ export default function LocationsPreview() {
       setTimeout(() => {
         document.getElementById(`region-${h.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 40);
+      openFoundModal(h.region, `We found your area (${key}) in this region.`);
     } else {
       setPcResult({ status: "unknown", key });
+      openNotFoundModal(
+        "Area not found",
+        `We couldn't match "${key}". Please contact us and we'll confirm coverage immediately.`
+      );
     }
   };
 
@@ -264,7 +283,7 @@ export default function LocationsPreview() {
     {
       id: "central",
       title: "Central London",
-      blurb: "Fast, precise and discreet services for apartments, offices and businesses in the heart of the city.",
+      blurb: "Fast, precise, and discreet services for apartments, offices, and businesses in the heart of the city.",
       areas: [
         "Aldgate","Bank","Barbican","Belgravia","Bloomsbury","Charing Cross","Covent Garden","Euston","Farringdon","Fitzrovia","Holborn","King's Cross","Marylebone","Mayfair","Oxford Circus","Paddington","Soho","South Bank","St James's","Strand","Victoria","Westminster"
       ]
@@ -272,7 +291,7 @@ export default function LocationsPreview() {
     {
       id: "north",
       title: "North & North-West London",
-      blurb: "Trusted for residential upgrades, commercial installations and 24/7 emergency callouts across North and North-West London.",
+      blurb: "Trusted for residential upgrades, commercial installations, and 24/7 emergency call-outs across North and North-West London.",
       areas: [
         "Archway","Arsenal","Barnet","Baker Street","Brent Cross","Camden Town","Colindale","Crouch End","Cricklewood","Edgware","Edmonton","Enfield","Finchley","Finsbury Park","Golders Green","Gospel Oak","Hampstead","Harringay","Harrow","Hendon","Highbury","Highgate","Holloway","Islington","Kentish Town","Kilburn","Mill Hill","Muswell Hill","Palmers Green","Park Royal","Seven Sisters","Southgate","Stoke Newington","Tottenham","Wembley","West Hampstead","Winchmore Hill","Wood Green"
       ]
@@ -288,7 +307,7 @@ export default function LocationsPreview() {
     {
       id: "west",
       title: "West London",
-      blurb: "Premium, high-standard electrical services for West London’s homes, businesses and landmarks.",
+      blurb: "Premium, high-standard electrical services for West London’s homes, businesses, and landmarks.",
       areas: [
         "Acton","Bayswater","Brentford","Chiswick","Ealing","Ealing Broadway","Edgware Road","Greenford","Gunnersbury","Hammersmith","Hanwell","Holland Park","Hounslow","Isleworth","Kensal Rise","Kensington","Kew","Knightsbridge","Ladbroke Grove","Lancaster Gate","Maida Vale","Notting Hill","Northfields","Northolt","Paddington","Perivale","Richmond","Shepherd’s Bush","Southall","Uxbridge","West Drayton","West Ealing","White City"
       ]
@@ -312,7 +331,7 @@ export default function LocationsPreview() {
     {
       id: "greater",
       title: "Greater London",
-      blurb: "Extending our expertise to Greater London—same professional service just outside the city centre.",
+      blurb: "Extending our expertise to Greater London — the same professional service just outside the city centre.",
       areas: [
         "Bromley (borough-wide)","Croydon","Edgware (edge NW)","Hayes","Heathrow","Hillingdon","Hounslow (borough-wide)","Ickenham","Ilford (Redbridge)","Isleworth","Northolt","Pinner","Ruislip","Sidcup","Sutton","Twickenham","Watford","Wembley","Worcester Park"
       ]
@@ -343,133 +362,216 @@ export default function LocationsPreview() {
     return allAreas.filter(({ area }) => area.toLowerCase().includes(q)).slice(0, 40);
   }, [query, allAreas]);
 
+  // --- Modal helpers
+  const openFoundModal = (region, prefixMessage = "We found your area in this region.") => {
+    setModal({
+      open: true,
+      type: "found",
+      title: "Area Found",
+      message: `${prefixMessage} Please contact us for the work.`,
+      region,
+    });
+  };
+  const openNotFoundModal = (title = "Area Not Found", message = "We couldn’t find your area. Please contact us and we’ll confirm coverage right away.") => {
+    setModal({
+      open: true,
+      type: "not-found",
+      title,
+      message,
+      region: "",
+    });
+  };
+  const closeModal = () => setModal((m) => ({ ...m, open: false }));
+
+  // Press Enter inside the area search to trigger "not found" modal if no results
+  const areaInputRef = useRef(null);
+  const onAreaKeyDown = (e) => {
+    if (e.key === "Enter") {
+      if (filtered.length > 0) {
+        // If there are results, treat Enter as selecting the first result
+        const first = filtered[0];
+        setActive(first.id);
+        document.getElementById(`region-${first.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+        openFoundModal(first.region, `We found your area (${first.area}) in this region.`);
+      } else {
+        openNotFoundModal("Area Not Found", "We couldn’t find a match. Please contact us and we’ll confirm right away.");
+      }
+    }
+  };
+
   return (
     <>
-    <Header />
-    
-    <div className="ev-wrap">
-      <style>{styles(palette)}</style>
+      <Header />
 
-      <header className="hero">
-        <h1>Proudly Serving London & Surrounding Areas</h1>
-        <p>
-          Eco Voltex delivers reliable, professional and sustainable electrical solutions across
-          Greater London and neighbouring counties. Our certified electricians are ready to power your
-          projects with precision—wherever you are.
-        </p>
+      <div className="ev-wrap">
+        <style>{styles(palette)}</style>
 
-        {/* Area search */}
-        <div className="search">
-          <label htmlFor="area-search">Find your area</label>
-          <input
-            id="area-search"
-            type="text"
-            inputMode="search"
-            placeholder="Type a borough, town or landmark (e.g. Upton Park, Uxbridge, Southall)"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            aria-autocomplete="list"
-            aria-controls="results"
-          />
-          {query && (
-            <div id="results" className="search-results" role="listbox">
-              {filtered.length === 0 ? (
-                <div className="empty">
-                  No matches found. <strong>If you don’t see your area, message our team</strong> — we’ll be happy to guide you.
-                  <div className="inline-actions">
-                    <a className="btn ghost" href="mailto:info@ecovoltex.co.uk">Email us</a>
-                    <a className="btn ghost" href="tel:07930558824">Call 07930 558824</a>
-                  </div>
-                </div>
-              ) : (
-                filtered.map((item, i) => (
-                  <button
-                    key={`${item.area}-${i}`}
-                    className="result"
-                    onClick={() => {
-                      setActive(item.id);
-                      document.getElementById(`region-${item.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
-                    }}
-                    role="option"
-                  >
-                    <span className="area">{item.area}</span>
-                    <span className="region">{item.region}</span>
-                  </button>
-                ))
-              )}
-            </div>
-          )}
-        </div>
+        <header className="hero">
+          <h1>Proudly Serving London & Surrounding Areas</h1>
+          <p>
+            Eco Voltex delivers reliable, professional, and sustainable electrical solutions across
+            Greater London and neighbouring counties. Our certified electricians are ready to power your
+            projects with precision — wherever you are.
+          </p>
 
-        {/* Postcode checker */}
-        <div className="postcode">
-          <label htmlFor="pc">Or check by postcode</label>
-          <div className="pc-row">
+          {/* Area search */}
+          <div className="search">
+            <label htmlFor="area-search">Find your area</label>
             <input
-              id="pc"
+              id="area-search"
               type="text"
-              placeholder="e.g. E13 9AB, UB8 1, SE16"
-              value={postcode}
-              onChange={(e) => setPostcode(e.target.value)}
+              inputMode="search"
+              placeholder="Type a borough, town, or landmark (e.g. Upton Park, Uxbridge, Southall)"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={onAreaKeyDown}
+              aria-autocomplete="list"
+              aria-controls="results"
+              ref={areaInputRef}
             />
-            <button className="btn" onClick={searchPostcode}>Check coverage</button>
+            {query && (
+              <div id="results" className="search-results" role="listbox">
+                {filtered.length === 0 ? (
+                  <div className="empty">
+                    No matches found. <strong>If you don’t see your area, please contact our team.</strong>
+                    <div className="inline-actions">
+                      <a className="btn ghost" href="mailto:info@ecovoltex.co.uk">Email us</a>
+                      <a className="btn ghost" href="tel:07930558824">Call 07930 558824</a>
+                      <button className="btn ghost" onClick={() => openNotFoundModal()}>
+                        Open contact dialog
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  filtered.map((item, i) => (
+                    <button
+                      key={`${item.area}-${i}`}
+                      className="result"
+                      onClick={() => {
+                        setActive(item.id);
+                        document.getElementById(`region-${item.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+                        openFoundModal(item.region, `We found your area (${item.area}) in this region.`);
+                      }}
+                      role="option"
+                    >
+                      <span className="area">{item.area}</span>
+                      <span className="region">{item.region}</span>
+                    </button>
+                  ))
+                )}
+              </div>
+            )}
           </div>
-          {pcResult && (
-            <div className={`pc-result ${pcResult.status}`}>
-              {pcResult.status === "invalid" && (
-                <span>Enter a valid UK postcode (e.g. E13 9AB or UB8).</span>
-              )}
-              {pcResult.status === "covered" && (
-                <span>
-                  ✅ Covered: <strong>{pcResult.area}</strong> — <em>{pcResult.region}</em>.
-                  <button
-                    className="link"
-                    onClick={() => {
-                      setActive(pcResult.id);
-                      document.getElementById(`region-${pcResult.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
-                    }}
-                  > Jump to region</button>
-                </span>
-              )}
-              {pcResult.status === "unknown" && (
-                <span>
-                  Likely covered near <strong>{pcResult.key}</strong>. If you don’t see your exact area, <a href="mailto:info@ecovoltex.co.uk">message our team</a> and we’ll confirm.
-                </span>
-              )}
-            </div>
-          )}
-        </div>
-      </header>
 
-      <main className="container">
-        {regions.map((r) => (
-          <section key={r.id} id={`region-${r.id}`} className="accordion">
-            <button
-              className={`accordion-title ${active === r.id ? "open" : ""}`}
-              onClick={() => setActive(active === r.id ? null : r.id)}
-              aria-expanded={active === r.id}
-              style={{ borderLeftColor: palette[r.id] }}
-            >
-              <span className="dot" style={{ background: palette[r.id] }} />
-              {r.title}
-              <span className="chev" aria-hidden>▾</span>
-            </button>
-            <div className={`accordion-panel ${active === r.id ? "show" : ""}`}>
-              <p className="blurb">{r.blurb}</p>
-              <ul className="grid">
-                {r.areas.map((a) => (
-                  <li key={a} className="chip" style={{ borderColor: palette[r.id] }}>{a}</li>
-                ))}
-              </ul>
+          {/* Postcode checker */}
+          <div className="postcode">
+            <label htmlFor="pc">Or check by postcode</label>
+            <div className="pc-row">
+              <input
+                id="pc"
+                type="text"
+                placeholder="e.g. E13 9AB, UB8 1, SE16"
+                value={postcode}
+                onChange={(e) => setPostcode(e.target.value)}
+              />
+              <button className="btn" onClick={searchPostcode}>Check coverage</button>
             </div>
-          </section>
-        ))}
+            {pcResult && (
+              <div className={`pc-result ${pcResult.status}`}>
+                {pcResult.status === "invalid" && (
+                  <span>Please enter a valid UK postcode (e.g. E13 9AB or UB8).</span>
+                )}
+                {pcResult.status === "covered" && (
+                  <span>
+                    
+                    <button
+                      className="link"
+                      onClick={() => {
+                        setActive(pcResult.id);
+                        document.getElementById(`region-${pcResult.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+                      }}
+                    > </button>
+                  </span>
+                )}
+                {pcResult.status === "unknown" && (
+                  <span>
+                    Likely covered near <strong>{pcResult.key}</strong>. If you don’t see your exact area,
+                    <a className="link" href={contactHref}> contact us</a> and we’ll confirm.
+                  </span>
+                )}
+              </div>
+            )}
+          </div>
+        </header>
 
-        
-      </main>
-    </div>
-    <Footer />
+        <main className="container">
+          {regions.map((r) => (
+            <section key={r.id} id={`region-${r.id}`} className="accordion">
+              <button
+                className={`accordion-title ${active === r.id ? "open" : ""}`}
+                onClick={() => setActive(active === r.id ? null : r.id)}
+                aria-expanded={active === r.id}
+                style={{ borderLeftColor: palette[r.id] }}
+              >
+                <span className="dot" style={{ background: palette[r.id] }} />
+                {r.title}
+                <span className="chev" aria-hidden>▾</span>
+              </button>
+              <div className={`accordion-panel ${active === r.id ? "show" : ""}`}>
+                <p className="blurb">{r.blurb}</p>
+                <ul className="grid">
+                  {r.areas.map((a) => (
+                    <li key={a} className="chip" style={{ borderColor: palette[r.id] }}>{a}</li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          ))}
+        </main>
+
+        {/* Modal dialog */}
+        {modal.open && (
+          <Modal onClose={closeModal}>
+            <div className="modal-header">
+              <h3>{modal.title}</h3>
+            </div>
+            <div className="modal-body">
+              <p>{modal.message}</p>
+              {modal.region && <p className="modal-region"><strong>Region:</strong> {modal.region}</p>}
+            </div>
+            <div className="modal-footer">
+              <a className="btn" href={contactHref}>Contact Us</a>
+              <button className="btn ghost" onClick={closeModal}>Cancel</button>
+            </div>
+          </Modal>
+        )}
+      </div>
+
+      <Footer />
     </>
+  );
+}
+
+/** Accessible modal component (no external libs) */
+function Modal({ children, onClose }) {
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && onClose();
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  return (
+    <div className="ev-modal" role="dialog" aria-modal="true">
+      <style>{modalStyles}</style>
+      <div className="ev-modal-backdrop" onClick={onClose} />
+      <div className="ev-modal-card" role="document">
+        {children}
+      </div>
+    </div>
   );
 }
 
@@ -489,7 +591,7 @@ function styles(palette){
   .search input:focus { border-color: ${palette.central}; box-shadow: 0 0 0 4px rgba(22,163,74,0.15); }
   .search-results { position: absolute; top: 82px; left: 0; right: 0; background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 16px 32px rgba(0,0,0,0.08); padding: 8px; max-height: 360px; overflow: auto; z-index: 10; }
   .search-results .empty { padding: 12px; color: var(--muted); font-size: 14px; }
-  .inline-actions { margin-top: 8px; display: flex; gap: 8px; }
+  .inline-actions { margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap; }
   .result { width: 100%; text-align: left; display: flex; justify-content: space-between; gap: 12px; border: none; background: transparent; padding: 10px 12px; border-radius: 10px; font-size: 15px; cursor: pointer; }
   .result:hover { background: #f0fdf4; }
   .result .area { font-weight: 600; }
@@ -500,7 +602,7 @@ function styles(palette){
   .pc-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
   .pc-row input { padding: 14px; border: 1px solid var(--line); border-radius: 14px; font-size: 16px; }
   .btn { padding: 12px 16px; border-radius: 12px; border: 1px solid ${palette.central}; background: ${palette.central}; color: #fff; font-weight: 700; cursor: pointer; }
-  .btn.ghost { background: transparent; color: ${palette.central}; }
+  .btn.ghost { background: transparent; color: ${palette.central}; border-color: ${palette.central}; }
   .btn:hover { filter: brightness(0.95); }
   .link { background: none; border: none; color: ${palette.central}; font-weight: 700; cursor: pointer; margin-left: 6px; }
 
@@ -542,3 +644,25 @@ function styles(palette){
   }
   `;
 }
+
+const modalStyles = `
+.ev-modal { position: fixed; inset: 0; z-index: 50; }
+.ev-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.45); }
+.ev-modal-card {
+  position: relative;
+  max-width: 560px;
+  margin: 10vh auto 0;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.2);
+  padding: 18px;
+  display: grid;
+  gap: 12px;
+}
+.modal-header h3 { margin: 0; font-size: 20px; font-weight: 800; }
+.modal-body p { margin: 0 0 6px; color: #374151; }
+.modal-region { color: #111827; }
+.modal-footer { display: flex; gap: 10px; justify-content: flex-end; margin-top: 8px; }
+.modal-footer .btn { padding: 10px 14px; border-radius: 10px; }
+.modal-footer .btn.ghost { border: 1px solid #e5e7eb; color: #111827; }
+`;
