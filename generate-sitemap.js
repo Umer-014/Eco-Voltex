@@ -10,6 +10,8 @@ const links = [
   { url: '/contact', changefreq: 'monthly', priority: 0.7 },
   { url: '/faq', changefreq: 'monthly', priority: 0.7 },
   { url: '/contact', changefreq: 'monthly', priority: 0.7 },
+  { url: '/locations', changefreq: 'monthly', priority: 0.7 },
+  { url: '/services/electrical', changefreq: 'monthly', priority: 0.8 },
   { url: '/services/Installation-Maintenance', changefreq: 'monthly', priority: 0.7 },
   { url: '/services/Fire-alarms', changefreq: 'monthly', priority: 0.7 },
   { url: '/services/CCTV', changefreq: 'monthly', priority: 0.7 },

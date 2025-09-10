@@ -1,66 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/logo1.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
 
-  <!-- 🔑 Main SEO Meta Tags -->
-  <title>Eco Voltex - Sustainable Energy Solutions</title>
-  <meta name="title" content="Eco Voltex" />
-  <meta
-    name="description"
-    content="Eco Voltex provides eco-friendly and cost-effective energy solutions for homes and businesses."
-  />
+    <!-- 🔑 Main SEO Meta Tags -->
 
-  <!-- 🔑 Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.ecovoltex.co.uk/" />
-  <meta property="og:title" content="Eco Voltex - Sustainable Energy Solutions" />
-  <meta
-    property="og:description"
-    content="Eco-friendly and cost-effective energy solutions for homes and businesses."
-  />
-  <meta property="og:image" content="https://www.ecovoltex.co.uk/logo1.png" />
+    <title>Eco Voltex - Sustainable Energy Solutions</title>
+    <meta name="title" content="Eco Voltex" />
+    <meta
+      name="description"
+      content="Eco Voltex provides eco-friendly and cost-effective energy solutions for homes and businesses."
+    />
 
-  <!-- 🔑 Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://www.ecovoltex.co.uk/" />
-  <meta property="twitter:title" content="Eco Voltex - Sustainable Energy Solutions" />
-  <meta
-    property="twitter:description"
-    content="Eco-friendly and cost-effective energy solutions for homes and businesses."
-  />
-  <meta property="twitter:image" content="https://www.ecovoltex.co.uk/logo1.png" />
+    <!-- Favicons (for Google search result icon) -->
+    <!-- Put the actual files in /public (see Step 2) -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!-- Optional SVG favicon if you have it -->
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg"> -->
 
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!-- Web app manifest -->
+    <link rel="manifest" href="/site.webmanifest" />
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PHJ9KG43FT"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
-    gtag("config", "G-PHJ9KG43FT");
-  </script>
-</head>
+    <!-- 🔑 Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.ecovoltex.co.uk/" />
+    <meta
+      property="og:title"
+      content="Eco Voltex - Sustainable Energy Solutions"
+    />
+    <meta
+      property="og:description"
+      content="Eco-friendly and cost-effective energy solutions for homes and businesses."
+    />
+    <meta property="og:image" content="https://www.ecovoltex.co.uk/logo1.png" />
+
+    <!-- 🔑 Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.ecovoltex.co.uk/" />
+    <meta
+      property="twitter:title"
+      content="Eco Voltex - Sustainable Energy Solutions"
+    />
+    <meta
+      property="twitter:description"
+      content="Eco-friendly and cost-effective energy solutions for homes and businesses."
+    />
+    <meta
+      property="twitter:image"
+      content="https://www.ecovoltex.co.uk/logo1.png"
+    />
+
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Organization structured data (brand logo for Knowledge Panel) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Eco Voltex",
+        "url": "https://www.ecovoltex.co.uk/",
+        "logo": "https://www.ecovoltex.co.uk/logo1.png",
+        "sameAs": []
+      }
+    </script>
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-PHJ9KG43FT"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-PHJ9KG43FT");
+    </script>
+  </head>
 
   <body>
-    <noscript>Eco Voltex provides eco-friendly and cost-effective energy solutions for homes and businesses.</noscript>
+    <noscript
+      >Eco Voltex provides eco-friendly and cost-effective energy solutions for
+      homes and businesses.</noscript
+    >
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+ 
   </body>
 </html>
