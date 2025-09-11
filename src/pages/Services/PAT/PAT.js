@@ -271,40 +271,98 @@ export default function PatTestingPage() {
         <section className="ev-section">
           <div className="ev-container">
             <h2 className="ev-h2">Our PAT testing process</h2>
-            <ol className="ev-grid ev-grid--3 ev-gap-16 ev-mt-16 ev-cards">
-              {[
-                [
-                  "Survey & plan",
-                  "We confirm scope, risk profile and schedule with your team; RAMS supplied.",
-                ],
-                [
-                  "Asset register",
-                  "Create/update inventory with locations and IDs (barcode optional).",
-                ],
-                [
-                  "Visual inspection",
-                  "Damage, suitability, vents/guards, fuses, cables, plugs and ratings.",
-                ],
-                [
-                  "Electrical tests",
-                  "Earth continuity, insulation resistance, polarity & leakage (as applicable).",
-                ],
-                [
-                  "Label & document",
-                  "Pass/Fail label with due date; digital certificate and CSV results.",
-                ],
-                [
-                  "Review & reminders",
-                  "Agree remedials and retest intervals; renewal reminders included.",
-                ],
-              ].map(([k, v], i) => (
-                <li key={i} className="ev-card">
-                  <div className="ev-step">Step {i + 1}</div>
-                  <p className="ev-strong">{k}</p>
-                  <p>{v}</p>
-                </li>
-              ))}
-            </ol>
+            <div
+  style={{
+    display: "flex",
+    flexWrap: "wrap", // responsive behavior
+    gap: "16px",
+    marginTop: "16px",
+  }}
+>
+  {/* Left Column: Steps in 2 Columns */}
+  <ol
+    style={{
+      flex: "2 1 300px", // grows, shrinks, min width
+      display: "grid",
+      gridTemplateColumns: "1fr 1fr", // 2 columns for steps
+      gap: "16px",
+      listStyle: "none",
+      padding: 0,
+      margin: 0,
+    }}
+  >
+    {[
+      [
+        "Survey & plan",
+        "We confirm scope, risk profile and schedule with your team; RAMS supplied.",
+      ],
+      [
+        "Asset register",
+        "Create/update inventory with locations and IDs (barcode optional).",
+      ],
+      [
+        "Visual inspection",
+        "Damage, suitability, vents/guards, fuses, cables, plugs and ratings.",
+      ],
+      [
+        "Electrical tests",
+        "Earth continuity, insulation resistance, polarity & leakage (as applicable).",
+      ],
+      [
+        "Label & document",
+        "Pass/Fail label with due date; digital certificate and CSV results.",
+      ],
+      [
+        "Review & reminders",
+        "Agree remedials and retest intervals; renewal reminders included.",
+      ],
+    ].map(([k, v], i) => (
+      <li
+        key={i}
+        style={{
+          border: "1px solid #ddd",
+          borderRadius: "8px",
+          padding: "16px",
+          background: "#fff",
+          boxShadow: "0 2px 6px rgba(0,0,0,0.08)",
+        }}
+      >
+        <div
+          style={{
+            fontWeight: "600",
+            marginBottom: "8px",
+            color: "#007BFF",
+          }}
+        >
+          Step {i + 1}
+        </div>
+        <p style={{ fontWeight: "600", marginBottom: "8px" }}>{k}</p>
+        <p style={{ margin: 0 }}>{v}</p>
+      </li>
+    ))}
+  </ol>
+
+  {/* Right Column: Random Image */}
+  <div
+    style={{
+      flex: "1 1 250px", // image takes 1/3 width on desktop, full width on mobile
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}
+  >
+    <img
+      src={'https://res.cloudinary.com/dug1siluu/image/upload/v1757610678/ChatGPT_Image_Sep_11_2025_10_11_06_PM_bbx29r.png'}
+      alt="Random PAT testing step"
+      style={{
+        maxWidth: "100%",
+        height: "auto",
+        borderRadius: "8px",
+      }}
+    />
+  </div>
+</div>
+
           </div>
         </section>
 
@@ -381,33 +439,69 @@ export default function PatTestingPage() {
         <section className="ev-section">
           <div className="ev-container">
             <h2 className="ev-h2">Sectors we support</h2>
-            <div className="ev-grid ev-grid--3 ev-gap-16 ev-mt-16 ev-cards">
-              {[
-                [
-                  "Offices & co-working",
-                  "Desk equipment, kitchens, meeting rooms",
-                ],
-                ["Retail & hospitality", "POS, back-of-house, guest areas"],
-                ["Education", "Classrooms, labs, IT suites, halls"],
-                [
-                  "Healthcare & care",
-                  "Non-medical electrical items (by agreement)",
-                ],
-                [
-                  "Construction & FM",
-                  "110 V tools, cabins, temporary supplies",
-                ],
-                [
-                  "Landlords & HMOs",
-                  "Communal appliances, re-lets, inventories",
-                ],
-              ].map(([t, d]) => (
-                <div key={t} className="ev-card">
-                  <p className="ev-strong">{t}</p>
-                  <p>{d}</p>
-                </div>
-              ))}
-            </div>
+            <div
+  style={{
+    display: "flex",
+    flexWrap: "wrap", // makes it responsive
+    gap: "16px",
+    marginTop: "16px",
+  }}
+>
+  {/* Left Column: Cards in 2 Columns */}
+  <div
+    style={{
+      flex: "2 1 300px", // grows, shrinks, min width
+      display: "grid",
+      gridTemplateColumns: "1fr 1fr",
+      gap: "16px",
+    }}
+  >
+    {[
+      ["Offices & co-working", "Desk equipment, kitchens, meeting rooms"],
+      ["Retail & hospitality", "POS, back-of-house, guest areas"],
+      ["Education", "Classrooms, labs, IT suites, halls"],
+      ["Healthcare & care", "Non-medical electrical items (by agreement)"],
+      ["Construction & FM", "110 V tools, cabins, temporary supplies"],
+      ["Landlords & HMOs", "Communal appliances, re-lets, inventories"],
+    ].map(([t, d]) => (
+      <div
+        key={t}
+        style={{
+          border: "1px solid #ddd",
+          borderRadius: "8px",
+          padding: "16px",
+          background: "#fff",
+          boxShadow: "0 2px 6px rgba(0,0,0,0.08)",
+        }}
+      >
+        <p style={{ fontWeight: "600", marginBottom: "8px" }}>{t}</p>
+        <p style={{ margin: 0 }}>{d}</p>
+      </div>
+    ))}
+  </div>
+
+  {/* Right Column: Random Image */}
+  <div
+    style={{
+      flex: "1 1 250px", // flexible, min width for phone
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}
+  >
+    <img
+      src={'https://res.cloudinary.com/dug1siluu/image/upload/v1757611344/WhatsApp_Image_2025-09-11_at_22.21.06_83b8e548_kqndvr.jpg'}
+      alt="Random sector"
+      style={{
+        maxWidth: "100%",
+        height: "auto",
+        borderRadius: "8px",
+      }}
+    />
+  </div>
+</div>
+
+
           </div>
         </section>
 
@@ -575,7 +669,7 @@ export default function PatTestingPage() {
                   Download sample CSV
                 </a>
               </div>
-                  <br />
+              <br />
               <div
                 style={{
                   display: "flex",
