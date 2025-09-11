@@ -21,104 +21,182 @@ export default function PatTestingPage() {
         </div>
 
         {/* HERO */}
-        <section className="ev-section ev-hero">
-          <video
-            className="ev-hero__bg"
-            autoPlay
-            loop
-            muted
-            playsInline
-            poster="/images/pat-hero-fallback.jpg"
-            aria-label="Subtle background video showing safe electrical testing"
+        <section
+          style={{
+            position: "relative",
+            padding: "64px 0",
+            color: "#0b1220",
+            background: "#f9fafb", // light background
+          }}
+        >
+          <div
+            style={{
+              maxWidth: 1200,
+              margin: "0 auto",
+              padding: "0 20px",
+              display: "flex",
+              flexWrap: "wrap", // responsive
+              gap: "24px",
+              alignItems: "center",
+            }}
           >
-            <source src="/videos/pat-hero-loop.mp4" type="video/mp4" />
-          </video>
+            {/* LEFT: Text column */}
+            <div
+              style={{
+                flex: "2 1 480px",
+                minWidth: 280,
+              }}
+            >
+              <p
+                style={{
+                  display: "inline-block",
+                  padding: "6px 12px",
+                  borderRadius: 999,
+                  background: "#e5f3ff",
+                  fontWeight: 600,
+                  margin: 0,
+                }}
+              >
+                Same-week PAT Testing • Greater London
+              </p>
 
-          <div className="ev-container ev-grid ev-grid--12 ev-hero__content">
-            <div className="ev-col ev-col--7">
-              <p className="ev-pill">Same-week PAT Testing • Greater London</p>
-              <h1 className="ev-h1">
+              <h1
+                style={{
+                  margin: "16px 0 0 0",
+                  fontSize: "40px",
+                  lineHeight: 1.1,
+                  fontWeight: 800,
+                }}
+              >
                 PAT testing done right —{" "}
-                <span className="ev-text-primary">safe, compliant</span> &
-                reliable
+                <span>safe, compliant</span> & reliable
               </h1>
-              <ul className="ev-list ev-list--checks ev-mt-16">
+
+              <ul style={{ marginTop: 16, paddingLeft: 18 }}>
                 <li>Certified engineers, DBS-checked & insured</li>
                 <li>Next-day certificate & CSV results</li>
                 <li>Minimal disruption, flexible scheduling</li>
               </ul>
 
-              <div className="ev-actions ev-mt-20">
-                <a href="/contact" className="ev-btn ev-btn--primary">
+              <div
+                style={{
+                  display: "flex",
+                  gap: 12,
+                  marginTop: 20,
+                  flexWrap: "wrap",
+                }}
+              >
+                <a
+                  href="/contact"
+                  style={{
+                    textDecoration: "none",
+                    background: "#0ea5e9",
+                    color: "black",
+                    padding: "10px 16px",
+                    borderRadius: 8,
+                    fontWeight: 600,
+                  }}
+                >
                   Book PAT testing
                 </a>
-                <a href="#pricing" className="ev-btn ev-btn--outline">
+                <a
+                  href="#pricing"
+                  style={{
+                    textDecoration: "none",
+                    background: "transparent",
+                    color: "#0b1220",
+                    padding: "10px 16px",
+                    borderRadius: 8,
+                    fontWeight: 600,
+                    border: "1px solid rgba(0,0,0,0.15)",
+                  }}
+                >
                   See pricing
                 </a>
               </div>
 
-              <p className="ev-meta ev-mt-12">
+              <p style={{ marginTop: 12, opacity: 0.9 }}>
                 Fully insured (£2m PLI + £1m PI) • IET Code of Practice (5th
                 Ed.) • BS EN 50678/50699
               </p>
 
-              <div className="ev-only-mobile ev-mt-16">
+              {/* Mobile-only CTA */}
+              <div style={{ marginTop: 16 }}>
                 <a
                   href="/contact"
-                  className="ev-btn ev-btn--primary ev-btn--block"
+                  style={{
+                    textDecoration: "none",
+                    display: "block",
+                    width: "100%",
+                    textAlign: "center",
+                    background: "#0ea5e9",
+                    color: "#fff",
+                    padding: "12px 16px",
+                    borderRadius: 10,
+                    fontWeight: 700,
+                  }}
                 >
                   Get a fast quote
                 </a>
               </div>
 
-              <div className="ev-grid ev-grid--4 ev-hero-badges ev-mt-24">
-                <div className="ev-card ev-badge">
-                  🛡️ Fully insured (£2m PLI + £1m PI)
-                </div>
-                <div className="ev-card ev-badge">📄 IET CoP 5th Ed.</div>
-                <div className="ev-card ev-badge">
-                  ⏱️ Out-of-hours available
-                </div>
-                <div className="ev-card ev-badge">
-                  🏙️ Greater London & nearby
-                </div>
+              {/* Badges */}
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: 12,
+                  marginTop: 24,
+                }}
+              >
+                {[
+                  "🛡️ Fully insured (£2m PLI + £1m PI)",
+                  "📄 IET CoP 5th Ed.",
+                  "⏱️ Out-of-hours available",
+                  "🏙️ Greater London & nearby",
+                ].map((b, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      flex: "1 1 200px",
+                      padding: "10px 12px",
+                      borderRadius: 10,
+                      background: "#fff",
+                      border: "1px solid rgba(0,0,0,0.08)",
+                      boxShadow: "0 2px 6px rgba(0,0,0,0.06)",
+                      fontWeight: 600,
+                      fontSize: 14,
+                    }}
+                  >
+                    {b}
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className="ev-col ev-col--5">
-              <div className="ev-card ev-hero-stats">
-                <div className="ev-grid ev-grid--2 ev-gap-16">
-                  <div className="ev-card ev-kv">
-                    <div className="ev-kv__k">⏱️ Fast results</div>
-                    <div className="ev-kv__v">PDF & CSV within 24h</div>
-                  </div>
-                  <div className="ev-card ev-kv">
-                    <div className="ev-kv__k">🏢 Low disruption</div>
-                    <div className="ev-kv__v">Evenings & weekends</div>
-                  </div>
-                  <div className="ev-card ev-kv">
-                    <div className="ev-kv__k">🔧 Repair-first</div>
-                    <div className="ev-kv__v">Plugs & fuses on-site</div>
-                  </div>
-                  <div className="ev-card ev-kv">
-                    <div className="ev-kv__k">📑 Audit-ready</div>
-                    <div className="ev-kv__v">Registers & certs</div>
-                  </div>
-                </div>
-
-                <div className="ev-note ev-mt-12">
-                  <p className="ev-note__title">Satisfaction guarantee</p>
-                  <p>Not satisfied? We’ll re-audit your site at no cost.</p>
-                </div>
-
-                <div
-                  className="ev-stars ev-mt-12"
-                  aria-label="Customer rating 5 out of 5"
-                >
-                  ★★★★★{" "}
-                  <span className="ev-meta">5.0 • PAT clients in London</span>
-                </div>
-              </div>
+            {/* RIGHT: Image column */}
+            <div
+              style={{
+                flex: "1 1 340px",
+                minWidth: 260,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <img
+                src={
+                  "https://res.cloudinary.com/dug1siluu/image/upload/v1757617738/ChatGPT_Image_Sep_12_2025_12_08_49_AM_dwwdn9.png"
+                }
+                alt="PAT testing in action"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  borderRadius: 14,
+                  boxShadow: "0 8px 24px rgba(0,0,0,0.15)",
+                  background: "#fff",
+                }}
+              />
             </div>
           </div>
         </section>
@@ -272,97 +350,100 @@ export default function PatTestingPage() {
           <div className="ev-container">
             <h2 className="ev-h2">Our PAT testing process</h2>
             <div
-  style={{
-    display: "flex",
-    flexWrap: "wrap", // responsive behavior
-    gap: "16px",
-    marginTop: "16px",
-  }}
->
-  {/* Left Column: Steps in 2 Columns */}
-  <ol
-    style={{
-      flex: "2 1 300px", // grows, shrinks, min width
-      display: "grid",
-      gridTemplateColumns: "1fr 1fr", // 2 columns for steps
-      gap: "16px",
-      listStyle: "none",
-      padding: 0,
-      margin: 0,
-    }}
-  >
-    {[
-      [
-        "Survey & plan",
-        "We confirm scope, risk profile and schedule with your team; RAMS supplied.",
-      ],
-      [
-        "Asset register",
-        "Create/update inventory with locations and IDs (barcode optional).",
-      ],
-      [
-        "Visual inspection",
-        "Damage, suitability, vents/guards, fuses, cables, plugs and ratings.",
-      ],
-      [
-        "Electrical tests",
-        "Earth continuity, insulation resistance, polarity & leakage (as applicable).",
-      ],
-      [
-        "Label & document",
-        "Pass/Fail label with due date; digital certificate and CSV results.",
-      ],
-      [
-        "Review & reminders",
-        "Agree remedials and retest intervals; renewal reminders included.",
-      ],
-    ].map(([k, v], i) => (
-      <li
-        key={i}
-        style={{
-          border: "1px solid #ddd",
-          borderRadius: "8px",
-          padding: "16px",
-          background: "#fff",
-          boxShadow: "0 2px 6px rgba(0,0,0,0.08)",
-        }}
-      >
-        <div
-          style={{
-            fontWeight: "600",
-            marginBottom: "8px",
-            color: "#007BFF",
-          }}
-        >
-          Step {i + 1}
-        </div>
-        <p style={{ fontWeight: "600", marginBottom: "8px" }}>{k}</p>
-        <p style={{ margin: 0 }}>{v}</p>
-      </li>
-    ))}
-  </ol>
+              style={{
+                display: "flex",
+                flexWrap: "wrap", // responsive behavior
+                gap: "16px",
+                marginTop: "16px",
+              }}
+            >
+              {/* Left Column: Steps in 2 Columns */}
+              <ol
+                style={{
+                  flex: "2 1 300px", // grows, shrinks, min width
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr", // 2 columns for steps
+                  gap: "16px",
+                  listStyle: "none",
+                  padding: 0,
+                  margin: 0,
+                }}
+              >
+                {[
+                  [
+                    "Survey & plan",
+                    "We confirm scope, risk profile and schedule with your team; RAMS supplied.",
+                  ],
+                  [
+                    "Asset register",
+                    "Create/update inventory with locations and IDs (barcode optional).",
+                  ],
+                  [
+                    "Visual inspection",
+                    "Damage, suitability, vents/guards, fuses, cables, plugs and ratings.",
+                  ],
+                  [
+                    "Electrical tests",
+                    "Earth continuity, insulation resistance, polarity & leakage (as applicable).",
+                  ],
+                  [
+                    "Label & document",
+                    "Pass/Fail label with due date; digital certificate and CSV results.",
+                  ],
+                  [
+                    "Review & reminders",
+                    "Agree remedials and retest intervals; renewal reminders included.",
+                  ],
+                ].map(([k, v], i) => (
+                  <li
+                    key={i}
+                    style={{
+                      border: "1px solid #ddd",
+                      borderRadius: "8px",
+                      padding: "16px",
+                      background: "#fff",
+                      boxShadow: "0 2px 6px rgba(0,0,0,0.08)",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontWeight: "600",
+                        marginBottom: "8px",
+                        color: "#007BFF",
+                      }}
+                    >
+                      Step {i + 1}
+                    </div>
+                    <p style={{ fontWeight: "600", marginBottom: "8px" }}>
+                      {k}
+                    </p>
+                    <p style={{ margin: 0 }}>{v}</p>
+                  </li>
+                ))}
+              </ol>
 
-  {/* Right Column: Random Image */}
-  <div
-    style={{
-      flex: "1 1 250px", // image takes 1/3 width on desktop, full width on mobile
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    }}
-  >
-    <img
-      src={'https://res.cloudinary.com/dug1siluu/image/upload/v1757610678/ChatGPT_Image_Sep_11_2025_10_11_06_PM_bbx29r.png'}
-      alt="Random PAT testing step"
-      style={{
-        maxWidth: "100%",
-        height: "auto",
-        borderRadius: "8px",
-      }}
-    />
-  </div>
-</div>
-
+              {/* Right Column: Random Image */}
+              <div
+                style={{
+                  flex: "1 1 250px", // image takes 1/3 width on desktop, full width on mobile
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img
+                  src={
+                    "https://res.cloudinary.com/dug1siluu/image/upload/v1757617505/ChatGPT_Image_Sep_12_2025_12_04_49_AM_vidu8z.png"
+                  }
+                  alt="Random PAT testing step"
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto",
+                    borderRadius: "8px",
+                  }}
+                />
+              </div>
+            </div>
           </div>
         </section>
 
@@ -440,68 +521,82 @@ export default function PatTestingPage() {
           <div className="ev-container">
             <h2 className="ev-h2">Sectors we support</h2>
             <div
-  style={{
-    display: "flex",
-    flexWrap: "wrap", // makes it responsive
-    gap: "16px",
-    marginTop: "16px",
-  }}
->
-  {/* Left Column: Cards in 2 Columns */}
-  <div
-    style={{
-      flex: "2 1 300px", // grows, shrinks, min width
-      display: "grid",
-      gridTemplateColumns: "1fr 1fr",
-      gap: "16px",
-    }}
-  >
-    {[
-      ["Offices & co-working", "Desk equipment, kitchens, meeting rooms"],
-      ["Retail & hospitality", "POS, back-of-house, guest areas"],
-      ["Education", "Classrooms, labs, IT suites, halls"],
-      ["Healthcare & care", "Non-medical electrical items (by agreement)"],
-      ["Construction & FM", "110 V tools, cabins, temporary supplies"],
-      ["Landlords & HMOs", "Communal appliances, re-lets, inventories"],
-    ].map(([t, d]) => (
-      <div
-        key={t}
-        style={{
-          border: "1px solid #ddd",
-          borderRadius: "8px",
-          padding: "16px",
-          background: "#fff",
-          boxShadow: "0 2px 6px rgba(0,0,0,0.08)",
-        }}
-      >
-        <p style={{ fontWeight: "600", marginBottom: "8px" }}>{t}</p>
-        <p style={{ margin: 0 }}>{d}</p>
-      </div>
-    ))}
-  </div>
+              style={{
+                display: "flex",
+                flexWrap: "wrap", // makes it responsive
+                gap: "16px",
+                marginTop: "16px",
+              }}
+            >
+              {/* Left Column: Cards in 2 Columns */}
+              <div
+                style={{
+                  flex: "2 1 300px", // grows, shrinks, min width
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: "16px",
+                }}
+              >
+                {[
+                  [
+                    "Offices & co-working",
+                    "Desk equipment, kitchens, meeting rooms",
+                  ],
+                  ["Retail & hospitality", "POS, back-of-house, guest areas"],
+                  ["Education", "Classrooms, labs, IT suites, halls"],
+                  [
+                    "Healthcare & care",
+                    "Non-medical electrical items (by agreement)",
+                  ],
+                  [
+                    "Construction & FM",
+                    "110 V tools, cabins, temporary supplies",
+                  ],
+                  [
+                    "Landlords & HMOs",
+                    "Communal appliances, re-lets, inventories",
+                  ],
+                ].map(([t, d]) => (
+                  <div
+                    key={t}
+                    style={{
+                      border: "1px solid #ddd",
+                      borderRadius: "8px",
+                      padding: "16px",
+                      background: "#fff",
+                      boxShadow: "0 2px 6px rgba(0,0,0,0.08)",
+                    }}
+                  >
+                    <p style={{ fontWeight: "600", marginBottom: "8px" }}>
+                      {t}
+                    </p>
+                    <p style={{ margin: 0 }}>{d}</p>
+                  </div>
+                ))}
+              </div>
 
-  {/* Right Column: Random Image */}
-  <div
-    style={{
-      flex: "1 1 250px", // flexible, min width for phone
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    }}
-  >
-    <img
-      src={'https://res.cloudinary.com/dug1siluu/image/upload/v1757611344/WhatsApp_Image_2025-09-11_at_22.21.06_83b8e548_kqndvr.jpg'}
-      alt="Random sector"
-      style={{
-        maxWidth: "100%",
-        height: "auto",
-        borderRadius: "8px",
-      }}
-    />
-  </div>
-</div>
-
-
+              {/* Right Column: Random Image */}
+              <div
+                style={{
+                  flex: "1 1 250px", // flexible, min width for phone
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img
+                  src={
+                    "https://res.cloudinary.com/dug1siluu/image/upload/v1757617505/ChatGPT_Image_Sep_12_2025_12_04_49_AM_vidu8z.png"
+                  }
+                  alt="Random sector"
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto",
+                    borderRadius: "8px",
+                  }}
+                />
+              </div>
+            </div>
           </div>
         </section>
 
