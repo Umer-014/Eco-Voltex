@@ -609,7 +609,7 @@ function styles(palette) {
 
   /* Right-side image on desktop, stacks below on mobile */
   .hero-map { margin: 0; }
-  .hero-map img { width: 100%; height: auto; display: block; }
+  .hero-map img { width: 130%; height: 130%; display: block; }
 
   .search { margin-top: 16px; position: relative; text-align: left; }
   .search label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
