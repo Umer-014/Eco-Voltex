@@ -569,13 +569,13 @@ export default function PatTestingPage() {
 
               <div className="ev-actions ev-mt-16">
                 <a
-                  href="/samples/pat-certificate-sample.pdf"
+                  href="/pdf.pdf"
                   className="ev-btn ev-btn--primary"
                 >
                   Download sample PDF
                 </a>
                 <a
-                  href="/samples/pat-results-sample.csv"
+                  href="/csv file.pdf"
                   className="ev-btn ev-btn--outline"
                 >
                   Download sample CSV
@@ -599,14 +599,15 @@ export default function PatTestingPage() {
             <div className="ev-col ev-col--5">
               <div >
                 
-                <object
+                <object className="ev-card ev-pdf">
+                  <br />
+                  <br />
                 
-                >
                   <img
                 src="https://res.cloudinary.com/dug1siluu/image/upload/v1757601945/ChatGPT_Image_Sep_11_2025_07_41_31_PM_fzya3v.png"
                 alt="Sample PAT Testing Certificate"
-                
-                style={{ height: "100%" , width: "100%", marginTop: "140px" }}
+
+                style={{ height: "auto" , width: "100%", marginTop: "110px", borderRadius: "8px", objectFit: "cover" }}
               />
                 </object>
               </div>
