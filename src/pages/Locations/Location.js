@@ -659,6 +659,7 @@ function styles(palette) {
 
   /* Mobile tweaks */
   @media (max-width: 900px) {
+    .hero-map img { width: 100%; height: 100%; display: block; }
     .hero-grid { grid-template-columns: 1fr; gap: 18px; }
     .search-results { top: 78px; }
     .pc-row { grid-template-columns: 1fr; }
