@@ -568,48 +568,41 @@ export default function PatTestingPage() {
               </p>
 
               <div className="ev-actions ev-mt-16">
-                <a
-                  href="/pdf.pdf"
-                  className="ev-btn ev-btn--primary"
-                >
+                <a href="/pdf.pdf" className="ev-btn ev-btn--primary">
                   Download sample PDF
                 </a>
-                <a
-                  href="/csv file.pdf"
-                  className="ev-btn ev-btn--outline"
-                >
+                <a href="/csv file.pdf" className="ev-btn ev-btn--outline">
                   Download sample CSV
                 </a>
               </div>
-              <br />
-              <div className="ev-card ev-pdf">
-                <object
-                
-                >
-                  <img
-                src="https://res.cloudinary.com/dug1siluu/image/upload/v1757602608/ChatGPT_Image_Sep_11_2025_07_56_32_PM_afleph.png"
-                alt="Sample PAT Testing Certificate"
-                
-                style={{ height: "auto" , width: "100%" }}
-              />
-                </object>
-              </div>
-            </div>
-
-            <div className="ev-col ev-col--5">
-              <div >
-                
-                <object className="ev-card ev-pdf">
                   <br />
-                  <br />
-                
-                  <img
-                src="https://res.cloudinary.com/dug1siluu/image/upload/v1757601945/ChatGPT_Image_Sep_11_2025_07_41_31_PM_fzya3v.png"
-                alt="Sample PAT Testing Certificate"
-
-                style={{ height: "auto" , width: "100%", marginTop: "110px", borderRadius: "8px", objectFit: "cover" }}
-              />
-                </object>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between", // pushes images to far left & right
+                  alignItems: "stretch", // makes them same height
+                  gap: "60px",
+                  width: "100%",
+                }}
+              >
+                <img
+                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1757602608/ChatGPT_Image_Sep_11_2025_07_56_32_PM_afleph.png"
+                  alt="Sample PAT Testing Results"
+                  style={{
+                    flex: "1", // makes both share equal space
+                    height: "400px", // fix same height
+                    objectFit: "contain", // keeps image ratio, no distortion
+                  }}
+                />
+                <img
+                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1757601945/ChatGPT_Image_Sep_11_2025_07_41_31_PM_fzya3v.png"
+                  alt="Sample PAT Testing Certificate"
+                  style={{
+                    flex: "1",
+                    height: "400px",
+                    objectFit: "contain",
+                  }}
+                />
               </div>
             </div>
           </div>
