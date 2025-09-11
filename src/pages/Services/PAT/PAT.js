@@ -1,10 +1,19 @@
 // src/pages/PatTestingPage.jsx
-import React from "react";
+import React,{useEffect,useState} from "react";
 import "./PAT.css";
 import Header from "../../../components/Header/Header";
 import Footer from "../../../components/Footer/Footer";
 
 export default function PatTestingPage() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+
+  }, []);
   return (
     <>
       <Header />
@@ -68,8 +77,7 @@ export default function PatTestingPage() {
                   fontWeight: 800,
                 }}
               >
-                PAT testing done right —{" "}
-                <span>safe, compliant</span> & reliable
+                PAT testing done right — <span>safe, compliant</span> & reliable
               </h1>
 
               <ul style={{ marginTop: 16, paddingLeft: 18 }}>
@@ -204,7 +212,10 @@ export default function PatTestingPage() {
         {/* TRUST BAR */}
         <section className="ev-section">
           <div className="ev-container">
-            <ul className="ev-grid ev-grid--4 ev-gap-16 ev-cards">
+            <ul
+              className="ev-grid ev-grid--4 ev-gap-16 ev-cards"
+              style={{ listStyle: "none" }}
+            >
               <li className="ev-card">
                 <b>Qualified engineers</b>
                 <br />
@@ -278,7 +289,10 @@ export default function PatTestingPage() {
                 a widely accepted, risk-based way to evidence compliance, reduce
                 incidents, and satisfy insurers.
               </p>
-              <ul className="ev-grid ev-grid--2 ev-gap-16 ev-mt-16">
+              <ul
+                className="ev-grid ev-grid--2 ev-gap-16 ev-mt-16"
+                style={{ listStyle: "none" }}
+              >
                 <li className="ev-card">
                   <b>Risk-based compliance</b>
                   <br />
@@ -328,7 +342,10 @@ export default function PatTestingPage() {
         <section className="ev-section ev-section--soft">
           <div className="ev-container">
             <h2 className="ev-h2">How to prepare (quick checklist)</h2>
-            <ul className="ev-grid ev-grid--3 ev-gap-16 ev-mt-16 ev-cards">
+            <ul
+              className="ev-grid ev-grid--3 ev-gap-16 ev-mt-16 ev-cards"
+              style={{ listStyle: "none" }}
+            >
               {[
                 "Ensure appliances are accessible and powered where possible",
                 "Identify critical equipment and preferred disruption windows",
@@ -433,7 +450,7 @@ export default function PatTestingPage() {
               >
                 <img
                   src={
-                    "https://res.cloudinary.com/dug1siluu/image/upload/v1757617505/ChatGPT_Image_Sep_12_2025_12_04_49_AM_vidu8z.png"
+                    "https://res.cloudinary.com/dug1siluu/image/upload/v1757617624/ChatGPT_Image_Sep_12_2025_12_06_32_AM_fkdbv7.png"
                   }
                   alt="Random PAT testing step"
                   style={{
@@ -604,7 +621,10 @@ export default function PatTestingPage() {
         <section className="ev-section ev-section--soft">
           <div className="ev-container">
             <h2 className="ev-h2">What you get</h2>
-            <ul className="ev-grid ev-grid--3 ev-gap-16 ev-mt-16 ev-cards">
+            <ul
+              className="ev-grid ev-grid--3 ev-gap-16 ev-mt-16 ev-cards"
+              style={{ listStyle: "none" }}
+            >
               {[
                 "PAT certificate (PDF) and detailed results (CSV/PDF)",
                 "Updated asset register with locations and unique IDs",
@@ -618,57 +638,6 @@ export default function PatTestingPage() {
                 </li>
               ))}
             </ul>
-
-            <div className="ev-card ev-mt-24">
-              <div className="ev-flex-row-between ev-gap-16 ev-flex-col-mobile">
-                <div>
-                  <p className="ev-strong">
-                    Request a fast quote (no obligation)
-                  </p>
-                  <p className="ev-meta">
-                    Tell us your item count and site details — we’ll respond
-                    promptly.
-                  </p>
-                </div>
-
-                <form
-                  className="ev-form"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    alert("Thanks! We’ll be in touch shortly.");
-                  }}
-                >
-                  <input
-                    required
-                    name="name"
-                    placeholder="Your name"
-                    aria-label="Your name"
-                  />
-                  <input
-                    required
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    aria-label="Email"
-                  />
-                  <input
-                    required
-                    name="items"
-                    inputMode="numeric"
-                    placeholder="Approx. number of items"
-                    aria-label="Approximate number of items"
-                  />
-                  <button type="submit" className="ev-btn ev-btn--primary">
-                    Request a quote
-                  </button>
-                  {/* Honeypot */}
-                  <label className="ev-visually-hidden">
-                    Company
-                    <input tabIndex={-1} autoComplete="off" name="company" />
-                  </label>
-                </form>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -768,6 +737,7 @@ export default function PatTestingPage() {
               <div
                 style={{
                   display: "flex",
+                  flexDirection: isMobile ? "column" : "row", // stack on mobile
                   justifyContent: "space-between", // pushes images to far left & right
                   alignItems: "stretch", // makes them same height
                   gap: "60px",
@@ -793,6 +763,7 @@ export default function PatTestingPage() {
                   }}
                 />
               </div>
+
             </div>
           </div>
         </section>
@@ -961,34 +932,6 @@ export default function PatTestingPage() {
           </div>
         </section>
 
-        {/* SEO JSON-LD */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Service",
-              name: "Portable Appliance Testing (PAT)",
-              provider: {
-                "@type": "LocalBusiness",
-                name: "Eco Voltex",
-                areaServed: "Greater London and surrounding areas",
-              },
-              serviceArea: [
-                "City of London",
-                "Greater London",
-                "Hertfordshire",
-                "Essex",
-                "Surrey",
-                "Berkshire",
-                "Kent",
-              ],
-              serviceType: "PAT Testing",
-              description:
-                "Professional, standards-aligned PAT testing with digital reports, risk-based retest schedules and full insurance cover (£2m Public Liability and £1m Professional Indemnity).",
-            }),
-          }}
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

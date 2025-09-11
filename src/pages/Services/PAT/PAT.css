@@ -1,11 +1,10 @@
-/* src/pages/pat-testing.css */
-/* ===== Brand colours — replace with your exact ecovoltex.co.uk hex codes ===== */
-:root{
-  --ev-primary-800:#041E32; /* headings */
-  --ev-primary-700:#062D48; /* deep navy */
-  --ev-primary-600:#0A3D62; /* primary */
-  --ev-primary-500:#12527F; /* links/hover */
-  --ev-accent:#16A34A;      /* eco green */
+/* ===== Brand colours ===== */
+:root {
+  --ev-primary-800:#041E32;
+  --ev-primary-700:#062D48;
+  --ev-primary-600:#0A3D62;
+  --ev-primary-500:#12527F;
+  --ev-accent:#16A34A;
   --ev-accent-700:#128838;
 
   --ev-bg-soft:#F3F7FB;
@@ -21,7 +20,11 @@
 }
 
 /* Base */
-.ev{font-family:Inter, system-ui,-apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--ev-text); background:#fff;}
+.ev {
+  font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--ev-text);
+  background:#fff;
+}
 .ev--page{min-height:100vh;}
 .ev a{color:var(--ev-primary-500); text-decoration:none}
 .ev a:hover{color:var(--ev-primary-600); text-decoration:underline; text-underline-offset:2px}
@@ -29,7 +32,12 @@
 .ev .ev-meta{font-size:12px; color:var(--ev-muted)}
 .ev .ev-strong{font-weight:600}
 .ev .ev-body{color:#2a3344; line-height:1.6}
-.ev .ev-mt-8{margin-top:8px}.ev .ev-mt-12{margin-top:12px}.ev .ev-mt-16{margin-top:16px}.ev .ev-mt-20{margin-top:20px}.ev .ev-mt-24{margin-top:24px}.ev .ev-mt-32{margin-top:32px}
+.ev .ev-mt-8{margin-top:8px}
+.ev .ev-mt-12{margin-top:12px}
+.ev .ev-mt-16{margin-top:16px}
+.ev .ev-mt-20{margin-top:20px}
+.ev .ev-mt-24{margin-top:24px}
+.ev .ev-mt-32{margin-top:32px}
 .ev .ev-p-16{padding:16px}
 
 /* Layout */
@@ -70,12 +78,11 @@
 .ev-btn--block{display:flex; width:100%}
 .ev-btn--light{background:#fff; color:#0a0f18; border:0}
 .ev-btn--light:hover{background:#eef1f6}
-.ev-btn--ghost{border:1px solid rgba(255,255,255,.4); color:#fff; background:transparent}
-.ev-btn--ghost:hover{background:rgba(255,255,255,.08)}
+.ev-btn--ghost{border:1px solid rgba(255,255,255,0.4); color:#fff; background:transparent}
+.ev-btn--ghost:hover{background:rgba(255,255,255,0.08)}
 
 /* Hero */
 .ev-hero{position:relative; overflow:hidden; padding-top:88px; padding-bottom:48px}
-.ev-hero__bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.2; z-index:-1}
 .ev-pill{display:inline-flex; gap:8px; align-items:center; background:#dcfce7; color:#166534; padding:6px 10px; border-radius:999px; font-weight:600; font-size:13px}
 .ev-hero__content{align-items:center}
 .ev-hero-stats{padding:20px}
@@ -89,7 +96,7 @@
 .ev-h3{font-size:20px; font-weight:700; color:var(--ev-primary-800)}
 
 /* Lists */
-.ev-list{padding:0; margin:0; list-style:none}
+.ev-list{padding:0; margin:0; list-style:none}   /* reset bullets */
 .ev-list--checks li{position:relative; padding-left:28px; margin:10px 0}
 .ev-list--checks li::before{content:"✔"; position:absolute; left:0; top:0; color:var(--ev-accent); font-weight:900}
 .ev-list--disc{list-style:disc; padding-left:20px}
@@ -119,7 +126,7 @@
 .ev-gap-16{gap:16px}
 
 /* Sticky CTA */
-.ev-sticky-cta{position:fixed; bottom:24px; left:50%; transform:translateX(-50%); z-index:40; display:none; align-items:center; gap:10px; background:rgba(255,255,255,.92); border:1px solid #e6eef6; backdrop-filter:blur(6px); padding:8px 12px; border-radius:999px; box-shadow:var(--ev-shadow)}
+.ev-sticky-cta{position:fixed; bottom:24px; left:50%; transform:translateX(-50%); z-index:40; display:none; align-items:center; gap:10px; background:rgba(255,255,255,0.92); border:1px solid #e6eef6; backdrop-filter:blur(6px); padding:8px 12px; border-radius:999px; box-shadow:var(--ev-shadow)}
 .ev-sticky-cta__label{font-size:13px; font-weight:700}
 @media (min-width:1024px){ .ev-sticky-cta{display:flex} }
 
@@ -132,7 +139,7 @@
   .ev-grid--4{grid-template-columns:1fr 1fr}
   .ev-grid--3{grid-template-columns:1fr}
   .ev-grid--2{grid-template-columns:1fr}
-  .ev-col--7,.ev-col--5{grid-column:1/-1}
+  .ev-col--7, .ev-col--5{grid-column:1/-1}   /* fixed bug: added dot */
   .ev-only-mobile{display:block}
   .ev-form{grid-template-columns:1fr 1fr}
   .ev-flex-col-mobile{flex-direction:column}
@@ -143,4 +150,8 @@
 /* Accessibility: reduced motion */
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+}
+
+ol {
+  list-style: none;
 }
