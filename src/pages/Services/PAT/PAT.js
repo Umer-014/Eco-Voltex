@@ -581,10 +581,24 @@ export default function PatTestingPage() {
                   Download sample CSV
                 </a>
               </div>
+              <div className="ev-card ev-pdf">
+                <object
+                
+                >
+                  <img
+                src="https://res.cloudinary.com/dug1siluu/image/upload/v1757602608/ChatGPT_Image_Sep_11_2025_07_56_32_PM_afleph.png"
+                alt="Sample PAT Testing Certificate"
+                
+                style={{ height: "auto" , width: "100%" }}
+              />
+                </object>
+              </div>
             </div>
 
             <div className="ev-col ev-col--5">
-              <div className="ev-card ev-pdf">
+              <div >
+                <br />
+
                 <object
                 
                 >
@@ -592,7 +606,7 @@ export default function PatTestingPage() {
                 src="https://res.cloudinary.com/dug1siluu/image/upload/v1757601945/ChatGPT_Image_Sep_11_2025_07_41_31_PM_fzya3v.png"
                 alt="Sample PAT Testing Certificate"
                 
-                style={{ height: "auto" , width: "100%" }}
+                style={{ height: "auto" , width: "100%", marginTop: "90px" }}
               />
                 </object>
               </div>
@@ -613,7 +627,7 @@ export default function PatTestingPage() {
                 Berkshire and Kent.
               </p>
               <div className="ev-actions ev-mt-16">
-                <a href="/location" className="ev-btn ev-btn--outline">
+                <a href="/areas-we-cover" className="ev-btn ev-btn--outline">
                   Check coverage
                 </a>
                 <a href="/contact" className="ev-btn ev-btn--primary">
