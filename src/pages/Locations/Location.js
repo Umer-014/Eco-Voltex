@@ -19,7 +19,7 @@ export default function LocationsPreview() {
 
   const contactHref = "/contact"; // change if your contact page path differs
   const mapImageUrl =
-    "https://res.cloudinary.com/dug1siluu/image/upload/v1757578473/ChatGPT_Image_Sep_11_2025_01_13_07_PM_jxvdi4.png";
+    "https://res.cloudinary.com/dug1siluu/image/upload/v1757605665/ChatGPT_Image_Sep_11_2025_08_47_34_PM_ntffio.png";
 
   const palette = {
     central: "#16a34a",
