@@ -83,8 +83,8 @@ const Header = () => {
           </ListItem>
 
           <ListItem button onClick={() => toggleDrawer(false)}>
-            <Link to="/location" className="nav-link">
-              Location
+            <Link to="/areas-we-cover" className="nav-link">
+              Areas We Cover
             </Link>
           </ListItem>
 
@@ -140,8 +140,8 @@ const Header = () => {
           </li>
 
           <li className="nav-item">
-            <Link to="/location" className="nav-link">
-              Location
+            <Link to="/areas-we-cover" className="nav-link">
+              Areas We Cover
             </Link>
           </li>
           

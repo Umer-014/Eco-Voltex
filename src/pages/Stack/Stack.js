@@ -30,7 +30,7 @@ const Stack = () => {
         <Route path="/contact" element={<ContactUsPage />} />
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/services/electrical" element={<ElectricalServicesl />} />
-        <Route path="/location" element={<Location />} />
+        <Route path="/areas-we-cover" element={<Location />} />
       </Routes>
     </Router>
   );
