@@ -149,7 +149,6 @@ export default function EcoVoltexCctvPagePreview() {
         >
           <div className="cctv-container cctv-grid cctv-grid-12 cctv-align-center">
             <div className="cctv-col-7">
-              
               <h1 id="hero-title" className="cctv-h1 cctv-h1--on-dark">
                 CCTV Security Solutions for London Homes & Businesses
               </h1>
@@ -170,7 +169,11 @@ export default function EcoVoltexCctvPagePreview() {
                 <button
                   className={`cctv-chip ${
                     audience === "home" ? "cctv-chip--active" : ""
-                  }`} style={{ backgroundColor: audience === "home" ? '#0FFF50' : 'white' , color: audience === "home" ? 'white' : 'black'}}
+                  }`}
+                  style={{
+                    backgroundColor: audience === "home" ? "#0FFF50" : "white",
+                    color: audience === "home" ? "white" : "black",
+                  }}
                   onClick={() => setAudience("home")}
                   role="tab"
                   aria-selected={audience === "home"}
@@ -180,7 +183,12 @@ export default function EcoVoltexCctvPagePreview() {
                 <button
                   className={`cctv-chip ${
                     audience === "business" ? "cctv-chip--active" : ""
-                  }`} style={{ backgroundColor: audience === "business" ? '#0FFF50' : 'white' , color: audience === "business" ? 'white' : 'black'}}
+                  }`}
+                  style={{
+                    backgroundColor:
+                      audience === "business" ? "#0FFF50" : "white",
+                    color: audience === "business" ? "white" : "black",
+                  }}
                   onClick={() => setAudience("business")}
                   role="tab"
                   aria-selected={audience === "business"}
@@ -206,34 +214,51 @@ export default function EcoVoltexCctvPagePreview() {
                 ))}
               </ul>
 
-              <div className="cctv-row cctv-hero-ctas" >
-                <a href="#packages" className="cctv-btn cctv-btnPrimary" style={{ backgroundColor: '#0FFF50', color: 'black' }}>
+              <div className="cctv-row cctv-hero-ctas">
+                <a
+                  href="#packages"
+                  className="cctv-btn cctv-btnPrimary"
+                  style={{ backgroundColor: "#0FFF50", color: "black" }}
+                >
                   See packages
                 </a>
-                <a href="/contact" className="cctv-btn cctv-btnPrimary" style={{ borderColor: '#0FFF50', color: 'black' }}>
+                <a
+                  href="/contact"
+                  className="cctv-btn cctv-btnPrimary"
+                  style={{ borderColor: "#0FFF50", color: "black" }}
+                >
                   Book a survey
                 </a>
               </div>
             </div>
 
-            <div className="cctv-col-5" aria-label="Key specs">
-              <div className="cctv-card">
-                <h3 className="cctv-h3" style={{ textAlign: "center" }}>
-                  Performance at a Glance
-                </h3>
-                <div className="cctv-grid cctv-grid-2">
-                  {[
-                    ["Clarity", "Up to 8MP / 4K"],
-                    ["Night", "Colour/IR low light"],
-                    ["Smart", "Human/vehicle filters"],
-                    ["Secure", "HTTPS, VLAN, strong credentials"],
-                  ].map(([k, v]) => (
-                    <div key={k} className="cctv-mini-kv" style={{backgroundColor: '#D3D3D3', borderRadius: '8px', padding: '8px', margin: '4px 0'}}>
-                      <p className="cctv-mini-kv__k">{k}</p>
-                      <p className="cctv-mini-kv__v">{v}</p>
-                    </div>
-                  ))}
-                </div>
+            <div className="cctv-col-5">
+              <div
+                style={{
+                  flex: "1 1 340px",
+                  minWidth: 260,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  height: "100%",
+                  width: "500px", // keep full width of parent
+                  height: "400px",
+                }}
+              >
+                <img
+                  src={
+                    "https://res.cloudinary.com/dug1siluu/image/upload/v1757790538/ChatGPT_Image_Sep_14_2025_12_08_45_AM_lmyc78.png"
+                  }
+                  alt="PAT testing in action"
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    borderRadius: 14,
+                    boxShadow: "0 8px 24px rgba(0,0,0,0.15)",
+                    background: "#fff",
+                    objectFit: "fill",
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -260,7 +285,7 @@ export default function EcoVoltexCctvPagePreview() {
                 style={{
                   display: "grid",
                   gridTemplateColumns: "1fr",
-                  gap: "20px",
+                  gap: "10px",
                   marginTop: "1px",
                 }}
               >
@@ -291,34 +316,34 @@ export default function EcoVoltexCctvPagePreview() {
             </div>
 
             {/* RIGHT — full image, matches left column height */}
-            <aside style={{ alignSelf: "stretch" }}>
-              <div
+
+            <div
+              className="cctv-5"
+              style={{
+                width: "500px", // keep full width of parent
+                height: "400px", // fixed height (set what you want here)
+                borderRadius: "12px",
+                background: "#F3F7FB",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
+                overflow: "hidden",
+                
+                marginLeft: "auto", 
+              }}
+            >
+              <img
+                src="https://res.cloudinary.com/dug1siluu/image/upload/v1757775249/ChatGPT_Image_Sep_13_2025_07_52_01_PM_n8opip.png"
+                alt="CCTV solutions"
+                loading="lazy"
+                decoding="async"
                 style={{
-                  height: "100%", // fill the grid row height
-                  borderRadius: "12px",
-                  background: "#F3F7FB", // letterbox background
-                  boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
-                  overflow: "hidden",
-                  display: "grid",
-                  alignContent: "center", // center image vertically
-                  padding: "8px",
+                  alignItems: "right",
+                  width: "100%", // stretch full width
+                  height: "100%", // stretch full height
+                  objectFit: "fill", // force to fill, no letterboxing
+                  display: "block",
                 }}
-              >
-                <img
-                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1757775249/ChatGPT_Image_Sep_13_2025_07_52_01_PM_n8opip.png"
-                  alt="CCTV solutions"
-                  loading="lazy"
-                  decoding="async"
-                  style={{
-                    width: "100%",
-                    height: "140%",
-                    objectFit: "contain",
-                    objectFit: "fill", // show the whole image (no crop)
-                    display: "block",
-                  }}
-                />
-              </div>
-            </aside>
+              />
+            </div>
           </div>
 
           {/* Mobile: stack and let image size naturally */}
@@ -350,7 +375,11 @@ export default function EcoVoltexCctvPagePreview() {
                 "Power: PoE (preferred), PoE+ for long runs; Wi-Fi where cabling isn’t feasible",
                 "Optional audio challenge, siren & strobe on deterrence models",
               ].map((s) => (
-                <li key={s} className="cctv-card" style={{ backgroundColor: "#D3D3D3" }}>
+                <li
+                  key={s}
+                  className="cctv-card"
+                  style={{ backgroundColor: "#D3D3D3" }}
+                >
                   {s}
                 </li>
               ))}

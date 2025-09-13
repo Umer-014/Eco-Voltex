@@ -183,7 +183,7 @@ export default function PatTestingPage() {
             >
               <img
                 src={
-                  "https://res.cloudinary.com/dug1siluu/image/upload/v1757617738/ChatGPT_Image_Sep_12_2025_12_08_49_AM_dwwdn9.png"
+                  "https://res.cloudinary.com/dug1siluu/image/upload/v1757788696/ChatGPT_Image_Sep_13_2025_11_37_58_PM_blssbd.png"
                 }
                 alt="PAT testing in action"
                 style={{
@@ -192,6 +192,7 @@ export default function PatTestingPage() {
                   borderRadius: 14,
                   boxShadow: "0 8px 24px rgba(0,0,0,0.15)",
                   background: "#fff",
+
                 }}
               />
             </div>
@@ -777,16 +778,46 @@ export default function PatTestingPage() {
                   Book now
                 </a>
               </div>
-            </div>
-
-            <div className="ev-col ev-col--5">
+              <br />
               <div className="ev-card">
                 <p className="ev-strong">Method statements & RAMS</p>
+
                 <p>
                   Provided on request. We can complete inductions and work under
                   permits to work.
                 </p>
               </div>
+            </div>
+
+            <div className="ev-col ev-col--5">
+              
+              <div
+              style={{
+                flex: "1 1 340px",
+                minWidth: 260,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "100%",
+              }}
+            >
+              <img
+                src={
+                  "https://res.cloudinary.com/dug1siluu/image/upload/v1757617738/ChatGPT_Image_Sep_12_2025_12_08_49_AM_dwwdn9.png"
+                }
+                alt="PAT testing in action"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  borderRadius: 14,
+                  boxShadow: "0 8px 24px rgba(0,0,0,0.15)",
+                  background: "#fff",
+                  objectFit: "fill",
+
+                }}
+              />
+            </div>
+
             </div>
           </div>
         </section>
