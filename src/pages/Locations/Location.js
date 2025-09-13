@@ -1,3 +1,4 @@
+// /mnt/data/Location.js
 import React, { useMemo, useState, useEffect, useRef } from "react";
 import Header from "../../components/Header/Header.js";
 import Footer from "../../components/Footer/Footer.js";
@@ -17,9 +18,9 @@ export default function LocationsPreview() {
     region: "",
   });
 
-  const contactHref = "/contact"; // change if your contact page path differs
+  const contactHref = "/contact";
   const mapImageUrl =
-    "https://res.cloudinary.com/dug1siluu/image/upload/v1757605665/ChatGPT_Image_Sep_11_2025_08_47_34_PM_ntffio.png";
+    "https://res.cloudinary.com/dug1siluu/image/upload/v1757800346/ChatGPT_Image_Sep_11_2025_01_13_07_PM_jxvdi4.png";
 
   const palette = {
     central: "#16a34a",
@@ -228,10 +229,12 @@ export default function LocationsPreview() {
     []
   );
 
-  // Extract outward code: A9, A99, AA9, AA99, A9A, AA9A
+  // Extract outward code: handle full or outward-only input
   const outward = (pc) => {
-    const n = pc.toUpperCase().replace(/[^A-Z0-9]/g, "");
-    const m = n.match(/^([A-Z]{1,2}\d[A-Z\d]?)/);
+    const n = pc.toUpperCase().trim();
+    const full = n.match(/^([A-Z]{1,2}\d[A-Z\d]?)\s*\d[A-Z]{2}$/);
+    if (full) return full[1];
+    const m = n.replace(/[^A-Z0-9]/g, "").match(/^([A-Z]{1,2}\d[A-Z\d]?)/);
     return m ? m[1] : "";
   };
 
@@ -240,7 +243,7 @@ export default function LocationsPreview() {
     const key = outward(postcode);
     if (!key) {
       setPcResult({ status: "invalid" });
-      openNotFoundModal("Invalid postcode", "Please enter a valid UK postcode (e.g. E13 9AB or UB8).");
+      openNotFoundModal("Invalid Postcode", "Please enter a valid UK postcode (e.g. E13 9AB or UB8).");
       return;
     }
     const hit = postcodeIndex[key];
@@ -275,7 +278,7 @@ export default function LocationsPreview() {
     } else {
       setPcResult({ status: "unknown", key });
       openNotFoundModal(
-        "Area not found",
+        "Area Not Found",
         `We couldn't match "${key}". Please contact us and we'll confirm coverage immediately.`
       );
     }
@@ -411,7 +414,7 @@ export default function LocationsPreview() {
       <div className="ev-wrap">
         <style>{styles(palette)}</style>
 
-        {/* HERO GRID: left = search; right = image (desktop). On mobile it stacks and image goes under search. */}
+        {/* HERO GRID */}
         <header className="hero">
           <div className="hero-grid">
             <div className="hero-left">
@@ -424,7 +427,7 @@ export default function LocationsPreview() {
 
               {/* Area search */}
               <div className="search">
-                <label htmlFor="area-search">Find your area</label>
+                <label htmlFor="area-search">Find Your Area</label>
                 <input
                   id="area-search"
                   type="text"
@@ -438,15 +441,15 @@ export default function LocationsPreview() {
                   ref={areaInputRef}
                 />
                 {query && (
-                  <div id="results" className="search-results" role="listbox">
+                  <div id="results" className="search-results" role="listbox" aria-label="Area suggestions">
                     {filtered.length === 0 ? (
                       <div className="empty">
                         No matches found. <strong>If you don’t see your area, please contact our team.</strong>
                         <div className="inline-actions">
-                          <a className="btn ghost" href="mailto:info@ecovoltex.co.uk">Email us</a>
+                          <a className="btn ghost" href="mailto:info@ecovoltex.co.uk">Email Us</a>
                           <a className="btn ghost" href="tel:07930558824">Call 07930 558824</a>
-                          <button className="btn ghost" onClick={() => openNotFoundModal()}>
-                            Open contact dialog
+                          <button className="btn ghost" type="button" onClick={() => openNotFoundModal()}>
+                            Open Contact Dialog
                           </button>
                         </div>
                       </div>
@@ -455,12 +458,14 @@ export default function LocationsPreview() {
                         <button
                           key={`${item.area}-${i}`}
                           className="result"
+                          type="button"
+                          role="option"
+                          aria-selected="false"
                           onClick={() => {
                             setActive(item.id);
                             document.getElementById(`region-${item.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
                             openFoundModal(item.region, `We found your area (${item.area}) in this region.`);
                           }}
-                          role="option"
                         >
                           <span className="area">{item.area}</span>
                           <span className="region">{item.region}</span>
@@ -473,16 +478,18 @@ export default function LocationsPreview() {
 
               {/* Postcode checker */}
               <div className="postcode">
-                <label htmlFor="pc">Or check by postcode</label>
+                <label htmlFor="pc">Or Check by Postcode</label>
                 <div className="pc-row">
                   <input
                     id="pc"
                     type="text"
                     placeholder="e.g. E13 9AB, UB8 1, SE16"
                     value={postcode}
+                    autoComplete="postal-code"
+                    inputMode="text"
                     onChange={(e) => setPostcode(e.target.value)}
                   />
-                  <button className="btn" onClick={searchPostcode}>Check coverage</button>
+                  <button className="btn" type="button" onClick={searchPostcode}>Check Coverage</button>
                 </div>
                 {pcResult && (
                   <div className={`pc-result ${pcResult.status}`}>
@@ -491,14 +498,17 @@ export default function LocationsPreview() {
                     )}
                     {pcResult.status === "covered" && (
                       <span>
-                        
                         <button
                           className="link"
+                          type="button"
+                          aria-label={`View ${pcResult.region}`}
                           onClick={() => {
                             setActive(pcResult.id);
                             document.getElementById(`region-${pcResult.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
                           }}
-                        ></button>
+                        >
+                          {pcResult.region}
+                        </button>
                       </span>
                     )}
                     {pcResult.status === "unknown" && (
@@ -512,14 +522,17 @@ export default function LocationsPreview() {
               </div>
             </div>
 
-            {/* RIGHT IMAGE (desktop). On mobile it appears under the search section. */}
+            {/* RIGHT IMAGE */}
             <figure className="hero-map">
               <img
                 src={mapImageUrl}
-                alt="Eco Voltex coverage—London map with company logo"
+                alt="Eco Voltex coverage map of Greater London and nearby counties with service regions"
                 loading="eager"
+                decoding="async"
+                width="960"
+                height="640"
+                sizes="(max-width: 900px) 100vw, 45vw"
               />
-              
             </figure>
           </div>
         </header>
@@ -561,7 +574,7 @@ export default function LocationsPreview() {
             </div>
             <div className="modal-footer">
               <a className="btn" href={contactHref}>Contact Us</a>
-              <button className="btn ghost" onClick={closeModal}>Cancel</button>
+              <button className="btn ghost" type="button" onClick={closeModal}>Cancel</button>
             </div>
           </Modal>
         )}
@@ -572,15 +585,30 @@ export default function LocationsPreview() {
   );
 }
 
-/** Accessible modal component (no external libs) */
+/** Accessible modal with focus trap */
 function Modal({ children, onClose }) {
+  const cardRef = useRef(null);
+  const prevFocus = useRef(null);
+
   useEffect(() => {
-    const onKey = (e) => e.key === "Escape" && onClose();
+    prevFocus.current = document.activeElement;
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "Tab") {
+        const f = cardRef.current?.querySelectorAll('a,button,input,textarea,select,[tabindex]:not([tabindex="-1"])');
+        if (!f || !f.length) return;
+        const first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    };
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
+    setTimeout(() => cardRef.current?.querySelector("a,button,[tabindex]")?.focus(), 0);
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
+      prevFocus.current && prevFocus.current.focus?.();
     };
   }, [onClose]);
 
@@ -588,13 +616,14 @@ function Modal({ children, onClose }) {
     <div className="ev-modal" role="dialog" aria-modal="true">
       <style>{modalStyles}</style>
       <div className="ev-modal-backdrop" onClick={onClose} />
-      <div className="ev-modal-card" role="document">
+      <div className="ev-modal-card" role="document" ref={cardRef}>
         {children}
       </div>
     </div>
   );
 }
 
+/* Inline styles for this page component */
 function styles(palette) {
   return `
   :root { --text:#111827; --muted:#4b5563; --line:#e5e7eb; --bg:#f6faf7; --chip:#ffffff; }
@@ -607,9 +636,8 @@ function styles(palette) {
   .hero h1 { margin: 0 0 10px; font-size: clamp(28px, 4vw, 42px); font-weight: 800; letter-spacing: -0.02em; }
   .hero p { margin: 0 0 12px; max-width: 900px; color: var(--muted); font-size: clamp(16px, 2.4vw, 18px); }
 
-  /* Right-side image on desktop, stacks below on mobile */
   .hero-map { margin: 0; }
-  .hero-map img { width: 130%; height: 130%; display: block; }
+  .hero-map img { width: 100%; height: auto; display: block; object-fit: contain; }
 
   .search { margin-top: 16px; position: relative; text-align: left; }
   .search label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
@@ -659,7 +687,6 @@ function styles(palette) {
 
   /* Mobile tweaks */
   @media (max-width: 900px) {
-    .hero-map img { width: 100%; height: 100%; display: block; }
     .hero-grid { grid-template-columns: 1fr; gap: 18px; }
     .search-results { top: 78px; }
     .pc-row { grid-template-columns: 1fr; }
