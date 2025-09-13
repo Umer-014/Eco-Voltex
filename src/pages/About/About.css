@@ -1,3 +1,15 @@
+/* /mnt/data/About.css */
+
+/* ================= Eco Voltex Brand Tokens ================= */
+:root {
+  --ev-deep-navy: #041E32;
+  --ev-eco-green: #16A34A;
+  --ev-accent: #128838;
+  --ev-text: #0B1320;
+  --ev-soft: #F4FBF7;
+  --ev-border: #D6E8DD;
+}
+
 /* Layout helpers */
 .max-wrap {
   max-width: 1200px;
@@ -10,127 +22,345 @@
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   text-align: center;
-  color: #333;
+  color: var(--ev-deep-navy);
   margin-bottom: 1.5rem;
 }
 
 .about__intro {
   font-size: 1rem;
   line-height: 1.8;
-  color: #555;
+  color: var(--ev-text);
   margin-bottom: 2rem;
   text-align: justify;
 }
 
 .section {
- margin-bottom: 1.5rem ;
+  margin-bottom: 1.5rem;
 }
 
 .section__title {
   font-size: clamp(1.75rem, 3.2vw, 2.25rem);
   font-weight: 700;
-  color: #000;
+  color: var(--ev-deep-navy);
   text-align: center;
   margin-bottom: 1rem;
 }
 
 .section__text {
   font-size: 1rem;
-  color: #555;
+  color: var(--ev-text);
   line-height: 1.75;
   margin-bottom: 1.25rem;
   text-align: justify;
+}
+
+/* Accessible, brand-consistent focus */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--ev-eco-green);
+  outline-offset: 2px;
+}
+
+/* Links */
+.about__link {
+  color: var(--ev-eco-green);
+  text-decoration: underline;
+}
+.about__link:hover,
+.about__link:focus {
+  text-decoration-thickness: 2px;
 }
 
 /* Services block (mobile-first) */
 .about-flex {
   display: flex;
   flex-direction: column;
-  gap: 0; /* Ensure no gap between flex items */
+  gap: 0;
 }
+
 .about-flex-mine {
   display: flex;
   flex-direction: row;
-  gap: 0; /* Ensure no gap between flex items */
+  gap: 0;
 }
 
 .about-flex__text {
-  max-width: auto;
-  margin-bottom: 0; /* Remove any bottom margin */
-  padding-bottom: 0; /* Remove any bottom padding */
+  max-width: 100%;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
+/* Lists */
 .service-list {
   list-style: disc;
   padding-left: 1.25rem;
-  margin: 0.5rem 0 0; /* Remove bottom margin to eliminate gap */
+  margin: 0.5rem 0 0;
   font-size: 1rem;
-  color: #555;
-}
-.about__link {
-  color: inherit;
-  text-decoration: none;
-}
-.service-list__title_1 {
-  background-color: #343a40;
-  font-weight: bold;
-  font-size: larger;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-  color: white !important;
+  color: var(--ev-text);
 }
 
-.service-list__title_2 {
-  background-color: #343a40;
-  font-weight: bold;
-  font-size: larger;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-  color: white !important;
-}
-
+.service-list__title_1,
+.service-list__title_2,
 .service-list__title_3 {
-  background-color: #343a40;
+  background-color: var(--ev-deep-navy);
   font-weight: bold;
   font-size: larger;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
-  color: white !important;
-}
-.list {
-  margin-left: 2.5rem; /* Space between list items */
+  color: #ffffff !important;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
 }
 
+.list {
+  margin-left: 2.5rem;
+}
+
+/* Images */
 .about-flex__image {
   display: flex;
-  justify-content: right;
-  margin-top: 0; /* Remove any top margin */
-  padding-top: 0; /* Remove any top padding */
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 0;
+  padding-top: 0;
+  width: 100%;
 }
 
 .about-flex__image img {
-  max-width: 100%;
-  height: 90vh;
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
   border-radius: 8px;
+  max-height: 90vh;
 }
 
+/* Cards (used in "Why Choose" grid) */
+.card_about {
+  background: #ffffff;
+  border: 1px solid var(--ev-border);
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  margin-bottom: 1rem;
+}
+.card__text_about {
+  color: var(--ev-text);
+  line-height: 1.6;
+}
 
+/* Simple responsive grid helper */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
 
+/* Testimonials */
+.home-testimonials {
+  background: var(--ev-soft);
+  border-top: 1px solid var(--ev-border);
+  border-bottom: 1px solid var(--ev-border);
+  padding: 1.5rem 0;
+}
+
+.home-testimonials-row {
+  margin-top: 1rem;
+}
+
+.home-testimonial {
+  background: #ffffff;
+  border: 1px solid var(--ev-border);
+  border-radius: 10px;
+  padding: 1rem;
+  color: var(--ev-text);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.home-client-info h4 {
+  margin: 0.5rem 0 0;
+  color: var(--ev-deep-navy);
+  font-weight: 600;
+}
+
+.home-client-info p {
+  margin: 0.25rem 0 0;
+  color: var(--ev-text);
+  opacity: 0.9;
+}
+
+/* Table styling */
+.table-ev {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid var(--ev-border);
+  border-radius: 10px;
+}
+.table-ev thead th {
+  background: var(--ev-deep-navy);
+  color: #ffffff;
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 700;
+}
+.table-ev tbody td {
+  padding: 0.75rem;
+  border-top: 1px solid var(--ev-border);
+}
+.table-ev tbody tr:nth-child(even) td {
+  background: var(--ev-soft);
+}
+.table-ev tbody tr:hover td {
+  background: #eef7f0;
+}
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.table-wrap .table-ev {
+  min-width: 640px;
+}
+
+/* Utility: visually hidden (for accessible headings) */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden; clip: rect(1px, 1px, 1px);
+  white-space: nowrap; border: 0; padding: 0; margin: -1px;
+}
+.services-group { margin-bottom: 1rem; }
+
+/* CTA buttons (brand-consistent) */
+.ev-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0.6rem 1rem; border-radius: 10px; border: 1px solid var(--ev-accent);
+  background: var(--ev-eco-green); color: #fff; font-weight: 600;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+}
+.ev-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,.08); }
+.ev-btn:active { transform: translateY(0); }
+.ev-btn--outline { background: #fff; color: var(--ev-accent); }
+
+/* Why Choose Eco Voltex — Improved */
+.why-ev {
+  background: var(--ev-soft);
+  border-top: 1px solid var(--ev-border);
+  border-bottom: 1px solid var(--ev-border);
+  padding: clamp(1rem, 3vw, 2rem) 0;
+}
+
+.why-ev__wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.why-ev__copy {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.why-ev__intro {
+  margin: 0;
+  color: var(--ev-text);
+  line-height: 1.7;
+}
+
+.why-ev__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.why-ev__card {
+  background: #fff;
+  border: 1px solid var(--ev-border);
+  border-radius: 12px;
+  padding: 0.9rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  display: grid;
+  gap: 0.4rem;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.why-ev__card:hover,
+.why-ev__card:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.why-ev__card h3 {
+  margin: 0;
+  font-size: clamp(1rem, 2.2vw, 1.125rem);
+  font-weight: 700;
+  color: var(--ev-deep-navy);
+}
+
+.why-ev__card p {
+  margin: 0;
+  color: var(--ev-text);
+  line-height: 1.6;
+}
+
+.why-ev__media {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.why-ev__media img {
+  width: 100%;
+  height: auto;
+  max-width: 520px;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+
+/* Tablet */
 @media (min-width: 768px) {
-  /* Services layout becomes two-column */
+  .why-ev__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .why-ev__wrap {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 1.25rem;
+  }
+  .why-ev__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .why-ev__media {
+    justify-content: flex-end;
+  }
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
   .about-flex {
     flex-direction: row;
-    align-items: justify;
-
+    align-items: flex-start;
   }
   .about-flex__text,
   .about-flex__image {
     flex: 1;
   }
 
-  /* Grid becomes 2 columns */
-  .card {
-    grid-column: span 6;
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .service-list {
@@ -139,9 +369,8 @@
 }
 
 @media (min-width: 1024px) {
-  /* Grid becomes 4 columns on large screens */
-  .card {
-    grid-column: span 3;
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .about__intro {
@@ -155,50 +384,24 @@
 /* Mobile layout */
 @media (max-width: 767px) {
   .about-flex-mine {
-    flex-direction: column; /* Stack text and image vertically on mobile */
+    flex-direction: column; /* stack on mobile */
   }
 
   .about-flex__text {
-    max-width: 100%; /* Full width for text on mobile */
+    max-width: 100%;
   }
 
   .about-flex__image {
-    justify-content: center; /* Center image on mobile */
-    margin-top: 1rem; /* Add spacing above image */
+    justify-content: center;
+    margin-top: 1rem;
   }
 
   .about-flex__image img {
-    height: auto; /* Adjust image height for mobile */
-  }
-}
-
-.about-why-choose-container {
-  display: flex;
-  flex-direction: row;
-  gap: 0;
-  align-items: flex-start; /* Align items to the top */
-}
-
-.about-why-choose-item {
-  flex: 1;
-  max-width: 1100px;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-.about-why-choose-item img {
-  width: 300px;
-  height: auto; /* Adjust height to content */
-  border-radius: 8px;
-}
-
-@media (max-width: 768px) {
-  .about-why-choose-container {
-    flex-direction: column;
+    max-height: 60vh;
   }
 
-  .about-why-choose-item {
-    max-width: 100%;
+  .about__intro,
+  .section__text {
+    text-align: left;
   }
 }
