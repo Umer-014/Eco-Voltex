@@ -2,11 +2,11 @@
 
 /* ===== Eco Voltex CCTV Page (UK, responsive, brand-consistent) ===== */
 .cctv {
-  --ev-navy:#0F2C44;    /* Deep navy */
-  --ev-green:#16A34A;   /* Eco green */
+  --ev-navy:#0F2C44;       /* Deep navy */
+  --ev-green:#16A34A;      /* Eco green */
   --ev-green-700:#128838;
-  --ev-soft:#F4FBF7;    /* Soft eco background */
-  --ev-border:#D6E8DD;  /* Subtle green-tinted border */
+  --ev-soft:#F4FBF7;       /* Soft eco background */
+  --ev-border:#D6E8DD;     /* Subtle green-tinted border */
   --ev-card:#FFFFFF;
   --ev-text:#0B1320;
   --ev-muted:#667289;
@@ -32,6 +32,7 @@
 /* Grid */
 .cctv-grid{display:grid; gap:16px}
 .cctv-grid-12{grid-template-columns:repeat(12,1fr)}
+.cctv-grid-4{grid-template-columns:repeat(4,1fr)}
 .cctv-grid-3{grid-template-columns:repeat(3,1fr)}
 .cctv-grid-2{grid-template-columns:repeat(2,1fr)}
 .cctv-col-7{grid-column:span 7}
@@ -40,23 +41,25 @@
 .cctv-row{display:flex; flex-wrap:wrap; gap:10px}
 
 /* Spacing */
+.cctv-mt-4{margin-top:4px}
 .cctv-mt-8{margin-top:8px}
 .cctv-mt-12{margin-top:12px}
 .cctv-mt-16{margin-top:16px}
+.cctv-mt-24{margin-top:24px}
 
 /* Headings */
-.cctv-h1{font-size:38px; line-height:1.2; font-weight:900; color:var(--ev-navy)}
-.cctv-h2{font-size:26px; font-weight:800; color:var(--ev-navy)}
+.cctv-h1{font-size:40px; line-height:1.2; font-weight:900; color:var(--ev-navy)}
+.cctv-h2{font-size:28px; font-weight:800; color:var(--ev-navy)}
 .cctv-h3{font-size:18px; font-weight:800; color:var(--ev-navy)}
 .cctv-strong{font-weight:700}
 .cctv-meta{font-size:12px; color:var(--ev-muted)}
 
 /* Hero */
 .cctv-hero{background:#fff; color:var(--ev-navy)}
-.cctv-hero-sub{margin-top:12px; max-width:60ch; color:#1f2937}
+.cctv-hero-sub{margin-top:12px; max-width:65ch; color:#1f2937}
 .cctv-hero-proof{margin-top:10px; font-weight:700; color:var(--ev-navy)}
 .cctv-hero-bullets{margin-top:10px; padding-left:18px; color:var(--ev-navy)}
-.cctv-hero-bullets li{list-style:disc}
+.cctv-hero-bullets li{list-style:disc; margin:6px 0}
 .cctv-hero-ctas{margin-top:16px}
 
 /* Cards / UI */
@@ -65,7 +68,7 @@
   border:1px solid var(--ev-border);
   border-radius:var(--ev-radius);
   box-shadow:var(--ev-shadow);
-  padding:14px;
+  padding:16px;
 }
 .cctv-card-head{display:flex; justify-content:space-between; align-items:center}
 
@@ -75,7 +78,7 @@
 }
 
 /* Buttons / Chips */
-.cctv-btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:10px 16px; border-radius:10px; font-weight:800; border:1px solid transparent; cursor:pointer}
+.cctv-btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 16px; border-radius:10px; font-weight:800; border:1px solid transparent; cursor:pointer}
 .cctv-btnPrimary{background:var(--ev-green); color:#fff}
 .cctv-btnPrimary:hover{background:var(--ev-green-700)}
 .cctv-btnOutline{background:#fff; border-color:var(--ev-border); color:var(--ev-navy)}
@@ -97,17 +100,49 @@
 .cctv-figure{width:100%; border-radius:12px; background:#F4FBF7; box-shadow:0 4px 12px rgba(0,0,0,0.06); overflow:hidden}
 .cctv-figure img{width:100%; height:auto; object-fit:contain; display:block}
 
-/* Responsive */
+/* ===== Enhanced "What You Get" feature tiles ===== */
+.features-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.feature{
+  position:relative; overflow:hidden; padding:16px;
+  border-radius:14px; border:1px solid var(--ev-border); background:#fff; box-shadow:var(--ev-shadow);
+}
+.feature::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(145deg, rgba(22,163,74,0.06), rgba(15,44,68,0.05));
+}
+.feature-head{display:flex; align-items:center; gap:10px; margin-bottom:8px}
+.feature-icon{
+  flex:0 0 36px; height:36px; width:36px; display:grid; place-items:center;
+  border-radius:999px; background:#eaf7ee; border:1px solid #cfe7d6; font-size:18px;
+}
+.feature-title{font-weight:800; color:var(--ev-navy); font-size:16px}
+.feature p{margin:0; color:#30404d; font-size:14px}
+
+/* ===== Mobile / Tablet Responsiveness ===== */
 @media (max-width:1023px){
+  .cctv-container{padding:0 18px}
   .cctv-grid-12{grid-template-columns:1fr}
   .cctv-col-7,.cctv-col-5{grid-column:1/-1}
-  .cctv-grid-3{grid-template-columns:1fr}
+  .cctv-grid-4{grid-template-columns:1fr 1fr}
+  .cctv-grid-3{grid-template-columns:1fr 1fr}
   .cctv-grid-2{grid-template-columns:1fr}
+  .features-grid{grid-template-columns:1fr 1fr}
   .cctv-h1{font-size:32px}
   .cctv-h2{font-size:24px}
-}
-@media (max-width:768px){
-  #solutions .cctv-container{display:grid; grid-template-columns:1fr !important}
-  #process .cctv-container{display:grid; grid-template-columns:1fr !important}
+  /* Stack the two-column sections cleanly */
+  #solutions .cctv-container{display:grid; grid-template-columns:1fr !important; gap:16px}
+  #process .cctv-container{display:grid; grid-template-columns:1fr !important; gap:16px}
   #process ol{grid-template-columns:1fr !important}
+}
+
+@media (max-width:640px){
+  .cctv-section{padding:40px 0}
+  .cctv-hero-bullets{padding-left:16px}
+  .cctv-row{gap:8px}
+  .cctv-btn{padding:10px 14px}
+  .cctv-card{padding:14px}
+  .cctv-grid-4{grid-template-columns:1fr}
+  .cctv-grid-3{grid-template-columns:1fr}
+  .features-grid{grid-template-columns:1fr}
+  .feature-icon{height:32px; width:32px; font-size:16px}
 }

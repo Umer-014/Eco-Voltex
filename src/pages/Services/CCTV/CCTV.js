@@ -105,6 +105,19 @@ export default function EcoVoltexCctvPagePreview() {
 
   const plans = audience === "home" ? homePlans : businessPlans;
 
+  /* Feature list for "What You Get" (same content, nicer UI) */
+  const featureItems = [
+    { icon:"🔭", title:"4MP–8MP (2K–4K)", text:"True WDR and low-light colour for clarity day and night." },
+    { icon:"🧠", title:"Smart Detection", text:"Human/vehicle, line-crossing and intrusion analytics." },
+    { icon:"🔐", title:"Secure Access", text:"Mobile & web viewing with roles and two-factor options." },
+    { icon:"🗄️", title:"Hardened NVR", text:"Locked admin, strong passwords, network segmentation." },
+    { icon:"🛡️", title:"Privacy & Retention", text:"Privacy masking and retention controls to match policy." },
+    { icon:"📜", title:"Signage & GDPR", text:"Professional signage and guidance for lawful operation." },
+    { icon:"💾", title:"Flexible Storage", text:"On-prem NVR, NAS or encrypted cloud options." },
+    { icon:"⚡", title:"Power Options", text:"PoE / PoE+ preferred; Wi-Fi where cabling isn’t feasible." },
+    { icon:"🚨", title:"Active Deterrence", text:"Optional audio challenge, siren and strobe models." },
+  ];
+
   return (
     <>
       <Header />
@@ -164,31 +177,13 @@ export default function EcoVoltexCctvPagePreview() {
             </div>
 
             <div className="cctv-col-5">
-              <div
-                style={{
-                  flex: "1 1 340px",
-                  minWidth: 260,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  height: "100%",
-                  width: "500px", // keep full width of parent
-                  height: "400px",
-                }}
-              >
+              <div className="cctv-figure">
                 <img
-                  src={
-                    "https://res.cloudinary.com/dug1siluu/image/upload/v1757790538/ChatGPT_Image_Sep_14_2025_12_08_45_AM_lmyc78.png"
-                  }
-                  alt="PAT testing in action"
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    borderRadius: 14,
-                    boxShadow: "0 8px 24px rgba(0,0,0,0.15)",
-                    background: "#fff",
-                    objectFit: "fill",
-                  }}
+                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1757790538/ChatGPT_Image_Sep_14_2025_12_08_45_AM_lmyc78.png"
+                  alt="CCTV installation and monitoring preview"
+                  className="cctv-img"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -205,7 +200,7 @@ export default function EcoVoltexCctvPagePreview() {
           >
             {/* LEFT */}
             <div>
-              <div style={{ display:"grid", gridTemplateColumns:"1fr", gap:"10px", marginTop:"1px" }}>
+              <div style={{ display:"grid", gridTemplateColumns:"1fr", gap:"12px", marginTop:"2px" }}>
                 <div className="cctv-card">
                   <p className="cctv-h3">Residential</p>
                   <ul className="cctv-list cctv-list--disc cctv-mt-8">
@@ -241,25 +236,22 @@ export default function EcoVoltexCctvPagePreview() {
           </div>
         </section>
 
-        {/* FEATURES */}
+        {/* WHAT YOU GET (improved look) */}
         <section id="features" className="cctv-section cctv-soft">
           <div className="cctv-container">
             <h2 className="cctv-h2">What You Get With Eco Voltex CCTV</h2>
-            <ul className="cctv-grid cctv-grid-3 cctv-mt-16 cctv-list-reset" aria-label="Key features">
-              {[
-                "4MP–8MP (2K–4K) cameras with true WDR and low-light colour",
-                "Smart detection: human/vehicle, line-crossing & intrusion",
-                "Mobile & web viewing with role-based access and two-factor options",
-                "Secure NVR: locked admin, strong passwords, network segmentation",
-                "Privacy masking and retention controls aligned to policy",
-                "Professional signage and GDPR guidance for lawful operation",
-                "Storage choices: on-prem NVR, NAS or encrypted cloud",
-                "Power: PoE (preferred), PoE+ for long runs; Wi-Fi where cabling isn’t feasible",
-                "Optional audio challenge, siren & strobe on deterrence models",
-              ].map((s) => (
-                <li key={s} className="cctv-card" style={{ backgroundColor:"#F7FAF8" }}>{s}</li>
+
+            <div className="features-grid cctv-mt-16" aria-label="Key features">
+              {featureItems.map((f) => (
+                <article key={f.title} className="feature" role="listitem">
+                  <header className="feature-head">
+                    <div className="feature-icon" aria-hidden="true">{f.icon}</div>
+                    <div className="feature-title">{f.title}</div>
+                  </header>
+                  <p>{f.text}</p>
+                </article>
               ))}
-            </ul>
+            </div>
           </div>
         </section>
 
