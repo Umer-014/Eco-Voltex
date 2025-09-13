@@ -232,95 +232,96 @@ export default function EcoVoltexCctvPagePreview() {
         </section>
         {/* SOLUTIONS */}
 
-        
-<section id="solutions" className="cctv-section">
-  <h2 className="cctv-h2" style={{ textAlign: "center" }}>Tailored solutions for homes and businesses</h2>
+        <section id="solutions" className="cctv-section">
+          <h2 className="cctv-h2" style={{ textAlign: "center" }}>
+            Tailored solutions for homes and businesses
+          </h2>
 
-  <div
-    className="cctv-container"
-    style={{
-      display: "grid",
-      gridTemplateColumns: "2fr 1fr",   // left: text, right: image
-      gap: "24px",
-      alignItems: "stretch",            // make grid items equal height
-    }}
-  > 
-    
-    
-    {/* LEFT — vertical text stack */}
-    <div>
-      
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr",
-          gap: "20px",
-          marginTop: "1px",
-        }}
-      >
-        <div className="cctv-card">
-          <p className="cctv-h3">Residential</p>
-          <ul className="cctv-list cctv-list--disc cctv-mt-8">
-            <li>Deterrent coverage for driveways, doors, gardens</li>
-            <li>Discreet turrets/domes; colour night vision where suitable</li>
-            <li>Privacy masks for neighbours/public footways</li>
-            <li>Secure remote viewing for household members</li>
-          </ul>
-        </div>
+          <div
+            className="cctv-container"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "2fr 1fr", // left: text, right: image
+              gap: "24px",
+              alignItems: "stretch", // make grid items equal height
+            }}
+          >
+            {/* LEFT — vertical text stack */}
+            <div>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr",
+                  gap: "20px",
+                  marginTop: "1px",
+                }}
+              >
+                <div className="cctv-card">
+                  <p className="cctv-h3">Residential</p>
+                  <ul className="cctv-list cctv-list--disc cctv-mt-8">
+                    <li>Deterrent coverage for driveways, doors, gardens</li>
+                    <li>
+                      Discreet turrets/domes; colour night vision where suitable
+                    </li>
+                    <li>Privacy masks for neighbours/public footways</li>
+                    <li>Secure remote viewing for household members</li>
+                  </ul>
+                </div>
 
-        <div className="cctv-card">
-          <p className="cctv-h3">Commercial & FM</p>
-          <ul className="cctv-list cctv-list--disc cctv-mt-8">
-            <li>Entrances, POS, car parks, stock & loading bays</li>
-            <li>AI analytics (human/vehicle, line crossing, intrusion)</li>
-            <li>24/7 recording, health checks & cyber hardening</li>
-            <li>Multi-site dashboards, roles & audit logs</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+                <div className="cctv-card">
+                  <p className="cctv-h3">Commercial & FM</p>
+                  <ul className="cctv-list cctv-list--disc cctv-mt-8">
+                    <li>Entrances, POS, car parks, stock & loading bays</li>
+                    <li>
+                      AI analytics (human/vehicle, line crossing, intrusion)
+                    </li>
+                    <li>24/7 recording, health checks & cyber hardening</li>
+                    <li>Multi-site dashboards, roles & audit logs</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
-    {/* RIGHT — full image, matches left column height */}
-    <aside style={{ alignSelf: "stretch" }}>
-      <div
-        style={{
-          height: "100%",                 // fill the grid row height
-          borderRadius: "12px",
-          background: "#F3F7FB",          // letterbox background
-          boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
-          overflow: "hidden",
-          display: "grid",
-          alignContent: "center",   // center image vertically
-          padding: "8px",
-        }}
-      >
-        <img
-          src="https://res.cloudinary.com/dug1siluu/image/upload/v1757775249/ChatGPT_Image_Sep_13_2025_07_52_01_PM_n8opip.png"
-          alt="CCTV solutions"
-          loading="lazy"
-          decoding="async"
-          style={{
-            width: "100%",
-            height: "140%",
-            objectFit: "contain", 
-            objectFit: 'fill' ,     // show the whole image (no crop)
-            display: "block",
-          }}
-        />
-      </div>
-    </aside>
-  </div>
+            {/* RIGHT — full image, matches left column height */}
+            <aside style={{ alignSelf: "stretch" }}>
+              <div
+                style={{
+                  height: "100%", // fill the grid row height
+                  borderRadius: "12px",
+                  background: "#F3F7FB", // letterbox background
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
+                  overflow: "hidden",
+                  display: "grid",
+                  alignContent: "center", // center image vertically
+                  padding: "8px",
+                }}
+              >
+                <img
+                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1757775249/ChatGPT_Image_Sep_13_2025_07_52_01_PM_n8opip.png"
+                  alt="CCTV solutions"
+                  loading="lazy"
+                  decoding="async"
+                  style={{
+                    width: "100%",
+                    height: "140%",
+                    objectFit: "contain",
+                    objectFit: "fill", // show the whole image (no crop)
+                    display: "block",
+                  }}
+                />
+              </div>
+            </aside>
+          </div>
 
-  {/* Mobile: stack and let image size naturally */}
-  <style>{`
+          {/* Mobile: stack and let image size naturally */}
+          <style>{`
     @media (max-width: 768px) {
       #solutions .cctv-container { grid-template-columns: 1fr !important; }
       #solutions aside > div { height: auto !important; }
       #solutions aside img { height: auto !important; }
     }
   `}</style>
-</section>
-
+        </section>
 
         {/* FEATURES */}
         <section id="features" className="cctv-section cctv-soft">
@@ -348,6 +349,7 @@ export default function EcoVoltexCctvPagePreview() {
             </ul>
           </div>
         </section>
+
         {/* PROCESS */}
         <section id="process" className="cctv-section">
           <div
@@ -428,7 +430,7 @@ export default function EcoVoltexCctvPagePreview() {
             {/* RIGHT SIDE (Random photo) */}
             <div style={{ textAlign: "center" }}>
               <img
-                src="https://source.unsplash.com/random/400x400?technology,camera"
+                src="https://res.cloudinary.com/dug1siluu/image/upload/v1757778102/20250913_2018_CCTV_Installation_Process_simple_compose_01k51tdb4kfctaywayb6nk255s_lbvgkf.png"
                 alt="Eco Voltex CCTV process"
                 style={{
                   width: "100%",
@@ -454,6 +456,7 @@ export default function EcoVoltexCctvPagePreview() {
     `}
           </style>
         </section>
+
         {/* STORAGE + SECURITY */}
         <section id="storage" className="cctv-section cctv-soft">
           <div className="cctv-container cctv-grid cctv-grid-2 cctv-gap-16">
@@ -488,30 +491,7 @@ export default function EcoVoltexCctvPagePreview() {
             </div>
           </div>
         </section>
-        {/* GALLERY */}
-        <section id="gallery" className="cctv-section">
-          <div className="cctv-container">
-            <h2 className="cctv-h2">
-              Before & after — neat, discreet, professional
-            </h2>
-            <div className="cctv-grid cctv-grid-3 cctv-gap-16 cctv-mt-16">
-              {[1, 2, 3].map((i) => (
-                <figure key={i} className="cctv-card cctv-gallery">
-                  <img
-                    src={`/images/gallery/cctv-${i}.webp`}
-                    width="640"
-                    height="360"
-                    loading="lazy"
-                    alt={`Eco Voltex CCTV installation example ${i}`}
-                  />
-                  <figcaption className="cctv-meta">
-                    Tidy containment • Correct sealants • Labelled NVR
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </div>
-        </section>
+
         {/* PACKAGES */}
         <section id="packages" className="cctv-section cctv-soft">
           <div className="cctv-container">
@@ -633,12 +613,19 @@ export default function EcoVoltexCctvPagePreview() {
                   Check
                 </button>
               </form>
-              <div className="cctv-meta cctv-mt-8" aria-live="polite">
-                {pcResult}
-              </div>
+              {pcResult && (
+                <div className="cctv-meta cctv-mt-8" aria-live="polite">
+                  {pcResult}{" "}
+                  <a href="#contact" style={{ textDecoration: "none" }}>
+                    <strong>Contact us</strong>
+                  </a>{" "}
+                  today to book your survey.
+                </div>
+              )}
             </div>
           </div>
         </section>
+
         {/* COMPLIANCE */}
         <section id="compliance" className="cctv-section">
           <div className="cctv-container">
@@ -656,6 +643,10 @@ export default function EcoVoltexCctvPagePreview() {
                     needed
                   </li>
                 </ul>
+                <p className="cctv-meta cctv-mt-8">
+                  General information only — specifics confirmed on survey. Not
+                  legal advice.
+                </p>
               </div>
               <div className="cctv-card">
                 <p className="cctv-strong">Data protection (business)</p>
@@ -673,10 +664,6 @@ export default function EcoVoltexCctvPagePreview() {
                 </p>
               </div>
             </div>
-            <p className="cctv-meta cctv-mt-8">
-              General information only — specifics confirmed on survey. Not
-              legal advice.
-            </p>
           </div>
         </section>
       </main>
