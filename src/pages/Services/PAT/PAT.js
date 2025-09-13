@@ -1,5 +1,6 @@
-// src/pages/PatTestingPage.jsx
-import React,{useEffect,useState} from "react";
+// /mnt/data/PAT.js
+/* src/pages/PatTestingPage.jsx */
+import React, { useEffect, useState } from "react";
 import "./PAT.css";
 import Header from "../../../components/Header/Header";
 import Footer from "../../../components/Footer/Footer";
@@ -12,8 +13,8 @@ export default function PatTestingPage() {
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-
   }, []);
+
   return (
     <>
       <Header />
@@ -22,10 +23,10 @@ export default function PatTestingPage() {
         <div className="ev-sticky-cta">
           <span className="ev-sticky-cta__label">Need PAT this week?</span>
           <a href="/contact" className="ev-btn ev-btn--primary">
-            Get a fast quote
+            Get A Fast Quote
           </a>
           <a href="#pricing" className="ev-btn ev-btn--outline">
-            See pricing
+            See Pricing
           </a>
         </div>
 
@@ -34,8 +35,8 @@ export default function PatTestingPage() {
           style={{
             position: "relative",
             padding: "64px 0",
-            color: "#0b1220",
-            background: "#f9fafb", // light background
+            color: "var(--ev-text)",
+            background: "var(--ev-bg-soft)",
           }}
         >
           <div
@@ -44,29 +45,23 @@ export default function PatTestingPage() {
               margin: "0 auto",
               padding: "0 20px",
               display: "flex",
-              flexWrap: "wrap", // responsive
+              flexWrap: "wrap",
               gap: "24px",
               alignItems: "center",
             }}
           >
             {/* LEFT: Text column */}
-            <div
-              style={{
-                flex: "2 1 480px",
-                minWidth: 280,
-              }}
-            >
-              
-
+            <div style={{ flex: "2 1 480px", minWidth: 280 }}>
               <h1
                 style={{
                   margin: "16px 0 0 0",
                   fontSize: "40px",
                   lineHeight: 1.1,
                   fontWeight: 800,
+                  color: "var(--ev-primary-800)",
                 }}
               >
-                PAT testing done right — <span>safe, compliant</span> & reliable
+                PAT Testing Done Right — <span>Safe, Compliant</span> & Reliable
               </h1>
 
               <ul style={{ marginTop: 16, paddingLeft: 18 }}>
@@ -87,28 +82,28 @@ export default function PatTestingPage() {
                   href="/contact"
                   style={{
                     textDecoration: "none",
-                    background: "#0FFF50",
-                    color: "black",
+                    background: "var(--ev-accent)",
+                    color: "#fff",
                     padding: "10px 16px",
                     borderRadius: 8,
                     fontWeight: 600,
                   }}
                 >
-                  Book PAT testing
+                  Book PAT Testing
                 </a>
                 <a
                   href="#pricing"
                   style={{
                     textDecoration: "none",
-                    background: "#0FFF50",
-                    color: "#0b1220",
+                    background: "#fff",
+                    color: "var(--ev-primary-800)",
                     padding: "10px 16px",
                     borderRadius: 8,
                     fontWeight: 600,
-                    border: "1px solid rgba(0,0,0,0.15)",
+                    border: "1px solid var(--ev-border)",
                   }}
                 >
-                  See pricing
+                  See Pricing
                 </a>
               </div>
 
@@ -126,14 +121,14 @@ export default function PatTestingPage() {
                     display: "block",
                     width: "100%",
                     textAlign: "center",
-                    background: "#228B22",
+                    background: "var(--ev-accent)",
                     color: "#fff",
                     padding: "12px 16px",
                     borderRadius: 10,
                     fontWeight: 700,
                   }}
                 >
-                  Get a fast quote
+                  Get A Fast Quote
                 </a>
               </div>
 
@@ -159,8 +154,8 @@ export default function PatTestingPage() {
                       padding: "10px 12px",
                       borderRadius: 10,
                       background: "#fff",
-                      border: "1px solid rgba(0,0,0,0.08)",
-                      boxShadow: "0 2px 6px rgba(0,0,0,0.06)",
+                      border: "1px solid var(--ev-border)",
+                      boxShadow: "0 2px 6px rgba(4,30,50,0.08)",
                       fontWeight: 600,
                       fontSize: 14,
                     }}
@@ -186,13 +181,14 @@ export default function PatTestingPage() {
                   "https://res.cloudinary.com/dug1siluu/image/upload/v1757788696/ChatGPT_Image_Sep_13_2025_11_37_58_PM_blssbd.png"
                 }
                 alt="PAT testing in action"
+                loading="lazy"
                 style={{
                   width: "100%",
                   height: "auto",
                   borderRadius: 14,
-                  boxShadow: "0 8px 24px rgba(0,0,0,0.15)",
+                  boxShadow: "0 8px 24px rgba(4,30,50,0.15)",
                   background: "#fff",
-
+                  objectFit: "contain",
                 }}
               />
             </div>
@@ -207,17 +203,17 @@ export default function PatTestingPage() {
               style={{ listStyle: "none" }}
             >
               <li className="ev-card">
-                <b>Qualified engineers</b>
+                <b>Qualified Engineers</b>
                 <br />
                 City & Guilds PAT • DBS-checked
               </li>
               <li className="ev-card">
-                <b>Standards-led</b>
+                <b>Standards-Led</b>
                 <br />
                 IET CoP 5th Ed. · BS EN 50678/50699
               </li>
               <li className="ev-card">
-                <b>Fully insured</b>
+                <b>Fully Insured</b>
                 <br />
                 £2m Public Liability • £1m PI
               </li>
@@ -233,7 +229,7 @@ export default function PatTestingPage() {
         {/* REVIEWS */}
         <section className="ev-section ev-section--soft">
           <div className="ev-container">
-            <h2 className="ev-h2">Trusted by London businesses</h2>
+            <h2 className="ev-h2">Trusted By London Businesses</h2>
             <div className="ev-grid ev-grid--3 ev-gap-16 ev-mt-16 ev-cards">
               <figure className="ev-card">
                 <blockquote>
@@ -270,7 +266,7 @@ export default function PatTestingPage() {
         <section className="ev-section">
           <div className="ev-container ev-grid ev-grid--12 ev-gap-32">
             <div className="ev-col ev-col--7">
-              <h2 className="ev-h2">Why PAT testing matters</h2>
+              <h2 className="ev-h2">Why PAT Testing Matters</h2>
               <p className="ev-body">
                 Portable Appliance Testing (PAT) helps you demonstrate that
                 electrical equipment provided for use at work is maintained in a
@@ -284,22 +280,22 @@ export default function PatTestingPage() {
                 style={{ listStyle: "none" }}
               >
                 <li className="ev-card">
-                  <b>Risk-based compliance</b>
+                  <b>Risk-Based Compliance</b>
                   <br />
                   RAMS and test regimes tailored to your risk profile.
                 </li>
                 <li className="ev-card">
-                  <b>Zero-disruption planning</b>
+                  <b>Zero-Disruption Planning</b>
                   <br />
                   Floor-by-floor coordination, quiet hours, stakeholder comms.
                 </li>
                 <li className="ev-card">
-                  <b>Actionable findings</b>
+                  <b>Actionable Findings</b>
                   <br />
                   Defect codes, photos on request, prioritised remedials.
                 </li>
                 <li className="ev-card">
-                  <b>Audit-ready records</b>
+                  <b>Audit-Ready Records</b>
                   <br />
                   Asset register, test evidence and certificates.
                 </li>
@@ -308,7 +304,7 @@ export default function PatTestingPage() {
 
             <aside className="ev-col ev-col--5">
               <div className="ev-card">
-                <h3 className="ev-h3">What we test</h3>
+                <h3 className="ev-h3">What We Test</h3>
                 <ul className="ev-list ev-list--disc ev-mt-12">
                   <li>Class I, Class II & SELV appliances</li>
                   <li>IT/AV (PCs, monitors, servers, projectors, chargers)</li>
@@ -331,7 +327,7 @@ export default function PatTestingPage() {
         {/* PREP CHECKLIST */}
         <section className="ev-section ev-section--soft">
           <div className="ev-container">
-            <h2 className="ev-h2">How to prepare (quick checklist)</h2>
+            <h2 className="ev-h2">How To Prepare (Quick Checklist)</h2>
             <ul
               className="ev-grid ev-grid--3 ev-gap-16 ev-mt-16 ev-cards"
               style={{ listStyle: "none" }}
@@ -355,11 +351,11 @@ export default function PatTestingPage() {
         {/* PROCESS */}
         <section className="ev-section">
           <div className="ev-container">
-            <h2 className="ev-h2">Our PAT testing process</h2>
+            <h2 className="ev-h2">Our PAT Testing Process</h2>
             <div
               style={{
                 display: "flex",
-                flexWrap: "wrap", // responsive behavior
+                flexWrap: "wrap",
                 gap: "16px",
                 marginTop: "16px",
               }}
@@ -367,9 +363,9 @@ export default function PatTestingPage() {
               {/* Left Column: Steps in 2 Columns */}
               <ol
                 style={{
-                  flex: "2 1 300px", // grows, shrinks, min width
+                  flex: "2 1 300px",
                   display: "grid",
-                  gridTemplateColumns: "1fr 1fr", // 2 columns for steps
+                  gridTemplateColumns: "1fr 1fr",
                   gap: "16px",
                   listStyle: "none",
                   padding: 0,
@@ -378,61 +374,59 @@ export default function PatTestingPage() {
               >
                 {[
                   [
-                    "Survey & plan",
+                    "Survey & Plan",
                     "We confirm scope, risk profile and schedule with your team; RAMS supplied.",
                   ],
                   [
-                    "Asset register",
+                    "Asset Register",
                     "Create/update inventory with locations and IDs (barcode optional).",
                   ],
                   [
-                    "Visual inspection",
+                    "Visual Inspection",
                     "Damage, suitability, vents/guards, fuses, cables, plugs and ratings.",
                   ],
                   [
-                    "Electrical tests",
+                    "Electrical Tests",
                     "Earth continuity, insulation resistance, polarity & leakage (as applicable).",
                   ],
                   [
-                    "Label & document",
+                    "Label & Document",
                     "Pass/Fail label with due date; digital certificate and CSV results.",
                   ],
                   [
-                    "Review & reminders",
+                    "Review & Reminders",
                     "Agree remedials and retest intervals; renewal reminders included.",
                   ],
                 ].map(([k, v], i) => (
                   <li
                     key={i}
                     style={{
-                      border: "1px solid #ddd",
+                      border: "1px solid var(--ev-border)",
                       borderRadius: "8px",
                       padding: "16px",
                       background: "#fff",
-                      boxShadow: "0 2px 6px rgba(0,0,0,0.08)",
+                      boxShadow: "0 2px 6px rgba(4,30,50,0.08)",
                     }}
                   >
                     <div
                       style={{
-                        fontWeight: "600",
-                        marginBottom: "8px",
-                        color: "#0FFF50",
+                        fontWeight: 600,
+                        marginBottom: 8,
+                        color: "var(--ev-accent)",
                       }}
                     >
                       Step {i + 1}
                     </div>
-                    <p style={{ fontWeight: "600", marginBottom: "8px" }}>
-                      {k}
-                    </p>
+                    <p style={{ fontWeight: 600, marginBottom: 8 }}>{k}</p>
                     <p style={{ margin: 0 }}>{v}</p>
                   </li>
                 ))}
               </ol>
 
-              {/* Right Column: Random Image */}
+              {/* Right Column: Image */}
               <div
                 style={{
-                  flex: "1 1 250px", // image takes 1/3 width on desktop, full width on mobile
+                  flex: "1 1 250px",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -442,11 +436,13 @@ export default function PatTestingPage() {
                   src={
                     "https://res.cloudinary.com/dug1siluu/image/upload/v1757617624/ChatGPT_Image_Sep_12_2025_12_06_32_AM_fkdbv7.png"
                   }
-                  alt="Random PAT testing step"
+                  alt="PAT testing step"
+                  loading="lazy"
                   style={{
                     maxWidth: "100%",
                     height: "auto",
-                    borderRadius: "8px",
+                    borderRadius: 8,
+                    objectFit: "contain",
                   }}
                 />
               </div>
@@ -457,7 +453,7 @@ export default function PatTestingPage() {
         {/* FREQUENCY MATRIX */}
         <section className="ev-section ev-section--soft">
           <div className="ev-container">
-            <h2 className="ev-h2">How often should equipment be tested?</h2>
+            <h2 className="ev-h2">How Often Should Equipment Be Tested?</h2>
             <p className="ev-body ev-mt-8">
               Retest intervals are set by <b>risk assessment</b> (environment,
               equipment class, usage, user competence, history, and manufacturer
@@ -466,50 +462,139 @@ export default function PatTestingPage() {
             </p>
 
             <div className="ev-table-wrap ev-mt-16">
-              <table className="ev-table">
+              <table className="ev-table ev-table--responsive">
                 <thead>
                   <tr>
                     <th>Environment</th>
                     <th>Equipment</th>
-                    <th>Formal visual inspection</th>
-                    <th>Combined inspection & test</th>
+                    <th>Formal Visual Inspection</th>
+                    <th>Combined Inspection &amp; Test</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Office / Low-risk commercial</td>
-                    <td>IT, monitors, printers</td>
-                    <td>12–24 months</td>
-                    <td>24–48 months</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>Extension leads/adaptors</td>
-                    <td>12–24 months</td>
-                    <td>12–24 months</td>
-                  </tr>
-                  <tr>
-                    <td>Retail / Schools / Hospitality</td>
-                    <td>Frequent-use appliances; public-accessible items</td>
-                    <td>6–12 months</td>
-                    <td>6–12 months</td>
-                  </tr>
-                  <tr>
-                    <td>Back-of-house / Kitchens</td>
-                    <td>Kettles, microwaves, fridges, water boilers</td>
-                    <td>6–12 months</td>
-                    <td>6–12 months</td>
-                  </tr>
-                  <tr>
-                    <td>Construction / Industrial</td>
-                    <td>110 V tools & leads; site distribution; RCDs</td>
-                    <td>
-                      3 months (visual for site distribution); RCDs: monthly
-                      user test
+                    <td data-label="Environment">
+                      Construction / Site Work (110&nbsp;V)
                     </td>
-                    <td>
-                      3–6 months (tools/leads); 6–12 months (site distribution);
-                      RCDs: periodic instrument test per risk/manufacturer
+                    <td data-label="Equipment">
+                      110&nbsp;V portable tools &amp; leads
+                    </td>
+                    <td data-label="Formal Visual Inspection">Monthly</td>
+                    <td data-label="Combined Inspection &amp; Test">
+                      Before first use on site, then every 3&nbsp;months
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-label="Environment">
+                      Construction / Site Work (230&nbsp;V)
+                    </td>
+                    <td data-label="Equipment">
+                      230&nbsp;V portable tools &amp; leads
+                    </td>
+                    <td data-label="Formal Visual Inspection">Weekly</td>
+                    <td data-label="Combined Inspection &amp; Test">
+                      Before first use on site, then monthly
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-label="Environment">
+                      Construction / Site Offices
+                    </td>
+                    <td data-label="Equipment">
+                      Office equipment used on site
+                    </td>
+                    <td data-label="Formal Visual Inspection">6-monthly</td>
+                    <td data-label="Combined Inspection &amp; Test">
+                      Before first use on site, then yearly
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-label="Environment">RCDs (On Site)</td>
+                    <td data-label="Equipment">
+                      Fixed &amp; portable RCD protection
+                    </td>
+                    <td data-label="Formal Visual Inspection">
+                      Weekly (fixed); Monthly (portable)
+                    </td>
+                    <td data-label="Combined Inspection &amp; Test">
+                      Before first use on site, then 3-monthly (portable RCDs:
+                      monthly user test)
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td data-label="Environment">Offices (Low-Risk)</td>
+                    <td data-label="Equipment">
+                      IT rarely moved (desktops, photocopiers, fax)
+                    </td>
+                    <td data-label="Formal Visual Inspection">
+                      2–4&nbsp;years
+                    </td>
+                    <td data-label="Combined Inspection &amp; Test">
+                      None if Class&nbsp;II; otherwise up to 5&nbsp;years
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-label="Environment">Low-Risk Commercial</td>
+                    <td data-label="Equipment">Extension leads / adaptors</td>
+                    <td data-label="Formal Visual Inspection">
+                      6&nbsp;months–4&nbsp;years (risk-based)
+                    </td>
+                    <td data-label="Combined Inspection &amp; Test">
+                      1–5&nbsp;years (risk-based)
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td data-label="Environment">
+                      General (Clean / Dry Areas)
+                    </td>
+                    <td data-label="Equipment">
+                      Double-insulated (Class&nbsp;II) moved occasionally (not
+                      hand-held)
+                    </td>
+                    <td data-label="Formal Visual Inspection">
+                      2–4&nbsp;years
+                    </td>
+                    <td data-label="Combined Inspection &amp; Test">
+                      Not normally required
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-label="Environment">General (Higher Use)</td>
+                    <td data-label="Equipment">
+                      Hand-held Class&nbsp;II (some floor cleaners / kitchen
+                      items)
+                    </td>
+                    <td data-label="Formal Visual Inspection">
+                      6–12&nbsp;months
+                    </td>
+                    <td data-label="Combined Inspection &amp; Test">
+                      Not normally required
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-label="Environment">General (Higher Risk)</td>
+                    <td data-label="Equipment">
+                      Earthed Class&nbsp;I (eg kettles, some floor cleaners)
+                    </td>
+                    <td data-label="Formal Visual Inspection">
+                      6–12&nbsp;months
+                    </td>
+                    <td data-label="Combined Inspection &amp; Test">
+                      1–2&nbsp;years
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-label="Environment">All Areas</td>
+                    <td data-label="Equipment">
+                      Cables, leads, plugs, battery chargers
+                    </td>
+                    <td data-label="Formal Visual Inspection">
+                      6&nbsp;months–4&nbsp;years (depends on use)
+                    </td>
+                    <td data-label="Combined Inspection &amp; Test">
+                      1–5&nbsp;years (depends on connected equipment)
                     </td>
                   </tr>
                 </tbody>
@@ -526,11 +611,11 @@ export default function PatTestingPage() {
         {/* SECTORS */}
         <section className="ev-section">
           <div className="ev-container">
-            <h2 className="ev-h2">Sectors we support</h2>
+            <h2 className="ev-h2">Sectors We Support</h2>
             <div
               style={{
                 display: "flex",
-                flexWrap: "wrap", // makes it responsive
+                flexWrap: "wrap",
                 gap: "16px",
                 marginTop: "16px",
               }}
@@ -538,7 +623,7 @@ export default function PatTestingPage() {
               {/* Left Column: Cards in 2 Columns */}
               <div
                 style={{
-                  flex: "2 1 300px", // grows, shrinks, min width
+                  flex: "2 1 300px",
                   display: "grid",
                   gridTemplateColumns: "1fr 1fr",
                   gap: "16px",
@@ -546,13 +631,13 @@ export default function PatTestingPage() {
               >
                 {[
                   [
-                    "Offices & co-working",
+                    "Offices & Co-Working",
                     "Desk equipment, kitchens, meeting rooms",
                   ],
-                  ["Retail & hospitality", "POS, back-of-house, guest areas"],
+                  ["Retail & Hospitality", "POS, back-of-house, guest areas"],
                   ["Education", "Classrooms, labs, IT suites, halls"],
                   [
-                    "Healthcare & care",
+                    "Healthcare & Care",
                     "Non-medical electrical items (by agreement)",
                   ],
                   [
@@ -567,25 +652,23 @@ export default function PatTestingPage() {
                   <div
                     key={t}
                     style={{
-                      border: "1px solid #ddd",
+                      border: "1px solid var(--ev-border)",
                       borderRadius: "8px",
                       padding: "16px",
                       background: "#fff",
-                      boxShadow: "0 2px 6px rgba(0,0,0,0.08)",
+                      boxShadow: "0 2px 6px rgba(4,30,50,0.08)",
                     }}
                   >
-                    <p style={{ fontWeight: "600", marginBottom: "8px" }}>
-                      {t}
-                    </p>
+                    <p style={{ fontWeight: 600, marginBottom: 8 }}>{t}</p>
                     <p style={{ margin: 0 }}>{d}</p>
                   </div>
                 ))}
               </div>
 
-              {/* Right Column: Random Image */}
+              {/* Right Column: Image */}
               <div
                 style={{
-                  flex: "1 1 250px", // flexible, min width for phone
+                  flex: "1 1 250px",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -595,11 +678,13 @@ export default function PatTestingPage() {
                   src={
                     "https://res.cloudinary.com/dug1siluu/image/upload/v1757617505/ChatGPT_Image_Sep_12_2025_12_04_49_AM_vidu8z.png"
                   }
-                  alt="Random sector"
+                  alt="Sector illustration"
+                  loading="lazy"
                   style={{
                     maxWidth: "100%",
                     height: "auto",
-                    borderRadius: "8px",
+                    borderRadius: 8,
+                    objectFit: "contain",
                   }}
                 />
               </div>
@@ -610,7 +695,7 @@ export default function PatTestingPage() {
         {/* DELIVERABLES + FORM */}
         <section className="ev-section ev-section--soft">
           <div className="ev-container">
-            <h2 className="ev-h2">What you get</h2>
+            <h2 className="ev-h2">What You Get</h2>
             <ul
               className="ev-grid ev-grid--3 ev-gap-16 ev-mt-16 ev-cards"
               style={{ listStyle: "none" }}
@@ -634,7 +719,7 @@ export default function PatTestingPage() {
         {/* PRICING */}
         <section id="pricing" className="ev-section">
           <div className="ev-container">
-            <h2 className="ev-h2">Transparent pricing (No VAT)</h2>
+            <h2 className="ev-h2">Transparent Pricing (No VAT)</h2>
             <p className="ev-body ev-mt-8">
               Aligned with London norms — clear packages that protect small jobs
               and reward larger sites. Out-of-hours: +20%.
@@ -642,7 +727,7 @@ export default function PatTestingPage() {
 
             <div className="ev-grid ev-grid--3 ev-gap-16 ev-mt-16">
               <div className="ev-card">
-                <p className="ev-strong">Small sites</p>
+                <p className="ev-strong">Small Sites</p>
                 <p className="ev-meta">Up to 30 items</p>
                 <p className="ev-price">£120</p>
                 <ul className="ev-list ev-list--dots">
@@ -654,12 +739,12 @@ export default function PatTestingPage() {
                   href="/contact"
                   className="ev-btn ev-btn--primary ev-btn--block ev-mt-16"
                 >
-                  Book this package
+                  Book This Package
                 </a>
               </div>
 
               <div className="ev-card ev-card--accent">
-                <p className="ev-strong">Growing teams</p>
+                <p className="ev-strong">Growing Teams</p>
                 <p className="ev-meta">31–100 items</p>
                 <p className="ev-price">
                   £120 + £2
@@ -674,12 +759,12 @@ export default function PatTestingPage() {
                   href="/contact"
                   className="ev-btn ev-btn--primary ev-btn--block ev-mt-16"
                 >
-                  Get tailored quote
+                  Get Tailored Quote
                 </a>
               </div>
 
               <div className="ev-card">
-                <p className="ev-strong">Large & multi-site</p>
+                <p className="ev-strong">Large & Multi-Site</p>
                 <p className="ev-meta">101–250+ items</p>
                 <p className="ev-price">
                   from £1.50<span className="ev-price__suffix">/item</span>
@@ -693,7 +778,7 @@ export default function PatTestingPage() {
                   href="/contact"
                   className="ev-btn ev-btn--primary ev-btn--block ev-mt-16"
                 >
-                  Speak to us
+                  Speak To Us
                 </a>
               </div>
             </div>
@@ -709,51 +794,64 @@ export default function PatTestingPage() {
         <section className="ev-section ev-section--soft">
           <div className="ev-container ev-grid ev-grid--12 ev-gap-32">
             <div className="ev-col ev-col--7">
-              <h2 className="ev-h2">See exactly what you’ll receive</h2>
+              <h2 className="ev-h2">See Exactly What You’ll Receive</h2>
               <p className="ev-body ev-mt-8">
                 Preview a redacted sample certificate and a results file to
                 share with stakeholders.
               </p>
 
               <div className="ev-actions ev-mt-16">
-                <a href="/pdf.pdf" className="ev-btn ev-btn--primary" style={{ textDecoration: 'none', color:"white" }}>
-                  Download sample PDF
+                <a
+                  href="/sample.pdf"
+                  className="ev-btn ev-btn--primary"
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  Download Sample PDF
                 </a>
-                <a href="/csv file.pdf" className="ev-btn ev-btn--primary" style={{ textDecoration: 'none', color:"white" }}>
-                  Download sample CSV
+                <a
+                  href="/sample.csv"
+                  className="ev-btn ev-btn--primary"
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  Download Sample CSV
                 </a>
               </div>
+
               <br />
+
               <div
                 style={{
                   display: "flex",
-                  flexDirection: isMobile ? "column" : "row", // stack on mobile
-                  justifyContent: "space-between", // pushes images to far left & right
-                  alignItems: "stretch", // makes them same height
+                  flexDirection: isMobile ? "column" : "row",
+                  justifyContent: "space-between",
+                  alignItems: "stretch",
                   gap: "60px",
                   width: "100%",
                 }}
               >
                 <img
                   src="https://res.cloudinary.com/dug1siluu/image/upload/v1757602608/ChatGPT_Image_Sep_11_2025_07_56_32_PM_afleph.png"
-                  alt="Sample PAT Testing Results"
+                  alt="Sample PAT testing results"
+                  loading="lazy"
                   style={{
-                    flex: "1", // makes both share equal space
-                    height: "400px", // fix same height
-                    objectFit: "contain", // keeps image ratio, no distortion
+                    flex: 1,
+                    height: "400px",
+                    objectFit: "contain",
+                    width: "100%",
                   }}
                 />
                 <img
                   src="https://res.cloudinary.com/dug1siluu/image/upload/v1757601945/ChatGPT_Image_Sep_11_2025_07_41_31_PM_fzya3v.png"
-                  alt="Sample PAT Testing Certificate"
+                  alt="Sample PAT testing certificate"
+                  loading="lazy"
                   style={{
-                    flex: "1",
+                    flex: 1,
                     height: "400px",
                     objectFit: "contain",
+                    width: "100%",
                   }}
                 />
               </div>
-
             </div>
           </div>
         </section>
@@ -763,7 +861,7 @@ export default function PatTestingPage() {
           <div className="ev-container ev-grid ev-grid--12 ev-gap-32">
             <div className="ev-col ev-col--7">
               <h2 className="ev-h2">
-                Serving Greater London and surrounding areas
+                Serving Greater London And Surrounding Areas
               </h2>
               <p className="ev-body ev-mt-8">
                 All 32 London boroughs and the City of London, plus regular
@@ -772,16 +870,15 @@ export default function PatTestingPage() {
               </p>
               <div className="ev-actions ev-mt-16">
                 <a href="/areas-we-cover" className="ev-btn ev-btn--primary">
-                  Check coverage
+                  Check Coverage
                 </a>
                 <a href="/contact" className="ev-btn ev-btn--primary">
-                  Book now
+                  Book Now
                 </a>
               </div>
               <br />
               <div className="ev-card">
-                <p className="ev-strong">Method statements & RAMS</p>
-
+                <p className="ev-strong">Method Statements & RAMS</p>
                 <p>
                   Provided on request. We can complete inductions and work under
                   permits to work.
@@ -790,34 +887,32 @@ export default function PatTestingPage() {
             </div>
 
             <div className="ev-col ev-col--5">
-              
               <div
-              style={{
-                flex: "1 1 340px",
-                minWidth: 260,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                height: "100%",
-              }}
-            >
-              <img
-                src={
-                  "https://res.cloudinary.com/dug1siluu/image/upload/v1757617738/ChatGPT_Image_Sep_12_2025_12_08_49_AM_dwwdn9.png"
-                }
-                alt="PAT testing in action"
                 style={{
-                  width: "100%",
-                  height: "auto",
-                  borderRadius: 14,
-                  boxShadow: "0 8px 24px rgba(0,0,0,0.15)",
-                  background: "#fff",
-                  objectFit: "fill",
-
+                  flex: "1 1 340px",
+                  minWidth: 260,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  height: "100%",
                 }}
-              />
-            </div>
-
+              >
+                <img
+                  src={
+                    "https://res.cloudinary.com/dug1siluu/image/upload/v1757617738/ChatGPT_Image_Sep_12_2025_12_08_49_AM_dwwdn9.png"
+                  }
+                  alt="PAT testing in action"
+                  loading="lazy"
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    borderRadius: 14,
+                    boxShadow: "0 8px 24px rgba(4,30,50,0.15)",
+                    background: "#fff",
+                    objectFit: "contain",
+                  }}
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -825,10 +920,10 @@ export default function PatTestingPage() {
         {/* COMPLIANCE */}
         <section className="ev-section">
           <div className="ev-container">
-            <h2 className="ev-h2">Compliance & standards</h2>
+            <h2 className="ev-h2">Compliance & Standards</h2>
             <div className="ev-grid ev-grid--2 ev-gap-16 ev-mt-16">
               <div className="ev-card">
-                <p className="ev-strong">Legal position (summary)</p>
+                <p className="ev-strong">Legal Position (Summary)</p>
                 <ul className="ev-list ev-list--disc ev-mt-12">
                   <li>
                     <b>Workplaces (England/Wales/Scotland):</b> Law requires
@@ -853,7 +948,7 @@ export default function PatTestingPage() {
               </div>
 
               <div className="ev-card">
-                <p className="ev-strong">We align to</p>
+                <p className="ev-strong">We Align To</p>
                 <ul className="ev-list ev-list--disc ev-mt-12">
                   <li>
                     IET{" "}
@@ -873,7 +968,7 @@ export default function PatTestingPage() {
                   <li>Electricity at Work Regulations 1989</li>
                 </ul>
 
-                <p className="ev-strong ev-mt-16">Insurance & deliverables</p>
+                <p className="ev-strong ev-mt-16">Insurance & Deliverables</p>
                 <ul className="ev-list ev-list--disc ev-mt-12">
                   <li>
                     Insurance: £2,000,000 Public Liability & £1,000,000
@@ -892,33 +987,33 @@ export default function PatTestingPage() {
         </section>
 
         {/* FAQs */}
-        <section className="ev-section ev-section--soft">
+        <section className="ev-section ev-section--soft" id="faqs">
           <div className="ev-container">
-            <h2 className="ev-h2">PAT testing FAQs</h2>
+            <h2 className="ev-h2">PAT Testing FAQs</h2>
             <div className="ev-grid ev-grid--2 ev-gap-16 ev-mt-16">
               {[
                 [
-                  "Is PAT testing a legal requirement?",
+                  "Is PAT Testing A Legal Requirement?",
                   "PAT itself is not specifically named in law for workplaces, but the Electricity at Work Regulations 1989 require electrical equipment to be maintained to prevent danger. PAT provides recognised evidence that equipment is safe to use. Scottish private landlords must include PAT as part of their electrical safety inspection.",
                 ],
                 [
-                  "How often should I retest?",
+                  "How Often Should I Retest?",
                   "Intervals are risk-based: environment, equipment class, usage, user competence and history. Typical ranges are 3–48 months. We’ll agree an appropriate schedule during your survey.",
                 ],
                 [
-                  "Will testing disrupt our work?",
+                  "Will Testing Disrupt Our Work?",
                   "We plan around your operations, including early, late or weekend visits. Testing per item usually takes a few minutes; we coordinate floor-by-floor to minimise downtime.",
                 ],
                 [
-                  "Do you provide certificates and an asset list?",
+                  "Do You Provide Certificates And An Asset List?",
                   "Yes. You’ll receive a PDF certificate and a detailed results file with asset IDs, locations and outcomes. We can also supply CSVs for your CAFM/asset system.",
                 ],
                 [
-                  "What happens if something fails?",
+                  "What Happens If Something Fails?",
                   "We’ll label it as unsafe, remove it from service (with your permission), attempt minor repairs on the spot, and provide clear next steps.",
                 ],
                 [
-                  "Which standards do you follow?",
+                  "Which Standards Do You Follow?",
                   "We work to the IET Code of Practice (5th Edition) and relevant British/European standards including BS EN 50678 and BS EN 50699 where applicable.",
                 ],
               ].map(([q, a]) => (
@@ -935,7 +1030,7 @@ export default function PatTestingPage() {
         <section className="ev-cta">
           <div className="ev-container ev-center">
             <h2 className="ev-h2 ev-h2--on-dark">
-              Ready for safe, compliant appliances?
+              Ready For Safe, Compliant Appliances?
             </h2>
             <p className="ev-cta__sub">
               Book Eco Voltex for professional PAT testing with clear reports
@@ -943,7 +1038,7 @@ export default function PatTestingPage() {
             </p>
             <div className="ev-actions ev-actions--center ev-mt-16">
               <a href="/contact" className="ev-btn ev-btn--light">
-                Get a quote
+                Get A Quote
               </a>
               <a href="#faqs" className="ev-btn ev-btn--ghost">
                 Read FAQs
@@ -961,7 +1056,7 @@ export default function PatTestingPage() {
               mainEntity: [
                 {
                   "@type": "Question",
-                  name: "Is PAT testing a legal requirement?",
+                  name: "Is PAT Testing A Legal Requirement?",
                   acceptedAnswer: {
                     "@type": "Answer",
                     text: "PAT itself is not specifically named in law for workplaces, but the Electricity at Work Regulations 1989 require electrical equipment to be maintained to prevent danger. PAT provides recognised evidence. Scottish private landlords must include PAT as part of their electrical safety inspection.",
@@ -969,7 +1064,7 @@ export default function PatTestingPage() {
                 },
                 {
                   "@type": "Question",
-                  name: "How often should I PAT test?",
+                  name: "How Often Should I PAT Test?",
                   acceptedAnswer: {
                     "@type": "Answer",
                     text: "Intervals are risk-based, considering environment, equipment class, usage and history. Typical ranges are 3–48 months; we confirm an appropriate schedule during your survey.",
