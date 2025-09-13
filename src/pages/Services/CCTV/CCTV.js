@@ -69,11 +69,7 @@ export default function EcoVoltexCctvPagePreview(){
 @media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
       `}</style>
 
-      <nav className="ev-topnav" aria-label="Section navigation" role="navigation">
-        <div className="ev-container nav">
-          {["Overview","#overview","Solutions","#solutions","Features","#features","Process","#process","Storage","#storage","Gallery","#gallery","Packages","#packages","Compliance","#compliance","FAQs","#faqs","Quote","#quote"].reduce((arr,cur,idx,src)=>{if(idx%2===0)arr.push(src.slice(idx,idx+2));return arr;},[]).map(([label,href])=> (<a key={label} href={href}>{label}</a>))}
-        </div>
-      </nav>
+      
 
       <section id="overview" className="ev-section ev-hero" aria-labelledby="hero-title">
         {!isMobile && (
@@ -142,7 +138,7 @@ export default function EcoVoltexCctvPagePreview(){
       <section id="features" className="ev-section ev-soft">
         <div className="ev-container">
           <h2 className="ev-h2">What you get with Eco Voltex CCTV</h2>
-          <ul className="ev-grid ev-grid-3" style={{gap:16, marginTop:16}}>
+          <ul className="ev-grid ev-grid-3" style={{gap:16, marginTop:16, listStyle:"none"}} aria-label="Key features">
             {[
               "4MP–8MP (2K–4K) cameras with true WDR and low-light colour",
               "Smart detection: human/vehicle, line-crossing & intrusion",
@@ -288,44 +284,11 @@ export default function EcoVoltexCctvPagePreview(){
         </div>
       </section>
 
-      <section id="quote" className="ev-section">
-        <div className="ev-container">
-          <div className="ev-card" role="form">
-            <p className="ev-h2 ev-h2--compact">Get a fast quote (no obligation)</p>
-            <form className="ev-form" style={{marginTop:8}} aria-label="Quick CCTV quote form" onSubmit={(e)=>{e.preventDefault();setFormStatus("Thanks! We’ll be in touch shortly.");}}>
-              <input required name="name" placeholder="Your name" aria-label="Your name" autoComplete="name"/>
-              <input required type="email" name="email" placeholder="Email" aria-label="Email" autoComplete="email"/>
-              <input name="cameras" inputMode="numeric" pattern="[0-9]*" placeholder="Approx. number of cameras" aria-label="Approximate number of cameras"/>
-              <textarea name="notes" rows={3} placeholder="Areas to cover or any notes (optional)" aria-label="Notes"/>
-              <label className="ev-meta" style={{display:'flex',gap:8,alignItems:'center'}}><input type="checkbox" required aria-label="Contact consent"/> I agree to be contacted about my enquiry.</label>
-              <button className="ev-btn ev-btnPrimary" type="submit">Request a quote</button>
-              <div aria-live="polite" className="ev-meta" style={{marginTop:8}}>{formStatus}</div>
-              <label style={{position:'absolute',left:'-10000px',top:'auto',width:1,height:1,overflow:'hidden'}}>Company<input tabIndex={-1} autoComplete="off" name="company"/></label>
-            </form>
-            <div className="ev-row" style={{marginTop:12}}>
-              <a className="ev-btn ev-btnOutline" href="mailto:info@ecovoltex.co.uk">Email us</a>
-              <a className="ev-btn ev-btnOutline" href="tel:+44">Call us</a>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
-      <section className="ev-cta">
-        <div className="ev-container ev-center">
-          <h2 className="ev-h2 ev-h2--on-dark">Ready to secure your property?</h2>
-          <p className="ev-cta__sub">Book Eco Voltex for professional CCTV installation with smart features and clean workmanship.</p>
-          <div className="ev-actions ev-actions--center" style={{marginTop:16}}>
-            <a href="#quote" className="ev-btn ev-btn--light">Get a quote</a>
-            <a href="#packages" className="ev-btn ev-btn--ghost">See packages</a>
-          </div>
-        </div>
-      </section>
+      
 
-      <div className="ev-mobile-stick" aria-label="Sticky quick actions">
-        <a href="tel:+44" className="ev-stick-btn">📞 Call</a>
-        <a href="https://wa.me/44" className="ev-stick-btn">💬 WhatsApp</a>
-        <a href="#quote" className="ev-stick-btn ev-stick-btn--prime">✉️ Get a Quote</a>
-      </div>
+      
     </main>
     <Footer />
     </>
