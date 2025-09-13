@@ -56,18 +56,7 @@ export default function PatTestingPage() {
                 minWidth: 280,
               }}
             >
-              <p
-                style={{
-                  display: "inline-block",
-                  padding: "6px 12px",
-                  borderRadius: 999,
-                  background: "#e5f3ff",
-                  fontWeight: 600,
-                  margin: 0,
-                }}
-              >
-                Same-week PAT Testing • Greater London
-              </p>
+              
 
               <h1
                 style={{
@@ -98,7 +87,7 @@ export default function PatTestingPage() {
                   href="/contact"
                   style={{
                     textDecoration: "none",
-                    background: "#0ea5e9",
+                    background: "#0FFF50",
                     color: "black",
                     padding: "10px 16px",
                     borderRadius: 8,
@@ -111,7 +100,7 @@ export default function PatTestingPage() {
                   href="#pricing"
                   style={{
                     textDecoration: "none",
-                    background: "transparent",
+                    background: "#0FFF50",
                     color: "#0b1220",
                     padding: "10px 16px",
                     borderRadius: 8,
@@ -137,7 +126,7 @@ export default function PatTestingPage() {
                     display: "block",
                     width: "100%",
                     textAlign: "center",
-                    background: "#0ea5e9",
+                    background: "#228B22",
                     color: "#fff",
                     padding: "12px 16px",
                     borderRadius: 10,
@@ -426,7 +415,7 @@ export default function PatTestingPage() {
                       style={{
                         fontWeight: "600",
                         marginBottom: "8px",
-                        color: "#007BFF",
+                        color: "#0FFF50",
                       }}
                     >
                       Step {i + 1}
@@ -726,10 +715,10 @@ export default function PatTestingPage() {
               </p>
 
               <div className="ev-actions ev-mt-16">
-                <a href="/pdf.pdf" className="ev-btn ev-btn--primary">
+                <a href="/pdf.pdf" className="ev-btn ev-btn--primary" style={{ textDecoration: 'none', color:"white" }}>
                   Download sample PDF
                 </a>
-                <a href="/csv file.pdf" className="ev-btn ev-btn--outline">
+                <a href="/csv file.pdf" className="ev-btn ev-btn--primary" style={{ textDecoration: 'none', color:"white" }}>
                   Download sample CSV
                 </a>
               </div>
@@ -781,7 +770,7 @@ export default function PatTestingPage() {
                 Berkshire and Kent.
               </p>
               <div className="ev-actions ev-mt-16">
-                <a href="/areas-we-cover" className="ev-btn ev-btn--outline">
+                <a href="/areas-we-cover" className="ev-btn ev-btn--primary">
                   Check coverage
                 </a>
                 <a href="/contact" className="ev-btn ev-btn--primary">

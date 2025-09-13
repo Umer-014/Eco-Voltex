@@ -131,6 +131,16 @@ export default function EcoVoltexCctvPagePreview() {
     <>
       <Header />
       <main className="cctv cctv--page">
+        {/* Sticky CTA (desktop) */}
+        <div className="ev-sticky-cta">
+          <span className="ev-sticky-cta__label">Need CCTV this week?</span>
+          <a href="/contact" className="ev-btn ev-btn--primary">
+            Get a fast quote
+          </a>
+          <a href="#packages" className="ev-btn ev-btn--outline">
+            See pricing
+          </a>
+        </div>
         {/* HERO (now white bg + black text) */}
         <section
           id="overview"
