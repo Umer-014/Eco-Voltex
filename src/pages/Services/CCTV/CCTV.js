@@ -12,8 +12,28 @@ export default function EcoVoltexCctvPagePreview() {
     if (!pc) return false;
     const s = pc.toUpperCase().replace(/\s+/g, "");
     const allowed = [
-      "E","EC","N","NW","W","WC","SE","SW","BR","CR","DA","EN","HA","IG",
-      "KT","TW","UB","SM","RM","WD","SL","AL"
+      "E",
+      "EC",
+      "N",
+      "NW",
+      "W",
+      "WC",
+      "SE",
+      "SW",
+      "BR",
+      "CR",
+      "DA",
+      "EN",
+      "HA",
+      "IG",
+      "KT",
+      "TW",
+      "UB",
+      "SM",
+      "RM",
+      "WD",
+      "SL",
+      "AL",
     ];
     return allowed.some((p) => s.startsWith(p));
   };
@@ -112,23 +132,37 @@ export default function EcoVoltexCctvPagePreview() {
       <Header />
       <main className="cctv cctv--page">
         {/* HERO (now white bg + black text) */}
-        <section id="overview" className="cctv-section cctv-hero" aria-labelledby="hero-title">
+        <section
+          id="overview"
+          className="cctv-section cctv-hero"
+          aria-labelledby="hero-title"
+        >
           <div className="cctv-container cctv-grid cctv-grid-12 cctv-align-center">
             <div className="cctv-col-7">
-              <span className="cctv-pill">CCTV Installation • Greater London</span>
+              <span className="cctv-pill">
+                CCTV Installation • Greater London
+              </span>
               <h1 id="hero-title" className="cctv-h1 cctv-h1--on-dark">
                 See more. Deter more. Protect what matters.
               </h1>
               <p className="cctv-hero-sub">
-                Design-led CCTV with 4K clarity, smart analytics and secure remote viewing — installed neatly and tuned to your risks.
+                Design-led CCTV with 4K clarity, smart analytics and secure
+                remote viewing — installed neatly and tuned to your risks.
               </p>
               <p className="cctv-hero-proof">
-                “Neatest cabling I’ve seen. Clear 4K coverage of tills & doors.” — Store Manager, E2 ★★★★★
+                “Neatest cabling I’ve seen. Clear 4K coverage of tills & doors.”
+                — Store Manager, E2 ★★★★★
               </p>
 
-              <div className="cctv-row" role="tablist" aria-label="Audience selector">
+              <div
+                className="cctv-row"
+                role="tablist"
+                aria-label="Audience selector"
+              >
                 <button
-                  className={`cctv-chip ${audience === "home" ? "cctv-chip--active" : ""}`}
+                  className={`cctv-chip ${
+                    audience === "home" ? "cctv-chip--active" : ""
+                  }`}
                   onClick={() => setAudience("home")}
                   role="tab"
                   aria-selected={audience === "home"}
@@ -136,7 +170,9 @@ export default function EcoVoltexCctvPagePreview() {
                   Home
                 </button>
                 <button
-                  className={`cctv-chip ${audience === "business" ? "cctv-chip--active" : ""}`}
+                  className={`cctv-chip ${
+                    audience === "business" ? "cctv-chip--active" : ""
+                  }`}
                   onClick={() => setAudience("business")}
                   role="tab"
                   aria-selected={audience === "business"}
@@ -163,17 +199,20 @@ export default function EcoVoltexCctvPagePreview() {
               </ul>
 
               <div className="cctv-row cctv-hero-ctas">
-                <a href="#packages" className="cctv-btn cctv-btnPrimary">See packages</a>
-                <a href="/contact" className="cctv-btn cctv-btnGhost">Book a survey</a>
+                <a href="#packages" className="cctv-btn cctv-btnPrimary">
+                  See packages
+                </a>
+                <a href="/contact" className="cctv-btn cctv-btnGhost">
+                  Book a survey
+                </a>
               </div>
-
-              <p className="cctv-meta cctv-hero-meta">
-                Fully insured (£2m Public Liability + £1m Professional Indemnity) • GDPR guidance & signage • No VAT charged
-              </p>
             </div>
 
             <div className="cctv-col-5" aria-label="Key specs">
               <div className="cctv-card">
+                <h3 className="cctv-h3" style={{ textAlign: "center" }}>
+                  Performance at a Glance
+                </h3>
                 <div className="cctv-grid cctv-grid-2">
                   {[
                     ["Clarity", "Up to 8MP / 4K"],
@@ -187,7 +226,6 @@ export default function EcoVoltexCctvPagePreview() {
                     </div>
                   ))}
                 </div>
-                <p className="cctv-meta cctv-mt-12">Neat containment • Labelled NVR • User training</p>
               </div>
             </div>
           </div>
@@ -196,13 +234,17 @@ export default function EcoVoltexCctvPagePreview() {
         {/* SOLUTIONS */}
         <section id="solutions" className="cctv-section">
           <div className="cctv-container">
-            <h2 className="cctv-h2">Tailored solutions for homes and businesses</h2>
+            <h2 className="cctv-h2">
+              Tailored solutions for homes and businesses
+            </h2>
             <div className="cctv-grid cctv-grid-2 cctv-gap-16 cctv-mt-16">
               <div className="cctv-card">
                 <p className="cctv-h3">Residential</p>
                 <ul className="cctv-list cctv-list--disc cctv-mt-8">
                   <li>Deterrent coverage for driveways, doors, gardens</li>
-                  <li>Discreet turrets/domes; colour night vision where suitable</li>
+                  <li>
+                    Discreet turrets/domes; colour night vision where suitable
+                  </li>
                   <li>Privacy masks for neighbours/public footways</li>
                   <li>Secure remote viewing for household members</li>
                 </ul>
@@ -211,7 +253,9 @@ export default function EcoVoltexCctvPagePreview() {
                 <p className="cctv-h3">Commercial & FM</p>
                 <ul className="cctv-list cctv-list--disc cctv-mt-8">
                   <li>Entrances, POS, car parks, stock & loading bays</li>
-                  <li>AI analytics (human/vehicle, line crossing, intrusion)</li>
+                  <li>
+                    AI analytics (human/vehicle, line crossing, intrusion)
+                  </li>
                   <li>24/7 recording, health checks & cyber hardening</li>
                   <li>Multi-site dashboards, roles & audit logs</li>
                 </ul>
@@ -224,7 +268,10 @@ export default function EcoVoltexCctvPagePreview() {
         <section id="features" className="cctv-section cctv-soft">
           <div className="cctv-container">
             <h2 className="cctv-h2">What you get with Eco Voltex CCTV</h2>
-            <ul className="cctv-grid cctv-grid-3 cctv-gap-16 cctv-mt-16 cctv-list-reset" aria-label="Key features">
+            <ul
+              className="cctv-grid cctv-grid-3 cctv-gap-16 cctv-mt-16 cctv-list-reset"
+              aria-label="Key features"
+            >
               {[
                 "4MP–8MP (2K–4K) cameras with true WDR and low-light colour",
                 "Smart detection: human/vehicle, line-crossing & intrusion",
@@ -236,7 +283,9 @@ export default function EcoVoltexCctvPagePreview() {
                 "Power: PoE (preferred), PoE+ for long runs; Wi-Fi where cabling isn’t feasible",
                 "Optional audio challenge, siren & strobe on deterrence models",
               ].map((s) => (
-                <li key={s} className="cctv-card">{s}</li>
+                <li key={s} className="cctv-card">
+                  {s}
+                </li>
               ))}
             </ul>
           </div>
@@ -244,25 +293,109 @@ export default function EcoVoltexCctvPagePreview() {
 
         {/* PROCESS */}
         <section id="process" className="cctv-section">
-          <div className="cctv-container">
-            <h2 className="cctv-h2">Our installation process</h2>
-            <ol className="cctv-grid cctv-grid-3 cctv-gap-16 cctv-mt-16" aria-label="Installation steps">
-              {[
-                ["Survey & design", "We map risk areas, coverage, cable paths and retention needs."],
-                ["Quote & plan", "Transparent proposal with kit list, positioning plan and timeframes."],
-                ["First fix", "Prepare routes; containment fitted neatly where needed."],
-                ["Install & commission", "Cameras mounted, PoE/NVR configured, analytics tuned & tested."],
-                ["Handover", "App setup, user training, admin docs, passwords sealed and labelled."],
-                ["Aftercare", "Proactive maintenance, firmware updates and remote support."],
-              ].map(([k, v], i) => (
-                <li key={i} className="cctv-card">
-                  <div className="cctv-step">Step {i + 1}</div>
-                  <p className="cctv-strong">{k}</p>
-                  <p>{v}</p>
-                </li>
-              ))}
-            </ol>
+          <div
+            className="cctv-container"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "2fr 1fr", // left = steps, right = image
+              gap: "24px",
+              alignItems: "start",
+            }}
+          >
+            {/* LEFT SIDE (Steps in 2 columns) */}
+            <div>
+              <h2 className="cctv-h2">Our installation process</h2>
+              <ol
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(2, 1fr)",
+                  gap: "16px",
+                  marginTop: "16px",
+                  padding: 0,
+                  listStyle: "none",
+                }}
+                aria-label="Installation steps"
+              >
+                {[
+                  [
+                    "Survey & design",
+                    "We map risk areas, coverage, cable paths and retention needs.",
+                  ],
+                  [
+                    "Quote & plan",
+                    "Transparent proposal with kit list, positioning plan and timeframes.",
+                  ],
+                  [
+                    "First fix",
+                    "Prepare routes; containment fitted neatly where needed.",
+                  ],
+                  [
+                    "Install & commission",
+                    "Cameras mounted, PoE/NVR configured, analytics tuned & tested.",
+                  ],
+                  [
+                    "Handover",
+                    "App setup, user training, admin docs, passwords sealed and labelled.",
+                  ],
+                  [
+                    "Aftercare",
+                    "Proactive maintenance, firmware updates and remote support.",
+                  ],
+                ].map(([k, v], i) => (
+                  <li
+                    key={i}
+                    style={{
+                      background: "#fff",
+                      border: "1px solid #E6EDF3",
+                      borderRadius: "12px",
+                      padding: "16px",
+                      boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
+                    }}
+                  >
+                    <div
+                      style={{
+                        color: "#16A34A",
+                        fontWeight: 800,
+                        marginBottom: "6px",
+                      }}
+                    >
+                      Step {i + 1}
+                    </div>
+                    <p style={{ fontWeight: 700, marginBottom: "4px" }}>{k}</p>
+                    <p style={{ fontSize: "14px", color: "#374151" }}>{v}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            {/* RIGHT SIDE (Random photo) */}
+            <div style={{ textAlign: "center" }}>
+              <img
+                src="https://source.unsplash.com/random/400x400?technology,camera"
+                alt="Eco Voltex CCTV process"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  borderRadius: "12px",
+                  objectFit: "cover",
+                }}
+              />
+            </div>
           </div>
+
+          {/* Responsive override for mobile */}
+          <style>
+            {`
+      @media (max-width: 768px) {
+        #process .cctv-container {
+          grid-template-columns: 1fr !important;
+        }
+        #process ol {
+          grid-template-columns: 1fr !important;
+        }
+      }
+    `}
+          </style>
         </section>
 
         {/* STORAGE + SECURITY */}
@@ -271,8 +404,9 @@ export default function EcoVoltexCctvPagePreview() {
             <div className="cctv-card">
               <p className="cctv-h3">Storage & retention</p>
               <p className="cctv-mt-8">
-                Typical retention: <b>14–30 days</b> (homes/SMEs) or <b>30–60+ days</b> (higher risk).
-                We balance resolution, frame rate, motion activity and budget.
+                Typical retention: <b>14–30 days</b> (homes/SMEs) or{" "}
+                <b>30–60+ days</b> (higher risk). We balance resolution, frame
+                rate, motion activity and budget.
               </p>
               <ul className="cctv-list cctv-list--disc cctv-mt-8">
                 <li>Event-based recording to extend retention</li>
@@ -283,9 +417,17 @@ export default function EcoVoltexCctvPagePreview() {
             <div className="cctv-card">
               <p className="cctv-h3">Cyber-secure by default</p>
               <ul className="cctv-list cctv-list--disc cctv-mt-8">
-                <li>Unique strong credentials; remove defaults; admin separation</li>
-                <li>Firmware updates; disable unused services; HTTPS where supported</li>
-                <li>Local network isolation/VLAN & outbound-only remote access where feasible</li>
+                <li>
+                  Unique strong credentials; remove defaults; admin separation
+                </li>
+                <li>
+                  Firmware updates; disable unused services; HTTPS where
+                  supported
+                </li>
+                <li>
+                  Local network isolation/VLAN & outbound-only remote access
+                  where feasible
+                </li>
               </ul>
             </div>
           </div>
@@ -294,7 +436,9 @@ export default function EcoVoltexCctvPagePreview() {
         {/* GALLERY */}
         <section id="gallery" className="cctv-section">
           <div className="cctv-container">
-            <h2 className="cctv-h2">Before & after — neat, discreet, professional</h2>
+            <h2 className="cctv-h2">
+              Before & after — neat, discreet, professional
+            </h2>
             <div className="cctv-grid cctv-grid-3 cctv-gap-16 cctv-mt-16">
               {[1, 2, 3].map((i) => (
                 <figure key={i} className="cctv-card cctv-gallery">
@@ -319,9 +463,15 @@ export default function EcoVoltexCctvPagePreview() {
           <div className="cctv-container">
             <h2 className="cctv-h2">Packages (No VAT) — clear & great value</h2>
 
-            <div className="cctv-row cctv-mt-8" role="tablist" aria-label="Package audience selector">
+            <div
+              className="cctv-row cctv-mt-8"
+              role="tablist"
+              aria-label="Package audience selector"
+            >
               <button
-                className={`cctv-btn ${audience === "home" ? "cctv-btnPrimary" : "cctv-btnOutline"}`}
+                className={`cctv-btn ${
+                  audience === "home" ? "cctv-btnPrimary" : "cctv-btnOutline"
+                }`}
                 role="tab"
                 aria-selected={audience === "home"}
                 onClick={() => setAudience("home")}
@@ -329,7 +479,11 @@ export default function EcoVoltexCctvPagePreview() {
                 Home
               </button>
               <button
-                className={`cctv-btn ${audience === "business" ? "cctv-btnPrimary" : "cctv-btnOutline"}`}
+                className={`cctv-btn ${
+                  audience === "business"
+                    ? "cctv-btnPrimary"
+                    : "cctv-btnOutline"
+                }`}
                 role="tab"
                 aria-selected={audience === "business"}
                 onClick={() => setAudience("business")}
@@ -339,7 +493,8 @@ export default function EcoVoltexCctvPagePreview() {
             </div>
 
             <p className="cctv-meta cctv-mt-8">
-              Guide pricing for Greater London. Final quotes depend on cable routes, heights, fabric, access and analytics. Out-of-hours: +20%.
+              Guide pricing for Greater London. Final quotes depend on cable
+              routes, heights, fabric, access and analytics. Out-of-hours: +20%.
             </p>
 
             <div className="cctv-grid cctv-grid-3 cctv-gap-16 cctv-mt-16">
@@ -360,10 +515,13 @@ export default function EcoVoltexCctvPagePreview() {
                     href="#quote"
                     className="cctv-btn cctv-btnPrimary cctv-btn--block cctv-mt-12"
                   >
-                    {pkg.name.includes("Professional") ? "Speak to us" : "Book survey"}
+                    {pkg.name.includes("Professional")
+                      ? "Speak to us"
+                      : "Book survey"}
                   </a>
                   <p className="cctv-meta cctv-mt-8">
-                    Add-ons: cloud clip backup, proactive maintenance, intercom/intruder links.
+                    Add-ons: cloud clip backup, proactive maintenance,
+                    intercom/intruder links.
                   </p>
                 </div>
               ))}
@@ -374,17 +532,30 @@ export default function EcoVoltexCctvPagePreview() {
                 <div>
                   <p className="cctv-strong">Included</p>
                   <ul className="cctv-list cctv-list--disc cctv-mt-8">
-                    <li>PoE cabling, neat containment, commissioning & testing</li>
-                    <li>App setup, quick training, admin pack (passwords, labels, IP map)</li>
-                    <li>12-month workmanship warranty (manufacturer warranties apply)</li>
+                    <li>
+                      PoE cabling, neat containment, commissioning & testing
+                    </li>
+                    <li>
+                      App setup, quick training, admin pack (passwords, labels,
+                      IP map)
+                    </li>
+                    <li>
+                      12-month workmanship warranty (manufacturer warranties
+                      apply)
+                    </li>
                   </ul>
                 </div>
                 <div>
                   <p className="cctv-strong">Not included</p>
                   <ul className="cctv-list cctv-list--disc cctv-mt-8">
                     <li>Scaffold/MEWP if required (quoted separately)</li>
-                    <li>Unusual fabric works (e.g., stone coring) or builder’s works</li>
-                    <li>Third-party monitoring fees or cloud storage subscriptions</li>
+                    <li>
+                      Unusual fabric works (e.g., stone coring) or builder’s
+                      works
+                    </li>
+                    <li>
+                      Third-party monitoring fees or cloud storage subscriptions
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -392,7 +563,11 @@ export default function EcoVoltexCctvPagePreview() {
 
             <div className="cctv-card cctv-mt-16" id="quote">
               <p className="cctv-strong">Quick coverage check</p>
-              <form className="cctv-row cctv-mt-8" onSubmit={checkPostcode} aria-label="Coverage checker">
+              <form
+                className="cctv-row cctv-mt-8"
+                onSubmit={checkPostcode}
+                aria-label="Coverage checker"
+              >
                 <input
                   className="cctv-input"
                   placeholder="Enter your postcode (e.g., E1 6AN)"
@@ -400,9 +575,13 @@ export default function EcoVoltexCctvPagePreview() {
                   onChange={(e) => setPostcode(e.target.value)}
                   aria-label="Postcode"
                 />
-                <button className="cctv-btn cctv-btnOutline" type="submit">Check</button>
+                <button className="cctv-btn cctv-btnOutline" type="submit">
+                  Check
+                </button>
               </form>
-              <div className="cctv-meta cctv-mt-8" aria-live="polite">{pcResult}</div>
+              <div className="cctv-meta cctv-mt-8" aria-live="polite">
+                {pcResult}
+              </div>
             </div>
           </div>
         </section>
@@ -416,8 +595,13 @@ export default function EcoVoltexCctvPagePreview() {
                 <p className="cctv-strong">Signage & privacy</p>
                 <ul className="cctv-list cctv-list--disc cctv-mt-8">
                   <li>Clear CCTV signage where recording occurs</li>
-                  <li>Privacy masks for neighbours/public areas where appropriate</li>
-                  <li>Limit access to authorised users; keep access logs where needed</li>
+                  <li>
+                    Privacy masks for neighbours/public areas where appropriate
+                  </li>
+                  <li>
+                    Limit access to authorised users; keep access logs where
+                    needed
+                  </li>
                 </ul>
               </div>
               <div className="cctv-card">
@@ -425,14 +609,21 @@ export default function EcoVoltexCctvPagePreview() {
                 <ul className="cctv-list cctv-list--disc cctv-mt-8">
                   <li>Define purpose, retention period & lawful basis</li>
                   <li>Consider ICO registration if required (business use)</li>
-                  <li>Provide subject access procedures and secure storage controls</li>
+                  <li>
+                    Provide subject access procedures and secure storage
+                    controls
+                  </li>
                 </ul>
                 <p className="cctv-meta cctv-mt-8">
-                  Domestic users often fall under the “household exemption”; we still set privacy masks and good practices.
+                  Domestic users often fall under the “household exemption”; we
+                  still set privacy masks and good practices.
                 </p>
               </div>
             </div>
-            <p className="cctv-meta cctv-mt-8">General information only — specifics confirmed on survey. Not legal advice.</p>
+            <p className="cctv-meta cctv-mt-8">
+              General information only — specifics confirmed on survey. Not
+              legal advice.
+            </p>
           </div>
         </section>
       </main>
