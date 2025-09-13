@@ -324,7 +324,7 @@ export default function EcoVoltexCctvPagePreview() {
         {/* PACKAGES */}
         <section id="packages" className="cctv-section cctv-soft">
           <div className="cctv-container">
-            <h2 className="cctv-h2">Packages (No VAT) — Clear &amp; Great Value</h2>
+            <h2 className="cctv-h2">Packages Clear &amp; Great Value</h2>
 
             <div className="cctv-row cctv-mt-8" role="tablist" aria-label="Package audience selector">
               <button
