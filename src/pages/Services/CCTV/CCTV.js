@@ -139,11 +139,9 @@ export default function EcoVoltexCctvPagePreview() {
         >
           <div className="cctv-container cctv-grid cctv-grid-12 cctv-align-center">
             <div className="cctv-col-7">
-              <span className="cctv-pill">
-                CCTV Installation • Greater London
-              </span>
+              
               <h1 id="hero-title" className="cctv-h1 cctv-h1--on-dark">
-                See more. Deter more. Protect what matters.
+                CCTV Security Solutions for London Homes & Businesses
               </h1>
               <p className="cctv-hero-sub">
                 Design-led CCTV with 4K clarity, smart analytics and secure
@@ -162,7 +160,7 @@ export default function EcoVoltexCctvPagePreview() {
                 <button
                   className={`cctv-chip ${
                     audience === "home" ? "cctv-chip--active" : ""
-                  }`}
+                  }`} style={{ backgroundColor: audience === "home" ? '#0FFF50' : 'white' , color: audience === "home" ? 'white' : 'black'}}
                   onClick={() => setAudience("home")}
                   role="tab"
                   aria-selected={audience === "home"}
@@ -172,7 +170,7 @@ export default function EcoVoltexCctvPagePreview() {
                 <button
                   className={`cctv-chip ${
                     audience === "business" ? "cctv-chip--active" : ""
-                  }`}
+                  }`} style={{ backgroundColor: audience === "business" ? '#0FFF50' : 'white' , color: audience === "business" ? 'white' : 'black'}}
                   onClick={() => setAudience("business")}
                   role="tab"
                   aria-selected={audience === "business"}
@@ -198,11 +196,11 @@ export default function EcoVoltexCctvPagePreview() {
                 ))}
               </ul>
 
-              <div className="cctv-row cctv-hero-ctas">
-                <a href="#packages" className="cctv-btn cctv-btnPrimary">
+              <div className="cctv-row cctv-hero-ctas" >
+                <a href="#packages" className="cctv-btn cctv-btnPrimary" style={{ backgroundColor: '#0FFF50', color: 'black' }}>
                   See packages
                 </a>
-                <a href="/contact" className="cctv-btn cctv-btnGhost">
+                <a href="/contact" className="cctv-btn cctv-btnPrimary" style={{ borderColor: '#0FFF50', color: 'black' }}>
                   Book a survey
                 </a>
               </div>
@@ -220,7 +218,7 @@ export default function EcoVoltexCctvPagePreview() {
                     ["Smart", "Human/vehicle filters"],
                     ["Secure", "HTTPS, VLAN, strong credentials"],
                   ].map(([k, v]) => (
-                    <div key={k} className="cctv-mini-kv">
+                    <div key={k} className="cctv-mini-kv" style={{backgroundColor: '#D3D3D3', borderRadius: '8px', padding: '8px', margin: '4px 0'}}>
                       <p className="cctv-mini-kv__k">{k}</p>
                       <p className="cctv-mini-kv__v">{v}</p>
                     </div>
@@ -342,7 +340,7 @@ export default function EcoVoltexCctvPagePreview() {
                 "Power: PoE (preferred), PoE+ for long runs; Wi-Fi where cabling isn’t feasible",
                 "Optional audio challenge, siren & strobe on deterrence models",
               ].map((s) => (
-                <li key={s} className="cctv-card">
+                <li key={s} className="cctv-card" style={{ backgroundColor: "#D3D3D3" }}>
                   {s}
                 </li>
               ))}
@@ -404,7 +402,7 @@ export default function EcoVoltexCctvPagePreview() {
                   <li
                     key={i}
                     style={{
-                      background: "#fff",
+                      backgroundColor: "#D3D3D3",
                       border: "1px solid #E6EDF3",
                       borderRadius: "12px",
                       padding: "16px",
