@@ -1,3 +1,4 @@
+// /mnt/data/CCTV.js
 import React from "react";
 import Header from "../../../components/Header/Header";
 import Footer from "../../../components/Footer/Footer";
@@ -11,30 +12,7 @@ export default function EcoVoltexCctvPagePreview() {
   const inCoverage = (pc) => {
     if (!pc) return false;
     const s = pc.toUpperCase().replace(/\s+/g, "");
-    const allowed = [
-      "E",
-      "EC",
-      "N",
-      "NW",
-      "W",
-      "WC",
-      "SE",
-      "SW",
-      "BR",
-      "CR",
-      "DA",
-      "EN",
-      "HA",
-      "IG",
-      "KT",
-      "TW",
-      "UB",
-      "SM",
-      "RM",
-      "WD",
-      "SL",
-      "AL",
-    ];
+    const allowed = ["E","EC","N","NW","W","WC","SE","SW","BR","CR","DA","EN","HA","IG","KT","TW","UB","SM","RM","WD","SL","AL"];
     return allowed.some((p) => s.startsWith(p));
   };
 
@@ -89,7 +67,7 @@ export default function EcoVoltexCctvPagePreview() {
   const businessPlans = [
     {
       name: "Small Business 4–6",
-      tag: "Best value",
+      tag: "Best Value",
       price: "from £1,099",
       meta: "4–6× 4MP/8MP PoE + NVR (2–4TB)",
       bullets: [
@@ -131,49 +109,24 @@ export default function EcoVoltexCctvPagePreview() {
     <>
       <Header />
       <main className="cctv cctv--page">
-        {/* Sticky CTA (desktop) */}
+        {/* Sticky CTA (desktop; uses global ev styles) */}
         <div className="ev-sticky-cta">
           <span className="ev-sticky-cta__label">Need CCTV this week?</span>
-          <a href="/contact" className="ev-btn ev-btn--primary">
-            Get a fast quote
-          </a>
-          <a href="#packages" className="ev-btn ev-btn--outline">
-            See pricing
-          </a>
+          <a href="/contact" className="ev-btn ev-btn--primary">Get A Fast Quote</a>
+          <a href="#packages" className="ev-btn ev-btn--outline">See Pricing</a>
         </div>
-        {/* HERO (now white bg + black text) */}
-        <section
-          id="overview"
-          className="cctv-section cctv-hero"
-          aria-labelledby="hero-title"
-        >
+
+        {/* HERO */}
+        <section id="overview" className="cctv-section cctv-hero" aria-labelledby="hero-title">
           <div className="cctv-container cctv-grid cctv-grid-12 cctv-align-center">
             <div className="cctv-col-7">
-              <h1 id="hero-title" className="cctv-h1 cctv-h1--on-dark">
-                CCTV Security Solutions for London Homes & Businesses
-              </h1>
-              <p className="cctv-hero-sub">
-                Design-led CCTV with 4K clarity, smart analytics and secure
-                remote viewing — installed neatly and tuned to your risks.
-              </p>
-              <p className="cctv-hero-proof">
-                “Neatest cabling I’ve seen. Clear 4K coverage of tills & doors.”
-                — Store Manager, E2 ★★★★★
-              </p>
+              <h1 id="hero-title" className="cctv-h1">CCTV Security Solutions For London Homes &amp; Businesses</h1>
+              <p className="cctv-hero-sub">Design-led CCTV with 4K clarity, smart analytics and secure remote viewing — installed neatly and tuned to your risks.</p>
+              <p className="cctv-hero-proof">“Neatest cabling I’ve seen. Clear 4K coverage of tills &amp; doors.” — Store Manager, E2 ★★★★★</p>
 
-              <div
-                className="cctv-row"
-                role="tablist"
-                aria-label="Audience selector"
-              >
+              <div className="cctv-row" role="tablist" aria-label="Audience selector">
                 <button
-                  className={`cctv-chip ${
-                    audience === "home" ? "cctv-chip--active" : ""
-                  }`}
-                  style={{
-                    backgroundColor: audience === "home" ? "#0FFF50" : "white",
-                    color: audience === "home" ? "white" : "black",
-                  }}
+                  className={`cctv-chip ${audience === "home" ? "cctv-chip--active" : ""}`}
                   onClick={() => setAudience("home")}
                   role="tab"
                   aria-selected={audience === "home"}
@@ -181,14 +134,7 @@ export default function EcoVoltexCctvPagePreview() {
                   Home
                 </button>
                 <button
-                  className={`cctv-chip ${
-                    audience === "business" ? "cctv-chip--active" : ""
-                  }`}
-                  style={{
-                    backgroundColor:
-                      audience === "business" ? "#0FFF50" : "white",
-                    color: audience === "business" ? "white" : "black",
-                  }}
+                  className={`cctv-chip ${audience === "business" ? "cctv-chip--active" : ""}`}
                   onClick={() => setAudience("business")}
                   role="tab"
                   aria-selected={audience === "business"}
@@ -208,27 +154,12 @@ export default function EcoVoltexCctvPagePreview() {
                       "Coverage for entrances, POS, staff & stock areas",
                       "AI analytics (line crossing, vehicle filters)",
                       "Role-based access, audit logs & retention policy",
-                    ]
-                ).map((x) => (
-                  <li key={x}>{x}</li>
-                ))}
+                    ]).map((x) => <li key={x}>{x}</li>)}
               </ul>
 
               <div className="cctv-row cctv-hero-ctas">
-                <a
-                  href="#packages"
-                  className="cctv-btn cctv-btnPrimary"
-                  style={{ backgroundColor: "#0FFF50", color: "black" }}
-                >
-                  See packages
-                </a>
-                <a
-                  href="/contact"
-                  className="cctv-btn cctv-btnPrimary"
-                  style={{ borderColor: "#0FFF50", color: "black" }}
-                >
-                  Book a survey
-                </a>
+                <a href="#packages" className="cctv-btn cctv-btnPrimary">See Packages</a>
+                <a href="/contact" className="cctv-btn cctv-btnOutline">Book A Survey</a>
               </div>
             </div>
 
@@ -263,107 +194,58 @@ export default function EcoVoltexCctvPagePreview() {
             </div>
           </div>
         </section>
-        {/* SOLUTIONS */}
 
+        {/* SOLUTIONS */}
         <section id="solutions" className="cctv-section">
-          <h2 className="cctv-h2" style={{ textAlign: "center" }}>
-            Tailored solutions for homes and businesses
-          </h2>
+          <h2 className="cctv-h2" style={{ textAlign: "center" }}>Tailored Solutions For Homes And Businesses</h2>
 
           <div
             className="cctv-container"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "2fr 1fr", // left: text, right: image
-              gap: "24px",
-              alignItems: "stretch", // make grid items equal height
-            }}
+            style={{ display:"grid", gridTemplateColumns:"2fr 1fr", gap:"24px", alignItems:"stretch" }}
           >
-            {/* LEFT — vertical text stack */}
+            {/* LEFT */}
             <div>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr",
-                  gap: "10px",
-                  marginTop: "1px",
-                }}
-              >
+              <div style={{ display:"grid", gridTemplateColumns:"1fr", gap:"10px", marginTop:"1px" }}>
                 <div className="cctv-card">
                   <p className="cctv-h3">Residential</p>
                   <ul className="cctv-list cctv-list--disc cctv-mt-8">
                     <li>Deterrent coverage for driveways, doors, gardens</li>
-                    <li>
-                      Discreet turrets/domes; colour night vision where suitable
-                    </li>
+                    <li>Discreet turrets/domes; colour night vision where suitable</li>
                     <li>Privacy masks for neighbours/public footways</li>
                     <li>Secure remote viewing for household members</li>
                   </ul>
                 </div>
 
                 <div className="cctv-card">
-                  <p className="cctv-h3">Commercial & FM</p>
+                  <p className="cctv-h3">Commercial &amp; FM</p>
                   <ul className="cctv-list cctv-list--disc cctv-mt-8">
-                    <li>Entrances, POS, car parks, stock & loading bays</li>
-                    <li>
-                      AI analytics (human/vehicle, line crossing, intrusion)
-                    </li>
-                    <li>24/7 recording, health checks & cyber hardening</li>
-                    <li>Multi-site dashboards, roles & audit logs</li>
+                    <li>Entrances, POS, car parks, stock &amp; loading bays</li>
+                    <li>AI analytics (human/vehicle, line crossing, intrusion)</li>
+                    <li>24/7 recording, health checks &amp; cyber hardening</li>
+                    <li>Multi-site dashboards, roles &amp; audit logs</li>
                   </ul>
                 </div>
               </div>
             </div>
 
-            {/* RIGHT — full image, matches left column height */}
-
-            <div
-              className="cctv-5"
-              style={{
-                width: "500px", // keep full width of parent
-                height: "400px", // fixed height (set what you want here)
-                borderRadius: "12px",
-                background: "#F3F7FB",
-                boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
-                overflow: "hidden",
-                
-                marginLeft: "auto", 
-              }}
-            >
+            {/* RIGHT */}
+            <div className="cctv-figure" style={{ marginLeft:"auto" }}>
               <img
                 src="https://res.cloudinary.com/dug1siluu/image/upload/v1757775249/ChatGPT_Image_Sep_13_2025_07_52_01_PM_n8opip.png"
                 alt="CCTV solutions"
+                className="cctv-img"
                 loading="lazy"
                 decoding="async"
-                style={{
-                  alignItems: "right",
-                  width: "100%", // stretch full width
-                  height: "100%", // stretch full height
-                  objectFit: "fill", // force to fill, no letterboxing
-                  display: "block",
-                }}
               />
             </div>
           </div>
-
-          {/* Mobile: stack and let image size naturally */}
-          <style>{`
-    @media (max-width: 768px) {
-      #solutions .cctv-container { grid-template-columns: 1fr !important; }
-      #solutions aside > div { height: auto !important; }
-      #solutions aside img { height: auto !important; }
-    }
-  `}</style>
         </section>
 
         {/* FEATURES */}
         <section id="features" className="cctv-section cctv-soft">
           <div className="cctv-container">
-            <h2 className="cctv-h2">What you get with Eco Voltex CCTV</h2>
-            <ul
-              className="cctv-grid cctv-grid-3 cctv-gap-16 cctv-mt-16 cctv-list-reset"
-              aria-label="Key features"
-            >
+            <h2 className="cctv-h2">What You Get With Eco Voltex CCTV</h2>
+            <ul className="cctv-grid cctv-grid-3 cctv-mt-16 cctv-list-reset" aria-label="Key features">
               {[
                 "4MP–8MP (2K–4K) cameras with true WDR and low-light colour",
                 "Smart detection: human/vehicle, line-crossing & intrusion",
@@ -375,13 +257,7 @@ export default function EcoVoltexCctvPagePreview() {
                 "Power: PoE (preferred), PoE+ for long runs; Wi-Fi where cabling isn’t feasible",
                 "Optional audio challenge, siren & strobe on deterrence models",
               ].map((s) => (
-                <li
-                  key={s}
-                  className="cctv-card"
-                  style={{ backgroundColor: "#D3D3D3" }}
-                >
-                  {s}
-                </li>
+                <li key={s} className="cctv-card" style={{ backgroundColor:"#F7FAF8" }}>{s}</li>
               ))}
             </ul>
           </div>
@@ -389,121 +265,53 @@ export default function EcoVoltexCctvPagePreview() {
 
         {/* PROCESS */}
         <section id="process" className="cctv-section">
-          <div
-            className="cctv-container"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "2fr 1fr", // left = steps, right = image
-              gap: "24px",
-              alignItems: "start",
-            }}
-          >
-            {/* LEFT SIDE (Steps in 2 columns) */}
+          <div className="cctv-container" style={{ display:"grid", gridTemplateColumns:"2fr 1fr", gap:"24px", alignItems:"start" }}>
+            {/* LEFT */}
             <div>
-              <h2 className="cctv-h2">Our installation process</h2>
+              <h2 className="cctv-h2">Our Installation Process</h2>
               <ol
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(2, 1fr)",
-                  gap: "16px",
-                  marginTop: "16px",
-                  padding: 0,
-                  listStyle: "none",
-                }}
+                style={{ display:"grid", gridTemplateColumns:"repeat(2,1fr)", gap:"16px", marginTop:"16px", padding:0, listStyle:"none" }}
                 aria-label="Installation steps"
               >
                 {[
-                  [
-                    "Survey & design",
-                    "We map risk areas, coverage, cable paths and retention needs.",
-                  ],
-                  [
-                    "Quote & plan",
-                    "Transparent proposal with kit list, positioning plan and timeframes.",
-                  ],
-                  [
-                    "First fix",
-                    "Prepare routes; containment fitted neatly where needed.",
-                  ],
-                  [
-                    "Install & commission",
-                    "Cameras mounted, PoE/NVR configured, analytics tuned & tested.",
-                  ],
-                  [
-                    "Handover",
-                    "App setup, user training, admin docs, passwords sealed and labelled.",
-                  ],
-                  [
-                    "Aftercare",
-                    "Proactive maintenance, firmware updates and remote support.",
-                  ],
-                ].map(([k, v], i) => (
+                  ["Survey & Design","We map risk areas, coverage, cable paths and retention needs."],
+                  ["Quote & Plan","Transparent proposal with kit list, positioning plan and timeframes."],
+                  ["First Fix","Prepare routes; containment fitted neatly where needed."],
+                  ["Install & Commission","Cameras mounted, PoE/NVR configured, analytics tuned & tested."],
+                  ["Handover","App set-up, user training, admin docs, passwords sealed and labelled."],
+                  ["Aftercare","Proactive maintenance, firmware updates and remote support."],
+                ].map(([k,v],i)=>(
                   <li
                     key={i}
-                    style={{
-                      backgroundColor: "#D3D3D3",
-                      border: "1px solid #E6EDF3",
-                      borderRadius: "12px",
-                      padding: "16px",
-                      boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
-                    }}
+                    style={{ background:"#F7FAF8", border:"1px solid #E6EDF3", borderRadius:"12px", padding:"16px", boxShadow:"0 4px 12px rgba(0,0,0,0.06)" }}
                   >
-                    <div
-                      style={{
-                        color: "#16A34A",
-                        fontWeight: 800,
-                        marginBottom: "6px",
-                      }}
-                    >
-                      Step {i + 1}
-                    </div>
-                    <p style={{ fontWeight: 700, marginBottom: "4px" }}>{k}</p>
-                    <p style={{ fontSize: "14px", color: "#374151" }}>{v}</p>
+                    <div className="cctv-strong" style={{ color:"var(--ev-green)" }}>Step {i+1}</div>
+                    <p style={{ fontWeight:700, marginBottom:4, color:"var(--ev-navy)" }}>{k}</p>
+                    <p style={{ fontSize:14, color:"#374151" }}>{v}</p>
                   </li>
                 ))}
               </ol>
             </div>
 
-            {/* RIGHT SIDE (Random photo) */}
-            <div style={{ textAlign: "center" }}>
+            {/* RIGHT */}
+            <div className="cctv-figure">
               <img
                 src="https://res.cloudinary.com/dug1siluu/image/upload/v1757778102/20250913_2018_CCTV_Installation_Process_simple_compose_01k51tdb4kfctaywayb6nk255s_lbvgkf.png"
                 alt="Eco Voltex CCTV process"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  borderRadius: "12px",
-                  objectFit: "cover",
-                }}
+                className="cctv-img"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
-
-          {/* Responsive override for mobile */}
-          <style>
-            {`
-      @media (max-width: 768px) {
-        #process .cctv-container {
-          grid-template-columns: 1fr !important;
-        }
-        #process ol {
-          grid-template-columns: 1fr !important;
-        }
-      }
-    `}
-          </style>
         </section>
 
         {/* STORAGE + SECURITY */}
         <section id="storage" className="cctv-section cctv-soft">
-          <div className="cctv-container cctv-grid cctv-grid-2 cctv-gap-16">
+          <div className="cctv-container cctv-grid cctv-grid-2">
             <div className="cctv-card">
-              <p className="cctv-h3">Storage & retention</p>
-              <p className="cctv-mt-8">
-                Typical retention: <b>14–30 days</b> (homes/SMEs) or{" "}
-                <b>30–60+ days</b> (higher risk). We balance resolution, frame
-                rate, motion activity and budget.
-              </p>
+              <p className="cctv-h3">Storage &amp; Retention</p>
+              <p className="cctv-mt-8">Typical retention: <b>14–30 days</b> (homes/SMEs) or <b>30–60+ days</b> (higher risk). We balance resolution, frame rate, motion activity and budget.</p>
               <ul className="cctv-list cctv-list--disc cctv-mt-8">
                 <li>Event-based recording to extend retention</li>
                 <li>Health alerts for camera/disk issues (where supported)</li>
@@ -511,19 +319,11 @@ export default function EcoVoltexCctvPagePreview() {
               </ul>
             </div>
             <div className="cctv-card">
-              <p className="cctv-h3">Cyber-secure by default</p>
+              <p className="cctv-h3">Cyber-Secure By Default</p>
               <ul className="cctv-list cctv-list--disc cctv-mt-8">
-                <li>
-                  Unique strong credentials; remove defaults; admin separation
-                </li>
-                <li>
-                  Firmware updates; disable unused services; HTTPS where
-                  supported
-                </li>
-                <li>
-                  Local network isolation/VLAN & outbound-only remote access
-                  where feasible
-                </li>
+                <li>Unique strong credentials; remove defaults; admin separation</li>
+                <li>Firmware updates; disable unused services; HTTPS where supported</li>
+                <li>Local network isolation/VLAN &amp; outbound-only remote access where feasible</li>
               </ul>
             </div>
           </div>
@@ -532,43 +332,28 @@ export default function EcoVoltexCctvPagePreview() {
         {/* PACKAGES */}
         <section id="packages" className="cctv-section cctv-soft">
           <div className="cctv-container">
-            <h2 className="cctv-h2">Packages (No VAT) — clear & great value</h2>
+            <h2 className="cctv-h2">Packages (No VAT) — Clear &amp; Great Value</h2>
 
-            <div
-              className="cctv-row cctv-mt-8"
-              role="tablist"
-              aria-label="Package audience selector"
-            >
+            <div className="cctv-row cctv-mt-8" role="tablist" aria-label="Package audience selector">
               <button
-                className={`cctv-btn ${
-                  audience === "home" ? "cctv-btnPrimary" : "cctv-btnOutline"
-                }`}
-                role="tab"
-                aria-selected={audience === "home"}
+                className={`cctv-btn ${audience === "home" ? "cctv-btnPrimary" : "cctv-btnOutline"}`}
+                role="tab" aria-selected={audience === "home"}
                 onClick={() => setAudience("home")}
               >
                 Home
               </button>
               <button
-                className={`cctv-btn ${
-                  audience === "business"
-                    ? "cctv-btnPrimary"
-                    : "cctv-btnOutline"
-                }`}
-                role="tab"
-                aria-selected={audience === "business"}
+                className={`cctv-btn ${audience === "business" ? "cctv-btnPrimary" : "cctv-btnOutline"}`}
+                role="tab" aria-selected={audience === "business"}
                 onClick={() => setAudience("business")}
               >
                 Business
               </button>
             </div>
 
-            <p className="cctv-meta cctv-mt-8">
-              Guide pricing for Greater London. Final quotes depend on cable
-              routes, heights, fabric, access and analytics. Out-of-hours: +20%.
-            </p>
+            <p className="cctv-meta cctv-mt-8">Guide pricing for Greater London. Final quotes depend on cable routes, heights, fabric, access and analytics. Out-of-hours: +20%.</p>
 
-            <div className="cctv-grid cctv-grid-3 cctv-gap-16 cctv-mt-16">
+            <div className="cctv-grid cctv-grid-3 cctv-mt-16">
               {plans.map((pkg) => (
                 <div key={pkg.name} className="cctv-card">
                   <div className="cctv-card-head">
@@ -578,67 +363,19 @@ export default function EcoVoltexCctvPagePreview() {
                   <p className="cctv-meta">{pkg.meta}</p>
                   <p className="cctv-price">{pkg.price}</p>
                   <ul className="cctv-list cctv-mt-8">
-                    {pkg.bullets.map((b) => (
-                      <li key={b}>{b}</li>
-                    ))}
+                    {pkg.bullets.map((b) => <li key={b}>{b}</li>)}
                   </ul>
-                  <a
-                    href="#quote"
-                    className="cctv-btn cctv-btnPrimary cctv-btn--block cctv-mt-12"
-                  >
-                    {pkg.name.includes("Professional")
-                      ? "Speak to us"
-                      : "Book survey"}
+                  <a href="/contact" className="cctv-btn cctv-btnPrimary cctv-btn--block cctv-mt-12">
+                    {pkg.name.includes("Professional") ? "Speak To Us" : "Book Survey"}
                   </a>
-                  <p className="cctv-meta cctv-mt-8">
-                    Add-ons: cloud clip backup, proactive maintenance,
-                    intercom/intruder links.
-                  </p>
+                  <p className="cctv-meta cctv-mt-8">Add-ons: cloud clip backup, proactive maintenance, intercom/intruder links.</p>
                 </div>
               ))}
             </div>
 
-            <div className="cctv-card cctv-mt-16">
-              <div className="cctv-grid cctv-grid-2 cctv-gap-16">
-                <div>
-                  <p className="cctv-strong">Included</p>
-                  <ul className="cctv-list cctv-list--disc cctv-mt-8">
-                    <li>
-                      PoE cabling, neat containment, commissioning & testing
-                    </li>
-                    <li>
-                      App setup, quick training, admin pack (passwords, labels,
-                      IP map)
-                    </li>
-                    <li>
-                      12-month workmanship warranty (manufacturer warranties
-                      apply)
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <p className="cctv-strong">Not included</p>
-                  <ul className="cctv-list cctv-list--disc cctv-mt-8">
-                    <li>Scaffold/MEWP if required (quoted separately)</li>
-                    <li>
-                      Unusual fabric works (e.g., stone coring) or builder’s
-                      works
-                    </li>
-                    <li>
-                      Third-party monitoring fees or cloud storage subscriptions
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
             <div className="cctv-card cctv-mt-16" id="quote">
-              <p className="cctv-strong">Quick coverage check</p>
-              <form
-                className="cctv-row cctv-mt-8"
-                onSubmit={checkPostcode}
-                aria-label="Coverage checker"
-              >
+              <p className="cctv-strong">Quick Coverage Check</p>
+              <form className="cctv-row cctv-mt-8" onSubmit={checkPostcode} aria-label="Coverage checker">
                 <input
                   className="cctv-input"
                   placeholder="Enter your postcode (e.g., E1 6AN)"
@@ -646,17 +383,11 @@ export default function EcoVoltexCctvPagePreview() {
                   onChange={(e) => setPostcode(e.target.value)}
                   aria-label="Postcode"
                 />
-                <button className="cctv-btn cctv-btnOutline" type="submit">
-                  Check
-                </button>
+                <button className="cctv-btn cctv-btnOutline" type="submit">Check</button>
               </form>
               {pcResult && (
                 <div className="cctv-meta cctv-mt-8" aria-live="polite">
-                  {pcResult}{" "}
-                  <a href="#contact" style={{ textDecoration: "none" }}>
-                    <strong>Contact us</strong>
-                  </a>{" "}
-                  today to book your survey.
+                  {pcResult} <a href="/contact"><b>Contact us</b></a> today to book your survey.
                 </div>
               )}
             </div>
@@ -666,39 +397,25 @@ export default function EcoVoltexCctvPagePreview() {
         {/* COMPLIANCE */}
         <section id="compliance" className="cctv-section">
           <div className="cctv-container">
-            <h2 className="cctv-h2">Compliance & good practice (UK)</h2>
-            <div className="cctv-grid cctv-grid-2 cctv-gap-16 cctv-mt-16">
+            <h2 className="cctv-h2">Compliance &amp; Good Practice (UK)</h2>
+            <div className="cctv-grid cctv-grid-2 cctv-mt-16">
               <div className="cctv-card">
-                <p className="cctv-strong">Signage & privacy</p>
+                <p className="cctv-strong">Signage &amp; Privacy</p>
                 <ul className="cctv-list cctv-list--disc cctv-mt-8">
                   <li>Clear CCTV signage where recording occurs</li>
-                  <li>
-                    Privacy masks for neighbours/public areas where appropriate
-                  </li>
-                  <li>
-                    Limit access to authorised users; keep access logs where
-                    needed
-                  </li>
+                  <li>Privacy masks for neighbours/public areas where appropriate</li>
+                  <li>Limit access to authorised users; keep access logs where needed</li>
                 </ul>
-                <p className="cctv-meta cctv-mt-8">
-                  General information only — specifics confirmed on survey. Not
-                  legal advice.
-                </p>
+                <p className="cctv-meta cctv-mt-8">General information only — specifics confirmed on survey. Not legal advice.</p>
               </div>
               <div className="cctv-card">
-                <p className="cctv-strong">Data protection (business)</p>
+                <p className="cctv-strong">Data Protection (Business)</p>
                 <ul className="cctv-list cctv-list--disc cctv-mt-8">
-                  <li>Define purpose, retention period & lawful basis</li>
+                  <li>Define purpose, retention period &amp; lawful basis</li>
                   <li>Consider ICO registration if required (business use)</li>
-                  <li>
-                    Provide subject access procedures and secure storage
-                    controls
-                  </li>
+                  <li>Provide subject access procedures and secure storage controls</li>
                 </ul>
-                <p className="cctv-meta cctv-mt-8">
-                  Domestic users often fall under the “household exemption”; we
-                  still set privacy masks and good practices.
-                </p>
+                <p className="cctv-meta cctv-mt-8">Domestic users often fall under the “household exemption”; we still set privacy masks and good practices.</p>
               </div>
             </div>
           </div>
