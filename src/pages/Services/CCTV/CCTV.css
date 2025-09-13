@@ -1,335 +1,114 @@
-/* Styles for CCTV Security page */
-:root {
-  --primary-green: #14532d; /* Deep green for brand */
-  --accent-amber: #c05600; /* Darker amber for contrast */
-  --light-bg: #f9fafb; /* Subtle background */
-  --text-dark: #222; /* Primary text */
-  --text-secondary: #444; /* Secondary text */
-  --border-gray: #eee; /* Light border */
-}
-
-.service-container {
-  font-family: 'Arial', sans-serif;
-  line-height: 1.6;
-  color: var(--text-dark);
-  margin: auto;
-  padding: 0;
-  max-width: 1200px;
-}
-
-/* Hero Section */
-.service-hero {
-  position: relative;
-  color: #fff;
-  text-align: center;
-  padding: 120px 20px;
-  background: linear-gradient(135deg, #14532d 0%, #287271 100%); /* Green-blue gradient */
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-}
-.service-hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(20, 83, 45, 0.6);
-  z-index: 1;
-}
-.service-hero-overlay {
-  position: relative;
-  z-index: 2;
-}
-.service-hero-overlay h1 {
-  font-size: 2.8rem;
-  margin-bottom: 15px;
-  font-weight: 700;
-}
-.service-hero-overlay p {
-  font-size: 1.3rem;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* Intro Section */
-.service-intro {
-  text-align: center;
-  padding: 60px 20px;
-  opacity: 0;
-  animation: fadeIn 0.8s ease forwards;
-}
-.highlight {
-  font-weight: bold;
-  color: var(--accent-amber);
-}
-
-/* General Sections */
-.service-section {
-  margin: 60px auto;
-  padding: 0 20px;
-  max-width: 1100px;
-  opacity: 0;
-  animation: fadeIn 0.8s ease forwards;
-}
-.service-section h2 {
-  font-size: 2rem;
-  color: var(--primary-green);
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 20px;
-}
-.service-section p {
-  margin-bottom: 20px;
-  color: var(--text-secondary);
-}
-
-/* What We Do */
-.what-we-do-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 40px;
-  align-items: stretch;
-}
-.what-we-do-text {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-.what-we-do-block h3 {
-  color: var(--accent-amber);
-  font-size: 1.5rem;
-  margin-bottom: 12px;
-}
-.what-we-do-block p {
-  margin-bottom: 15px;
-  color: var(--text-secondary);
-}
-.what-we-do-block ul {
-  padding-left: 20px;
-}
-.what-we-do-block li {
-  margin-bottom: 10px;
-}
-
-/* Service Grid */
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
-}
-.service-card {
-  background: #e5e7eb;
-  padding: 25px;
-  border-radius: 12px;
-  border: 1px solid var(--border-gray);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.service-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-.service-card h3 {
-  color: var(--accent-amber);
-  font-size: 1.4rem;
-  margin-bottom: 12px;
-}
-.service-card ul {
-  padding-left: 20px;
-}
-.service-card li {
-  margin-bottom: 8px;
-}
-
-/* Why Choose Us */
-.why-choose-us {
-  background: var(--light-bg);
-  padding: 50px 20px;
-  border-radius: 12px;
-}
-.why-choose-us h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  color: var(--primary-green);
-}
-.why-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.why-list li {
-  margin: 15px 0;
-  padding-left: 20px;
-  border-left: 4px solid var(--accent-amber);
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-}
-
-/* Process Section */
-.service-process {
-  padding: 20px 0;
-}
-.service-process-steps {
-  position: relative;
-  display: flex;
-  gap: 30px;
-  padding: 30px 0 0 0;
-  margin: 0;
-  list-style: none;
-  align-items: flex-start;
-}
-.service-process-steps::before {
-  content: "";
-  position: absolute;
-  left: 2.5%;
-  right: 2.5%;
-  top: 34px;
-  height: 3px;
-  background: var(--border-gray);
-  z-index: 0;
-  border-radius: 2px;
-}
-.service-process-step {
-  flex: 1 1 0;
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  min-width: 0;
-  z-index: 1;
-}
-.service-step-badge {
-  width: 48px;
-  height: 48px;
-  min-width: 48px;
-  border-radius: 50%;
+/* Base (scoped to CCTV page) */
+.cctv {
+  --p800:#0F2C44;
+  --acc:#16A34A; --accD:#128838;
+  --soft:#F3F7FB; --border:#E6EDF3; --card:#FFFFFF;
+  --text:#0B1320; --muted:#667289;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
   background: #fff;
-  border: 3px solid var(--accent-amber);
-  color: var(--accent-amber);
-  display: grid;
-  place-items: center;
-  font-weight: 700;
-  font-size: 1.1rem;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
-}
-.service-step-body {
-  min-width: 10px;
-}
-.service-step-title {
-  margin: 0 0 8px 0;
-  font-size: 1.1rem;
-  color: var(--primary-green);
-  font-weight: 600;
-}
-.service-step-text {
-  margin: 0;
-  font-size: 1rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-.service-process-step:hover .service-step-badge,
-.service-process-step:hover .service-step-body {
-  transform: translateY(-4px);
-  transition: transform 0.2s ease;
 }
 
-/* CTA Section */
-.service-cta {
-  background: var(--primary-green);
-  color: #fff;
-  text-align: center;
-  padding: 60px 20px;
+.cctv--page { min-height: 100vh; }
+.cctv a { text-decoration: none; color: inherit; }
+.cctv :focus-visible { outline: 3px solid #22E57F; outline-offset: 2px; border-radius: 6px; }
+
+.cctv-container { max-width: 1152px; margin: 0 auto; padding: 0 24px; }
+.cctv-section { padding: 56px 0; border-top: 1px solid #f1f5f9; }
+.cctv-soft { background: var(--soft); border-top: 1px solid var(--border); }
+
+/* Simple grid */
+.cctv-grid { display: grid; gap: 16px; }
+.cctv-grid-12 { grid-template-columns: repeat(12, 1fr); }
+.cctv-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.cctv-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.cctv-col-7 { grid-column: span 7; }
+.cctv-col-5 { grid-column: span 5; }
+.cctv-align-center { align-items: center; }
+.cctv-row { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.cctv-mt-8 { margin-top: 8px; }
+.cctv-mt-12 { margin-top: 12px; }
+.cctv-mt-16 { margin-top: 16px; }
+
+/* Headings */
+.cctv-h1 { font-size: 38px; line-height: 1.2; font-weight: 900; color: #111; }
+.cctv-h1--on-dark { color: #111; } /* force black in hero */
+.cctv-h2 { font-size: 26px; font-weight: 800; color: black; }
+.cctv-h3 { font-size: 18px; font-weight: 800; color: black; }
+.cctv-strong { font-weight: 700; }
+.cctv-meta { font-size: 12px; color: var(--muted); }
+
+/* HERO — simplified to white bg + black text */
+.cctv-hero {
+  background: #ffffff;
+  color: #111111;
 }
-.service-cta h2 {
-  font-size: 2.2rem;
-  margin-bottom: 20px;
+.cctv-pill {
+  display: inline-flex; gap: 8px; align-items: center;
+  background:#dcfce7; color:#166534; padding:6px 10px;
+  border-radius: 999px; font-weight: 800; font-size: 13px;
 }
-.service-cta p {
-  margin-bottom: 25px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+.cctv-neon { color: #128838; } /* subtle green accent on white */
+.cctv-hero-sub { margin-top: 12px; max-width: 60ch; color: #1f2937; }
+.cctv-hero-proof { margin-top: 10px; font-weight: 700; color: #111; }
+.cctv-hero-bullets { margin-top: 10px; padding-left: 18px; color: #111; }
+.cctv-hero-bullets li { list-style: disc; }
+.cctv-hero-ctas { margin-top: 16px; }
+.cctv-hero-meta { margin-top: 12px; }
+
+/* Cards & UI */
+.cctv-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; box-shadow: 0 6px 16px rgba(10,65,106,.06); padding: 14px;
 }
-.service-cta-btn {
-  display: inline-block;
-  padding: 14px 30px;
-  background: var(--accent-amber);
-  color: #fff;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-}
-.service-cta-btn:hover {
-  background: #a03c00;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+.cctv-card-head { display:flex; justify-content:space-between; align-items:center; }
+
+.cctv-badge {
+  display:inline-block; padding: 4px 10px; border-radius: 999px;
+  font-size: 12px; font-weight: 800; color: #155e29; background: #dcfce7; border: 1px solid #b7efc3;
 }
 
-/* Fade-in Animation */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+.cctv-gallery img { width: 100%; height: auto; border-radius: 10px; display: block; }
 
-/* Responsive Design */
-@media (max-width: 900px) {
-  .what-we-do-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
+.cctv-mini-kv { border:1px solid var(--border); border-radius:10px; padding:10px; }
+.cctv-mini-kv__k { font-weight: 800; color: var(--p800); }
+.cctv-mini-kv__v { color: #475569; }
+
+.cctv-btn {
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:8px; padding: 10px 16px; border-radius: 10px;
+  font-weight: 800; border: 1px solid transparent; cursor: pointer;
 }
-@media (max-width: 820px) {
-  .service-process-steps {
-    display: block;
-    padding: 0;
-  }
-  .service-process-steps::before {
-    display: none;
-  }
-  .service-process-step {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-    align-items: flex-start;
-  }
-  .service-step-badge {
-    width: 42px;
-    height: 42px;
-    min-width: 42px;
-    font-size: 1rem;
-  }
+.cctv-btnPrimary { background: var(--acc); color: #fff; }
+.cctv-btnPrimary:hover { background: var(--accD); }
+.cctv-btnOutline { background: #fff; border-color: var(--border); color: #1f2937; }
+.cctv-btnOutline:hover { background: #f9fbfd; }
+.cctv-btnGhost { background: transparent; border: 1px solid #e5e7eb; color: #111; }
+.cctv-btn--block { width: 100%; }
+
+.cctv-chip {
+  border:1px solid #e5e7eb; color:#111; background:#fff;
+  border-radius:999px; padding:8px 12px; font-weight:700; cursor:pointer;
 }
-@media (max-width: 768px) {
-  .service-hero {
-    padding: 90px 20px;
-  }
-  .service-hero-overlay h1 {
-    font-size: 2.2rem;
-  }
-  .service-hero-overlay p {
-    font-size: 1.1rem;
-  }
-  .service-cta h2 {
-    font-size: 1.8rem;
-  }
+.cctv-chip--active { background:#f1f5f9; }
+
+.cctv-list { padding-left: 18px; }
+.cctv-list--disc { list-style: disc; }
+.cctv-list-reset { list-style: none; padding-left: 0; margin: 0; }
+
+.cctv-input {
+  border:1px solid var(--border); border-radius:8px; padding:10px 12px; font-size:14px; width:100%;
 }
-@media (max-width: 480px) {
-  .service-intro {
-    padding: 40px 15px;
-  }
-  .service-hero {
-    padding: 80px 15px;
-  }
-  .service-hero-overlay h1 {
-    font-size: 1.8rem;
-  }
-  .service-hero-overlay p {
-    font-size: 1rem;
-  }
-  .service-section {
-    padding: 0 15px;
-  }
-  .service-section h2 {
-    font-size: 1.7rem;
-  }
+.cctv-price { font-size: 24px; font-weight: 800; margin: 12px 0 8px; }
+.cctv-step { color: var(--acc); font-weight: 800; margin-bottom: 6px; }
+
+/* Responsive */
+@media (max-width: 1023px) {
+  .cctv-grid-12 { grid-template-columns: 1fr; }
+  .cctv-col-7, .cctv-col-5 { grid-column: 1 / -1; }
+  .cctv-grid-3 { grid-template-columns: 1fr; }
+  .cctv-grid-2 { grid-template-columns: 1fr; }
+  .cctv-h1 { font-size: 32px; }
+  .cctv-h2 { font-size: 24px; }
 }
