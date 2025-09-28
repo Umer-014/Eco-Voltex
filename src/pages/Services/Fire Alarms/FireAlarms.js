@@ -3,72 +3,37 @@ import { Helmet } from "react-helmet-async";
 import Header from "../../../components/Header/Header";
 import Footer from "../../../components/Footer/Footer";
 
-export default function FireAlarms(){
+/**
+ * Eco Voltex — Fire Alarms (Flagship page, brand-first)
+ * - No deals
+ * - No embedded quote form
+ * - Strong brand layout, premium feel, mobile-perfect
+ * - Sticky subnav for quick section jumps
+ * - Subtle glass cards, gradients, refined typography
+ */
+
+export default function FireAlarmsFlagship(){
   // ========= Company contacts (optional) =========
   const PHONE = "";    // "+44 20..." (leave empty to hide)
   const WHATSAPP = ""; // "4477..." digits only for wa.me
 
   // ========= State =========
   const [audience,setAudience]=React.useState("business"); // "home" | "business"
-  const [countdown,setCountdown]=React.useState("");       // month-end ribbon
-  const [consent,setConsent]=React.useState(null);         // null | "accepted" | "rejected"
-  const [utm,setUtm]=React.useState({});
-  const [dealHint,setDealHint]=React.useState(null);
-
-  // Forms
-  const [errorSummary,setErrorSummary]=React.useState([]);
   const [postcode,setPostcode]=React.useState("");
   const [pcResult,setPcResult]=React.useState("");
-  const [isSubmitting,setIsSubmitting]=React.useState(false);
-  const [formStatus,setFormStatus]=React.useState(""); // "ok" | "fail" | ""
-  const startedAt = React.useRef(Date.now());
+  const [consent,setConsent]=React.useState(null);         // null | "accepted" | "rejected"
 
   React.useEffect(()=>{
     if(typeof window==="undefined") return;
-
-    // Month-end countdown (hourly)
-    const endOfMonth=new Date(new Date().getFullYear(), new Date().getMonth()+1, 0, 23, 59, 59);
-    const tick=()=>{
-      const diff=endOfMonth.getTime()-Date.now();
-      if(diff<=0){ setCountdown("Ends today"); return; }
-      const d=Math.floor(diff/(1000*60*60*24));
-      const h=Math.floor((diff/(1000*60*60))%24);
-      setCountdown(`${d}d ${h}h left`);
-    };
-    tick();
-    const t=setInterval(tick, 60*60*1000);
-
-    // Consent restore
     try{
       const c=localStorage.getItem("ev_consent");
       if(c==="accepted"||c==="rejected") setConsent(c);
     }catch{}
-
-    // URL params: utm_* + deal
-    const sp=new URLSearchParams(window.location.search);
-    const u={};
-    ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"].forEach(k=>{
-      const v=sp.get(k); if(v) u[k]=v;
-    });
-    setUtm(u);
-
-    let deal=sp.get("deal");
-    const hash=window.location.hash||"";
-    if(!deal && hash.includes("?")){
-      const hp=new URLSearchParams(hash.split("?")[1]);
-      if(hp.get("deal")) deal=hp.get("deal");
-    }
-    if(deal) setDealHint(deal);
-
-    // Restore audience
     try{
       const a=localStorage.getItem("ev_audience");
       if(a==="home"||a==="business") setAudience(a);
     }catch{}
-
-    return ()=>clearInterval(t);
   },[]);
-
   React.useEffect(()=>{ try{ localStorage.setItem("ev_audience",audience); }catch{} },[audience]);
 
   // ========= Helpers =========
@@ -94,200 +59,157 @@ export default function FireAlarms(){
       : "ℹ️ Likely covered — share your address and we’ll confirm today.");
   };
 
-  const validateForm=(data)=>{
-    const errs={};
-    if(!data.name?.trim()) errs.name="Please enter your name.";
-    if(!data.email?.trim()||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) errs.email="Please enter a valid email.";
-    if(data.phone && !/^[0-9+()\-.\s]{7,}$/.test(data.phone)) errs.phone="Please enter a valid phone number.";
-    if(!data.postcode?.trim()||!validUKPostcode(data.postcode)) errs.postcode="Please enter a valid UK postcode.";
-    if(!data.consent) errs.consent="Please confirm we may contact you about this enquiry.";
-    return errs;
-  };
-  const buildErrorSummary=(errs)=>{
-    const list=[];
-    if(errs.name) list.push({field:"name",text:errs.name});
-    if(errs.email) list.push({field:"email",text:errs.email});
-    if(errs.phone) list.push({field:"phone",text:errs.phone});
-    if(errs.postcode) list.push({field:"postcode",text:errs.postcode});
-    if(errs.consent) list.push({field:"consent",text:errs.consent});
-    setErrorSummary(list);
-  };
-
   // ========= Content data =========
-  const homeSpecs=[
-    {k:"Standard",v:"BS 5839-6 (domestic/HMO)"},
-    {k:"Typical grade",v:"A, C, D1/D2 or F1/F2"},
-    {k:"Coverage",v:"LD2 or LD3 (risk-based)"},
-    {k:"Use cases",v:"Houses, flats, HMOs"},
+  const specsHome=[
+    ["Standard","BS 5839-6 (domestic/HMO)"],
+    ["Typical grade","A, C, D1/D2 or F1/F2"],
+    ["Coverage","LD2 or LD3 (risk-based)"],
+    ["Use cases","Houses, flats, HMOs"]
   ];
-  const bizSpecs=[
-    {k:"Standard",v:"BS 5839-1 (non-domestic)"},
-    {k:"Category",v:"L1–L5 / P1–P2 / M"},
-    {k:"Cause-and-effect",v:"Zoning, phased evacuation, interfaces"},
-    {k:"Records",v:"Logbook, certificates, as-fitted"},
+  const specsBiz=[
+    ["Standard","BS 5839-1 (non-domestic)"],
+    ["Category","L1–L5 / P1–P2 / M"],
+    ["Design tools","Cause & effect • Zoning • Interfaces"],
+    ["Records","Certificates • Logbook • As-fitted"]
   ];
-
-  const homeDeals=[
-    { id:"ld2-starter", tag:"Popular", title:"LD2 Starter Pack", price:"from £249", was:null,
-      bullets:["Risk check & device plan","Interlinked smoke + heat (typical 2–3 devices)*","Supply, install & test","Landlord docs included"],
-      note:"*Final device count set after survey; price adjusts to dwelling size." },
-    { id:"takeover-home", tag:"Switch & Save", title:"Existing System Takeover", price:"from £119", was:"£149",
-      bullets:["Compliance review & test","Logbook issued/updated","First service visit included"],
-      note:"For domestic Grade A/D systems in good condition." },
-    { id:"hmo-bundle", tag:"HMO Ready", title:"HMO Compliance Bundle", price:"Custom", was:null,
-      bullets:["LD2 design (rooms/routes) • Grade A where required","Panel/alarms, labels, zone chart","Council-ready paperwork"],
-      note:"Scope varies by layout and local authority requirements." }
-  ];
-  const bizDeals=[
-    { id:"office-l3", tag:"Best Value", title:"Small Office L3 Starter", price:"from £899", was:null,
-      bullets:["Category L3 design & drawings","Conventional panel + devices*","Commissioning & certificates"],
-      note:"*Exact device count by survey; addressable on request." },
-    { id:"takeover-pro", tag:"Switch & Save", title:"System Takeover + First Service", price:"£199 fixed", was:"£249",
-      bullets:["Asset list & condition report","Zone chart tidy-up","First six-monthly service included"],
-      note:"For compliant, serviceable systems within Greater London." },
-    { id:"p1-monitor", tag:"Risk Focus", title:"P1 + ARC Monitoring Bundle", price:"Custom", was:null,
-      bullets:["Property protection (P1) design","ARC setup with confirmed-alarm protocol","False-alarm reduction review"],
-      note:"Includes ARC paperwork and keyholder configuration." }
-  ];
-  const deals = audience==="home" ? homeDeals : bizDeals;
-
   const fitGuides=[
-    {title:"Offices & Shops", rec:"BS 5839-1 L2/L3", expl:"Life safety across escape routes and higher-risk rooms; add P2 if insurer requests."},
-    {title:"Schools & Care", rec:"BS 5839-1 L1/L2", expl:"Maximum coverage or near-maximum for vulnerable occupants and sleeping risk."},
-    {title:"Warehouses", rec:"BS 5839-1 P1/P2", expl:"Property protection throughout (P1) or defined areas (P2); life category added where occupied."},
-    {title:"HMOs & Shared Houses", rec:"BS 5839-6 Grade A, LD2", expl:"Panel-based with sounders on escape routes and detectors in risk rooms."},
-    {title:"Homes & Flats", rec:"BS 5839-6 LD2/LD3", expl:"Interlinked smoke/heat (and CO where needed)."},
-    {title:"Mixed-Use Blocks", rec:"Common parts: BS 5839-1 • Flats: BS 5839-6", expl:"Correct split between non-domestic areas and dwellings."},
+    {title:"Offices & Shops", rec:"BS 5839-1 L2/L3", expl:"Life safety on escape routes & higher-risk rooms; add P2 if insurer requests."},
+    {title:"Schools & Care", rec:"BS 5839-1 L1/L2", expl:"Maximum/near-maximum coverage where occupants are vulnerable or sleeping."},
+    {title:"Warehouses", rec:"BS 5839-1 P1/P2", expl:"Property protection throughout (P1) or defined areas (P2); add life category when occupied."},
+    {title:"HMOs & Hostels", rec:"BS 5839-6 Grade A, LD2", expl:"Panel-based Grade A with sounders and detectors in risk rooms and routes."},
+    {title:"Homes & Flats", rec:"BS 5839-6 LD2/LD3", expl:"Interlinked smoke/heat (and CO where required)."},
+    {title:"Mixed-Use Blocks", rec:"Core: -1 / Flats: -6", expl:"Common parts to BS 5839-1; dwellings to BS 5839-6 — correct split by area."},
   ];
-
-  const deliverSteps=[
+  const process=[
     {
-      n:"1", title:"Survey & Plan",
-      bullets:[
-        "Risk-led objectives (L / P / M / LD)",
-        "Detector types & spacing",
-        "Zoning and cause-and-effect outline"
-      ],
-      outcome:"Clear proposal with drawings and programme"
+      t:"Design",
+      k:["Risk-led objectives (L / P / M / LD)","Detector types & spacing","Zoning & cause-and-effect outline"],
+      i:(
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 3h10a2 2 0 0 1 2 2v6h-2V5H7v14h5v2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m12.5 10a1.5 1.5 0 0 1 1.5 1.5V20a1 1 0 0 1-1 1h-5.5A1.5 1.5 0 0 1 13 19.5V15a1 1 0 0 1 1-1zM17 16a1 1 0 1 0 0 2a1 1 0 0 0 0-2Z"/></svg>
+      )
     },
     {
-      n:"2", title:"Neat Installation",
-      bullets:[
-        "BS 7671 cabling and containment",
-        "Correct device siting and labels",
-        "As-installed drawings kept updated"
-      ],
-      outcome:"Tidy finish ready for tests"
+      t:"Installation",
+      k:["BS 7671 cabling & containment","Correct siting & labelling","As-installed drawings kept updated"],
+      i:(
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m20.7 7l-4.9-4.9l-1.4 1.4l1.1 1.1l-2.2 2.2l-1.1-1.1l-1.4 1.4L13.1 8L4 17.1V20h2.9L18 8.9l1.1 1.1zM6.5 18.5H6v-.5l9.7-9.7l.5.5z"/></svg>
+      )
     },
     {
-      n:"3", title:"Commissioning",
-      bullets:[
-        "Device tests & sound pressure checks",
-        "Cause-and-effect verification",
-        "All certificates and zone chart"
-      ],
-      outcome:"Signed-off, ready for use"
+      t:"Commissioning",
+      k:["Device tests & sound pressure checks","Cause-and-effect verification","Certificates & zone chart issued"],
+      i:(
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 2h10v2H7zm2 4h6v2H9zm-2 4h10v2H7zm-2 4h6v2H5zM3 20h18v2H3z"/></svg>
+      )
     },
     {
-      n:"4", title:"Ongoing Care",
-      bullets:[
-        "Six-monthly service (non-domestic)",
-        "Logbook updates & user guidance",
-        "False-alarm reduction reviews"
-      ],
-      outcome:"Reliable operation and records"
-    },
-  ];
-
-  const plans=[
-    {name:"Bronze", price:"from £/site", bullets:["6-monthly service","Logbook updates","Minor tweaks included"]},
-    {name:"Silver", price:"from £/site", bullets:["Everything in Bronze","Weekly test coaching (OOH)","Priority callouts"]},
-    {name:"Gold", price:"Custom", bullets:["Everything in Silver","ARC monitoring setup","False-alarm reduction review"]},
+      t:"Maintenance",
+      k:["Six-monthly service (non-domestic)","Logbook updates & user guidance","False-alarm reduction reviews"],
+      i:(
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 6a6 6 0 1 1 0 12A6 6 0 0 1 12 6m0-2a8 8 0 1 0 0 16A8 8 0 0 0 12 4m1 4h-2v5l4.2 2.5l1-1.6L13 12z"/></svg>
+      )
+    }
   ];
 
   // ========= Styles =========
   const styles=`
 :root{
-  --p900:#0A1B2B;--p800:#0F2C44;--p700:#154363;
-  --acc:#16A34A;--accD:#128838;--neon:#22E57F;
-  --soft:#F3F7FB;--border:#D6E8DD;--card:#FFFFFF;
-  --text:#000;--muted:#444;
+  /* Brand palette */
+  --navy:#0B1624;      /* deep premium navy */
+  --ink:#0F2338;       /* card text */
+  --mint:#22E57F;      /* neon accent */
+  --green:#10B981;     /* eco green */
+  --cyan:#7AD7F0;      /* soft accent */
+  --soft:#F5F8FC;      /* page background */
+  --glass:#ffffffE6;   /* glass card bg */
+  --line:#E4EDF5;      /* hairline */
+  --text:#0B1320;      /* body text */
+  --muted:#5B6673;     /* muted text */
+  --shadow:0 18px 60px rgba(5,22,40,.18);
 }
 *{box-sizing:border-box}
-[id]{scroll-margin-top:84px}
-.ev{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:#fff}
-.ev--page{min-height:100vh}
+html,body{background:var(--soft)}
+[id]{scroll-margin-top:96px}
+.ev{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text)}
 .ev a{text-decoration:none;color:inherit}
-.ev :focus-visible{outline:3px solid var(--neon);outline-offset:2px;border-radius:6px}
-.ev-center{text-align:center}
-.ev-meta{font-size:12px;color:var(--muted)!important}
-.ev-strong{font-weight:800}
-.ev-container{max-width:1152px;margin:0 auto;padding:0 24px}
-.ev-section{padding:56px 0;border-top:1px solid #eef2f7}
-.ev-soft{background:var(--soft);border-top:1px solid var(--border)}
-.ev-grid{display:grid}
-.ev-grid-12{grid-template-columns:repeat(12,1fr)}
-.ev-grid-4{grid-template-columns:repeat(4,1fr)}
-.ev-grid-3{grid-template-columns:repeat(3,1fr)}
-.ev-grid-2{grid-template-columns:repeat(2,1fr)}
-.ev-col-7{grid-column:span 7}
-.ev-col-5{grid-column:span 5}
-.ev-gap-12{gap:12px}
-.ev-gap-16{gap:16px}
-.ev-row{display:flex;gap:10px;flex-wrap:wrap}
-.ev-hero{position:relative;overflow:hidden;background:#fff;color:#000}
-.ev-h1{font-size:40px;line-height:1.15;font-weight:900;color:#000}
-.ev-h2{font-size:28px;font-weight:800;color:#000}
-.ev-h3{font-size:18px;font-weight:800;color:#000}
-.ev-pill{display:inline-flex;gap:8px;align-items:center;background:#dcfce7;color:#166534;padding:6px 10px;border-radius:999px;font-weight:800;font-size:13px}
-.ev-ribbon{display:inline-flex;align-items:center;gap:10px;background:#072538;color:#d9ffe9;padding:8px 12px;border-bottom:1px solid #0b3a5a;border-radius:8px}
-.ev-card{background:var(--card);border:1px solid var(--border);border-radius:16px;box-shadow:0 8px 24px rgba(10,65,106,.08);padding:16px}
-.ev-badge{border:1px solid #dbe9ef;background:#f8fbff;border-radius:999px;padding:4px 8px;color:#36506b;font-weight:800;font-size:12px}
-.ev-tag{display:inline-flex;align-items:center;gap:6px;background:#e7f8ef;border:1px solid #cdebd9;color:#0b5c2b;border-radius:999px;padding:4px 10px;font-weight:800;font-size:12px}
-.ev-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border-radius:12px;font-weight:800;border:1px solid transparent;cursor:pointer;min-height:44px}
-.ev-btnPrimary{background:var(--acc);color:#fff}
-.ev-btnPrimary:hover{background:var(--accD)}
-.ev-btnOutline{background:#fff;border-color:var(--border);color:#000}
-.ev-btnGhost{background:transparent;border:1px solid #000;color:#000}
-.ev-list{padding-left:18px}
-.ev-list--disc{list-style:disc}
-.ev-form{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.ev-form input,.ev-form textarea,.ev-input,select{border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:14px;width:100%}
-.ev-form .ev-error{color:#b42318;font-size:12px;margin-top:6px}
-.ev-form [aria-invalid="true"]{border-color:#b42318;box-shadow:0 0 0 3px rgba(180,35,24,0.08)}
-.ev-form button[type="submit"]{grid-column:1/-1}
-.ev-errorSummary{border:1px solid #f3b4b4;background:#fff5f5;padding:12px;border-radius:12px}
-.ev-deals{background:linear-gradient(0deg,#f7fbff,#ffffff)}
-.ev-dealPrice{font-size:24px;font-weight:900;margin:6px 0}
-.ev-dealWas{font-size:12px;text-decoration:line-through;color:#6b788a}
-.ev-cta{background:#f7f7f7;color:#000;padding:48px 0}
-.ev-mobile-stick{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none;gap:8px;background:#ffffffee;border-top:1px solid var(--border);padding:10px calc(10px + env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) calc(10px + env(safe-area-inset-left))}
-.ev-stick-btn{flex:1;display:flex;justify-content:center;align-items:center;border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-weight:800;color:#000;text-decoration:none;min-height:44px}
-.ev-stick-btn--prime{background:var(--acc);color:#fff;border-color:var(--acc)}
-.ev-consent{position:fixed;left:12px;right:12px;bottom:12px;background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:0 10px 24px rgba(10,65,106,.12);padding:14px;display:flex;gap:10px;align-items:flex-start;z-index:60}
-.ev-trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-.ev-trust .item{display:flex;align-items:center;gap:8px;border:1px solid var(--border);background:#fff;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800;color:#073b2b}
-@media (hover:hover) and (pointer:fine){
-  .ev-card{ transition: transform .18s ease, box-shadow .18s ease; }
-  .ev-card:hover{ transform: translateY(-2px); box-shadow:0 12px 28px rgba(10,65,106,.10);}
+.ev :focus-visible{outline:3px solid var(--mint);outline-offset:3px;border-radius:10px}
+
+.ev-container{max-width:1200px;margin:0 auto;padding:0 24px}
+.ev-section{padding:72px 0;border-top:1px solid var(--line)}
+.ev-section--dark{background:linear-gradient(180deg,var(--navy),#0E2035);color:#EAF7F0;border-top:none}
+.ev-section--dark .muted{color:#C6D6E6}
+
+.hero{
+  background:
+    radial-gradient(1000px 400px at 80% -50%, rgba(34,229,127,.25), transparent 60%),
+    radial-gradient(800px 300px at 0% -30%, rgba(122,215,240,.25), transparent 60%),
+    linear-gradient(180deg,var(--navy),#0E2035);
+  color:#EAF7F0;
+  padding:96px 0 72px;
 }
-@media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
+.hero h1{font-size:48px;line-height:1.08;margin:0 0 12px;font-weight:900;letter-spacing:-0.02em}
+.hero p.lead{font-size:18px;opacity:.92;max-width:70ch}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.hero .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:14px;font-weight:800;border:1px solid transparent;min-height:46px}
+.btn--primary{background:var(--green);color:#071A14}
+.btn--ghost{background:transparent;border-color:#2E445A;color:#DDFCEE}
+
+.toggle{display:inline-flex;border:1px solid #27415A;background:#11283F;border-radius:12px;overflow:hidden}
+.toggle button{padding:8px 14px;font-weight:800;color:#CDE3F6;background:transparent;border:none;cursor:pointer}
+.toggle button[aria-pressed="true"]{background:#1A3551;color:#fff}
+
+.glass{
+  background:var(--glass);backdrop-filter:saturate(1.3) blur(10px);
+  border:1px solid rgba(255,255,255,.6);border-radius:20px;box-shadow:var(--shadow);
 }
-@media(max-width:1023px){
-  .ev-grid-12{grid-template-columns:1fr}
-  .ev-col-7,.ev-col-5{grid-column:1/-1}
-  .ev-grid-4{grid-template-columns:1fr 1fr}
-  .ev-grid-3{grid-template-columns:1fr 1fr}
-  .ev-grid-2{grid-template-columns:1fr}
-  .ev-h1{font-size:34px}
-  .ev-h2{font-size:26px}
-  .ev-form{grid-template-columns:1fr}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 30px rgba(10,35,60,.08);padding:18px}
+.card--ghost{background:transparent;border:1px dashed var(--line)}
+.card h3{margin:2px 0 6px;font-size:18px;font-weight:900;color:var(--ink)}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kv .box{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}
+
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.badge{display:flex;gap:8px;align-items:center;border:1px solid #1F3E2F;background:#10261C;color:#DFFFEF;border-radius:999px;padding:6px 10px;font-weight:800;font-size:12px}
+
+.subnav{position:sticky;top:64px;z-index:40;background:#0E2035;border-bottom:1px solid #12314D}
+.subnav .wrap{display:flex;gap:10px;overflow:auto;padding:10px 24px}
+.subnav a{color:#CFE7F9;border:1px solid #254D70;border-radius:999px;padding:8px 12px;font-weight:800;white-space:nowrap}
+.subnav a:hover{background:#153957;color:#fff}
+
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+
+.meta{font-size:12px;color:var(--muted)}
+.list{padding-left:18px}
+.list--disc{list-style:disc}
+
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:180px;gap:12px}
+.gallery img{width:100%;height:100%;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
+
+.coverage form{display:grid;grid-template-columns:1fr auto;gap:10px}
+.coverage input{border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px}
+.coverage button{padding:12px 18px;border-radius:12px;font-weight:800;border:1px solid #0D5B3A;background:var(--green);color:#062519}
+
+.footer-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.footer-cta a{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:#fff;font-weight:800}
+
+@media(max-width:1024px){
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .gallery{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
-  .ev-grid-4{grid-template-columns:1fr}
-  .ev-grid-3{grid-template-columns:1fr}
-  .ev-mobile-stick{display:flex}
+  .grid-3{grid-template-columns:1fr}
+  .grid-4{grid-template-columns:1fr}
+  .grid-2{grid-template-columns:1fr}
+  .hero h1{font-size:40px}
+}
+@media (hover:hover) and (pointer:fine){
+  .card{transition:transform .16s ease, box-shadow .16s ease}
+  .card:hover{transform:translateY(-2px);box-shadow:0 18px 46px rgba(10,35,60,.12)}
+}
+@media (prefers-reduced-motion: reduce) {
+  *{animation:none!important;transition:none!important}
 }
 `;
 
@@ -297,128 +219,109 @@ export default function FireAlarms(){
       <Header/>
 
       <Helmet>
-        <title>Fire Alarm Design, Installation, Commissioning & Maintenance in London | Eco Voltex</title>
-        <meta name="description" content="Neat installs, reliable commissioning, and ongoing maintenance to BS 5839-1/-6. Transparent pricing and quick surveys across London." />
+        <title>Fire Alarms in London — Design • Installation • Commissioning • Maintenance | Eco Voltex</title>
+        <meta name="description" content="Premium fire alarm services across London: design, neat installation, precise commissioning, and ongoing maintenance to BS 5839-1/-6. Brand-quality workmanship and documentation." />
         <link rel="canonical" href="https://www.ecovoltex.co.uk/services/fire-alarms" />
-
-        {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Eco Voltex — Fire Alarms in London" />
-        <meta property="og:description" content="Design • Installation • Commissioning • Maintenance — BS 5839-1/-6 compliant." />
+        <meta property="og:description" content="Design • Installation • Commissioning • Maintenance — BS 5839-1/-6 compliant. London & nearby counties." />
         <meta property="og:image" content="https://www.ecovoltex.co.uk/og/fire-alarms-hero.jpg" />
         <meta property="og:url" content="https://www.ecovoltex.co.uk/services/fire-alarms" />
-
-        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Eco Voltex — Fire Alarms in London" />
-        <meta name="twitter:description" content="BS 5839-1/-6 compliant. Quick surveys. Transparent pricing." />
-        <meta name="twitter:image" content="https://www.ecovoltex.co.uk/og/fire-alarms-hero.jpg" />
       </Helmet>
 
-      <main className="ev ev--page" role="main">
+      <main className="ev" role="main">
         <style>{styles}</style>
 
-        {/* Skip link */}
-        <a href="#hero-title" className="ev-meta" style={{position:'absolute',left:-9999,top:'auto'}}
-          onFocus={(e)=>{e.currentTarget.style.left='12px'}}>Skip to content</a>
-
         {/* ===== HERO ===== */}
-        <section id="overview" className="ev-section ev-hero" aria-labelledby="hero-title">
-          <div className="ev-container ev-grid ev-grid-12" style={{alignItems:"center"}}>
-            <div className="ev-col-7">
-              <h1 id="hero-title" className="ev-h1">
-                Fire alarm design, installation, commissioning & maintenance — London
-              </h1>
-              <p style={{color:'#000',opacity:.9,marginTop:12,maxWidth:'65ch'}}>
-                We deliver neat installs, reliable commissioning, and clear maintenance to the current UK standards:
-                <b> BS 5839-1</b> (non-domestic) and <b>BS 5839-6</b> (domestic/HMO). London and nearby counties. Fully insured. Documentation to BS 5839-1/-6.
-              </p>
+        <section className="hero" id="overview" aria-labelledby="hero-title">
+          <div className="ev-container">
+            <div style={{display:"grid",gridTemplateColumns:"1.2fr 1fr",gap:20,alignItems:"center"}}>
+              <div>
+                <h1 id="hero-title">Fire alarm design, installation, commissioning & maintenance — London</h1>
+                <p className="lead">
+                  Brand-level delivery for life and property protection. Neat cabling, correct siting, precise commissioning, and clear documentation — to
+                  <b> BS 5839-1</b> (non-domestic) and <b>BS 5839-6</b> (domestic/HMO). Fully insured. London and nearby counties.
+                </p>
 
-              {countdown && (
-                <div className="ev-ribbon" role="status" aria-live="polite" style={{marginTop:12}}>
-                  <span>Month-end booking window</span><strong>{countdown}</strong>
+                {/* Audience toggle */}
+                <div className="toggle" role="tablist" aria-label="Choose audience" style={{marginTop:16}}>
+                  <button role="tab" aria-selected={audience==="home"} aria-pressed={audience==="home"} onClick={()=>setAudience("home")}>Home</button>
+                  <button role="tab" aria-selected={audience==="business"} aria-pressed={audience==="business"} onClick={()=>setAudience("business")}>Business</button>
                 </div>
-              )}
 
-              <div className="ev-row" style={{marginTop:14}} aria-label="Choose audience">
-                <button className={`ev-btn ${audience==='home'?'ev-btnPrimary':'ev-btnOutline'}`} onClick={()=>setAudience('home')} aria-pressed={audience==='home'}>Home</button>
-                <button className={`ev-btn ${audience==='business'?'ev-btnPrimary':'ev-btnOutline'}`} onClick={()=>setAudience('business')} aria-pressed={audience==='business'}>Business</button>
-                {PHONE && <a className="ev-btn ev-btnGhost" href={`tel:${PHONE}`}>Call us</a>}
-                {WHATSAPP && <a className="ev-btn ev-btnGhost" href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noreferrer">WhatsApp</a>}
+                {/* Trust badges */}
+                <div className="badges" aria-label="Key trust points">
+                  <span className="badge">Neat workmanship</span>
+                  <span className="badge">BS 5839-1/-6 documentation</span>
+                  <span className="badge">Friendly, competent engineers</span>
+                </div>
+
+                {/* Hero CTAs — link to your existing pages */}
+                <div className="cta">
+                  <a className="btn btn--primary" href="/contact">Book a survey</a>
+                  <a className="btn btn--ghost" href="/quote">Get a quote</a>
+                  {PHONE && <a className="btn btn--ghost" href={`tel:${PHONE}`}>Call us</a>}
+                  {WHATSAPP && <a className="btn btn--ghost" href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noreferrer">WhatsApp</a>}
+                </div>
               </div>
 
-              <ul className="ev-list ev-list--disc" style={{marginTop:10}}>
-                {(audience==='home'
-                  ?[
-                    "Interlinked smoke/heat/CO; LD2/LD3 coverage by risk",
-                    "Tidy work, minimal disruption, landlord/HMO paperwork",
-                    "Friendly guidance on monthly tests"
-                  ]
-                  :[
-                    "Categories L1–L5 / P1–P2 / M as required",
-                    "Cause-and-effect planning & zone charts",
-                    "Servicing at intervals not exceeding six months"
-                  ]
-                ).map(x=> <li key={x}>{x}</li>)}
-              </ul>
-
-              <div className="ev-row" style={{marginTop:16}}>
-                <a href="#basics" className="ev-btn ev-btnOutline">1-min explainer</a>
-                <a href="#quote" className="ev-btn ev-btnPrimary">Get a quote</a>
-              </div>
-
-              {/* Trust strip */}
-              <div className="ev-trust" aria-label="Trust points">
-                <div className="item">Qualified, competent engineers</div>
-                <div className="item">BS 5839-1/-6 documentation</div>
-                <div className="item">Fully insured (details on request)</div>
-              </div>
-
-              <p className="ev-meta" style={{marginTop:8}}>Neat workmanship • Clear documentation • Friendly, competent engineers</p>
-            </div>
-
-            <div className="ev-col-5">
-              <div className="ev-card" aria-label={audience==='business'?"Business specs":"Home specs"}>
-                <div className="ev-grid ev-grid-2 ev-gap-12">
-                  {(audience==='business'?bizSpecs:homeSpecs).map(({k,v})=>(
-                    <div key={k} style={{border:'1px solid #eee',borderRadius:12,padding:12}}>
-                      <p style={{fontWeight:800}}>{k}</p>
-                      <p>{v}</p>
+              {/* Hero spec panel */}
+              <div className="glass" style={{padding:18}}>
+                <div className="kv">
+                  {(audience==="business"?specsBiz:specsHome).map(([k,v])=>(
+                    <div key={k} className="box">
+                      <p className="meta" style={{margin:0}}>{k}</p>
+                      <p style={{margin:"4px 0 0 0",fontWeight:800}}>{v}</p>
                     </div>
                   ))}
                 </div>
-                <p className="ev-meta" style={{marginTop:12}}>Clear drawings • Zone plans • User training</p>
+                <p className="meta" style={{marginTop:10}}>Clear drawings • Zone plans • User training</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ===== QUICK EXPLAINER: FIRE ALARM BASICS ===== */}
-        <section id="basics" className="ev-section ev-soft" aria-labelledby="basics-title">
+        {/* ===== Sticky SUBNAV ===== */}
+        <nav className="subnav" aria-label="Section navigation">
+          <div className="wrap ev-container">
+            <a href="#basics">Basics</a>
+            <a href="#sectors">Who we help</a>
+            <a href="#fit">Which option?</a>
+            <a href="#process">How we deliver</a>
+            <a href="#standards">Standards</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#coverage">Coverage</a>
+            <a href="#faqs">FAQs</a>
+          </div>
+        </nav>
+
+        {/* ===== BASICS ===== */}
+        <section id="basics" className="ev-section" aria-labelledby="basics-title">
           <div className="ev-container">
-            <h2 id="basics-title" className="ev-h2">Fire alarm basics — in plain English</h2>
-            <div className="ev-grid ev-grid-3 ev-gap-16" style={{marginTop:16}}>
-              <div className="ev-card">
-                <p className="ev-h3">What it is</p>
-                <ul className="ev-list ev-list--disc" style={{marginTop:6}}>
+            <h2 id="basics-title" style={{fontSize:30,margin:"0 0 8px",fontWeight:900,color:"#0F2338"}}>Fire alarm basics — in plain English</h2>
+            <div className="grid-3" style={{marginTop:12}}>
+              <div className="card">
+                <h3>What it is</h3>
+                <ul className="list list--disc">
                   <li>Detectors + manual call points + sounders, managed by a control panel</li>
-                  <li>Alerts people to evacuate and can trigger building systems (doors, lifts, AHU)</li>
-                  <li>Records events and faults in a logbook</li>
+                  <li>Warns people to evacuate; can interface with doors, lifts, AHU</li>
+                  <li>Records alarms/faults in a logbook</li>
                 </ul>
               </div>
-              <div className="ev-card">
-                <p className="ev-h3">System types</p>
-                <ul className="ev-list ev-list--disc" style={{marginTop:6}}>
-                  <li><b>Conventional:</b> zones of devices; faults/alarms shown by zone</li>
-                  <li><b>Addressable:</b> each device has an address; pinpoint information</li>
-                  <li><b>Domestic interlinked:</b> mains or battery with wireless/wired interlink</li>
+              <div className="card">
+                <h3>System types</h3>
+                <ul className="list list--disc">
+                  <li><b>Conventional:</b> devices grouped by zone</li>
+                  <li><b>Addressable:</b> each device has an address for pinpoint info</li>
+                  <li><b>Domestic interlinked:</b> mains/battery with wired/wireless link</li>
                 </ul>
               </div>
-              <div className="ev-card">
-                <p className="ev-h3">Standards & categories</p>
-                <ul className="ev-list ev-list--disc" style={{marginTop:6}}>
-                  <li><b>BS 5839-1 (non-domestic):</b> Life (L1–L5), Property (P1–P2), Manual (M)</li>
-                  <li><b>BS 5839-6 (domestic/HMO):</b> Grades A/C/D/F with LD1/LD2/LD3 coverage</li>
+              <div className="card">
+                <h3>Standards & categories</h3>
+                <ul className="list list--disc">
+                  <li><b>BS 5839-1 (non-domestic):</b> L1–L5 (life), P1–P2 (property), M (manual)</li>
+                  <li><b>BS 5839-6 (domestic/HMO):</b> Grades A/C/D/F with LD1–LD3 coverage</li>
                   <li>We confirm the right category/grade after survey</li>
                 </ul>
               </div>
@@ -429,8 +332,8 @@ export default function FireAlarms(){
         {/* ===== WHO WE HELP ===== */}
         <section id="sectors" className="ev-section" aria-labelledby="sector-title">
           <div className="ev-container">
-            <h2 id="sector-title" className="ev-h2">Who we help</h2>
-            <div className="ev-grid ev-grid-4 ev-gap-16" style={{marginTop:16}}>
+            <h2 id="sector-title" style={{fontSize:30,margin:0,fontWeight:900,color:"#0F2338"}}>Who we help</h2>
+            <div className="grid-4" style={{marginTop:12}}>
               {[
                 ["Landlords & HMOs","LD2/LD3, council-ready paperwork, quick turnarounds"],
                 ["Property Managers","Routine maintenance, logbooks, call-outs"],
@@ -441,65 +344,50 @@ export default function FireAlarms(){
                 ["Hospitality & Leisure","False-alarm reduction, staff training"],
                 ["Mixed-Use Blocks","Common parts systems, takeover & upgrades"]
               ].map(([t,d])=>(
-                <div key={t} className="ev-card">
-                  <p className="ev-h3">{t}</p><p style={{marginTop:6}}>{d}</p>
+                <div key={t} className="card">
+                  <h3>{t}</h3>
+                  <p style={{marginTop:6}}>{d}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ===== WHICH OPTION FITS MY BUILDING ===== */}
+        {/* ===== WHICH OPTION FITS ===== */}
         <section id="fit" className="ev-section" aria-labelledby="fit-title">
           <div className="ev-container">
-            <h2 id="fit-title" className="ev-h2">Which option fits my building?</h2>
-            <div className="ev-grid ev-grid-3 ev-gap-16" style={{marginTop:16}}>
-              {fitGuides.map((g)=>(
-                <div key={g.title} className="ev-card">
-                  <div className="ev-row" style={{justifyContent:"space-between",alignItems:"baseline"}}>
-                    <p className="ev-h3">{g.title}</p>
-                    <span className="ev-badge">{g.rec}</span>
+            <h2 id="fit-title" style={{fontSize:30,margin:0,fontWeight:900,color:"#0F2338"}}>Which option fits my building?</h2>
+            <div className="grid-3" style={{marginTop:12}}>
+              {fitGuides.map(g=>(
+                <div key={g.title} className="card">
+                  <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline"}}>
+                    <h3 style={{margin:0}}>{g.title}</h3>
+                    <span className="meta" style={{fontWeight:800,border:"1px solid var(--line)",borderRadius:999,padding:"4px 10px"}}>{g.rec}</span>
                   </div>
                   <p style={{marginTop:6}}>{g.expl}</p>
                 </div>
               ))}
             </div>
-            <p className="ev-meta" style={{marginTop:8}}>These are common starting points — we confirm the exact category and grade after survey.</p>
+            <p className="meta" style={{marginTop:8}}>Common starting points — we confirm the exact category/grade after survey.</p>
           </div>
         </section>
 
         {/* ===== HOW WE DELIVER ===== */}
-        <section id="deliver" className="ev-section ev-soft" aria-labelledby="deliver-title">
+        <section id="process" className="ev-section ev-section--dark" aria-labelledby="process-title">
           <div className="ev-container">
-            <h2 id="deliver-title" className="ev-h2">How we deliver — step by step</h2>
-            <div className="ev-grid ev-grid-4 ev-gap-16" style={{marginTop:16}}>
-              {deliverSteps.map(step=>(
-                <div key={step.n} className="ev-card">
-                  <div className="ev-row" style={{justifyContent:'space-between',alignItems:'baseline'}}>
-                    <span className="ev-badge">Step {step.n}</span>
-                    <p className="ev-h3" style={{margin:0}}>{step.title}</p>
+            <h2 id="process-title" style={{fontSize:30,margin:0,fontWeight:900}}>How we deliver — step by step</h2>
+            <p className="muted" style={{marginTop:6}}>Clarity at every stage. No pushy sales — written scope with drawings before you decide.</p>
+            <div className="grid-4" style={{marginTop:14}}>
+              {process.map(p=>(
+                <div key={p.t} className="card" style={{background:"#0F2439",borderColor:"#254D70",color:"#EAF6FF"}}>
+                  <div style={{display:"flex",alignItems:"center",gap:10}}>
+                    <div style={{width:36,height:36,display:"grid",placeItems:"center",borderRadius:12,background:"rgba(122,215,240,.15)",color:"#7AD7F0"}}>
+                      {p.i}
+                    </div>
+                    <h3 style={{margin:"2px 0",color:"#fff"}}>{p.t}</h3>
                   </div>
-                  <ul className="ev-list ev-list--disc" style={{marginTop:6}}>
-                    {step.bullets.map(b=><li key={b}>{b}</li>)}
-                  </ul>
-                  <p className="ev-meta" style={{marginTop:8}}><b>What you get:</b> {step.outcome}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ===== SERVICE PLANS (BRIEF) ===== */}
-        <section id="plans" className="ev-section" aria-labelledby="plans-title">
-          <div className="ev-container">
-            <h2 id="plans-title" className="ev-h2">Service plans</h2>
-            <div className="ev-grid ev-grid-3 ev-gap-16" style={{marginTop:16}}>
-              {plans.map(p=>(
-                <div className="ev-card" key={p.name}>
-                  <span className="ev-tag">{p.name}</span>
-                  <p className="ev-dealPrice" style={{marginTop:8}}>{p.price}</p>
-                  <ul className="ev-list ev-list--disc" style={{marginTop:6}}>
-                    {p.bullets.map(b=><li key={b}>{b}</li>)}
+                  <ul className="list list--disc" style={{marginTop:8}}>
+                    {p.k.map(item=> <li key={item}>{item}</li>)}
                   </ul>
                 </div>
               ))}
@@ -507,267 +395,126 @@ export default function FireAlarms(){
           </div>
         </section>
 
-        {/* ===== DEALS ===== */}
-        <section id="deals" className="ev-section ev-deals" aria-labelledby="deals-title">
+        {/* ===== STANDARDS STRIP ===== */}
+        <section id="standards" className="ev-section" aria-labelledby="std-title" style={{paddingTop:36}}>
           <div className="ev-container">
-            <h2 id="deals-title" className="ev-h2">Limited-time deals</h2>
-            <p className="ev-meta">Transparent “from” pricing. Final spec and price confirmed after survey. London & nearby counties.</p>
-            <div className="ev-grid ev-grid-3 ev-gap-16" style={{marginTop:16}}>
-              {deals.map(d=>(
-                <div key={d.id} className="ev-card">
-                  {d.tag && <span className="ev-tag" aria-label="deal tag">{d.tag}</span>}
-                  <p className="ev-h3" style={{marginTop:8}}>{d.title}</p>
-                  <p className="ev-dealPrice">{d.price} {d.was && <span className="ev-dealWas">{d.was}</span>}</p>
-                  <ul className="ev-list ev-list--disc" style={{marginTop:6}}>
-                    {d.bullets.map(b=><li key={b}>{b}</li>)}
-                  </ul>
-                  <p className="ev-meta" style={{marginTop:8}}>{d.note}</p>
-                  <div className="ev-row" style={{marginTop:10}}>
-                    <a className="ev-btn ev-btnPrimary" href={`#quote?deal=${encodeURIComponent(d.id)}`}>Claim this deal</a>
-                    <a className="ev-btn ev-btnOutline" href="#quote">Ask a question</a>
-                  </div>
-                </div>
-              ))}
+            <div className="glass" style={{padding:"14px 16px",display:"flex",gap:10,flexWrap:"wrap",alignItems:"center",justifyContent:"space-between"}}>
+              <p id="std-title" className="meta" style={{margin:0,fontWeight:800}}>Standards & records we work to</p>
+              <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
+                {["BS 5839-1 (non-domestic)","BS 5839-6 (domestic/HMO)","BS 7671 (cabling)","Logbook & certificates","Zone charts & drawings"].map(x=>(
+                  <span key={x} className="meta" style={{border:"1px solid var(--line)",borderRadius:999,padding:"6px 10px",background:"#fff",fontWeight:800}}>{x}</span>
+                ))}
+              </div>
             </div>
-            <p className="ev-meta" style={{marginTop:8}}>
-              No direct autodial to the Fire & Rescue Service. ARC attendance is subject to local FRS policy and confirmed-alarm protocols.
-            </p>
+          </div>
+        </section>
+
+        {/* ===== GALLERY (visual trust) ===== */}
+        <section id="gallery" className="ev-section" aria-labelledby="gal-title">
+          <div className="ev-container">
+            <h2 id="gal-title" style={{fontSize:30,margin:0,fontWeight:900,color:"#0F2338"}}>Recent work — neat, UK-correct details</h2>
+            <p className="meta" style={{marginTop:6}}>No faces required — we focus on craftsmanship and compliance.</p>
+            <div className="gallery" style={{marginTop:12}}>
+              {/* Replace src with your Cloudinary/CDN images; keep loading="lazy" */}
+              <img loading="lazy" src="https://res.cloudinary.com/demo/image/upload/w_1200,h_800,c_fill,q_auto/abstract1.jpg" alt="Tidy FP-rated cabling in white mini-trunking with fire clips" />
+              <img loading="lazy" src="https://res.cloudinary.com/demo/image/upload/w_800,h_800,c_fill,q_auto/abstract2.jpg" alt="Ceiling detector on UK suspended grid, correct spacing" />
+              <img loading="lazy" src="https://res.cloudinary.com/demo/image/upload/w_800,h_800,c_fill,q_auto/abstract3.jpg" alt="Clean panel internals, labelled cores (no brand names)" />
+              <img loading="lazy" src="https://res.cloudinary.com/demo/image/upload/w_800,h_800,c_fill,q_auto/abstract4.jpg" alt="Commissioning: sound level meter & zone chart (non-legible)" />
+              <img loading="lazy" src="https://res.cloudinary.com/demo/image/upload/w_800,h_800,c_fill,q_auto/abstract5.jpg" alt="As-fitted drawing mark-ups" />
+              <img loading="lazy" src="https://res.cloudinary.com/demo/image/upload/w_800,h_800,c_fill,q_auto/abstract6.jpg" alt="Neat call point install with signage (UK style)" />
+            </div>
+            <div className="footer-cta">
+              <a href="/contact">Book a survey</a>
+              <a href="/quote">Get a quote</a>
+            </div>
           </div>
         </section>
 
         {/* ===== COVERAGE CHECK ===== */}
-        <section id="postcode" className="ev-section" aria-labelledby="pc-title">
-          <div className="ev-container">
-            <h2 id="pc-title" className="ev-h2">Check coverage & survey availability</h2>
-            <form onSubmit={checkPostcode} className="ev-form" noValidate>
-              <div>
-                <label className="ev-meta" htmlFor="pc">Your postcode</label>
-                <input id="pc" name="pc" value={postcode} onChange={(e)=>setPostcode(e.target.value)} placeholder="E1 6AN" autoComplete="postal-code"/>
-              </div>
-              <button type="submit" className="ev-btn ev-btnPrimary">Check</button>
+        <section id="coverage" className="ev-section" aria-labelledby="pc-title">
+          <div className="ev-container coverage">
+            <h2 id="pc-title" style={{fontSize:30,margin:0,fontWeight:900,color:"#0F2338"}}>Check coverage & survey availability</h2>
+            <form onSubmit={checkPostcode} noValidate style={{marginTop:12}}>
+              <input
+                id="pc"
+                name="pc"
+                value={postcode}
+                onChange={(e)=>setPostcode(e.target.value)}
+                placeholder="E1 6AN"
+                autoComplete="postal-code"
+                aria-label="Your postcode"
+              />
+              <button type="submit">Check</button>
             </form>
-            <div className="ev-meta" style={{marginTop:8}} aria-live="polite">{pcResult}</div>
-          </div>
-        </section>
-
-        {/* ===== QUOTE FORM ===== */}
-        <section id="quote" className="ev-section ev-cta" aria-labelledby="quote-title">
-          <div className="ev-container">
-            <h2 id="quote-title" className="ev-h2">
-              {dealHint ? `Get a quick quote — ${dealHint.replace(/-/g,' ')}` : "Get a quick quote"}
-            </h2>
-
-            {errorSummary.length>0 && (
-              <div className="ev-errorSummary" role="alert" aria-live="assertive">
-                <p className="ev-strong">Please fix the following:</p>
-                <ul className="ev-list">
-                  {errorSummary.map(e=><li key={e.field}>{e.text}</li>)}
-                </ul>
-              </div>
-            )}
-
-            <form className="ev-form" noValidate onSubmit={async (e)=>{
-              e.preventDefault();
-              const data={
-                name:e.target.name.value,
-                email:e.target.email.value,
-                phone:e.target.phone.value,
-                property:e.target.property.value,
-                sleeping:e.target.sleeping.value,
-                system:e.target.system.value,
-                floors:e.target.floors.value,
-                size:e.target.size.value,
-                postcode:e.target.postcode.value,
-                message:e.target.message.value,
-                consent:e.target.consent.checked,
-                // honeypot:
-                company:e.target.company.value,
-                deal: dealHint || null,
-                utm
-              };
-              const errs=validateForm(data);
-              buildErrorSummary(errs);
-              if(data.company) return; // spam bot (honeypot)
-              if(Date.now()-startedAt.current<3000) return; // too fast -> likely bot
-              if(Object.keys(errs).length===0){
-                setIsSubmitting(true); setFormStatus("");
-                try{
-                  // TODO: replace with your API/EmailJS call
-                  // await fetch('/api/quote', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
-                  setFormStatus("ok");
-                  e.target.reset();
-                }catch(err){
-                  setFormStatus("fail");
-                }finally{
-                  setIsSubmitting(false);
-                }
-              }
-            }}>
-              <div>
-                <label className="ev-meta" htmlFor="name">Name</label>
-                <input id="name" name="name" autoComplete="name" aria-invalid={!!errorSummary.find(x=>x.field==='name')}/>
-              </div>
-              <div>
-                <label className="ev-meta" htmlFor="email">Email</label>
-                <input id="email" name="email" type="email" autoComplete="email" aria-invalid={!!errorSummary.find(x=>x.field==='email')}/>
-              </div>
-              <div>
-                <label className="ev-meta" htmlFor="phone">Phone (optional)</label>
-                <input id="phone" name="phone" autoComplete="tel" aria-invalid={!!errorSummary.find(x=>x.field==='phone')}/>
-              </div>
-              <div>
-                <label className="ev-meta" htmlFor="property">Property type</label>
-                <select id="property" name="property" defaultValue="office">
-                  <option value="office">Office</option><option value="shop">Shop/Restaurant</option>
-                  <option value="school">School</option><option value="warehouse">Warehouse</option>
-                  <option value="hmo">HMO / Hostel</option><option value="care">Care / Healthcare</option>
-                  <option value="home">House / Flat</option>
-                </select>
-              </div>
-              <div>
-                <label className="ev-meta" htmlFor="sleeping">Sleeping risk?</label>
-                <select id="sleeping" name="sleeping" defaultValue="no">
-                  <option value="no">No</option><option value="yes">Yes</option>
-                </select>
-              </div>
-              <div>
-                <label className="ev-meta" htmlFor="system">Existing system</label>
-                <select id="system" name="system" defaultValue="unknown">
-                  <option value="unknown">Not sure</option>
-                  <option value="conventional">Conventional</option>
-                  <option value="addressable">Addressable</option>
-                  <option value="domestic">Domestic (A/C/D/F)</option>
-                  <option value="none">None</option>
-                </select>
-              </div>
-              <div>
-                <label className="ev-meta" htmlFor="floors">Floors</label>
-                <input id="floors" name="floors" placeholder="e.g., 3"/>
-              </div>
-              <div>
-                <label className="ev-meta" htmlFor="size">Approx. size</label>
-                <input id="size" name="size" placeholder="e.g., 450 m²"/>
-              </div>
-              <div>
-                <label className="ev-meta" htmlFor="postcode2">Postcode</label>
-                <input id="postcode2" name="postcode" placeholder="E1 6AN" autoComplete="postal-code" aria-invalid={!!errorSummary.find(x=>x.field==='postcode')}/>
-              </div>
-
-              {/* Message */}
-              <div style={{gridColumn:"1/-1"}}>
-                <label className="ev-meta" htmlFor="message">Message (optional)</label>
-                <textarea id="message" name="message" rows={4} placeholder="Attach any notes or questions"/>
-              </div>
-
-              {/* GDPR consent */}
-              <div style={{gridColumn:"1/-1"}}>
-                <label className="ev-meta" style={{display:'flex',gap:8,alignItems:'flex-start'}}>
-                  <input type="checkbox" name="consent" aria-invalid={!!errorSummary.find(x=>x.field==='consent')}/>
-                  I agree to be contacted about this enquiry. We keep your data private and never sell it.
-                </label>
-                {errorSummary.find(x=>x.field==='consent') && (
-                  <div className="ev-error" role="alert" style={{marginTop:6}}>Please confirm consent.</div>
-                )}
-              </div>
-
-              {/* Honeypot (hidden) */}
-              <input type="text" name="company" tabIndex="-1" autoComplete="off"
-                style={{position:'absolute',left:'-9999px'}} aria-hidden="true"/>
-
-              <button type="submit" className="ev-btn ev-btnPrimary" disabled={isSubmitting}>
-                {isSubmitting ? "Sending…" : "Request quote"}
-              </button>
-            </form>
-
-            {formStatus==="ok" && <p className="ev-meta" role="status" style={{marginTop:8}}>Thanks — we’ll reply within <b>1 business day</b>.</p>}
-            {formStatus==="fail" && <p className="ev-meta" role="alert" style={{marginTop:8}}>Sorry, something went wrong. Please email hello@ecovoltex.co.uk.</p>}
+            <div className="meta" style={{marginTop:8}} aria-live="polite">{pcResult}</div>
           </div>
         </section>
 
         {/* ===== FAQs ===== */}
         <section id="faqs" className="ev-section" aria-labelledby="faq-title">
           <div className="ev-container">
-            <h2 id="faq-title" className="ev-h2">Fire alarm FAQs</h2>
-            <div className="ev-grid ev-grid-2 ev-gap-16" style={{marginTop:16}}>
+            <h2 id="faq-title" style={{fontSize:30,margin:0,fontWeight:900,color:"#0F2338"}}>Fire alarm FAQs</h2>
+            <div className="grid-2" style={{marginTop:12}}>
               {[
-                ["Is a fire alarm legally required?","Most non-domestic premises need suitable detection/warning. The Responsible Person must maintain systems and keep records."],
+                ["Is a fire alarm legally required?","Most non-domestic premises need suitable detection and warning. The Responsible Person must maintain systems and keep records."],
                 ["How often should it be tested?","Non-domestic: weekly user tests; competent servicing at intervals not exceeding six months. Domestic/HMO: monthly user tests; Grade A follows the weekly routine."],
                 ["What categories exist?","Non-domestic: L1–L5 (life), P1–P2 (property), M (manual). Domestic/HMO: Grades A/C/D/F with LD1–LD3 coverage."],
-                ["Can you work on my existing system?","Yes — we can take over, survey, carry out remedials, update drawings and certify on completion."],
+                ["Can you work on my existing system?","Yes — takeover, survey, remedials, updated drawings; certify on completion."],
                 ["Do you provide certificates?","Yes — design/installation/commissioning and maintenance certificates, plus a logbook."],
                 ["Do you offer monitoring?","Yes — ARC monitoring with confirmed-alarm protocols and keyholder notification. No direct autodial; FRS attendance varies."]
               ].map(([q,a])=>(
-                <div key={q} className="ev-card">
-                  <p className="ev-strong">{q}</p>
-                  <p style={{marginTop:8}}>{a}</p>
+                <div key={q} className="card">
+                  <h3 style={{margin:"2px 0 6px"}}>{q}</h3>
+                  <p>{a}</p>
                 </div>
               ))}
+            </div>
+            <div className="footer-cta">
+              <a href="/contact">Ask a question</a>
+              <a href="/quote">Get a quote</a>
             </div>
           </div>
         </section>
 
-        {/* ===== Sticky mobile actions ===== */}
-        <div className="ev-mobile-stick" aria-label="Quick actions">
-          <a className="ev-stick-btn" href="#basics">1-min explainer</a>
-          <a className="ev-stick-btn ev-stick-btn--prime" href="#quote">Get a quote</a>
-        </div>
-
-        {/* ===== Consent banner ===== */}
+        {/* ===== Consent banner (privacy-simple) ===== */}
         {consent===null && (
-          <div className="ev-consent" role="dialog" aria-live="polite" aria-label="Cookie consent">
-            <div style={{flex:1}}>
-              <p className="ev-strong" style={{margin:0}}>Your privacy</p>
-              <p className="ev-meta" style={{margin:'6px 0 0 0'}}>
-                We use only necessary cookies for basic site features. No trackers by default.
-              </p>
+          <div role="dialog" aria-live="polite" aria-label="Cookie consent"
+               style={{position:"fixed",left:12,right:12,bottom:12,zIndex:60}}
+               className="glass">
+            <div style={{display:"flex",gap:12,alignItems:"flex-start",padding:14}}>
+              <div style={{flex:1}}>
+                <p style={{margin:0,fontWeight:900}}>Your privacy</p>
+                <p className="meta" style={{margin:"6px 0 0 0"}}>
+                  We use only necessary cookies for basic site features. No trackers by default.
+                </p>
+              </div>
+              <button className="btn btn--ghost" onClick={()=>{ setConsent("rejected"); try{localStorage.setItem("ev_consent","rejected");}catch{} }}>Reject</button>
+              <button className="btn btn--primary" onClick={()=>{ setConsent("accepted"); try{localStorage.setItem("ev_consent","accepted");}catch{} }}>Accept</button>
             </div>
-            <button className="ev-btn ev-btnOutline" onClick={()=>{ setConsent("rejected"); try{localStorage.setItem("ev_consent","rejected");}catch{} }}>Reject</button>
-            <button className="ev-btn ev-btnPrimary" onClick={()=>{ setConsent("accepted"); try{localStorage.setItem("ev_consent","accepted");}catch{} }}>Accept</button>
           </div>
         )}
 
-        {/* ===== JSON-LD: OfferCatalog (existing) ===== */}
-        <script type="application/ld+json"
-          dangerouslySetInnerHTML={{__html: JSON.stringify({
-            "@context":"https://schema.org",
-            "@type":"OfferCatalog",
-            "name":"Eco Voltex Fire Alarm Deals",
-            "itemListElement": (audience==="home" ? homeDeals : bizDeals).map(d=>({
-              "@type":"Offer",
-              "name": d.title,
-              "priceCurrency":"GBP",
-              "price": d.price.toLowerCase().includes("custom") ? undefined : (d.price.replace(/[^\d.]/g,"")||undefined),
-              "url": "https://www.ecovoltex.co.uk/#deals",
-              "availability":"https://schema.org/InStock"
-            }))
-          })}} />
-
-        {/* ===== JSON-LD: FAQPage ===== */}
+        {/* ===== Minimal JSON-LD (FAQ + Service) ===== */}
         <script type="application/ld+json"
           dangerouslySetInnerHTML={{__html: JSON.stringify({
             "@context":"https://schema.org",
             "@type":"FAQPage",
             "mainEntity":[
-              { "@type":"Question","name":"Is a fire alarm legally required?",
-                "acceptedAnswer":{"@type":"Answer","text":"Most non-domestic premises need suitable detection and warning. The Responsible Person must maintain systems and keep records."}},
-              { "@type":"Question","name":"How often should it be tested?",
-                "acceptedAnswer":{"@type":"Answer","text":"Non-domestic: weekly user tests and competent servicing at intervals not exceeding six months. Domestic/HMO: monthly user tests; Grade A follows the weekly routine."}}
+              { "@type":"Question","name":"Is a fire alarm legally required?","acceptedAnswer":{"@type":"Answer","text":"Most non-domestic premises need suitable detection and warning. The Responsible Person must maintain systems and keep records."}},
+              { "@type":"Question","name":"How often should it be tested?","acceptedAnswer":{"@type":"Answer","text":"Non-domestic: weekly user tests and competent servicing at intervals not exceeding six months. Domestic/HMO: monthly user tests; Grade A follows the weekly routine."}}
             ]
           })}} />
-
-        {/* ===== JSON-LD: Service ===== */}
         <script type="application/ld+json"
           dangerouslySetInnerHTML={{__html: JSON.stringify({
             "@context":"https://schema.org",
             "@type":"Service",
             "name":"Fire alarm design, installation, commissioning & maintenance",
-            "areaServed":{"@type":"AdministrativeArea","name":"London"},
-            "provider":{"@type":"Organization","name":"Eco Voltex"},
             "serviceType":"Fire detection and alarm systems",
-            "audience":["Business","Home"],
-            "termsOfService":"https://www.ecovoltex.co.uk/terms"
+            "areaServed":{"@type":"AdministrativeArea","name":"London"},
+            "provider":{"@type":"Organization","name":"Eco Voltex"}
           })}} />
       </main>
+
       <Footer/>
     </>
   );
