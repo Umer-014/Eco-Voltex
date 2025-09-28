@@ -12,7 +12,7 @@ import Footer from "../../../components/Footer/Footer";
  * - Subtle glass cards, gradients, refined typography
  */
 
-export default function FireAlarms(){
+export default  function FireAlarms(){
   // ========= Company contacts (optional) =========
   const PHONE = "";    // "+44 20..." (leave empty to hide)
   const WHATSAPP = ""; // "4477..." digits only for wa.me
@@ -218,17 +218,7 @@ html,body{background:var(--soft)}
     <>
       <Header/>
 
-      <Helmet>
-        <title>Fire Alarms in London — Design • Installation • Commissioning • Maintenance | Eco Voltex</title>
-        <meta name="description" content="Premium fire alarm services across London: design, neat installation, precise commissioning, and ongoing maintenance to BS 5839-1/-6. Brand-quality workmanship and documentation." />
-        <link rel="canonical" href="https://www.ecovoltex.co.uk/services/fire-alarms" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Eco Voltex — Fire Alarms in London" />
-        <meta property="og:description" content="Design • Installation • Commissioning • Maintenance — BS 5839-1/-6 compliant. London & nearby counties." />
-        <meta property="og:image" content="https://www.ecovoltex.co.uk/og/fire-alarms-hero.jpg" />
-        <meta property="og:url" content="https://www.ecovoltex.co.uk/services/fire-alarms" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
+      
 
       <main className="ev" role="main">
         <style>{styles}</style>
