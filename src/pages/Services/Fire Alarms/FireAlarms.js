@@ -129,6 +129,17 @@ html,body{background:var(--soft)}
 }
 `;
 
+const sectorImages = [
+  "https://res.cloudinary.com/dug1siluu/image/upload/v1759099841/ChatGPT_Image_Sep_29_2025_03_33_11_AM_ejopfy.png",
+  "https://res.cloudinary.com/dug1siluu/image/upload/v1759099816/ChatGPT_Image_Sep_29_2025_03_33_12_AM_ko5o9e.png",
+  "https://res.cloudinary.com/dug1siluu/image/upload/v1759099746/ChatGPT_Image_Sep_29_2025_03_33_13_AM_uf25yc.png",
+  "https://res.cloudinary.com/dug1siluu/image/upload/v1759099788/ChatGPT_Image_Sep_29_2025_03_33_14_AM_xujkcg.png",
+  "https://res.cloudinary.com/dug1siluu/image/upload/v1759099766/ChatGPT_Image_Sep_29_2025_03_33_15_AM_tf8l71.png",
+  "https://res.cloudinary.com/dug1siluu/image/upload/v1759099716/ChatGPT_Image_Sep_29_2025_03_33_16_AM_hleh8x.png",
+  "https://res.cloudinary.com/dug1siluu/image/upload/v1759099690/ChatGPT_Image_Sep_29_2025_03_33_17_AM_wgschc.png",
+  "https://res.cloudinary.com/dug1siluu/image/upload/v1759099664/ChatGPT_Image_Sep_29_2025_03_33_18_AM_nder4t.png",
+];
+
 export default function FireAlarmsPremium() {
   // Optional quick contacts
   const PHONE = ""; // e.g. "+44 20 7123 4567"
@@ -370,7 +381,8 @@ export default function FireAlarmsPremium() {
       "@context": "https://schema.org",
       "@type": "ImageObject",
       name: "Eco Voltex Fire Alarm Hero Image",
-      contentUrl: 'https://res.cloudinary.com/dug1siluu/image/upload/v1759097756/ChatGPT_Image_Sep_29_2025_03_14_50_AM_xruenn.png',
+      contentUrl:
+        "https://res.cloudinary.com/dug1siluu/image/upload/v1759097756/ChatGPT_Image_Sep_29_2025_03_14_50_AM_xruenn.png",
       caption:
         "Clean UK fire alarm detector with tidy FP red cabling and labelled trunking",
       width: 1600,
@@ -501,7 +513,7 @@ export default function FireAlarmsPremium() {
     },
     [consent]
   );
- // --- Design tokens (inline-friendly) ---
+  // --- Design tokens (inline-friendly) ---
   const colors = {
     navy: "#0B1624",
     navy2: "#0E2035",
@@ -640,7 +652,10 @@ export default function FireAlarmsPremium() {
   const standardsRowsDM = [
     ["Grade A", "Panel-based system (similar to non-domestic)"],
     ["Grade C", "Mains power with control equipment and standby supply"],
-    ["Grade D", "Mains alarms with battery back-up (D1 sealed / D2 replaceable)"],
+    [
+      "Grade D",
+      "Mains alarms with battery back-up (D1 sealed / D2 replaceable)",
+    ],
     ["Grade F", "Battery-powered alarms (F1 sealed / F2 replaceable)"],
     ["LD1", "Detectors in all areas (as appropriate)"],
     ["LD2", "Escape routes + high-risk rooms"],
@@ -775,7 +790,7 @@ export default function FireAlarmsPremium() {
                 <img
                   loading="eager"
                   decoding="async"
-                  src='https://res.cloudinary.com/dug1siluu/image/upload/v1759097756/ChatGPT_Image_Sep_29_2025_03_14_50_AM_xruenn.png'
+                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1759097756/ChatGPT_Image_Sep_29_2025_03_14_50_AM_xruenn.png"
                   width="1600"
                   height="900"
                   alt="Clean UK fire alarm detector with tidy FP red cabling and labelled trunking"
@@ -825,7 +840,6 @@ export default function FireAlarmsPremium() {
                   "Lifecycle support",
                   "Takeovers, remedials, upgrades, maintenance.",
                 ],
-                
               ].map(function (pair) {
                 return (
                   <div className="card" key={pair[0]}>
@@ -838,273 +852,235 @@ export default function FireAlarmsPremium() {
           </div>
         </section>
 
-        <section id="essentials" style={section} aria-labelledby="essentials-title">
-      <div style={container}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
-          <h2 id="essentials-title" style={h2}>Fire Alarms — The Complete Essentials</h2>
-        </div>
-
-        {/* 1) What a fire alarm system is */}
-        <div style={{ ...card, marginTop: 16 }}>
-          <p style={{ ...h3 }} id="ess-what">What a fire alarm system is</p>
-          <p style={p}>
-            A coordinated set of parts that detects fire early and warns people to evacuate. Core components:
-          </p>
-          <ul style={list} aria-labelledby="ess-what">
-            <li><b>Detectors:</b> smoke / heat / multi-sensor</li>
-            <li><b>Manual call points:</b> break-glass units</li>
-            <li><b>Control panel:</b> supervises the system, shows zones/devices, stores events</li>
-            <li><b>Sounders / beacons:</b> audible/visual warning</li>
-            <li><b>Power:</b> mains + standby batteries</li>
-            <li><b>Interfaces:</b> to doors, lifts, HVAC, gas shut-off, access control</li>
-            <li><b>Cabling:</b> fire-resistant where required; zoning/addressing, logbook &amp; zone chart</li>
-          </ul>
-        </div>
-
-        {/* 2) Who needs one (and why) */}
-        <div style={{ ...card, marginTop: 16 }}>
-          <p style={{ ...h3 }} id="ess-who">Who needs one (and why)</p>
-          <ul style={list} aria-labelledby="ess-who">
-            <li>
-              <b>Workplaces &amp; non-domestic buildings:</b> The Regulatory Reform (Fire Safety) Order 2005
-              requires a “suitable means of detection and warning.” Your fire risk assessment normally sets the category.
-            </li>
-            <li>
-              <b>Landlords &amp; HMOs:</b> Typically LD2 or LD3 coverage (BS 5839-6). Councils/licensing can require higher grades for larger/complex HMOs.
-            </li>
-            <li>
-              <b>Shops, offices, schools, warehouses, care, hospitality:</b> Category set by risk and layout; property protection may be requested by insurers.
-            </li>
-          </ul>
-          <p style={meta}>
-            We confirm the correct category/grade after a site survey and risk assessment.
-          </p>
-        </div>
-
-        {/* 3) System types (which and when) */}
-        <div style={{ ...card, marginTop: 16 }}>
-          <p style={{ ...h3 }} id="ess-types">System types (which and when)</p>
-          <ul style={list} aria-labelledby="ess-types">
-            <li>
-              <b>Conventional:</b> devices grouped by zone (panel shows which zone triggered). Good for small/simple sites; lower cost.
-            </li>
-            <li>
-              <b>Addressable:</b> each device has an address (exact point shown on the display, richer fault data, flexible cause-and-effect).
-              Best for medium/large or complex buildings.
-            </li>
-            <li>
-              <b>Domestic interlinked:</b> mains or battery alarms linked by cable or radio. Used in houses/flats and many HMOs per BS 5839-6.
-            </li>
-          </ul>
-        </div>
-
-        {/* 4) Standards & categories */}
-        <div style={{ ...grid2, marginTop: 16 }}>
-          <div style={card}>
-            <p style={{ ...h3 }} id="ess-bs1">Standards &amp; categories — BS 5839-1 (non-domestic)</p>
-            <div style={tableWrap}>
-              <table style={table} role="table" aria-labelledby="ess-bs1">
-                <thead>
-                  <tr>
-                    <th style={th} scope="col">Code</th>
-                    <th style={th} scope="col">Type</th>
-                    <th style={th} scope="col">Summary</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {standardsRowsND.map(([code,type,summary])=>(
-                    <tr key={code}>
-                      <td style={td}><b>{code}</b></td>
-                      <td style={td}>{type}</td>
-                      <td style={td}>{summary}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div style={card}>
-            <p style={{ ...h3 }} id="ess-bs6">Standards &amp; categories — BS 5839-6 (domestic/HMO)</p>
-            <div style={tableWrap}>
-              <table style={table} role="table" aria-labelledby="ess-bs6">
-                <thead>
-                  <tr>
-                    <th style={th} scope="col">Item</th>
-                    <th style={th} scope="col">Summary</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {standardsRowsDM.map(([item,summary])=>(
-                    <tr key={item}>
-                      <td style={td}><b>{item}</b></td>
-                      <td style={td}>{summary}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        {/* 5) Design basics clients ask about */}
-        <div style={{ ...card, marginTop: 16, background: colors.soft, borderColor: colors.line }}>
-          <p style={{ ...h3, color: colors.ink }} id="ess-design">Design basics clients ask about</p>
-          <ul style={list} aria-labelledby="ess-design">
-            <li>
-              <b>Detector siting/spacing:</b> typical design values ~<b>7.5 m</b> radius for smoke and ~<b>5.3 m</b> for heat (standard ceiling heights).
-              Final positions consider beams, vents, slopes, and obstructions.
-            </li>
-            <li>
-              <b>Manual call points:</b> on escape routes and exits; travel distance to the nearest MCP typically ≤ <b>45 m</b> (shorter for higher risk).
-            </li>
-            <li>
-              <b>Audibility/visibility:</b> aim for ≥ <b>65 dB(A)</b> (or ≥ 5 dB above ambient) in occupied areas and ~<b>75 dB(A)</b> at the bedhead in sleeping areas.
-              Beacons used where hearing protection or ambient noise is high.
-            </li>
-            <li>
-              <b>Cause-and-effect:</b> defines what happens on alarm — which sounders, which doors release/close, plant shutdown, phased evacuation, etc.
-            </li>
-            <li>
-              <b>Standby power:</b> common design is ~<b>24 h</b> standby + <b>30 min</b> alarm (varies by risk/system).
-            </li>
-            <li>
-              <b>Cabling:</b> fire-resistant cable and metal fixings where required; routes and segregation planned for reliability and compliance.
-            </li>
-          </ul>
-          <p style={{ ...meta, marginTop: 10 }}>
-            We confirm final positions, audibility targets and standby sizing during design/commissioning.
-          </p>
-        </div>
-
-        {/* Subtle callout */}
-        <div
-          style={{
-            marginTop: 16,
-            padding: 16,
-            borderRadius: radius,
-            border: '1px solid ${colors.line}',
-            boxShadow: shadow,
-            display: "flex",
-            alignItems: "center",
-            gap: 12,
-          }}
-          role="note"
-          aria-label="Next steps"
-        >
-          <div
-            style={{
-              width: 38, height: 38, borderRadius: 12,
-              display: "grid", placeItems: "center",
-              background: "rgba(16,185,129,.12)",
-              color: colors.green,
-              border: "1px solid rgba(16,185,129,.25)"
-            }}
-            aria-hidden="true"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3L2 9l10 6l10-6l-10-6Z"></path></svg>
-          </div>
-          <div>
-            <p style={{ ...p }}>
-              Ready to scope correctly? Book a short survey and we’ll confirm the right category/grade and a clear plan.
-            </p>
-            <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 10 }}>
-              <a
-                href="/contact"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  padding: "10px 14px",
-                  borderRadius: 12,
-                  fontWeight: 800,
-                  background: colors.green,
-                  color: "#062519",
-                  border: "1px solid #0D5B3A",
-                  textDecoration: "none",
-                }}
-              >
-                Book a survey
-              </a>
-              <a
-                href="/quote"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  padding: "10px 14px",
-                  borderRadius: 12,
-                  fontWeight: 800,
-                  background: colors.white,
-                  color: colors.text,
-                  border: `1px solid ${colors.line}`,
-                  textDecoration: "none",
-                }}
-              >
-                Get a quote
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-
-
-
-        {/* LEGAL & SAFETY (added) */}
         <section
-          id="musts"
-          className="section section--tight"
-          aria-labelledby="musts-title"
+          id="essentials"
+          style={section}
+          aria-labelledby="essentials-title"
         >
-          <div className="container">
-            <h2 id="musts-title" className="h2">
-              Legal & safety “musts” — what the law expects
-            </h2>
-            <div className="grid-3 mt-14">
-              <div className="card">
-                <h3>Responsible Person duties</h3>
-                <ul className="list list--disc">
-                  <li>
-                    Provide suitable detection and warning for the premises.
-                  </li>
-                  <li>Keep records: logbook, certificates, zone chart.</li>
-                  <li>Ensure competent maintenance and user testing.</li>
-                </ul>
+          <div style={container}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "baseline",
+                gap: 12,
+                flexWrap: "wrap",
+              }}
+            >
+              <h2 id="essentials-title" style={h2}>
+                Fire Alarms — The Complete Essentials
+              </h2>
+            </div>
+
+            {/* 1) What a fire alarm system is */}
+            <div style={{ ...card, marginTop: 16 }}>
+              <p style={{ ...h3 }} id="ess-what">
+                What a fire alarm system is
+              </p>
+              <p style={p}>
+                A coordinated set of parts that detects fire early and warns
+                people to evacuate. Core components:
+              </p>
+              <ul style={list} aria-labelledby="ess-what">
+                <li>
+                  <b>Detectors:</b> smoke / heat / multi-sensor
+                </li>
+                <li>
+                  <b>Manual call points:</b> break-glass units
+                </li>
+                <li>
+                  <b>Control panel:</b> supervises the system, shows
+                  zones/devices, stores events
+                </li>
+                <li>
+                  <b>Sounders / beacons:</b> audible/visual warning
+                </li>
+                <li>
+                  <b>Power:</b> mains + standby batteries
+                </li>
+                <li>
+                  <b>Interfaces:</b> to doors, lifts, HVAC, gas shut-off, access
+                  control
+                </li>
+                <li>
+                  <b>Cabling:</b> fire-resistant where required;
+                  zoning/addressing, logbook &amp; zone chart
+                </li>
+              </ul>
+            </div>
+
+            {/* 2) Who needs one (and why) */}
+            <div style={{ ...card, marginTop: 16 }}>
+              <p style={{ ...h3 }} id="ess-who">
+                Who needs one (and why)
+              </p>
+              <ul style={list} aria-labelledby="ess-who">
+                <li>
+                  <b>Workplaces &amp; non-domestic buildings:</b> The Regulatory
+                  Reform (Fire Safety) Order 2005 requires a “suitable means of
+                  detection and warning.” Your fire risk assessment normally
+                  sets the category.
+                </li>
+                <li>
+                  <b>Landlords &amp; HMOs:</b> Typically LD2 or LD3 coverage (BS
+                  5839-6). Councils/licensing can require higher grades for
+                  larger/complex HMOs.
+                </li>
+                <li>
+                  <b>Shops, offices, schools, warehouses, care, hospitality:</b>{" "}
+                  Category set by risk and layout; property protection may be
+                  requested by insurers.
+                </li>
+              </ul>
+              <p style={meta}>
+                We confirm the correct category/grade after a site survey and
+                risk assessment.
+              </p>
+            </div>
+
+            {/* 3) System types (which and when) */}
+            <div style={{ ...card, marginTop: 16 }}>
+              <p style={{ ...h3 }} id="ess-types">
+                System types (which and when)
+              </p>
+              <ul style={list} aria-labelledby="ess-types">
+                <li>
+                  <b>Conventional:</b> devices grouped by zone (panel shows
+                  which zone triggered). Good for small/simple sites; lower
+                  cost.
+                </li>
+                <li>
+                  <b>Addressable:</b> each device has an address (exact point
+                  shown on the display, richer fault data, flexible
+                  cause-and-effect). Best for medium/large or complex buildings.
+                </li>
+                <li>
+                  <b>Domestic interlinked:</b> mains or battery alarms linked by
+                  cable or radio. Used in houses/flats and many HMOs per BS
+                  5839-6.
+                </li>
+              </ul>
+            </div>
+
+            {/* 4) Standards & categories */}
+            <div style={{ ...grid2, marginTop: 16 }}>
+              <div style={card}>
+                <p style={{ ...h3 }} id="ess-bs1">
+                  Standards &amp; categories — BS 5839-1 (non-domestic)
+                </p>
+                <div style={tableWrap}>
+                  <table style={table} role="table" aria-labelledby="ess-bs1">
+                    <thead>
+                      <tr>
+                        <th style={th} scope="col">
+                          Code
+                        </th>
+                        <th style={th} scope="col">
+                          Type
+                        </th>
+                        <th style={th} scope="col">
+                          Summary
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {standardsRowsND.map(([code, type, summary]) => (
+                        <tr key={code}>
+                          <td style={td}>
+                            <b>{code}</b>
+                          </td>
+                          <td style={td}>{type}</td>
+                          <td style={td}>{summary}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
-              <div className="card">
-                <h3>Routine testing</h3>
-                <ul className="list list--disc">
-                  <li>
-                    Non-domestic: weekly user test of call points/sounders.
-                  </li>
-                  <li>
-                    Competent servicing at intervals not exceeding 6 months.
-                  </li>
-                  <li>
-                    Domestic/HMO: monthly user tests; Grade A follows weekly
-                    routine.
-                  </li>
-                </ul>
+
+              <div style={card}>
+                <p style={{ ...h3 }} id="ess-bs6">
+                  Standards &amp; categories — BS 5839-6 (domestic/HMO)
+                </p>
+                <div style={tableWrap}>
+                  <table style={table} role="table" aria-labelledby="ess-bs6">
+                    <thead>
+                      <tr>
+                        <th style={th} scope="col">
+                          Item
+                        </th>
+                        <th style={th} scope="col">
+                          Summary
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {standardsRowsDM.map(([item, summary]) => (
+                        <tr key={item}>
+                          <td style={td}>
+                            <b>{item}</b>
+                          </td>
+                          <td style={td}>{summary}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
-              <div className="card">
-                <h3>Records & monitoring</h3>
-                <ul className="list list--disc">
-                  <li>Maintain logbook entries and update asset lists.</li>
-                  <li>
-                    ARC monitoring with confirmed-alarm protocols available.
-                  </li>
-                  <li>
-                    No direct autodial to Fire & Rescue; local policy applies.
-                  </li>
-                </ul>
-              </div>
+            </div>
+
+            {/* 5) Design basics clients ask about */}
+            <div
+              style={{
+                ...card,
+                marginTop: 16,
+                background: colors.soft,
+                borderColor: colors.line,
+              }}
+            >
+              <p style={{ ...h3, color: colors.ink }} id="ess-design">
+                Design basics clients ask about
+              </p>
+              <ul style={list} aria-labelledby="ess-design">
+                <li>
+                  <b>Detector siting/spacing:</b> typical design values ~
+                  <b>7.5 m</b> radius for smoke and ~<b>5.3 m</b> for heat
+                  (standard ceiling heights). Final positions consider beams,
+                  vents, slopes, and obstructions.
+                </li>
+                <li>
+                  <b>Manual call points:</b> on escape routes and exits; travel
+                  distance to the nearest MCP typically ≤ <b>45 m</b> (shorter
+                  for higher risk).
+                </li>
+                <li>
+                  <b>Audibility/visibility:</b> aim for ≥ <b>65 dB(A)</b> (or ≥
+                  5 dB above ambient) in occupied areas and ~<b>75 dB(A)</b> at
+                  the bedhead in sleeping areas. Beacons used where hearing
+                  protection or ambient noise is high.
+                </li>
+                <li>
+                  <b>Cause-and-effect:</b> defines what happens on alarm — which
+                  sounders, which doors release/close, plant shutdown, phased
+                  evacuation, etc.
+                </li>
+                <li>
+                  <b>Standby power:</b> common design is ~<b>24 h</b> standby +{" "}
+                  <b>30 min</b> alarm (varies by risk/system).
+                </li>
+                <li>
+                  <b>Cabling:</b> fire-resistant cable and metal fixings where
+                  required; routes and segregation planned for reliability and
+                  compliance.
+                </li>
+              </ul>
+              <p style={{ ...meta, marginTop: 10 }}>
+                We confirm final positions, audibility targets and standby
+                sizing during design/commissioning.
+              </p>
             </div>
           </div>
         </section>
-
         {/* COMPARISON */}
         <section id="compare" className="section" aria-labelledby="cmp-title">
           <div className="container">
@@ -1390,11 +1366,7 @@ export default function FireAlarmsPremium() {
                       <img
                         loading="lazy"
                         decoding="async"
-                        src={
-                          "/images/fire/sectors/sector-" +
-                          (i + 1) +
-                          "-1200x675.jpg"
-                        }
+                        src={sectorImages[i]}
                         alt={
                           item[0] +
                           " — representative interior or corridor (no faces)"
