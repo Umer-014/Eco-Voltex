@@ -3,37 +3,72 @@ import Header from "../../../components/Header/Header";
 import Footer from "../../../components/Footer/Footer";
 
 /**
- * Eco Voltex — Fire Alarms (Premium, brand-first, long-form)
- * - No deals, no embedded quote form (CTAs link to /contact and /quote)
- * - No external libraries required
- * - Accurate UK copy (BS 5839-1/-6, BS 7671)
- * - Image slots with alt text (swap /images/... for your assets)
- * - Responsive, AA contrast, accessible focus states
+ * Eco Voltex — Fire Alarms (Ultimate Flagship)
+ * - Brand-first, premium long-form page
+ * - NO deals, NO embedded quote (CTAs route to /contact and /quote)
+ * - Restored: month-end countdown ribbon, consent, coverage checker
+ * - NEW: UTM capture & pass-through on all CTAs
+ * - Accurate UK copy (BS 5839-1/-6, BS 7671), a11y, AA contrast, mobile-perfect
+ * - Clear image slots with recommended ratios + alt text
  */
 
-export default function FireAlarmsPremium() {
-  // Optional quick contacts (shown only if filled)
+export default function FireAlarmsFlagshipUltimate() {
+  // ========= Optional quick contacts (show only if filled) =========
   const PHONE = "";    // e.g. "+44 20 7123 4567"
   const WHATSAPP = ""; // e.g. "447700900123" (digits only)
 
-  // STATE
-  const [audience, setAudience] = React.useState("business"); // "home" | "business"
-  const [postcode, setPostcode] = React.useState("");
-  const [pcResult, setPcResult] = React.useState("");
-  const [consent, setConsent] = React.useState(null); // null | "accepted" | "rejected"
+  // ========= State =========
+  const [audience, setAudience]   = React.useState("business"); // "home" | "business"
+  const [countdown, setCountdown] = React.useState("");         // month-end ribbon
+  const [postcode, setPostcode]   = React.useState("");
+  const [pcResult, setPcResult]   = React.useState("");
+  const [consent, setConsent]     = React.useState(null);       // null | "accepted" | "rejected"
+  const [utm, setUtm]             = React.useState({});
 
+  // ========= Effects =========
   React.useEffect(() => {
     if (typeof window === "undefined") return;
+
+    // Restore audience & consent
     try {
       const a = localStorage.getItem("ev_audience");
       if (a === "home" || a === "business") setAudience(a);
       const c = localStorage.getItem("ev_consent");
       if (c === "accepted" || c === "rejected") setConsent(c);
     } catch {}
-  }, []);
-  React.useEffect(() => { try { localStorage.setItem("ev_audience", audience); } catch {} }, [audience]);
 
-  // HELPERS
+    // Month-end countdown (tick hourly)
+    const endOfMonth = new Date(
+      new Date().getFullYear(),
+      new Date().getMonth() + 1,
+      0, 23, 59, 59
+    );
+    const tick = () => {
+      const diff = endOfMonth.getTime() - Date.now();
+      if (diff <= 0) { setCountdown("Ends today"); return; }
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      setCountdown(`${d}d ${h}h left`);
+    };
+    tick();
+    const timer = setInterval(tick, 60 * 60 * 1000);
+
+    // Capture UTM params
+    const sp = new URLSearchParams(window.location.search);
+    const u = {};
+    ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"].forEach(k=>{
+      const v = sp.get(k); if (v) u[k] = v;
+    });
+    setUtm(u);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  React.useEffect(() => { 
+    try { localStorage.setItem("ev_audience", audience); } catch {}
+  }, [audience]);
+
+  // ========= Helpers =========
   const validUKPostcode = (pc) => {
     if (!pc) return false;
     const s = pc.trim().toUpperCase();
@@ -56,7 +91,17 @@ export default function FireAlarmsPremium() {
       : "ℹ Likely covered — share your address and we’ll confirm today.");
   };
 
-  // CONTENT
+  const withUtm = (base) => {
+    const keys = Object.keys(utm || {});
+    if (!keys.length) return base;
+    const url = new URL(base, typeof window !== "undefined" ? window.location.origin : "https://www.ecovoltex.co.uk");
+    keys.forEach(k => url.searchParams.set(k, utm[k]));
+    return url.pathname + (url.search || "");
+  };
+  const contactUrl = withUtm("/contact");
+  const quoteUrl   = withUtm("/quote");
+
+  // ========= Content data =========
   const specsHome = [
     ["Standard", "BS 5839-6 (domestic/HMO)"],
     ["Typical grade", "A, C, D1/D2 or F1/F2"],
@@ -70,6 +115,12 @@ export default function FireAlarmsPremium() {
     ["Records", "Certificates • Logbook • As-fitted"]
   ];
 
+  const comparison = [
+    { type: "Conventional",        typical: "Small/medium buildings", detection: "Zones (groups of devices)",          pros: "Lower cost, simple",                  cons: "No per-device pinpointing",       notes: "Good for shops/offices with modest complexity" },
+    { type: "Addressable",         typical: "Medium/large or complex", detection: "Each device has an address",        pros: "Pinpoint info, flexible cause/effect", cons: "Higher cost, config required",     notes: "Ideal for campuses, multi-storey, interfacing" },
+    { type: "Domestic interlinked", typical: "Houses, flats, small HMOs", detection: "Interlinked smoke/heat/CO",      pros: "Quick install, low disruption",       cons: "Not for large non-domestic",       notes: "BS 5839-6 LD2/LD3; add CO where required" }
+  ];
+
   const sectors = [
     ["Landlords & HMOs","LD2/LD3, council-ready paperwork, quick turnarounds"],
     ["Property Managers","Routine maintenance, logbooks, call-outs"],
@@ -79,12 +130,6 @@ export default function FireAlarmsPremium() {
     ["Homeowners","Interlinked smoke/heat/CO alarms"],
     ["Hospitality & Leisure","False-alarm reduction, staff training"],
     ["Mixed-Use Blocks","Common parts systems, takeover & upgrades"]
-  ];
-
-  const comparison = [
-    { type: "Conventional", typical: "Small/medium buildings", detection: "Zones (groups of devices)", pros: "Lower cost, simple", cons: "No per-device pinpointing", notes: "Good for shops/offices with modest complexity" },
-    { type: "Addressable", typical: "Medium/large or complex buildings", detection: "Each device has an address", pros: "Pinpoint info, flexible cause/effect", cons: "Higher cost, configuration required", notes: "Ideal for campuses, multi-storey, interfacing" },
-    { type: "Domestic interlinked", typical: "Houses, flats, small HMOs", detection: "Interlinked smoke/heat/CO", pros: "Quick install, low disruption", cons: "Not for large non-domestic", notes: "BS 5839-6 LD2/LD3; add CO where required" }
   ];
 
   const process = [
@@ -136,21 +181,21 @@ export default function FireAlarmsPremium() {
 
   const docsRows = [
     ["Design/Installation/Commissioning Certificates", "Formal record that work meets scope and standard", "PDF (signed)", "At handover"],
-    ["Zone Chart", "Shows zones for alarm/fault localisation", "Printed + PDF", "At handover"],
-    ["Device/Asset List", "Every device & location for maintenance", "Spreadsheet + PDF", "At handover"],
-    ["As-fitted Drawings", "Final device positions, zoning, routes (where applicable)", "PDF (source by agreement)", "At/after handover"],
-    ["Logbook", "User’s record for weekly tests, faults, servicing", "Printed", "At handover"],
+    ["Zone Chart",                                 "Shows zones for alarm/fault localisation",            "Printed + PDF",   "At handover"],
+    ["Device/Asset List",                          "Every device & location for maintenance",             "Spreadsheet + PDF","At handover"],
+    ["As-fitted Drawings",                         "Final positions, zoning, routes (where applicable)",  "PDF (source by agreement)", "At/after handover"],
+    ["Logbook",                                    "User record for weekly tests, faults, servicing",     "Printed",          "At handover"],
   ];
 
   const maintRows = [
     ["Device tests", "Smoke/heat detectors, MCPs, sounders, interfaces", "Operation confirmed & recorded"],
-    ["Audibility", "Spot checks vs objectives (dB(A))", "Meets objectives or remedials advised"],
-    ["Panel & power", "Indicators, faults, battery condition/charge", "Healthy state or actions listed"],
-    ["Cause & effect", "Door releases, plant shutdown, lifts", "Sequence verified or issues raised"],
-    ["Records", "Logbook updates, asset list changes", "Documentation up to date"],
+    ["Audibility",   "Spot checks vs objectives (dB(A))",                 "Meets objectives or remedials advised"],
+    ["Panel & power","Indicators, faults, battery condition/charge",      "Healthy state or actions listed"],
+    ["Cause & effect","Door releases, plant shutdown, lifts",             "Sequence verified or issues raised"],
+    ["Records",      "Logbook updates, asset list changes",               "Documentation up to date"],
   ];
 
-  // STYLES
+  // ========= Styles =========
   const styles = `
 :root{
   --navy:#0B1624; --navy2:#0E2035;
@@ -164,7 +209,6 @@ html,body{background:var(--soft)}
 .ev{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text)}
 .ev a{text-decoration:none;color:inherit}
 .ev :focus-visible{outline:3px solid var(--mint);outline-offset:3px;border-radius:10px}
-
 .container{max-width:1240px;margin:0 auto;padding:0 24px}
 .section{padding:84px 0;border-top:1px solid var(--line)}
 .section--tight{padding:56px 0}
@@ -190,6 +234,9 @@ html,body{background:var(--soft)}
 .toggle{display:inline-flex;border:1px solid #27415A;background:#11283F;border-radius:12px;overflow:hidden}
 .toggle button{padding:8px 14px;font-weight:800;color:#CDE3F6;background:transparent;border:none;cursor:pointer}
 .toggle button[aria-pressed="true"]{background:#1A3551;color:#fff}
+
+/* Ribbon */
+.ribbon{display:inline-flex;align-items:center;gap:10px;background:#072538;color:#d9ffe9;padding:8px 12px;border:1px solid #0b3a5a;border-radius:10px;margin-top:12px}
 
 /* Cards / Glass */
 .glass{background:var(--glass);backdrop-filter:saturate(1.3) blur(10px);border:1px solid rgba(255,255,255,.6);border-radius:20px;box-shadow:var(--shadow)}
@@ -217,7 +264,7 @@ html,body{background:var(--soft)}
 /* Tables */
 .table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
 .table th,.table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
-.table th{background:#F7FAFF;text-align:left;font-weight:900;color:var(--ink)}
+.table th{background:#F7FAFF;text-align:left;font-weight:900;color: var(--ink)}
 .table tr:last-child td{border-bottom:none}
 
 /* Lists */
@@ -240,9 +287,13 @@ html,body{background:var(--soft)}
 .coverage input{border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;background:#fff}
 .coverage button{padding:12px 18px;border-radius:12px;font-weight:800;border:1px solid #0D5B3A;background:var(--green);color:#062519}
 
-/* Footer CTA */
-.footer-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-.footer-cta a{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:#fff;font-weight:800}
+/* Sticky mobile actions */
+.mobile-stick{position:fixed;left:0;right:0;bottom:0;z-index:55;display:none;gap:10px;background:#ffffffee;border-top:1px solid var(--line);padding:10px}
+.mobile-stick a{flex:1;display:flex;justify-content:center;align-items:center;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-weight:800;color:#0B1320;text-decoration:none}
+.mobile-stick a.primary{background:var(--green);color:#071A14;border-color:#0D5B3A}
+
+/* Consent */
+.consent{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 24px rgba(10,65,106,.12);padding:14px;display:flex;gap:10px;align-items:flex-start}
 
 /* Hover & Motion */
 @media (hover:hover) and (pointer:fine){
@@ -262,26 +313,34 @@ html,body{background:var(--soft)}
   .grid-4{grid-template-columns:1fr}
   .grid-2{grid-template-columns:1fr}
   .hero h1{font-size:42px}
+  .mobile-stick{display:flex}
 }
 `;
 
+  // ========= Render =========
   return (
     <>
-      <Header />
+      <Header/>
       <main className="ev" role="main">
         <style>{styles}</style>
 
-        {/* HERO */}
+        {/* ===== HERO ===== */}
         <section className="hero" id="overview" aria-labelledby="hero-title">
-          <div  className="container">
+          <div className="container">
             <div style={{display:"grid",gridTemplateColumns:"1.2fr 1fr",gap:22,alignItems:"center"}}>
-
               <div>
                 <h1 id="hero-title">Fire alarm design, installation, commissioning & maintenance — London</h1>
                 <p className="lead">
                   Brand-level delivery for life and property protection. Neat cabling, correct siting, precise commissioning, and clear documentation — to
                   <b> BS 5839-1</b> (non-domestic) and <b> BS 5839-6</b> (domestic/HMO). Fully insured. London and nearby counties.
                 </p>
+
+                {/* Month-end ribbon */}
+                {countdown && (
+                  <div className="ribbon" role="status" aria-live="polite">
+                    <span>Month-end booking window</span> <strong>{countdown}</strong>
+                  </div>
+                )}
 
                 {/* Audience toggle */}
                 <div className="toggle" role="tablist" aria-label="Choose audience" style={{marginTop:16}}>
@@ -296,29 +355,42 @@ html,body{background:var(--soft)}
                   <span className="badge">Friendly, competent engineers</span>
                 </div>
 
-                {/* CTAs */}
+                {/* Hero CTAs */}
                 <div className="cta">
-                  <a className="btn btn--primary" href="/contact">Book a survey</a>
-                  <a className="btn btn--ghost" href="/quote">Get a quote</a>
-                  
+                  <a className="btn btn--primary" href={contactUrl}>Book a survey</a>
+                  <a className="btn btn--ghost" href={quoteUrl}>Get a quote</a>
+                  {PHONE && <a className="btn btn--ghost" href={`tel:${PHONE}`}>Call us</a>}
+                  {WHATSAPP && <a className="btn btn--ghost" href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noreferrer">WhatsApp</a>}
                 </div>
               </div>
 
-              {/* Hero visual (replace src with your image) */}
-              <figure className="thumb" aria-label="Hero visual">
-                <img
-                  loading="eager"
-                  src="/images/fire/hero-1600x900.jpg"
-                  width="1600" height="900"
-                  alt="Clean UK fire alarm detector with tidy FP red cabling and labelled trunking"
-                />
-              </figure>
+              {/* Specs glass card + Hero image */}
+              <div className="glass" style={{padding:20}}>
+                <div className="kv">
+                  {(audience==="business"?specsBiz:specsHome).map(([k,v])=>(
+                    <div key={k} className="box">
+                      <p className="meta" style={{margin:0}}>{k}</p>
+                      <p style={{margin:"4px 0 0 0",fontWeight:900,color:"var(--ink)"}}>{v}</p>
+                    </div>
+                  ))}
+                </div>
+                <p className="meta" style={{marginTop:10}}>Clear drawings • Zone plans • User training</p>
+
+                {/* IMAGE SLOT (16:9) — replace src with your asset */}
+                <figure className="thumb" aria-label="Hero visual" style={{marginTop:12}}>
+                  <img
+                    loading="eager"
+                    src="/images/fire/hero-1600x900.jpg"
+                    width="1600" height="900"
+                    alt="Clean UK fire alarm detector with tidy FP red cabling and labelled trunking"
+                  />
+                </figure>
+              </div>
             </div>
           </div>
-
         </section>
 
-        {/* SUBNAV */}
+        {/* ===== Sticky SUBNAV ===== */}
         <nav className="subnav" aria-label="Section navigation">
           <div className="wrap container">
             <a href="#value">Why Eco Voltex</a>
@@ -335,7 +407,7 @@ html,body{background:var(--soft)}
           </div>
         </nav>
 
-        {/* WHY US */}
+        {/* ===== WHY US ===== */}
         <section id="value" className="section" aria-labelledby="value-title">
           <div className="container">
             <h2 id="value-title" style={{fontSize:32,margin:0,fontWeight:900,color:"var(--ink)"}}>Why Eco Voltex</h2>
@@ -352,6 +424,7 @@ html,body{background:var(--soft)}
                 ["Insurer-friendly","Property-protection categories and ARC setup if required."]
               ].map(([t,d])=>(
                 <div className="card" key={t}>
+                  {/* Optional small ICON slot per card (40x40) => /images/fire/icons/*.svg */}
                   <h3>{t}</h3>
                   <p style={{marginTop:6}}>{d}</p>
                 </div>
@@ -360,7 +433,7 @@ html,body{background:var(--soft)}
           </div>
         </section>
 
-        {/* BASICS */}
+        {/* ===== BASICS ===== */}
         <section id="basics" className="section section--tight" aria-labelledby="basics-title">
           <div className="container">
             <h2 id="basics-title" style={{fontSize:32,margin:0,fontWeight:900,color:"var(--ink)"}}>Fire alarm basics — in plain English</h2>
@@ -411,11 +484,11 @@ html,body{background:var(--soft)}
           </div>
         </section>
 
-        {/* SYSTEM COMPARISON */}
+        {/* ===== SYSTEM COMPARISON ===== */}
         <section id="compare" className="section" aria-labelledby="cmp-title">
           <div className="container">
             <h2 id="cmp-title" style={{fontSize:32,margin:0,fontWeight:900,color:"var(--ink)"}}>System comparison</h2>
-            <p className="small" style={{marginTop:6}}>A quick guide — we’ll recommend the right approach after survey.</p>
+          <p className="small" style={{marginTop:6}}>A quick guide — we’ll recommend the right approach after survey.</p>
             <div style={{display:"grid",gridTemplateColumns:"1fr 320px",gap:16,alignItems:"start",marginTop:12}}>
               <div style={{overflowX:"auto"}}>
                 <table className="table" role="table" aria-label="System comparison table">
@@ -443,14 +516,15 @@ html,body{background:var(--soft)}
                   </tbody>
                 </table>
               </div>
-              <figure className="thumb">
+              {/* SIDE IMAGE SLOT */}
+              <figure className="thumb" aria-label="Example devices">
                 <img loading="lazy" src="/images/fire/compare-devices-1200x675.jpg" alt="Conventional zone indicators and addressable device label (non-legible)" />
               </figure>
             </div>
           </div>
         </section>
 
-        {/* PROCESS */}
+        {/* ===== PROCESS ===== */}
         <section id="process" className="section section--dark" aria-labelledby="process-title">
           <div className="container">
             <h2 id="process-title" style={{fontSize:32,margin:0,fontWeight:900}}>How we deliver — step by step</h2>
@@ -463,6 +537,7 @@ html,body{background:var(--soft)}
                   </div>
                   <h3 style={{margin:"2px 0 6px",color:"#fff"}}>{s.title}</h3>
                   <ul className="list list--disc">{s.bullets.map(b=><li key={b}>{b}</li>)}</ul>
+                  {/* BANNER IMAGE SLOT (16:9) */}
                   <div className="banner">
                     <img loading="lazy" src={s.image.src} width={s.image.w} height={s.image.h} alt={s.image.alt} style={{width:"100%",height:"auto"}} />
                   </div>
@@ -472,15 +547,16 @@ html,body{background:var(--soft)}
           </div>
         </section>
 
-        {/* SECTORS */}
+        {/* ===== SECTORS ===== */}
         <section id="sectors" className="section" aria-labelledby="sector-title">
           <div className="container">
             <h2 id="sector-title" style={{fontSize:32,margin:0,fontWeight:900,color:"var(--ink)"}}>Who we help</h2>
             <div className="grid-4" style={{marginTop:14}}>
               {sectors.map(([t,d],i)=>(
                 <div key={t} className="card">
+                  {/* THUMB (16:9) */}
                   <div className="thumb" style={{marginBottom:8}}>
-                    <img loading="lazy" src={'https://res.cloudinary.com/dug1siluu/image/upload/v1757605665/ChatGPT_Image_Sep_11_2025_08_47_34_PM_ntffio.png'} />
+                    <img loading="lazy" src={`/images/fire/sectors/sector-${i+1}-1200x675.jpg`} alt={`${t} — representative interior or corridor (no faces)`} />
                   </div>
                   <h3>{t}</h3>
                   <p style={{marginTop:6}}>{d}</p>
@@ -490,7 +566,7 @@ html,body{background:var(--soft)}
           </div>
         </section>
 
-        {/* STANDARDS */}
+        {/* ===== STANDARDS & RECORDS ===== */}
         <section id="standards" className="section section--tight" aria-labelledby="std-title">
           <div className="container">
             <h2 id="std-title" style={{fontSize:32,margin:0,fontWeight:900,color:"var(--ink)"}}>Standards & records we work to</h2>
@@ -520,16 +596,19 @@ html,body{background:var(--soft)}
                 </ul>
               </div>
             </div>
+
+            {/* ZONE CHART IMAGE SLOT */}
             <figure className="thumb" style={{marginTop:12}}>
               <img loading="lazy" src="/images/fire/zone-chart-1200x675.jpg" alt="Zone chart example (non-legible), illustrating clear zoning" />
             </figure>
+
             <p className="meta" style={{marginTop:8}}>
               Monitoring: ARC with confirmed-alarm protocols & keyholder notification. No direct autodial to Fire & Rescue. Attendance policies vary by FRS.
             </p>
           </div>
         </section>
 
-        {/* DOCUMENTATION PACK */}
+        {/* ===== DOCUMENTATION PACK (TABLE) ===== */}
         <section id="docs" className="section" aria-labelledby="docs-title">
           <div className="container">
             <h2 id="docs-title" style={{fontSize:32,margin:0,fontWeight:900,color:"var(--ink)"}}>What you receive — documentation pack</h2>
@@ -559,7 +638,7 @@ html,body{background:var(--soft)}
           </div>
         </section>
 
-        {/* CASE STUDIES */}
+        {/* ===== CASE STUDIES (optional: add images like gallery) ===== */}
         <section id="cases" className="section" aria-labelledby="cases-title">
           <div className="container">
             <h2 id="cases-title" style={{fontSize:32,margin:0,fontWeight:900,color:"var(--ink)"}}>Recent case studies</h2>
@@ -590,7 +669,7 @@ html,body{background:var(--soft)}
           </div>
         </section>
 
-        {/* MAINTENANCE CHECKLIST */}
+        {/* ===== MAINTENANCE CHECKLIST (TABLE) ===== */}
         <section id="maintenance" className="section section--tight" aria-labelledby="maint-title">
           <div className="container">
             <h2 id="maint-title" style={{fontSize:32,margin:0,fontWeight:900,color:"var(--ink)"}}>Maintenance overview — what we check</h2>
@@ -618,7 +697,7 @@ html,body{background:var(--soft)}
           </div>
         </section>
 
-        {/* GALLERY */}
+        {/* ===== GALLERY ===== */}
         <section id="gallery" className="section" aria-labelledby="gal-title">
           <div className="container">
             <h2 id="gal-title" style={{fontSize:32,margin:0,fontWeight:900,color:"var(--ink)"}}>Recent work — neat, UK-correct details</h2>
@@ -632,13 +711,13 @@ html,body{background:var(--soft)}
               <img loading="lazy" src="/images/fire/gallery/6-800x800.jpg" alt="Manual call point with UK fire action signage" />
             </div>
             <div className="footer-cta">
-              <a href="/contact">Book a survey</a>
-              <a href="/quote">Get a quote</a>
+              <a href={contactUrl}>Book a survey</a>
+              <a href={quoteUrl}>Get a quote</a>
             </div>
           </div>
         </section>
 
-        {/* COVERAGE */}
+        {/* ===== COVERAGE CHECK ===== */}
         <section id="coverage" className="section section--tight" aria-labelledby="pc-title">
           <div className="container coverage">
             <h2 id="pc-title" style={{fontSize:32,margin:0,fontWeight:900,color:"var(--ink)"}}>Check coverage & survey availability</h2>
@@ -656,6 +735,7 @@ html,body{background:var(--soft)}
                 <button type="submit" style={{marginTop:10}}>Check</button>
                 <div className="meta" style={{marginTop:8}} aria-live="polite">{pcResult}</div>
               </form>
+              {/* Decorative map image (swap with your asset) */}
               <figure className="thumb" aria-label="Coverage map">
                 <img loading="lazy" src="/images/fire/coverage-london-1200x675.jpg" alt="Coverage across London and nearby counties (illustrative)" />
               </figure>
@@ -663,7 +743,7 @@ html,body{background:var(--soft)}
           </div>
         </section>
 
-        {/* FAQs */}
+        {/* ===== FAQs ===== */}
         <section id="faqs" className="section" aria-labelledby="faq-title">
           <div className="container">
             <h2 id="faq-title" style={{fontSize:32,margin:0,fontWeight:900,color:"var(--ink)"}}>Fire alarm FAQs</h2>
@@ -683,31 +763,33 @@ html,body{background:var(--soft)}
               ))}
             </div>
             <div className="footer-cta">
-              <a href="/contact">Ask a question</a>
-              <a href="/quote">Get a quote</a>
+              <a href={contactUrl}>Ask a question</a>
+              <a href={quoteUrl}>Get a quote</a>
             </div>
           </div>
         </section>
 
-        {/* CONSENT (simple) */}
+        {/* ===== Sticky mobile actions ===== */}
+        <div className="mobile-stick" aria-label="Quick actions">
+          <a className="primary" href={contactUrl}>Book survey</a>
+          <a href={quoteUrl}>Get quote</a>
+        </div>
+
+        {/* ===== Consent banner (no trackers by default) ===== */}
         {consent===null && (
-          <div role="dialog" aria-live="polite" aria-label="Cookie consent"
-               style={{position:"fixed",left:12,right:12,bottom:12,zIndex:60}}
-               className="glass">
-            <div style={{display:"flex",gap:12,alignItems:"flex-start",padding:14}}>
-              <div style={{flex:1}}>
-                <p style={{margin:0,fontWeight:900}}>Your privacy</p>
-                <p className="meta" style={{margin:"6px 0 0 0"}}>
-                  We use only necessary cookies for basic site features. No trackers by default.
-                </p>
-              </div>
-              <button className="btn btn--ghost" onClick={()=>{ setConsent("rejected"); try{localStorage.setItem("ev_consent","rejected");}catch{} }}>Reject</button>
-              <button className="btn btn--primary" onClick={()=>{ setConsent("accepted"); try{localStorage.setItem("ev_consent","accepted");}catch{} }}>Accept</button>
+          <div className="consent" role="dialog" aria-live="polite" aria-label="Cookie consent">
+            <div style={{flex:1}}>
+              <p style={{margin:0,fontWeight:900}}>Your privacy</p>
+              <p className="meta" style={{margin:"6px 0 0 0"}}>
+                We use only necessary cookies for basic site features. No trackers by default.
+              </p>
             </div>
+            <button className="btn btn--ghost" onClick={()=>{ setConsent("rejected"); try{localStorage.setItem("ev_consent","rejected");}catch{} }}>Reject</button>
+            <button className="btn btn--primary" onClick={()=>{ setConsent("accepted"); try{localStorage.setItem("ev_consent","accepted");}catch{} }}>Accept</button>
           </div>
         )}
 
-        {/* JSON-LD (minimal) */}
+        {/* ===== Minimal JSON-LD for Service ===== */}
         <script type="application/ld+json"
           dangerouslySetInnerHTML={{__html: JSON.stringify({
             "@context":"https://schema.org",
@@ -718,7 +800,7 @@ html,body{background:var(--soft)}
             "provider":{"@type":"Organization","name":"Eco Voltex"}
           })}} />
       </main>
-      <Footer />
+      <Footer/>
     </>
   );
 }
