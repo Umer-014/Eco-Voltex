@@ -29,9 +29,10 @@ html,body{background:var(--soft)}
 .skip-link:focus{left:12px;top:8px;background:#fff;border:2px solid var(--mint);padding:8px 12px;border-radius:8px;z-index:2000}
 
 .container{max-width:1240px;margin:0 auto;padding:0 24px}
-.section{padding:84px 0;border-top:1px solid var(--line)}
-.section--tight{padding:56px 0}
+.section{padding:0;border-top:0}
+.section--tight{padding:0}
 .section--dark{background:linear-gradient(180deg,var(--navy),var(--navy2));color:#EAF7F0;border-top:none}
+/* tighten hero bottom so it sits flush with next section */
 .section--dark .muted{color:#C6D6E6}
 
 .h2{font-size:32px;margin:0;font-weight:900;color:var(--ink)}
@@ -533,8 +534,8 @@ export default function FireAlarmsPremium() {
 
   // --- Base wrappers ---
   const section = {
-    padding: "64px 0",
-    borderTop: `1px solid ${colors.line}`,
+    padding: 0,
+    borderTop: 0,
     background: colors.white,
   };
   const container = {
@@ -810,17 +811,25 @@ export default function FireAlarmsPremium() {
               Clarity, neatness, and compliance — delivered with minimal
               disruption.
             </p>
+
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "1.2fr 1fr",
+                gridTemplateColumns: "1.2fr 1fr", // text wider, image narrower
                 gap: 22,
-                alignItems: "center",
+                alignItems: "stretch", // make both columns equal height
               }}
             >
-              {/* Text block on left */}
+              {/* Text block on the left */}
               <div style={{ order: 1 }}>
-                <div className="grid-4 mt-16">
+                <div
+                  className="mt-16"
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(3, 1fr)", // 3 per row
+                    gap: "16px",
+                  }}
+                >
                   {[
                     [
                       "Neat by default",
@@ -859,22 +868,24 @@ export default function FireAlarmsPremium() {
                 </div>
               </div>
 
-              {/* Image block on right */}
+              {/* Vertical image on the right */}
               <figure
                 className="thumb"
-                aria-label="Hero visual"
-                style={{ order: 2 }}
+                style={{
+                  order: 2,
+                  height: "100%",
+                  display: "flex",
+                }}
               >
                 <img
                   loading="eager"
                   decoding="async"
-                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1759097756/ChatGPT_Image_Sep_29_2025_03_14_50_AM_xruenn.png"
-                  width="1600"
-                  height="900"
+                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1759102806/ChatGPT_Image_Sep_29_2025_04_39_49_AM_eiyvjh.png"
                   alt="Clean UK fire alarm detector with tidy FP red cabling and labelled trunking"
                   style={{
                     width: "100%",
-                    height: "auto",
+                    height: "100%",
+                    objectFit: "cover", // fill the column while keeping proportions
                     borderRadius: "12px",
                   }}
                 />
@@ -1205,7 +1216,7 @@ export default function FireAlarmsPremium() {
                 <img
                   loading="lazy"
                   decoding="async"
-                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1759102056/ChatGPT_Image_Sep_29_2025_04_27_18_AM_yfe4ik.png"
+                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1759103433/ChatGPT_Image_Sep_29_2025_04_50_17_AM_jstum0.png"
                   alt="System comparison illustrated with vertical layout"
                   style={{
                     width: "100%",
@@ -1551,88 +1562,6 @@ export default function FireAlarmsPremium() {
           </div>
         </section>
 
-        {/* CASES */}
-        <section id="cases" className="section" aria-labelledby="cases-title">
-          <div className="container">
-            <h2 id="cases-title" className="h2">
-              Recent case studies
-            </h2>
-            <div className="grid-3 mt-14">
-              {[
-                {
-                  title: "Office fit-out, EC2 (May 2025)",
-                  img: "/images/fire/cases/ec2-1920x1080.jpg",
-                  alt: "Neat cable management above suspended ceiling during office fit-out",
-                  points: [
-                    "Category L3 design & install",
-                    "Neat containment, zero snags",
-                    "Commissioned in 2 visits",
-                  ],
-                  metrics: [
-                    "2 floors, 14 zones",
-                    "96 devices",
-                    "≥72 dB(A) achieved",
-                  ],
-                },
-                {
-                  title: "Warehouse upgrade, DA1 (Mar 2025)",
-                  img: "/images/fire/cases/da1-1920x1080.jpg",
-                  alt: "Addressable detector line and interface module in warehouse aisle",
-                  points: [
-                    "Property protection P1 + interfaces",
-                    "Addressable loop with plant shutdown",
-                    "False alarms reduced ~80%",
-                  ],
-                  metrics: ["1 loop + I/O", "ARC setup", "Insurer sign-off"],
-                },
-                {
-                  title: "HMO conversion, SE6 (Jan 2025)",
-                  img: "/images/fire/cases/se6-1920x1080.jpg",
-                  alt: "HMO landing with sounder and call point by escape route",
-                  points: [
-                    "Grade A panel + LD2 coverage",
-                    "Landlord docs issued same day",
-                    "Council-ready zone chart",
-                  ],
-                  metrics: ["3 storeys", "15 detectors", "Same-week survey"],
-                },
-              ].map(function (cs) {
-                return (
-                  <div className="card" key={cs.title}>
-                    <div className="thumb" style={{ marginBottom: 8 }}>
-                      <img
-                        loading="lazy"
-                        decoding="async"
-                        src={cs.img}
-                        alt={cs.alt}
-                      />
-                    </div>
-                    <h3>{cs.title}</h3>
-                    <ul className="list list--disc">
-                      {cs.points.map(function (p) {
-                        return <li key={p}>{p}</li>;
-                      })}
-                    </ul>
-                    <div className="badges mt-10">
-                      {cs.metrics.map(function (m) {
-                        return (
-                          <span
-                            className="badge"
-                            key={m}
-                            style={{ background: "#10261C" }}
-                          >
-                            {m}
-                          </span>
-                        );
-                      })}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
         {/* MAINTENANCE */}
         <section
           id="maintenance"
@@ -1696,152 +1625,6 @@ export default function FireAlarmsPremium() {
                   })}
                 </tbody>
               </table>
-            </div>
-          </div>
-        </section>
-
-        {/* GALLERY */}
-        <section id="gallery" className="section" aria-labelledby="gal-title">
-          <div className="container">
-            <h2 id="gal-title" className="h2">
-              Recent work — neat, UK-correct details
-            </h2>
-            <p className="small mt-6">
-              No faces required — we focus on craftsmanship and compliance.
-            </p>
-            <div className="gallery mt-14">
-              <img
-                loading="lazy"
-                decoding="async"
-                src="/images/fire/gallery/1-1200x800.jpg"
-                alt="FP-rated red cabling clipped at correct intervals"
-              />
-              <img
-                loading="lazy"
-                decoding="async"
-                src="/images/fire/gallery/2-800x800.jpg"
-                alt="Ceiling smoke detector on UK suspended grid, correct spacing"
-              />
-              <img
-                loading="lazy"
-                decoding="async"
-                src="/images/fire/gallery/3-800x800.jpg"
-                alt="Clean panel internals, labelled cores (no brand names)"
-              />
-              <img
-                loading="lazy"
-                decoding="async"
-                src="/images/fire/gallery/4-800x800.jpg"
-                alt="Commissioning: sound level check (labels not legible)"
-              />
-              <img
-                loading="lazy"
-                decoding="async"
-                src="/images/fire/gallery/5-800x800.jpg"
-                alt="As-fitted drawings and neat zoning overlay"
-              />
-              <img
-                loading="lazy"
-                decoding="async"
-                src="/images/fire/gallery/6-800x800.jpg"
-                alt="Manual call point with UK fire action signage"
-              />
-            </div>
-            <div className="footer-cta">
-              <a className="btn btn--light" href="/contact">
-                Book a survey
-              </a>
-              <a className="btn btn--light" href="/quote">
-                Get a quote
-              </a>
-              <a
-                className="btn btn--light"
-                href="#cookies"
-                onClick={function (e) {
-                  e.preventDefault();
-                  setConsent(null);
-                }}
-              >
-                Cookies
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* COVERAGE */}
-        <section
-          id="coverage"
-          className="section section--tight"
-          aria-labelledby="pc-title"
-        >
-          <div className="container coverage">
-            <h2 id="pc-title" className="h2">
-              Check coverage & survey availability
-            </h2>
-            <div className="grid-2 mt-12" style={{ alignItems: "start" }}>
-              <form onSubmit={checkPostcode} noValidate>
-                <label
-                  htmlFor="pc"
-                  className="small"
-                  style={{ display: "block", marginBottom: 6 }}
-                >
-                  Your postcode
-                </label>
-                <input
-                  id="pc"
-                  name="pc"
-                  value={postcode}
-                  onChange={function (e) {
-                    setPostcode(e.target.value);
-                  }}
-                  placeholder="E1 6AN"
-                  autoComplete="postal-code"
-                  autoCapitalize="characters"
-                  inputMode="text"
-                  aria-invalid={pcError ? true : false}
-                  aria-describedby="pc-help pc-err"
-                />
-                <button type="submit" className="mt-10">
-                  Check
-                </button>
-                <div id="pc-help" className="meta mt-8">
-                  We cover London and nearby counties.
-                </div>
-                {pcError ? (
-                  <div
-                    id="pc-err"
-                    className="meta"
-                    role="alert"
-                    style={{ marginTop: 6, color: "#B00020" }}
-                  >
-                    {pcError}
-                  </div>
-                ) : null}
-                {!pcError && pcResult ? (
-                  <div className="meta mt-6" aria-live="polite">
-                    {pcResult}{" "}
-                    <a
-                      className="btn btn--light"
-                      href="/contact"
-                      style={{
-                        marginLeft: 6,
-                        padding: "6px 10px",
-                        borderRadius: 10,
-                      }}
-                    >
-                      Book a survey
-                    </a>
-                  </div>
-                ) : null}
-              </form>
-              <figure className="thumb" aria-label="Coverage map">
-                <img
-                  loading="lazy"
-                  decoding="async"
-                  src="/images/fire/coverage-london-1200x675.jpg"
-                  alt="Coverage across London and nearby counties (illustrative)"
-                />
-              </figure>
             </div>
           </div>
         </section>
