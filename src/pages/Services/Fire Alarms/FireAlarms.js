@@ -12,7 +12,7 @@ import Footer from "../../../components/Footer/Footer";
  * - Subtle glass cards, gradients, refined typography
  */
 
-export default function FireAlarmsFlagship(){
+export default function FireAlarms(){
   // ========= Company contacts (optional) =========
   const PHONE = "";    // "+44 20..." (leave empty to hide)
   const WHATSAPP = ""; // "4477..." digits only for wa.me
