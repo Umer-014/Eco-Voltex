@@ -810,44 +810,75 @@ export default function FireAlarmsPremium() {
               Clarity, neatness, and compliance — delivered with minimal
               disruption.
             </p>
-            <div className="grid-4 mt-16">
-              {[
-                [
-                  "Neat by default",
-                  "Tidy containment, correct clips, labelled devices — snags minimised.",
-                ],
-                [
-                  "Risk-led design",
-                  "Objectives (L/P/M/LD) matched to actual use.",
-                ],
-                [
-                  "Clear documentation",
-                  "Zone charts, logbook, certificates; understandable drawings.",
-                ],
-                [
-                  "Respect for sites",
-                  "Low disruption; clean working; out-of-hours available.",
-                ],
-                [
-                  "Transparent scope",
-                  "Written scope with drawings before you decide.",
-                ],
-                [
-                  "Competent engineers",
-                  "UK methods, PPE, and courteous conduct.",
-                ],
-                [
-                  "Lifecycle support",
-                  "Takeovers, remedials, upgrades, maintenance.",
-                ],
-              ].map(function (pair) {
-                return (
-                  <div className="card" key={pair[0]}>
-                    <h3>{pair[0]}</h3>
-                    <p className="mt-6">{pair[1]}</p>
-                  </div>
-                );
-              })}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1.2fr 1fr",
+                gap: 22,
+                alignItems: "center",
+              }}
+            >
+              {/* Text block on left */}
+              <div style={{ order: 1 }}>
+                <div className="grid-4 mt-16">
+                  {[
+                    [
+                      "Neat by default",
+                      "Tidy containment, correct clips, labelled devices — snags minimised.",
+                    ],
+                    [
+                      "Risk-led design",
+                      "Objectives (L/P/M/LD) matched to actual use.",
+                    ],
+                    [
+                      "Clear documentation",
+                      "Zone charts, logbook, certificates; understandable drawings.",
+                    ],
+                    [
+                      "Respect for sites",
+                      "Low disruption; clean working; out-of-hours available.",
+                    ],
+                    [
+                      "Transparent scope",
+                      "Written scope with drawings before you decide.",
+                    ],
+                    [
+                      "Competent engineers",
+                      "UK methods, PPE, and courteous conduct.",
+                    ],
+                    [
+                      "Lifecycle support",
+                      "Takeovers, remedials, upgrades, maintenance.",
+                    ],
+                  ].map((pair) => (
+                    <div className="card" key={pair[0]}>
+                      <h3>{pair[0]}</h3>
+                      <p className="mt-6">{pair[1]}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Image block on right */}
+              <figure
+                className="thumb"
+                aria-label="Hero visual"
+                style={{ order: 2 }}
+              >
+                <img
+                  loading="eager"
+                  decoding="async"
+                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1759097756/ChatGPT_Image_Sep_29_2025_03_14_50_AM_xruenn.png"
+                  width="1600"
+                  height="900"
+                  alt="Clean UK fire alarm detector with tidy FP red cabling and labelled trunking"
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    borderRadius: "12px",
+                  }}
+                />
+              </figure>
             </div>
           </div>
         </section>
@@ -1081,6 +1112,7 @@ export default function FireAlarmsPremium() {
             </div>
           </div>
         </section>
+
         {/* COMPARISON */}
         <section id="compare" className="section" aria-labelledby="cmp-title">
           <div className="container">
@@ -1091,20 +1123,23 @@ export default function FireAlarmsPremium() {
               Don’t worry — after survey we’ll confirm which type fits your
               building and budget.
             </p>
+
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "1fr 320px",
+                gridTemplateColumns: "1fr 320px", // left table, right image
                 gap: 16,
-                alignItems: "start",
+                alignItems: "stretch", // ensures both columns match in height
               }}
               className="mt-12"
             >
-              <div style={{ overflowX: "auto" }}>
+              {/* Table on the left */}
+              <div style={{ order: 1 }}>
                 <table
                   className="table"
                   role="table"
                   aria-label="System comparison table"
+                  style={{ width: "100%", borderCollapse: "collapse" }}
                 >
                   <thead>
                     <tr>
@@ -1142,29 +1177,42 @@ export default function FireAlarmsPremium() {
                         cons: "Not for large non-domestic",
                         notes: "BS 5839-6 LD2/LD3; add CO where required",
                       },
-                    ].map(function (row) {
-                      return (
-                        <tr key={row.type}>
-                          <td>
-                            <b>{row.type}</b>
-                          </td>
-                          <td>{row.typical}</td>
-                          <td>{row.detection}</td>
-                          <td>{row.pros}</td>
-                          <td>{row.cons}</td>
-                          <td>{row.notes}</td>
-                        </tr>
-                      );
-                    })}
+                    ].map((row) => (
+                      <tr key={row.type}>
+                        <td>
+                          <b>{row.type}</b>
+                        </td>
+                        <td>{row.typical}</td>
+                        <td>{row.detection}</td>
+                        <td>{row.pros}</td>
+                        <td>{row.cons}</td>
+                        <td>{row.notes}</td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
-              <figure className="thumb">
+
+              {/* Vertical image on the right */}
+              <figure
+                className="thumb"
+                style={{
+                  order: 2,
+                  height: "100%", // fill full grid height
+                  display: "flex",
+                }}
+              >
                 <img
                   loading="lazy"
                   decoding="async"
-                  src="/images/fire/compare-devices-1200x675.jpg"
-                  alt="Conventional zone indicators and addressable device label (non-legible)"
+                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1759102056/ChatGPT_Image_Sep_29_2025_04_27_18_AM_yfe4ik.png"
+                  alt="System comparison illustrated with vertical layout"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover", // makes sure it fills without distortion
+                    borderRadius: "12px",
+                  }}
                 />
               </figure>
             </div>
