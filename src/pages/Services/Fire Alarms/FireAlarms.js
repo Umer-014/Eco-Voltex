@@ -1216,13 +1216,13 @@ export default function FireAlarmsPremium() {
                 <img
                   loading="lazy"
                   decoding="async"
-                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1759103433/ChatGPT_Image_Sep_29_2025_04_50_17_AM_jstum0.png"
+                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1759104095/ChatGPT_Image_Sep_29_2025_04_50_17_AM_jstum0.png"
                   alt="System comparison illustrated with vertical layout"
                   style={{
                     width: "100%",
                     height: "100%",
-                    objectFit: "cover", // makes sure it fills without distortion
-                    borderRadius: "12px",
+                    objectFit: "fit", // makes sure it fills without distortion
+                    
                   }}
                 />
               </figure>
@@ -1477,14 +1477,7 @@ export default function FireAlarmsPremium() {
                 </ul>
               </div>
             </div>
-            <figure className="thumb mt-12">
-              <img
-                loading="lazy"
-                decoding="async"
-                src="/images/fire/zone-chart-1200x675.jpg"
-                alt="Zone chart example (non-legible), illustrating clear zoning"
-              />
-            </figure>
+            
             <p className="meta mt-8">
               Monitoring is via an ARC with confirmed-alarm protocols and
               keyholder notification. No direct autodial to Fire & Rescue.
@@ -1670,100 +1663,11 @@ export default function FireAlarmsPremium() {
                 );
               })}
             </div>
-            <div className="footer-cta">
-              <a className="btn btn--light" href="/contact">
-                Ask a question
-              </a>
-              <a className="btn btn--light" href="/quote">
-                Get a quote
-              </a>
-              <a
-                className="btn btn--light"
-                href="#cookies"
-                onClick={function (e) {
-                  e.preventDefault();
-                  setConsent(null);
-                }}
-              >
-                Cookies
-              </a>
-            </div>
+            
           </div>
         </section>
 
-        {/* CONSENT (focus trapped) */}
-        {consent === null ? (
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="cookie-title"
-            aria-describedby="cookie-desc"
-            ref={dialogRef}
-            style={{
-              position: "fixed",
-              left: 12,
-              right: 12,
-              bottom: 12,
-              zIndex: 60,
-            }}
-            className="glass"
-          >
-            <div
-              style={{
-                display: "flex",
-                gap: 12,
-                alignItems: "flex-start",
-                padding: 14,
-              }}
-            >
-              <div style={{ flex: 1 }}>
-                <p
-                  id="cookie-title"
-                  className="m-0"
-                  style={{ fontWeight: 900 }}
-                >
-                  Your privacy
-                </p>
-                <p
-                  id="cookie-desc"
-                  className="meta m-0"
-                  style={{ marginTop: 6 }}
-                >
-                  We use only necessary cookies for basic site features and
-                  store simple preferences (like audience). See our{" "}
-                  <a href="/privacy" className="link">
-                    Privacy Policy
-                  </a>
-                  .
-                </p>
-              </div>
-              <button
-                className="btn btn--ghost"
-                onClick={function () {
-                  setConsent("rejected");
-                  try {
-                    if (typeof window !== "undefined")
-                      window.localStorage.setItem("ev_consent", "rejected");
-                  } catch (err) {}
-                }}
-              >
-                Reject
-              </button>
-              <button
-                className="btn btn--primary"
-                onClick={function () {
-                  setConsent("accepted");
-                  try {
-                    if (typeof window !== "undefined")
-                      window.localStorage.setItem("ev_consent", "accepted");
-                  } catch (err) {}
-                }}
-              >
-                Accept
-              </button>
-            </div>
-          </div>
-        ) : null}
+        
 
         {/* Minimal Service JSON-LD */}
         <script
