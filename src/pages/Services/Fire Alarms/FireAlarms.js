@@ -784,7 +784,7 @@ export default function FireAlarmsPremium() {
                   <a className="btn btn--primary" href="/contact">
                     Book a survey
                   </a>
-                  
+
                   {PHONE ? (
                     <a className="btn btn--ghost" href={"tel:" + PHONE}>
                       Call us
@@ -1409,11 +1409,9 @@ export default function FireAlarmsPremium() {
                 style={{
                   order: 2,
                   marginTop: isNarrow ? 16 : 0,
-                  display: "block",
-                  height: "auto",
+                  height: "100%",
                 }}
               >
-              
                 <img
                   loading="lazy"
                   decoding="async"
@@ -1421,11 +1419,13 @@ export default function FireAlarmsPremium() {
                   alt="System comparison illustrated with vertical layout"
                   style={{
                     width: "100%",
-                    height: isNarrow ? "100%" : "auto", // auto on mobile
-                    objectFit: isNarrow ? "fill" : "cover", // full image on mobile
+                    height: isNarrow ? "40vh" : "100%", // auto height on mobile
+                    objectFit: isNarrow ? "contain" : "cover", // full image visible on mobile
                     borderRadius: 12,
                     display: "block",
                     maxWidth: "100%",
+                    maxHeight: isNarrow ? "none" : "none", // prevent it from becoming too tall
+                    
                   }}
                   sizes="(max-width: 768px) 100vw, 40vw"
                 />
