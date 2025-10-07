@@ -1424,7 +1424,7 @@ export default function FireAlarmsPremium() {
                     objectFit: "contain",
                     display: "block",
                     borderRadius: 12,
-                    maxHeight: isNarrow ? "70vh" : "100%",
+                    maxHeight: isNarrow ? "100%" : "100%",
                   }}
                 />
               </figure>
