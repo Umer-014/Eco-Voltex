@@ -541,7 +541,7 @@ export default function FireAlarmsPremium() {
   const container = {
     maxWidth: 1152,
     margin: "0 auto",
-    padding: "0 24px",
+    padding: "0",
   };
   const h2 = {
     margin: 0,
@@ -663,6 +663,21 @@ export default function FireAlarmsPremium() {
     ["LD3", "Escape routes"],
   ];
 
+  // Put this inside your component (above the return)
+  const [isNarrow, setIsNarrow] = React.useState(false);
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mq = window.matchMedia("(max-width: 768px)");
+    const onChange = (e) => setIsNarrow(e.matches);
+    setIsNarrow(mq.matches);
+    if (mq.addEventListener) mq.addEventListener("change", onChange);
+    else mq.addListener(onChange); // Safari fallback
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener("change", onChange);
+      else mq.removeListener(onChange);
+    };
+  }, []);
+
   return (
     <>
       <a href="#overview" className="skip-link">
@@ -678,8 +693,8 @@ export default function FireAlarmsPremium() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "1.2fr 1fr",
-                gap: 22,
+                gridTemplateColumns: isNarrow ? "1fr" : "1.2fr 1fr",
+                gap: isNarrow ? 14 : 22,
                 alignItems: "center",
               }}
             >
@@ -690,9 +705,8 @@ export default function FireAlarmsPremium() {
                 <p className="lead">
                   Brand-level delivery for life and property protection. Neat
                   cabling, correct siting, precise commissioning, and clear
-                  documentation — to
-                  <b> BS 5839-1</b> (non-domestic) and <b> BS 5839-6</b>{" "}
-                  (domestic/HMO). London and nearby counties.
+                  documentation — to <b>BS 5839-1</b> (non-domestic) and{" "}
+                  <b>BS 5839-6</b> (domestic/HMO). London and nearby counties.
                 </p>
 
                 {/* Audience toggle */}
@@ -750,22 +764,27 @@ export default function FireAlarmsPremium() {
                   hidden={audience !== "business"}
                 />
 
-                {/* Trust badges (beefed up) */}
+                {/* Trust badges */}
                 <div className="badges" aria-label="Key trust points">
                   <span className="badge">Neat workmanship</span>
                   <span className="badge">BS 5839-1/-6 documentation</span>
-
                   <span className="badge">Rapid surveys</span>
                 </div>
 
                 {/* CTAs */}
-                <div className="cta">
+                <div
+                  className="cta"
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: 12,
+                    marginTop: 16,
+                  }}
+                >
                   <a className="btn btn--primary" href="/contact">
                     Book a survey
                   </a>
-                  <a className="btn btn--ghost" href="/quote">
-                    Get a quote
-                  </a>
+                  
                   {PHONE ? (
                     <a className="btn btn--ghost" href={"tel:" + PHONE}>
                       Call us
@@ -782,12 +801,16 @@ export default function FireAlarmsPremium() {
                     </a>
                   ) : null}
                 </div>
-
-                {/* Trust strip (logos placeholders) */}
               </div>
 
               {/* Hero visual */}
-              <figure className="thumb" aria-label="Hero visual">
+              <figure
+                className="thumb"
+                aria-label="Hero visual"
+                style={{
+                  margin: isNarrow ? "16px 0 0" : 0, // push image below text on phones
+                }}
+              >
                 <img
                   loading="eager"
                   decoding="async"
@@ -795,6 +818,12 @@ export default function FireAlarmsPremium() {
                   width="1600"
                   height="900"
                   alt="Clean UK fire alarm detector with tidy FP red cabling and labelled trunking"
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    display: "block",
+                    borderRadius: 12,
+                  }}
                 />
               </figure>
             </div>
@@ -815,18 +844,20 @@ export default function FireAlarmsPremium() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "1.2fr 1fr", // text wider, image narrower
-                gap: 22,
-                alignItems: "stretch", // make both columns equal height
+                gridTemplateColumns: isNarrow ? "1fr" : "1.2fr 1fr",
+                gap: isNarrow ? 14 : 22,
+                alignItems: "stretch",
               }}
             >
-              {/* Text block on the left */}
+              {/* Text block */}
               <div style={{ order: 1 }}>
                 <div
                   className="mt-16"
                   style={{
                     display: "grid",
-                    gridTemplateColumns: "repeat(3, 1fr)", // 3 per row
+                    gridTemplateColumns: isNarrow
+                      ? "1fr"
+                      : "repeat(auto-fit, minmax(220px, 1fr))",
                     gap: "16px",
                   }}
                 >
@@ -860,34 +891,53 @@ export default function FireAlarmsPremium() {
                       "Takeovers, remedials, upgrades, maintenance.",
                     ],
                   ].map((pair) => (
-                    <div className="card" key={pair[0]}>
-                      <h3>{pair[0]}</h3>
-                      <p className="mt-6">{pair[1]}</p>
+                    <div
+                      className="card"
+                      key={pair[0]}
+                      style={{
+                        background: "#fff",
+                        borderRadius: 12,
+                        padding: "16px",
+                        boxShadow: "0 2px 6px rgba(0,0,0,0.06)",
+                      }}
+                    >
+                      <h3 style={{ fontSize: "1.05rem", marginBottom: 6 }}>
+                        {pair[0]}
+                      </h3>
+                      <p
+                        className="mt-6"
+                        style={{ fontSize: "0.95rem", lineHeight: 1.4 }}
+                      >
+                        {pair[1]}
+                      </p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Vertical image on the right */}
               <figure
                 className="thumb"
                 style={{
                   order: 2,
-                  height: "100%",
-                  display: "flex",
+                  marginTop: isNarrow ? 16 : 0,
+                  display: isNarrow ? "block" : "flex", // avoid stretching on mobile
+                  height: isNarrow ? "100%" : "auto", // auto height on mobile
                 }}
               >
                 <img
-                  loading="eager"
+                  loading="lazy"
                   decoding="async"
                   src="https://res.cloudinary.com/dug1siluu/image/upload/v1759102806/ChatGPT_Image_Sep_29_2025_04_39_49_AM_eiyvjh.png"
                   alt="Clean UK fire alarm detector with tidy FP red cabling and labelled trunking"
                   style={{
                     width: "100%",
-                    height: "100%",
-                    objectFit: "cover", // fill the column while keeping proportions
-                    borderRadius: "12px",
+                    height: isNarrow ? "100%" : "auto", // auto on mobile
+                    objectFit: isNarrow ? "fill" : "cover", // full image on mobile
+                    borderRadius: 12,
+                    display: "block",
+                    maxWidth: "100%",
                   }}
+                  sizes="(max-width: 768px) 100vw, 40vw"
                 />
               </figure>
             </div>
@@ -987,30 +1037,41 @@ export default function FireAlarmsPremium() {
               </p>
               <ul style={list} aria-labelledby="ess-types">
                 <li>
-                  <b>Conventional:</b> devices grouped by zone (panel shows
-                  which zone triggered). Good for small/simple sites; lower
+                  <b>Conventional:</b> zone-based; good for small/simple, lower
                   cost.
                 </li>
                 <li>
-                  <b>Addressable:</b> each device has an address (exact point
-                  shown on the display, richer fault data, flexible
-                  cause-and-effect). Best for medium/large or complex buildings.
+                  <b>Addressable:</b> device addresses & rich data; best for
+                  medium/large or complex buildings.
                 </li>
                 <li>
-                  <b>Domestic interlinked:</b> mains or battery alarms linked by
-                  cable or radio. Used in houses/flats and many HMOs per BS
-                  5839-6.
+                  <b>Domestic interlinked:</b> mains/battery, cabled or radio;
+                  used per BS 5839-6.
                 </li>
               </ul>
             </div>
 
             {/* 4) Standards & categories */}
-            <div style={{ ...grid2, marginTop: 16 }}>
+            <div
+              style={{
+                ...grid2,
+                marginTop: 16,
+                display: "grid",
+                gridTemplateColumns: isNarrow ? "1fr" : "1fr 1fr",
+                gap: isNarrow ? 14 : 16,
+                alignItems: "start",
+              }}
+            >
+              {/* BS 5839-1 (non-domestic) */}
               <div style={card}>
                 <p style={{ ...h3 }} id="ess-bs1">
                   Standards &amp; categories — BS 5839-1 (non-domestic)
                 </p>
-                <div style={tableWrap}>
+
+                {/* Desktop/tablet table */}
+                <div
+                  style={{ ...tableWrap, display: isNarrow ? "none" : "block" }}
+                >
                   <table style={table} role="table" aria-labelledby="ess-bs1">
                     <thead>
                       <tr>
@@ -1038,13 +1099,49 @@ export default function FireAlarmsPremium() {
                     </tbody>
                   </table>
                 </div>
+
+                {/* Mobile vertical cards */}
+                <div
+                  aria-hidden={!isNarrow}
+                  style={{
+                    display: isNarrow ? "grid" : "none",
+                    gridTemplateColumns: "1fr",
+                    gap: 10,
+                    marginTop: 8,
+                  }}
+                >
+                  {standardsRowsND.map(([code, type, summary]) => (
+                    <div
+                      key={code}
+                      style={{
+                        border: `1px solid ${colors?.line || "#e5e7eb"}`,
+                        borderRadius: 12,
+                        padding: 12,
+                        background: "#fff",
+                      }}
+                    >
+                      <div style={{ fontWeight: 700, marginBottom: 6 }}>
+                        {code}
+                      </div>
+                      <div style={{ fontWeight: 500, marginBottom: 6 }}>
+                        {type}
+                      </div>
+                      <div style={{ opacity: 0.9 }}>{summary}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
+              {/* BS 5839-6 (domestic/HMO) */}
               <div style={card}>
                 <p style={{ ...h3 }} id="ess-bs6">
                   Standards &amp; categories — BS 5839-6 (domestic/HMO)
                 </p>
-                <div style={tableWrap}>
+
+                {/* Desktop/tablet table */}
+                <div
+                  style={{ ...tableWrap, display: isNarrow ? "none" : "block" }}
+                >
                   <table style={table} role="table" aria-labelledby="ess-bs6">
                     <thead>
                       <tr>
@@ -1068,6 +1165,34 @@ export default function FireAlarmsPremium() {
                     </tbody>
                   </table>
                 </div>
+
+                {/* Mobile vertical cards */}
+                <div
+                  aria-hidden={!isNarrow}
+                  style={{
+                    display: isNarrow ? "grid" : "none",
+                    gridTemplateColumns: "1fr",
+                    gap: 10,
+                    marginTop: 8,
+                  }}
+                >
+                  {standardsRowsDM.map(([item, summary]) => (
+                    <div
+                      key={item}
+                      style={{
+                        border: `1px solid ${colors?.line || "#e5e7eb"}`,
+                        borderRadius: 12,
+                        padding: 12,
+                        background: "#fff",
+                      }}
+                    >
+                      <div style={{ fontWeight: 700, marginBottom: 6 }}>
+                        {item}
+                      </div>
+                      <div style={{ opacity: 0.9 }}>{summary}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -1085,35 +1210,30 @@ export default function FireAlarmsPremium() {
               </p>
               <ul style={list} aria-labelledby="ess-design">
                 <li>
-                  <b>Detector siting/spacing:</b> typical design values ~
-                  <b>7.5 m</b> radius for smoke and ~<b>5.3 m</b> for heat
-                  (standard ceiling heights). Final positions consider beams,
-                  vents, slopes, and obstructions.
+                  <b>Detector siting/spacing:</b> ~<b>7.5 m</b> smoke, ~
+                  <b>5.3 m</b> heat (std ceilings) — adjust for
+                  beams/vents/slopes.
                 </li>
                 <li>
-                  <b>Manual call points:</b> on escape routes and exits; travel
-                  distance to the nearest MCP typically ≤ <b>45 m</b> (shorter
-                  for higher risk).
+                  <b>Manual call points:</b> escape routes & exits; typical
+                  travel distance ≤ <b>45 m</b>.
                 </li>
                 <li>
-                  <b>Audibility/visibility:</b> aim for ≥ <b>65 dB(A)</b> (or ≥
-                  5 dB above ambient) in occupied areas and ~<b>75 dB(A)</b> at
-                  the bedhead in sleeping areas. Beacons used where hearing
-                  protection or ambient noise is high.
+                  <b>Audibility/visibility:</b> ≥ <b>65 dB(A)</b> (or ≥5 dB
+                  above ambient); ~<b>75 dB(A)</b> at bedhead; beacons where
+                  needed.
                 </li>
                 <li>
-                  <b>Cause-and-effect:</b> defines what happens on alarm — which
-                  sounders, which doors release/close, plant shutdown, phased
-                  evacuation, etc.
+                  <b>Cause-and-effect:</b> sounders, doors, plant shutdown,
+                  phased evac, etc.
                 </li>
                 <li>
-                  <b>Standby power:</b> common design is ~<b>24 h</b> standby +{" "}
-                  <b>30 min</b> alarm (varies by risk/system).
+                  <b>Standby power:</b> common ~<b>24 h</b> standby +{" "}
+                  <b>30 min</b> alarm.
                 </li>
                 <li>
-                  <b>Cabling:</b> fire-resistant cable and metal fixings where
-                  required; routes and segregation planned for reliability and
-                  compliance.
+                  <b>Cabling:</b> fire-resistant + metal fixings where required;
+                  segregation & routes planned.
                 </li>
               </ul>
               <p style={{ ...meta, marginTop: 10 }}>
@@ -1136,81 +1256,161 @@ export default function FireAlarmsPremium() {
             </p>
 
             <div
+              className="mt-12"
               style={{
                 display: "grid",
-                gridTemplateColumns: "1fr 320px", // left table, right image
-                gap: 16,
-                alignItems: "stretch", // ensures both columns match in height
+                gridTemplateColumns: isNarrow ? "1fr" : "1fr 320px",
+                gap: isNarrow ? 14 : 16,
+                alignItems: isNarrow ? "start" : "stretch",
               }}
-              className="mt-12"
             >
-              {/* Table on the left */}
+              {/* Table / Mobile Cards */}
               <div style={{ order: 1 }}>
-                <table
-                  className="table"
-                  role="table"
-                  aria-label="System comparison table"
-                  style={{ width: "100%", borderCollapse: "collapse" }}
+                {/* Desktop/tablet table */}
+                <div
+                  style={{
+                    display: isNarrow ? "none" : "block",
+                    overflowX: "auto",
+                  }}
                 >
-                  <thead>
-                    <tr>
-                      <th scope="col">Type</th>
-                      <th scope="col">Typical use</th>
-                      <th scope="col">Detection model</th>
-                      <th scope="col">Pros</th>
-                      <th scope="col">Cons</th>
-                      <th scope="col">Notes</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[
-                      {
-                        type: "Conventional",
-                        typical: "Small/medium buildings",
-                        detection: "Zones (groups of devices)",
-                        pros: "Lower cost, simple",
-                        cons: "No per-device pinpointing",
-                        notes: "Good for shops/offices with modest complexity",
-                      },
-                      {
-                        type: "Addressable",
-                        typical: "Medium/large or complex buildings",
-                        detection: "Each device has an address",
-                        pros: "Pinpoint info, flexible cause/effect",
-                        cons: "Higher cost, configuration required",
-                        notes: "Ideal for campuses, multi-storey, interfacing",
-                      },
-                      {
-                        type: "Domestic interlinked",
-                        typical: "Houses, flats, small HMOs",
-                        detection: "Interlinked smoke/heat/CO",
-                        pros: "Quick install, low disruption",
-                        cons: "Not for large non-domestic",
-                        notes: "BS 5839-6 LD2/LD3; add CO where required",
-                      },
-                    ].map((row) => (
-                      <tr key={row.type}>
-                        <td>
-                          <b>{row.type}</b>
-                        </td>
-                        <td>{row.typical}</td>
-                        <td>{row.detection}</td>
-                        <td>{row.pros}</td>
-                        <td>{row.cons}</td>
-                        <td>{row.notes}</td>
+                  <table
+                    className="table"
+                    role="table"
+                    aria-label="System comparison table"
+                    style={{
+                      width: "100%",
+                      borderCollapse: "collapse",
+                      border: "1px solid #e5e7eb",
+                    }}
+                  >
+                    <thead>
+                      <tr style={{ background: "#f9fafb" }}>
+                        <th scope="col">Type</th>
+                        <th scope="col">Typical use</th>
+                        <th scope="col">Detection model</th>
+                        <th scope="col">Pros</th>
+                        <th scope="col">Cons</th>
+                        <th scope="col">Notes</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {[
+                        {
+                          type: "Conventional",
+                          typical: "Small/medium buildings",
+                          detection: "Zones (groups of devices)",
+                          pros: "Lower cost, simple",
+                          cons: "No per-device pinpointing",
+                          notes:
+                            "Good for shops/offices with modest complexity",
+                        },
+                        {
+                          type: "Addressable",
+                          typical: "Medium/large or complex buildings",
+                          detection: "Each device has an address",
+                          pros: "Pinpoint info, flexible cause/effect",
+                          cons: "Higher cost, configuration required",
+                          notes:
+                            "Ideal for campuses, multi-storey, interfacing",
+                        },
+                        {
+                          type: "Domestic interlinked",
+                          typical: "Houses, flats, small HMOs",
+                          detection: "Interlinked smoke/heat/CO",
+                          pros: "Quick install, low disruption",
+                          cons: "Not for large non-domestic",
+                          notes: "BS 5839-6 LD2/LD3; add CO where required",
+                        },
+                      ].map((row) => (
+                        <tr key={row.type}>
+                          <td>
+                            <b>{row.type}</b>
+                          </td>
+                          <td>{row.typical}</td>
+                          <td>{row.detection}</td>
+                          <td>{row.pros}</td>
+                          <td>{row.cons}</td>
+                          <td>{row.notes}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Mobile vertical cards */}
+                <div
+                  style={{
+                    display: isNarrow ? "grid" : "none",
+                    gridTemplateColumns: "1fr",
+                    gap: 10,
+                  }}
+                >
+                  {[
+                    {
+                      type: "Conventional",
+                      typical: "Small/medium buildings",
+                      detection: "Zones (groups of devices)",
+                      pros: "Lower cost, simple",
+                      cons: "No per-device pinpointing",
+                      notes: "Good for shops/offices with modest complexity",
+                    },
+                    {
+                      type: "Addressable",
+                      typical: "Medium/large or complex buildings",
+                      detection: "Each device has an address",
+                      pros: "Pinpoint info, flexible cause/effect",
+                      cons: "Higher cost, configuration required",
+                      notes: "Ideal for campuses, multi-storey, interfacing",
+                    },
+                    {
+                      type: "Domestic interlinked",
+                      typical: "Houses, flats, small HMOs",
+                      detection: "Interlinked smoke/heat/CO",
+                      pros: "Quick install, low disruption",
+                      cons: "Not for large non-domestic",
+                      notes: "BS 5839-6 LD2/LD3; add CO where required",
+                    },
+                  ].map((row) => (
+                    <div
+                      key={row.type}
+                      style={{
+                        border: "1px solid #e5e7eb",
+                        borderRadius: 12,
+                        padding: 14,
+                        background: "#fff",
+                      }}
+                    >
+                      <div style={{ fontWeight: 700, marginBottom: 4 }}>
+                        {row.type}
+                      </div>
+                      <div style={{ fontSize: "0.95rem", marginBottom: 4 }}>
+                        <b>Use:</b> {row.typical}
+                      </div>
+                      <div style={{ marginBottom: 4 }}>
+                        <b>Detection:</b> {row.detection}
+                      </div>
+                      <div style={{ marginBottom: 4 }}>
+                        <b>Pros:</b> {row.pros}
+                      </div>
+                      <div style={{ marginBottom: 4 }}>
+                        <b>Cons:</b> {row.cons}
+                      </div>
+                      <div>
+                        <b>Notes:</b> {row.notes}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              {/* Vertical image on the right */}
+              {/* Image */}
               <figure
                 className="thumb"
                 style={{
                   order: 2,
-                  height: "100%", // fill full grid height
-                  display: "flex",
+                  marginTop: isNarrow ? 16 : 0,
+                  display: "block",
+                  height: "auto",
                 }}
               >
                 <img
@@ -1220,9 +1420,11 @@ export default function FireAlarmsPremium() {
                   alt="System comparison illustrated with vertical layout"
                   style={{
                     width: "100%",
-                    height: "100%",
-                    objectFit: "fit", // makes sure it fills without distortion
-                    
+                    height: "auto",
+                    objectFit: "contain",
+                    display: "block",
+                    borderRadius: 12,
+                    maxHeight: isNarrow ? "70vh" : "100%",
                   }}
                 />
               </figure>
@@ -1248,7 +1450,19 @@ export default function FireAlarmsPremium() {
               Scope + drawings upfront, so you know exactly what you’re getting
               before you commit.
             </p>
-            <div className="grid-4 mt-16">
+
+            {/* Grid wrapper */}
+            <div
+              className="mt-16"
+              style={{
+                display: "grid",
+                gridTemplateColumns: isNarrow
+                  ? "1fr"
+                  : "repeat(4, minmax(0, 1fr))",
+                gap: isNarrow ? 12 : 16,
+                alignItems: "start",
+              }}
+            >
               {[
                 {
                   key: "design",
@@ -1337,42 +1551,83 @@ export default function FireAlarmsPremium() {
                 },
               ].map(function (s) {
                 return (
-                  <div key={s.key} className="step">
-                    <div className="icon" aria-hidden="true">
-                      <svg width="22" height="22" viewBox="0 0 24 24">
+                  <div
+                    key={s.key}
+                    className="step"
+                    style={{
+                      background: "#0e1117", // dark card to suit section--dark
+                      border: "1px solid #1f2937",
+                      borderRadius: 12,
+                      padding: isNarrow ? 12 : 14,
+                      color: "#e5e7eb",
+                      display: "flex",
+                      flexDirection: "column",
+                      minHeight: 0,
+                      height: "100%",
+                    }}
+                  >
+                    {/* Icon + title */}
+                    <div
+                      className="icon"
+                      aria-hidden="true"
+                      style={{
+                        width: 32,
+                        height: 32,
+                        borderRadius: 8,
+                        display: "grid",
+                        placeItems: "center",
+                        background: "#111827",
+                        marginBottom: 8,
+                      }}
+                    >
+                      <svg width="18" height="18" viewBox="0 0 24 24">
                         <path
                           fill="currentColor"
                           d="M12 3L2 9l10 6l10-6l-10-6Z"
                         />
                       </svg>
                     </div>
-                    <h3 style={{ margin: "2px 0 6px", color: "#fff" }}>
+
+                    <h3
+                      style={{
+                        margin: "2px 0 6px",
+                        color: "#fff",
+                        fontSize: 18,
+                      }}
+                    >
                       {s.title}
                     </h3>
-                    <ul className="list list--disc">
+
+                    {/* Bullet list */}
+                    <ul
+                      className="list list--disc"
+                      style={{
+                        margin: 0,
+                        paddingLeft: 18,
+                        lineHeight: 1.35,
+                        fontSize: 14,
+                        display: "grid",
+                        gap: 6,
+                      }}
+                    >
                       {s.bullets.map(function (b) {
                         return <li key={b}>{b}</li>;
                       })}
                     </ul>
+
+                    {/* Included line */}
                     {s.includes && s.includes.length > 0 ? (
                       <p
                         className="small"
-                        style={{ margin: "8px 0 0 0", opacity: 0.9 }}
+                        style={{
+                          margin: "10px 0 0 0",
+                          opacity: 0.9,
+                          fontSize: 13,
+                        }}
                       >
                         <b>What’s included:</b> {s.includes.join(" • ")}
                       </p>
                     ) : null}
-                    <div className="banner">
-                      <img
-                        loading="lazy"
-                        decoding="async"
-                        src={s.image.src}
-                        width={s.image.w}
-                        height={s.image.h}
-                        alt={s.image.alt}
-                        style={{ width: "100%", height: "auto" }}
-                      />
-                    </div>
                   </div>
                 );
               })}
@@ -1390,7 +1645,17 @@ export default function FireAlarmsPremium() {
             <h2 id="sector-title" className="h2">
               Who we help
             </h2>
-            <div className="grid-4 mt-14">
+
+            <div
+              className="mt-14"
+              style={{
+                display: "grid",
+                // 👇 4 columns on desktop, 2 columns on mobile
+                gridTemplateColumns: isNarrow ? "1fr 1fr" : "repeat(4, 1fr)",
+                gap: isNarrow ? 12 : 20,
+                alignItems: "start",
+              }}
+            >
               {[
                 [
                   "Landlords & HMOs",
@@ -1420,7 +1685,18 @@ export default function FireAlarmsPremium() {
                 ],
               ].map(function (item, i) {
                 return (
-                  <div key={item[0]} className="card">
+                  <div
+                    key={item[0]}
+                    className="card"
+                    style={{
+                      background: "#fff",
+                      border: "1px solid #e5e7eb",
+                      borderRadius: 12,
+                      padding: isNarrow ? 10 : 14,
+                      boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+                      textAlign: "center",
+                    }}
+                  >
                     <div className="thumb" style={{ marginBottom: 8 }}>
                       <img
                         loading="lazy"
@@ -1430,10 +1706,21 @@ export default function FireAlarmsPremium() {
                           item[0] +
                           " — representative interior or corridor (no faces)"
                         }
+                        style={{
+                          width: "100%",
+                          height: "auto",
+                          borderRadius: 10,
+                          display: "block",
+                        }}
                       />
                     </div>
-                    <h3>{item[0]}</h3>
-                    <p className="mt-6">{item[1]}</p>
+                    <h3 style={{ fontSize: 16, marginBottom: 4 }}>{item[0]}</h3>
+                    <p
+                      className="mt-6"
+                      style={{ fontSize: 14, lineHeight: 1.4 }}
+                    >
+                      {item[1]}
+                    </p>
                   </div>
                 );
               })}
@@ -1477,7 +1764,7 @@ export default function FireAlarmsPremium() {
                 </ul>
               </div>
             </div>
-            
+
             <p className="meta mt-8">
               Monitoring is via an ARC with confirmed-alarm protocols and
               keyholder notification. No direct autodial to Fire & Rescue.
@@ -1495,50 +1782,65 @@ export default function FireAlarmsPremium() {
             <p className="small mt-6">
               Clear records for compliance and handover.
             </p>
-            <div style={{ overflowX: "auto" }} className="mt-12">
-              <table className="table" aria-label="Documentation pack contents">
-                <thead>
-                  <tr>
-                    <th scope="col">Document</th>
-                    <th scope="col">Purpose</th>
-                    <th scope="col">Format</th>
-                    <th scope="col">When issued</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    [
-                      "Design/Installation/Commissioning Certificates",
-                      "Formal record that work meets scope and standard",
-                      "PDF (signed)",
-                      "At handover",
-                    ],
-                    [
-                      "Zone Chart",
-                      "Shows zones for alarm/fault localisation",
-                      "Printed + PDF",
-                      "At handover",
-                    ],
-                    [
-                      "Device/Asset List",
-                      "Every device & location for maintenance",
-                      "Spreadsheet + PDF",
-                      "At handover",
-                    ],
-                    [
-                      "As-fitted Drawings",
-                      "Final device positions, zoning, routes (where applicable)",
-                      "PDF (source by agreement)",
-                      "At/after handover",
-                    ],
-                    [
-                      "Logbook",
-                      "User’s record for weekly tests, faults, servicing",
-                      "Printed",
-                      "At handover",
-                    ],
-                  ].map(function (row) {
-                    return (
+
+            <div className="mt-12">
+              {/* Desktop/tablet table */}
+              <div
+                style={{
+                  overflowX: "auto",
+                  display: isNarrow ? "none" : "block",
+                }}
+              >
+                <table
+                  className="table"
+                  aria-label="Documentation pack contents"
+                  style={{
+                    width: "100%",
+                    borderCollapse: "collapse",
+                    border: "1px solid #e5e7eb",
+                  }}
+                >
+                  <thead style={{ background: "#f9fafb" }}>
+                    <tr>
+                      <th scope="col">Document</th>
+                      <th scope="col">Purpose</th>
+                      <th scope="col">Format</th>
+                      <th scope="col">When issued</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      [
+                        "Design/Installation/Commissioning Certificates",
+                        "Formal record that work meets scope and standard",
+                        "PDF (signed)",
+                        "At handover",
+                      ],
+                      [
+                        "Zone Chart",
+                        "Shows zones for alarm/fault localisation",
+                        "Printed + PDF",
+                        "At handover",
+                      ],
+                      [
+                        "Device/Asset List",
+                        "Every device & location for maintenance",
+                        "Spreadsheet + PDF",
+                        "At handover",
+                      ],
+                      [
+                        "As-fitted Drawings",
+                        "Final device positions, zoning, routes (where applicable)",
+                        "PDF (source by agreement)",
+                        "At/after handover",
+                      ],
+                      [
+                        "Logbook",
+                        "User’s record for weekly tests, faults, servicing",
+                        "Printed",
+                        "At handover",
+                      ],
+                    ].map((row) => (
                       <tr key={row[0]}>
                         <td>
                           <b>{row[0]}</b>
@@ -1547,10 +1849,75 @@ export default function FireAlarmsPremium() {
                         <td>{row[2]}</td>
                         <td>{row[3]}</td>
                       </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Mobile cards */}
+              <div
+                style={{
+                  display: isNarrow ? "grid" : "none",
+                  gridTemplateColumns: "1fr",
+                  gap: 10,
+                }}
+              >
+                {[
+                  [
+                    "Design/Installation/Commissioning Certificates",
+                    "Formal record that work meets scope and standard",
+                    "PDF (signed)",
+                    "At handover",
+                  ],
+                  [
+                    "Zone Chart",
+                    "Shows zones for alarm/fault localisation",
+                    "Printed + PDF",
+                    "At handover",
+                  ],
+                  [
+                    "Device/Asset List",
+                    "Every device & location for maintenance",
+                    "Spreadsheet + PDF",
+                    "At handover",
+                  ],
+                  [
+                    "As-fitted Drawings",
+                    "Final device positions, zoning, routes (where applicable)",
+                    "PDF (source by agreement)",
+                    "At/after handover",
+                  ],
+                  [
+                    "Logbook",
+                    "User’s record for weekly tests, faults, servicing",
+                    "Printed",
+                    "At handover",
+                  ],
+                ].map((row) => (
+                  <div
+                    key={row[0]}
+                    style={{
+                      border: "1px solid #e5e7eb",
+                      borderRadius: 12,
+                      padding: 14,
+                      background: "#fff",
+                    }}
+                  >
+                    <div style={{ fontWeight: 700, marginBottom: 6 }}>
+                      {row[0]}
+                    </div>
+                    <div style={{ marginBottom: 4 }}>
+                      <b>Purpose:</b> {row[1]}
+                    </div>
+                    <div style={{ marginBottom: 4 }}>
+                      <b>Format:</b> {row[2]}
+                    </div>
+                    <div>
+                      <b>When issued:</b> {row[3]}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -1569,44 +1936,59 @@ export default function FireAlarmsPremium() {
               Snapshot of typical non-domestic servicing (scope varies by
               system).
             </p>
-            <div style={{ overflowX: "auto" }} className="mt-12">
-              <table className="table" aria-label="Maintenance checklist">
-                <thead>
-                  <tr>
-                    <th scope="col">Area</th>
-                    <th scope="col">Examples</th>
-                    <th scope="col">Outcome</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    [
-                      "Device tests",
-                      "Smoke/heat detectors, MCPs, sounders, interfaces",
-                      "Operation confirmed & recorded",
-                    ],
-                    [
-                      "Audibility",
-                      "Spot checks vs objectives (dB(A))",
-                      "Meets objectives or remedials advised",
-                    ],
-                    [
-                      "Panel & power",
-                      "Indicators, faults, battery condition/charge",
-                      "Healthy state or actions listed",
-                    ],
-                    [
-                      "Cause & effect",
-                      "Door releases, plant shutdown, lifts",
-                      "Sequence verified or issues raised",
-                    ],
-                    [
-                      "Records",
-                      "Logbook updates, asset list changes",
-                      "Documentation up to date",
-                    ],
-                  ].map(function (row) {
-                    return (
+
+            <div className="mt-12">
+              {/* Desktop/tablet table */}
+              <div
+                style={{
+                  overflowX: "auto",
+                  display: isNarrow ? "none" : "block",
+                }}
+              >
+                <table
+                  className="table"
+                  aria-label="Maintenance checklist"
+                  style={{
+                    width: "100%",
+                    borderCollapse: "collapse",
+                    border: "1px solid #e5e7eb",
+                  }}
+                >
+                  <thead style={{ background: "#f9fafb" }}>
+                    <tr>
+                      <th scope="col">Area</th>
+                      <th scope="col">Examples</th>
+                      <th scope="col">Outcome</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      [
+                        "Device tests",
+                        "Smoke/heat detectors, MCPs, sounders, interfaces",
+                        "Operation confirmed & recorded",
+                      ],
+                      [
+                        "Audibility",
+                        "Spot checks vs objectives (dB(A))",
+                        "Meets objectives or remedials advised",
+                      ],
+                      [
+                        "Panel & power",
+                        "Indicators, faults, battery condition/charge",
+                        "Healthy state or actions listed",
+                      ],
+                      [
+                        "Cause & effect",
+                        "Door releases, plant shutdown, lifts",
+                        "Sequence verified or issues raised",
+                      ],
+                      [
+                        "Records",
+                        "Logbook updates, asset list changes",
+                        "Documentation up to date",
+                      ],
+                    ].map((row) => (
                       <tr key={row[0]}>
                         <td>
                           <b>{row[0]}</b>
@@ -1614,10 +1996,67 @@ export default function FireAlarmsPremium() {
                         <td>{row[1]}</td>
                         <td>{row[2]}</td>
                       </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Mobile cards */}
+              <div
+                style={{
+                  display: isNarrow ? "grid" : "none",
+                  gridTemplateColumns: "1fr",
+                  gap: 10,
+                }}
+              >
+                {[
+                  [
+                    "Device tests",
+                    "Smoke/heat detectors, MCPs, sounders, interfaces",
+                    "Operation confirmed & recorded",
+                  ],
+                  [
+                    "Audibility",
+                    "Spot checks vs objectives (dB(A))",
+                    "Meets objectives or remedials advised",
+                  ],
+                  [
+                    "Panel & power",
+                    "Indicators, faults, battery condition/charge",
+                    "Healthy state or actions listed",
+                  ],
+                  [
+                    "Cause & effect",
+                    "Door releases, plant shutdown, lifts",
+                    "Sequence verified or issues raised",
+                  ],
+                  [
+                    "Records",
+                    "Logbook updates, asset list changes",
+                    "Documentation up to date",
+                  ],
+                ].map((row) => (
+                  <div
+                    key={row[0]}
+                    style={{
+                      border: "1px solid #e5e7eb",
+                      borderRadius: 12,
+                      padding: 14,
+                      background: "#fff",
+                    }}
+                  >
+                    <div style={{ fontWeight: 700, marginBottom: 6 }}>
+                      {row[0]}
+                    </div>
+                    <div style={{ marginBottom: 4 }}>
+                      <b>Examples:</b> {row[1]}
+                    </div>
+                    <div>
+                      <b>Outcome:</b> {row[2]}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -1663,11 +2102,8 @@ export default function FireAlarmsPremium() {
                 );
               })}
             </div>
-            
           </div>
         </section>
-
-        
 
         {/* Minimal Service JSON-LD */}
         <script
