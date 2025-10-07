@@ -1413,21 +1413,7 @@ export default function FireAlarmsPremium() {
                   height: "auto",
                 }}
               >
-                 <img
-                  loading="lazy"
-                  decoding="async"
-                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1759102806/ChatGPT_Image_Sep_29_2025_04_39_49_AM_eiyvjh.png"
-                  alt="Clean UK fire alarm detector with tidy FP red cabling and labelled trunking"
-                  style={{
-                    width: "100%",
-                    height: isNarrow ? "100%" : "auto", // auto on mobile
-                    objectFit: isNarrow ? "fill" : "cover", // full image on mobile
-                    borderRadius: 12,
-                    display: "block",
-                    maxWidth: "100%",
-                  }}
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                />
+              
                 <img
                   loading="lazy"
                   decoding="async"
