@@ -30,7 +30,7 @@ const Stack = () => {
         <Route path="/services/CCTV" element={<CCTV />} />
         <Route path="/contact" element={<ContactUsPage />} />
         <Route path="/faq" element={<FAQPage />} />
-        <Route path="/services/Installation-Maintenance" element={<ElectricalServices />} />
+        <Route path="/services/Electrical-Installation-Maintenance" element={<ElectricalServices />} />
         <Route path="/services/Emergency-Electrical" element={<EmergencyElectrical />} />
         <Route path="/areas-we-cover" element={<Location />} />
       </Routes>

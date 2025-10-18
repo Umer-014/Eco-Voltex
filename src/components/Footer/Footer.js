@@ -52,7 +52,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/services/Installation-Maintenance"
+                  to="/services/Electrical-Installation-Maintenance"
                   className="text-light text-decoration-none"
                 >
                   Electrical Installation & Maintenance
