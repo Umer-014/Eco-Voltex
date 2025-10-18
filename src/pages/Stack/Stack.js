@@ -10,7 +10,7 @@ import FAQPage from "../FAQ/FAQPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ScrollToTop from "../../components/Top/ScrollToTop";
 import LiveChat from '../../components/Chat Icon/LiveChat';
-import ElectricalServicesl from "../Services/Electrical Installation & Maintenance/ElectricalServices";
+import ElectricalServices from "../Services/Electrical Installation & Maintenance/ElectricalServices";
 import EmergencyElectrical from "../Services/Electrical Installation & Maintenance/EmergencyElectrical";
 
 import Location from "../Locations/Location";
@@ -30,7 +30,7 @@ const Stack = () => {
         <Route path="/services/CCTV" element={<CCTV />} />
         <Route path="/contact" element={<ContactUsPage />} />
         <Route path="/faq" element={<FAQPage />} />
-        <Route path="/services/Installation-Maintenance" element={<ElectricalServicesl />} />
+        <Route path="/services/Installation-Maintenance" element={<ElectricalServices />} />
         <Route path="/services/Emergency-Electrical" element={<EmergencyElectrical />} />
         <Route path="/areas-we-cover" element={<Location />} />
       </Routes>
