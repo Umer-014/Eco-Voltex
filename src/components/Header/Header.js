@@ -67,8 +67,11 @@ const Header = () => {
             <div
               className={`dropdown-menu ${drawerDropdownOpen ? "show" : ""}`}
             >
-              <Link to="/services/electrical" className="dropdown-item">
+              <Link to="/services/Electrical-Installation-Maintenance" className="dropdown-item">
                 Electrical Installation & Maintenance
+              </Link>
+              <Link to="/services/Emergency-Electrical" className="dropdown-item">
+                Emergency Electrical Services
               </Link>
               <Link to="/services/Fire-alarms" className="dropdown-item">
                 Fire Alarm Systems
@@ -123,8 +126,11 @@ const Header = () => {
             </button>
             {dropdownOpen && (
               <div className="dropdown-menu">
-                <Link to="/services/electrical" className="dropdown-item">
+                <Link to="/services/Electrical-Installation-Maintenance" className="dropdown-item">
                   Electrical Installation & Maintenance
+                </Link>
+                <Link to="/services/Emergency-Electrical" className="dropdown-item">
+                  Emergency Electrical Services
                 </Link>
                 <Link to="/services/Fire-alarms" className="dropdown-item">
                   Fire Alarm Systems
