@@ -26,82 +26,82 @@ export default function ElectricalServices() {
     );
   };
 
-  // Home (domestic) service packages
+  // HOME packages (aligned to reference tone)
   const homePlans = [
     {
-      name: "Safety Check & Minor Works",
-      tag: "Entry",
-      price: "from £149",
-      meta: "Fault find (1 hr) + MEIWC where applicable",
-      bullets: [
-        "Identify tripping RCD/RCBO faults",
-        "Replace accessories (like-for-like)",
-        "Test results recorded",
-        "12‑month workmanship warranty",
-      ],
-    },
-    {
-      name: "CU Upgrade (Dual RCD/RCBO)",
+      name: "Lighting Installations",
       tag: "Popular",
-      price: "from £549",
-      meta: "Dual‑RCD or all‑RCBO board + SPD & labelling",
+      price: "from £149",
+      meta: "Indoor & outdoor lighting — LED, feature & security",
       bullets: [
-        "BS 7671 compliant labelling",
-        "RCD/RCBO protection to circuits",
-        "Initial verification + EIC issued",
-        "Building Regs notification (Part P)",
+        "Design & positioning advice",
+        "Neat second-fix and clean finish",
+        "Testing & minor making good",
+        "12-month workmanship guarantee",
       ],
     },
     {
-      name: "Partial/Full Rewire",
-      tag: "Premium",
-      price: "from £2,499",
-      meta: "Kitchen/extension or whole‑home rewire",
+      name: "Consumer Unit Upgrades",
+      tag: "Safety First",
+      price: "from £549",
+      meta: "Dual-RCD or all-RCBO board with SPD & clear labelling",
       bullets: [
-        "Neat containment & chasing",
-        "Low‑energy LED & A‑rated accessories",
-        "Full test schedule & certification",
-        "2‑visit snag & handover",
+        "BS 7671 compliant components",
+        "Initial verification & EIC issued",
+        "Part P Building Control notification",
+        "RCD/RCBO protection to circuits",
+      ],
+    },
+    {
+      name: "Full Property Rewiring",
+      tag: "Comprehensive",
+      price: "from £2,499",
+      meta: "Replace outdated wiring to current standards",
+      bullets: [
+        "Planned routes & neat containment",
+        "Low-energy LED and modern controls",
+        "Full test results & certification",
+        "Snag visit and handover pack",
       ],
     },
   ];
 
-  // Business (commercial) service packages
+  // BUSINESS packages (aligned to reference tone)
   const businessPlans = [
+    {
+      name: "Distribution Upgrades",
+      tag: "Popular",
+      price: "from £1,199",
+      meta: "Boards with RCBOs, SPD, schedules & labelling",
+      bullets: [
+        "Load assessment & balancing",
+        "Lock-off & isolation procedure",
+        "Full BS 7671 test results",
+        "As-installed single-line diagram",
+      ],
+    },
+    {
+      name: "Fit-Out & Small Works",
+      tag: "Tailored",
+      price: "POA",
+      meta: "Power, lighting, containment, sub-mains & more",
+      bullets: [
+        "CAT A/B office, retail, light industrial",
+        "Emergency lighting to BS 5266",
+        "Energy-efficient LED design",
+        "Out-of-hours working available",
+      ],
+    },
     {
       name: "Planned Maintenance (PPM)",
       tag: "Best Value",
       price: "from £39/mo",
-      meta: "Quarterly checks + emergency response add‑on",
+      meta: "Scheduled checks with priority callouts",
       bullets: [
-        "Thermal & visual checks (sampled)",
-        "Logbook updates & remedial quotes",
-        "Lamp/gear replacements",
+        "Thermal & visual sampling",
+        "Asset register & logbook updates",
+        "Remedial tracking & quotes",
         "Priority fault attendance",
-      ],
-    },
-    {
-      name: "Distribution Upgrade",
-      tag: "Popular",
-      price: "from £1,199",
-      meta: "New boards with SPD, RCBOs & labelling",
-      bullets: [
-        "Load balancing & schedules",
-        "Lock‑off & isolation procedure",
-        "Full test results (BS 7671)",
-        "O&M pack + single‑line diagram",
-      ],
-    },
-    {
-      name: "Fit‑Out & Small Works",
-      tag: "Tailored",
-      price: "POA",
-      meta: "Circuits, containment, lighting, power",
-      bullets: [
-        "CAT A/B office, retail, light industrial",
-        "Emergency lighting to BS 5266",
-        "Energy‑efficient LED design",
-        "Out‑of‑hours working available",
       ],
     },
   ];
@@ -109,36 +109,38 @@ export default function ElectricalServices() {
   const plans = audience === "home" ? homePlans : businessPlans;
 
   const featureItems = [
-    { icon: "📘", title: "BS 7671 Compliance", text: "All works designed, installed and tested to the IET Wiring Regulations." },
-    { icon: "🛡️", title: "RCD/RCBO & SPD", text: "Modern protection devices for shock, fault and surge resilience." },
-    { icon: "🌍", title: "Earthing & Bonding", text: "Main & supplementary bonding verified; TT/TN systems correctly treated." },
-    { icon: "🧪", title: "Testing & Certification", text: "EIC or MEIWC issued; results recorded with circuit schedules & labelling." },
-    { icon: "🔧", title: "Fault Finding", text: "Systematic diagnostics for tripping, overheats, damaged cables and accessories." },
-    { icon: "💡", title: "Efficient Lighting", text: "Design & install of low‑energy LED with controls where suitable." },
-    { icon: "🏠", title: "Part P (Domestic)", text: "Notifiable works registered and Building Regulations compliance confirmed." },
-    { icon: "📦", title: "Neat Containment", text: "Surface/flush routes with tidy finish, fire‑stopping where required." },
-    { icon: "📄", title: "O&M Documentation", text: "Handover pack: certs, user guidance, photos and product warranties." },
+    {  title: "24/7 Emergency Support", text: "Rapid response for urgent faults and safety issues." },
+    {  title: "1-Hour Rapid Response", text: "Same-day attendance available across Greater London." },
+    {  title: "Fully Qualified Engineers", text: "NAPIT-approved, ECS Gold Card, and audit-ready documentation." },
+    {  title: "UKAS & NAPIT Approved", text: "Independent assessment of competence and compliance." },
+    {  title: "Free Estimates", text: "Clear, itemised quotes with no hidden extras." },
+    {  title: "12-Month Guarantee", text: "Workmanship warranty as standard on installations." },
+    {  title: "Proper Certification", text: "EIC/MEIWC issued with circuit schedules and labelling." },
+    {  title: "Excellent Reviews", text: "Trusted by homeowners, landlords and facilities teams." },
+  ];
+
+  const boroughs = [
+    "Barking & Dagenham","Barnet","Bexley","Brent","Bromley","Camden","City of London","Croydon",
+    "Ealing","Enfield","Greenwich","Hackney","Hammersmith & Fulham","Haringey","Harrow","Havering",
+    "Hillingdon","Hounslow","Islington","Kensington & Chelsea","Lambeth","Lewisham","Merton","Newham",
+    "Redbridge","Richmond upon Thames","Southwark","Sutton","Tower Hamlets","Waltham Forest","Wandsworth","Westminster"
   ];
 
   return (
     <>
       <Header />
-      <main className="cctv cctv--page">{/* reuse classnames for identical styling */}
-        {/* Sticky CTA */}
-        <div className="ev-sticky-cta">
-          <span className="ev-sticky-cta__label">Need an electrician this week?</span>
-          <a href="/contact" className="ev-btn ev-btn--primary">Get A Fast Quote</a>
-          <a href="#packages" className="ev-btn ev-btn--outline">See Pricing</a>
-        </div>
+      <main className="cctv cctv--page">
+             
 
         {/* HERO */}
         <section id="overview" className="cctv-section cctv-hero" aria-labelledby="hero-title">
           <div className="cctv-container cctv-grid cctv-grid-12 cctv-align-center">
             <div className="cctv-col-7">
-              <h1 id="hero-title" className="cctv-h1">Electrical Installation & Maintenance — London Homes & Businesses</h1>
-              <p className="cctv-hero-sub">Design‑led wiring, neat containment and rigorous testing to BS 7671 — from small works to full rewires and commercial upgrades.</p>
-              <p className="cctv-hero-proof">“Professional, tidy, and thorough testing. Power restored safely the same day.” — Facilities Lead, NW1 ★★★★★</p>
-
+              <h1 id="hero-title" className="cctv-h1">Reliable Electrical Installations Across Greater London</h1>
+              <p className="cctv-hero-sub">
+                Safe, efficient and compliant electrical work for homes and businesses — from new lighting and additional sockets to consumer unit upgrades and full rewiring.
+              </p>
+              
               <div className="cctv-row" role="tablist" aria-label="Audience selector">
                 <button
                   className={`cctv-chip ${audience === "home" ? "cctv-chip--active" : ""}`}
@@ -161,13 +163,13 @@ export default function ElectricalServices() {
               <ul className="cctv-hero-bullets">
                 {(audience === "home"
                   ? [
-                      "Consumer unit upgrades with SPD & RCBOs",
-                      "Kitchen/extension circuits & EV/heat‑pump feeds",
-                      "Testing & certification with clear labelling",
+                      "Indoor/outdoor lighting installed & certified",
+                      "Extra sockets, cooker points & EV/heat-pump feeds",
+                      "Consumer unit upgrades with RCBOs & SPD",
                     ]
                   : [
-                      "Distribution boards, sub‑mains & containment",
-                      "Emergency lighting & life‑safety feeds",
+                      "Distribution boards, sub-mains & containment",
+                      "Emergency lighting to BS 5266 & life-safety feeds",
                       "PPM schedules with remedial tracking",
                     ]).map((x) => <li key={x}>{x}</li>)}
               </ul>
@@ -182,7 +184,7 @@ export default function ElectricalServices() {
               <div className="cctv-figure">
                 <img
                   src="https://res.cloudinary.com/dug1siluu/image/upload/v1758040001/ev_electrical_install_hero_placeholder.png"
-                  alt="Eco Voltex electrical installation and maintenance"
+                  alt="Eco Voltex electricians installing lighting and consumer unit"
                   className="cctv-img"
                   loading="lazy"
                   decoding="async"
@@ -194,7 +196,7 @@ export default function ElectricalServices() {
 
         {/* SOLUTIONS */}
         <section id="solutions" className="cctv-section">
-          <h2 className="cctv-h2" style={{ textAlign: "center" }}>Tailored Solutions For Homes, Landlords & Businesses</h2>
+          <h2 className="cctv-h2" style={{ textAlign: "center" }}>Professional Electrical Installations — Homes & Businesses</h2>
 
           <div
             className="cctv-container"
@@ -204,22 +206,42 @@ export default function ElectricalServices() {
             <div>
               <div style={{ display:"grid", gridTemplateColumns:"1fr", gap:"12px", marginTop:"2px" }}>
                 <div className="cctv-card">
-                  <p className="cctv-h3">Residential & Landlords</p>
+                  <p className="cctv-h3">Lighting — Indoor & Outdoor</p>
                   <ul className="cctv-list cctv-list--disc cctv-mt-8">
-                    <li>Consumer unit upgrades with SPD & labelling</li>
-                    <li>Kitchen, extension & outbuilding circuits</li>
-                    <li>EV/heat‑pump supplies, bonding & earthing</li>
-                    <li>Planned maintenance & fault attendance</li>
+                    <li>Ambient, task & feature lighting (LED)</li>
+                    <li>Security and landscape lighting</li>
+                    <li>Switching & control upgrades</li>
+                    <li>Testing and certification included</li>
                   </ul>
                 </div>
 
                 <div className="cctv-card">
-                  <p className="cctv-h3">Commercial & Facilities</p>
+                  <p className="cctv-h3">Sockets, Switches & Power</p>
                   <ul className="cctv-list cctv-list--disc cctv-mt-8">
-                    <li>Distribution boards, sub‑mains, containment</li>
-                    <li>Lighting design (LED) & emergency lighting</li>
-                    <li>Load assessments & single‑line diagrams</li>
-                    <li>PPM programmes with asset registers</li>
+                    <li>New points, spurs & cooker supplies</li>
+                    <li>Kitchen/extension circuits and outbuildings</li>
+                    <li>EV/heat-pump feeds, earthing & bonding</li>
+                    <li>Neat containment and labels</li>
+                  </ul>
+                </div>
+
+                <div className="cctv-card">
+                  <p className="cctv-h3">Consumer Units & Rewiring</p>
+                  <ul className="cctv-list cctv-list--disc cctv-mt-8">
+                    <li>RCBO/RCD protection with SPD</li>
+                    <li>Replace outdated wiring to current standards</li>
+                    <li>Full test schedules & EIC/MEIWC</li>
+                    <li>Building Regulations (Part P) notification</li>
+                  </ul>
+                </div>
+
+                <div className="cctv-card">
+                  <p className="cctv-h3">Smart Home & Security</p>
+                  <ul className="cctv-list cctv-list--disc cctv-mt-8">
+                    <li>Smart lighting, heating & automation</li>
+                    <li>CCTV and alarm system power points</li>
+                    <li>Network & comms containment</li>
+                    <li>O&M pack and user guidance</li>
                   </ul>
                 </div>
               </div>
@@ -229,7 +251,7 @@ export default function ElectricalServices() {
             <div className="cctv-figure" style={{ marginLeft:"auto" }}>
               <img
                 src="https://res.cloudinary.com/dug1siluu/image/upload/v1758040137/ev_electrical_solutions_placeholder.png"
-                alt="Electrical solutions overview"
+                alt="Examples of lighting, power and consumer unit works"
                 className="cctv-img"
                 loading="lazy"
                 decoding="async"
@@ -238,17 +260,16 @@ export default function ElectricalServices() {
           </div>
         </section>
 
-        {/* WHAT YOU GET */}
+        {/* WHY CHOOSE US */}
         <section id="features" className="cctv-section cctv-soft">
           <div className="cctv-container">
-            <h2 className="cctv-h2">What You Get With Eco Voltex Electrical</h2>
+            <h2 className="cctv-h2">Why Choose Eco Voltex?</h2>
 
             <div className="features-grid cctv-mt-16" aria-label="Key features">
               {featureItems.map((f) => (
                 <article key={f.title} className="feature" role="listitem">
                   <header className="feature-head">
-                    <div className="feature-icon" aria-hidden="true">{f.icon}</div>
-                    <div className="feature-title">{f.title}</div>
+                                        <div className="feature-title">{f.title}</div>
                   </header>
                   <p>{f.text}</p>
                 </article>
@@ -262,18 +283,18 @@ export default function ElectricalServices() {
           <div className="cctv-container" style={{ display:"grid", gridTemplateColumns:"2fr 1fr", gap:"24px", alignItems:"start" }}>
             {/* LEFT */}
             <div>
-              <h2 className="cctv-h2">Our Installation Process</h2>
+              <h2 className="cctv-h2">Our Electrical Installation Process</h2>
               <ol
                 style={{ display:"grid", gridTemplateColumns:"repeat(2,1fr)", gap:"16px", marginTop:"16px", padding:0, listStyle:"none" }}
                 aria-label="Installation steps"
               >
                 {[
-                  ["Survey & Design","Discuss scope, map circuits, containment and protective devices."],
-                  ["Quote & Plan","Transparent proposal with spec, drawings (where needed) and programme."],
-                  ["First Fix","Routes prepared; containment and cabling installed neatly."],
-                  ["Second Fix","Accessories, luminaires and boards installed & labelled."],
-                  ["Test & Certify","Full test schedule to BS 7671 and EIC/MEIWC issued."],
-                  ["Handover & Aftercare","User guidance, O&M pack and planned maintenance options."],
+                  ["Initial Contact & Assessment","Tell us what you need — we’ll advise on urgency and next steps."],
+                  ["Survey & Design","We agree the scope, routes, protective devices and programme."],
+                  ["Quote & Booking","Clear, itemised proposal with options; choose a convenient slot."],
+                  ["First Fix","Containment and cabling installed neatly, with minimal disruption."],
+                  ["Second Fix","Accessories, luminaires and boards fitted and labelled."],
+                  ["Test, Certify & Handover","BS 7671 testing, EIC/MEIWC issued, O&M pack and user guidance."],
                 ].map(([k,v],i)=>(
                   <li
                     key={i}
@@ -291,7 +312,7 @@ export default function ElectricalServices() {
             <div className="cctv-figure">
               <img
                 src="https://res.cloudinary.com/dug1siluu/image/upload/v1758040209/ev_electrical_process_placeholder.png"
-                alt="Eco Voltex electrical process"
+                alt="Eco Voltex installation process overview"
                 className="cctv-img"
                 loading="lazy"
                 decoding="async"
@@ -303,7 +324,7 @@ export default function ElectricalServices() {
         {/* PACKAGES */}
         <section id="packages" className="cctv-section cctv-soft">
           <div className="cctv-container">
-            <h2 className="cctv-h2">Packages — Clear & Great Value</h2>
+            <h2 className="cctv-h2">Clear Packages & Great Value</h2>
 
             <div className="cctv-row cctv-mt-8" role="tablist" aria-label="Package audience selector">
               <button
@@ -322,7 +343,9 @@ export default function ElectricalServices() {
               </button>
             </div>
 
-            <p className="cctv-meta cctv-mt-8">Guide pricing for Greater London. Final quotes depend on routes, heights, fabric, access and specification. Out‑of‑hours: +20%.</p>
+            <p className="cctv-meta cctv-mt-8">
+              Guide pricing for Greater London. Final quotes depend on routes, heights, fabric, access and specification. Out-of-hours: +20%.
+            </p>
 
             <div className="cctv-grid cctv-grid-3 cctv-mt-16">
               {plans.map((pkg) => (
@@ -337,9 +360,11 @@ export default function ElectricalServices() {
                     {pkg.bullets.map((b) => <li key={b}>{b}</li>)}
                   </ul>
                   <a href="/contact" className="cctv-btn cctv-btnPrimary cctv-btn--block cctv-mt-12">
-                    {pkg.name.includes("Fit‑Out") || pkg.name.includes("Rewire") ? "Speak To Us" : "Book Survey"}
+                    {pkg.name.includes("Rewiring") || pkg.name.includes("Fit-Out") ? "Speak To Us" : "Book Survey"}
                   </a>
-                  <p className="cctv-meta cctv-mt-8">Add‑ons: EICR packages, emergency lighting tests, surge protection, AFDDs where applicable.</p>
+                  <p className="cctv-meta cctv-mt-8">
+                    Add-ons: EICR packages, emergency lighting tests, surge protection, AFDDs where applicable.
+                  </p>
                 </div>
               ))}
             </div>
@@ -365,6 +390,8 @@ export default function ElectricalServices() {
           </div>
         </section>
 
+        
+
         {/* COMPLIANCE */}
         <section id="compliance" className="cctv-section">
           <div className="cctv-container">
@@ -373,24 +400,26 @@ export default function ElectricalServices() {
               <div className="cctv-card">
                 <p className="cctv-strong">Legislation & Standards</p>
                 <ul className="cctv-list cctv-list--disc cctv-mt-8">
-                  <li>Electricity at Work Regulations 1989 (EAWR)</li>
-                  <li>Building Regulations Part P (domestic)</li>
                   <li>BS 7671: IET Wiring Regulations</li>
+                  <li>Building Regulations Part P (domestic)</li>
+                  <li>Electricity at Work Regulations 1989 (EAWR)</li>
                 </ul>
-                <p className="cctv-meta cctv-mt-8">General information only — specifics confirmed on survey. Not legal advice.</p>
+                <p className="cctv-meta cctv-mt-8">General guidance — specific requirements confirmed on survey.</p>
               </div>
               <div className="cctv-card">
-                <p className="cctv-strong">Documentation</p>
+                <p className="cctv-strong">Certification & Notification</p>
                 <ul className="cctv-list cctv-list--disc cctv-mt-8">
                   <li>EIC/MEIWC issued on completion</li>
-                  <li>Circuit schedules and labelling provided</li>
-                  <li>Notification to Building Control where applicable</li>
+                  <li>Circuit schedules & labelling provided</li>
+                  <li>Part P notification to Building Control where applicable</li>
                 </ul>
-                <p className="cctv-meta cctv-mt-8">We also offer EICR packages if you need a full condition report.</p>
+                <p className="cctv-meta cctv-mt-8">Eco Voltex is NAPIT-approved and UKAS-accredited.</p>
               </div>
             </div>
           </div>
         </section>
+
+        
       </main>
       <Footer />
     </>
