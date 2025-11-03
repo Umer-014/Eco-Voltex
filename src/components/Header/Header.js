@@ -90,6 +90,11 @@ const Header = () => {
               Areas We Cover
             </Link>
           </ListItem>
+          <ListItem button onClick={() => toggleDrawer(false)}>
+            <Link to="/pricing-wizard" className="nav-link">
+              Pricing Wizard
+            </Link>
+          </ListItem>
 
           <ListItem button onClick={() => toggleDrawer(false)}>
             <Link to="/faq" className="nav-link">
@@ -148,6 +153,11 @@ const Header = () => {
           <li className="nav-item">
             <Link to="/areas-we-cover" className="nav-link">
               Areas We Cover
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/pricing-wizard" className="nav-link">
+              Pricing Wizard
             </Link>
           </li>
           

@@ -12,6 +12,8 @@ import ScrollToTop from "../../components/Top/ScrollToTop";
 import LiveChat from '../../components/Chat Icon/LiveChat';
 import ElectricalServices from "../Services/Electrical Installation & Maintenance/ElectricalServices";
 import EmergencyElectrical from "../Services/Electrical Installation & Maintenance/EmergencyElectrical";
+import PricingWizardLayout from "../Pricing Layout/PricingWizardLayout";
+
 
 import Location from "../Locations/Location";
 
@@ -33,6 +35,7 @@ const Stack = () => {
         <Route path="/services/Electrical-Installation-Maintenance" element={<ElectricalServices />} />
         <Route path="/services/Emergency-Electrical" element={<EmergencyElectrical />} />
         <Route path="/areas-we-cover" element={<Location />} />
+        <Route path="/pricing-wizard" element={<PricingWizardLayout />} />
       </Routes>
     </Router>
   );
