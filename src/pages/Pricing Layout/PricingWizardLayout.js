@@ -12,13 +12,14 @@ const PRICING = {
       domain: "Residential",
       model: "select_banded",
       bands: [
-        { key: "studio", label: "Studio Flat", price: 89 },
-        { key: "1-2", label: "1–2 Bedrooms", price: 99 },
-        { key: "3-4", label: "3–4 Bedrooms", price: 129 },
-        { key: "5-6", label: "5–6 Bedrooms", price: 159 },
+        { key: "studio", label: "Studio Flat", price: 111.25 },
+        { key: "1-2", label: "1–2 Bedrooms", price: 123.75 },
+        { key: "3-4", label: "3–4 Bedrooms", price: 161.25 },
+        { key: "5-6", label: "5–6 Bedrooms", price: 198.75 },
       ],
       addons: [],
     },
+
     EICR_Commercial: {
       name: "EICR Per Circuit",
       domain: "Commercial",
@@ -26,9 +27,9 @@ const PRICING = {
       unit: "circuits",
       quantityKey: "circuits",
       bands: [
-        { upTo: 5, price: 149 },
-        { upTo: 10, price: 199 },
-        { upTo: 15, price: 249 },
+        { upTo: 5, price: 186.25 },
+        { upTo: 10, price: 248.75 },
+        { upTo: 15, price: 311.25 },
       ],
       maxHandled: 15,
       addons: [
@@ -36,10 +37,11 @@ const PRICING = {
           key: "out_of_hours",
           label: "Out-of-hours testing",
           type: "toggle",
-          price: 80,
+          price: 100,
         },
       ],
     },
+
     PAT_Residential: {
       name: "PAT Testing – Residential",
       domain: "Residential",
@@ -47,13 +49,13 @@ const PRICING = {
       unit: "appliances",
       quantityKey: "devices",
       bands: [
-        { upTo: 10, price: 69 },
-        { upTo: 20, price: 99 },
-        { upTo: 40, price: 149 },
+        { upTo: 10, price: 86.25 },
+        { upTo: 20, price: 123.75 },
+        { upTo: 40, price: 186.25 },
       ],
-
       addons: [],
     },
+
     PAT_Commercial: {
       name: "PAT Testing – Commercial",
       domain: "Commercial",
@@ -61,13 +63,13 @@ const PRICING = {
       unit: "appliances",
       quantityKey: "devices",
       bands: [
-        { upTo: 10, price: 69 },
-        { upTo: 20, price: 99 },
-        { upTo: 40, price: 149 },
+        { upTo: 10, price: 86.25 },
+        { upTo: 20, price: 123.75 },
+        { upTo: 40, price: 186.25 },
       ],
-
       addons: [],
     },
+
     EmergencyLighting_Commercial: {
       name: "Emergency Lighting Testing (BS 5266-1)",
       domain: "Commercial",
@@ -75,12 +77,13 @@ const PRICING = {
       unit: "lights",
       quantityKey: "lights",
       bands: [
-        { upTo: 3, price: 59 },
-        { upTo: 6, price: 79 },
-        { upTo: 12, price: 129 },
+        { upTo: 3, price: 73.75 },
+        { upTo: 6, price: 98.75 },
+        { upTo: 12, price: 161.25 },
       ],
       addons: [],
     },
+
     EmergencyLighting_Residential: {
       name: "Emergency Lighting Testing (BS 5266-1)",
       domain: "Residential",
@@ -88,19 +91,23 @@ const PRICING = {
       unit: "lights",
       quantityKey: "lights",
       bands: [
-        { upTo: 3, price: 59 },
-        { upTo: 6, price: 79 },
-        { upTo: 12, price: 129 },
+        { upTo: 3, price: 73.75 },
+        { upTo: 6, price: 98.75 },
+        { upTo: 12, price: 161.25 },
       ],
       addons: [],
     },
+
     Part_P: {
       name: "Part P – Certificate & LABC Notification",
       domain: "",
       model: "select_banded",
-      bands: [{ key: "reissue", label: "Reissue of certificate", price: 85 }],
+      bands: [
+        { key: "reissue", label: "Reissue of certificate", price: 106.25 },
+      ],
       addons: [],
     },
+
     Third_Party_Certification: {
       name: "Third-Party Certification (TPC)",
       domain: "Commercial",
@@ -109,19 +116,20 @@ const PRICING = {
         {
           key: "small",
           label: "Small job (1 new/altered circuit)",
-          min: 110,
-          max: 130,
+          min: 137.5,
+          max: 162.5,
         },
-        { key: "medium", label: "Medium (2–4 circuits)", min: 140, max: 170 },
+        { key: "medium", label: "Medium (2–4 circuits)", min: 175, max: 212.5 },
         {
           key: "large",
           label: "Larger (5–8 circuits or CU change)",
-          min: 180,
-          max: 220,
+          min: 225,
+          max: 275,
         },
       ],
       addons: [],
     },
+
     Fire_Alarm_Residential: {
       name: "Fire Alarm Certificate – Residential (BS 5839-6)",
       domain: "Residential",
@@ -129,13 +137,13 @@ const PRICING = {
       unit: "detectors",
       quantityKey: "detectors",
       bands: [
-        { upTo: 3, price: 69 },
-        { upTo: 6, price: 89 },
-        { upTo: 12, price: 119 },
+        { upTo: 3, price: 86.25 },
+        { upTo: 6, price: 111.25 },
+        { upTo: 12, price: 148.75 },
       ],
-
       addons: [],
     },
+
     Fire_Alarm_Commercial: {
       name: "Fire Alarm Certificate – Commercial (BS 5839-1)",
       domain: "Commercial",
@@ -143,9 +151,9 @@ const PRICING = {
       unit: "detectors",
       quantityKey: "detectors",
       bands: [
-        { upTo: 3, price: 79 },
-        { upTo: 5, price: 99 },
-        { upTo: 10, price: 129 },
+        { upTo: 3, price: 98.75 },
+        { upTo: 5, price: 123.75 },
+        { upTo: 10, price: 161.25 },
       ],
       addons: [],
     },
