@@ -59,7 +59,7 @@ const PRICING = {
         { upTo: 20, price: 99 },
         { upTo: 40, price: 149 },
       ],
-      extraPerUnit: 2.99,
+
       addons: [],
     },
     PAT_Commercial: {
@@ -104,12 +104,9 @@ const PRICING = {
     },
     Part_P: {
       name: "Part P – Certificate & LABC Notification",
-      domain: "Residential",
+      domain: "",
       model: "select_banded",
-      bands: [
-        
-        { key: "reissue", label: "Reissue of certificate", price: 85 },
-      ],
+      bands: [{ key: "reissue", label: "Reissue of certificate", price: 85 }],
       addons: [],
     },
     Third_Party_Certification: {
@@ -418,6 +415,7 @@ export default function PricingWizardLayout() {
   }, [selectedServices, serviceInputs, serviceAddons]);
 
   // Validation
+  const [sending, setSending] = useState(false);
   const nameOk = customer.name.trim().length >= 2;
   const phoneOk = isUKMobile(customer.phone);
   const addressOk = customer.address.trim().length >= 5;
@@ -482,7 +480,7 @@ export default function PricingWizardLayout() {
       "Please confirm my booking and availability.",
     ]
       .filter(Boolean)
-      .join("")
+      .join("\n")
   );
 
   const waHref = `https://wa.me/${stripPhone(
@@ -601,43 +599,51 @@ export default function PricingWizardLayout() {
 
                       {/* Property Type / Band selection */}
                       {svc.model === "select_banded" && (
-  <div className="cctv-mt-8">
+                        <div className="cctv-mt-8">
+                          {/* If ONLY ONE band → auto-select and HIDE dropdown */}
+                          {svc.bands.length === 1 ? (
+                            <>
+                              <p className="cctv-label">
+                                {svc.bands[0].label} —{" "}
+                                {currency(svc.bands[0].price)}
+                              </p>
 
-    {/* If ONLY ONE band → auto-select and HIDE dropdown */}
-    {svc.bands.length === 1 ? (
-      <>
-        <p className="cctv-label">
-          {svc.bands[0].label} — {currency(svc.bands[0].price)}
-        </p>
-
-        {/* Ensure value is stored automatically */}
-        {inputs._band !== svc.bands[0].key &&
-          handleServiceNumber(k, "_band", svc.bands[0].key)}
-      </>
-
-    ) : (
-      <>
-        <label className="cctv-label">Property Type</label>
-        <select
-          className="cctv-input"
-          value={inputs._band || svc.bands[0].key}
-          onChange={(e) =>
-            handleServiceNumber(k, "_band", e.target.value)
-          }
-        >
-          {svc.bands.map((b) => (
-            <option key={b.key} value={b.key}>
-              {b.label} — {currency(b.price)}
-            </option>
-          ))}
-        </select>
-      </>
-    )}
-  </div>
-)}
-
-
+                              {/* Ensure value is stored automatically */}
+                              {inputs._band !== svc.bands[0].key &&
+                                handleServiceNumber(
+                                  k,
+                                  "_band",
+                                  svc.bands[0].key
+                                )}
+                            </>
+                          ) : (
+                            <>
+                              <label className="cctv-label">
+                                Property Type
+                              </label>
+                              <select
+                                className="cctv-input"
+                                value={inputs._band || svc.bands[0].key}
+                                onChange={(e) =>
+                                  handleServiceNumber(
+                                    k,
+                                    "_band",
+                                    e.target.value
+                                  )
+                                }
+                              >
+                                {svc.bands.map((b) => (
+                                  <option key={b.key} value={b.key}>
+                                    {b.label} — {currency(b.price)}
+                                  </option>
+                                ))}
+                              </select>
+                            </>
+                          )}
+                        </div>
+                      )}
                       {/* Quantity based services */}
+
                       {(svc.model === "quantity_banded" ||
                         svc.model === "quantity_banded_with_extra") && (
                         <div className="cctv-mt-8">
@@ -649,15 +655,41 @@ export default function PricingWizardLayout() {
                             min={0}
                             step={1}
                             className="cctv-input"
-                            value={inputs[svc.quantityKey] ?? 0}
-                            onChange={(e) =>
-                              handleServiceNumber(
-                                k,
-                                svc.quantityKey,
-                                Math.max(0, Number(e.target.value || 0))
-                              )
+                            value={
+                              inputs[svc.quantityKey] === undefined
+                                ? 1
+                                : inputs[svc.quantityKey]
                             }
+                            onInput={(e) => {
+                              let v = e.target.value;
+                              v = v.replace(/^0+(?=\d)/, ""); // remove leading zeros
+                              e.target.value = v;
+                              handleServiceNumber(k, svc.quantityKey, v);
+                            }}
                           />
+
+                          {/* Show warning message if value exceeds last band */}
+                          {(() => {
+                            const maxBand =
+                              svc.bands[svc.bands.length - 1]?.upTo || 0;
+                            const currentValue = Number(
+                              inputs[svc.quantityKey] || 0
+                            );
+                            if (currentValue > maxBand) {
+                              return (
+                                <p
+                                  className="cctv-meta"
+                                  style={{ color: "red" }}
+                                >
+                                  You have entered more than the typical maximum
+                                  of {maxBand} {svc.unit}. Extra units will be
+                                  included in your final quote.
+                                </p>
+                              );
+                            }
+                            return null;
+                          })()}
+
                           <p className="cctv-meta">
                             Pricing bands:{" "}
                             {(svc.bands || [])
@@ -823,7 +855,7 @@ export default function PricingWizardLayout() {
                   }
                 />
                 {touched.name && !nameOk && (
-                  <p className="cctv-error">Please enter your name.</p>
+                  <p style={{ color: "red" }}>Please enter your name.</p>
                 )}
 
                 <label className="cctv-label cctv-mt-8">
@@ -841,7 +873,9 @@ export default function PricingWizardLayout() {
                   }
                 />
                 {touched.phone && !phoneOk && (
-                  <p className="cctv-error">Enter a UK mobile (07XXXXXXXXX).</p>
+                  <p style={{ color: "red" }}>
+                    Enter a UK mobile (07XXXXXXXXX).
+                  </p>
                 )}
 
                 <label className="cctv-label cctv-mt-8">
@@ -863,7 +897,7 @@ export default function PricingWizardLayout() {
                   }
                 />
                 {touched.address && !addressOk && (
-                  <p className="cctv-error">
+                  <p style={{ color: "red" }}>
                     Please include house/flat, street and postcode.
                   </p>
                 )}
@@ -910,30 +944,65 @@ export default function PricingWizardLayout() {
                 </div>
 
                 <button
-                  disabled={!allOk}
                   onClick={() => {
-                    if (allOk) window.open(waHref, "_blank");
+                    if (selectedServices.length === 0) {
+                      alert("Please select at least one service.");
+                      return;
+                    }
+                    if (!nameOk) {
+                      alert("Please enter your name.");
+                      return;
+                    }
+                    if (!phoneOk) {
+                      alert("Enter a valid UK mobile number (07XXXXXXXXX).");
+                      return;
+                    }
+                    if (!addressOk) {
+                      alert("Please enter your full address.");
+                      return;
+                    }
+
+                    // All fields ok, proceed
+                    setSending(true);
+                    setTimeout(() => {
+                      window.open(waHref, "_blank");
+                      setSending(false);
+                    }, 500);
                   }}
-                  className={`cctv-btn cctv-btnPrimary cctv-btn--block cctv-mt-12 ${
-                    !allOk ? "cctv-btn--disabled" : ""
-                  }`}
-                  aria-disabled={!allOk}
+                  className="cctv-btn cctv-btnPrimary cctv-btn--block cctv-mt-12"
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                    cursor: "pointer",
+                  }}
                   aria-label="Send booking details on WhatsApp"
-                  title={
-                    !allOk
-                      ? "Select services and enter name, phone and address to continue"
-                      : "Send on WhatsApp"
-                  }
                 >
-                  Send on WhatsApp
+                  {sending ? (
+                    <span
+                      style={{
+                        display: "inline-block",
+                        animation: "spin 1s linear infinite",
+                        fontSize: "1.2em",
+                      }}
+                    >
+                      🔄
+                    </span>
+                  ) : (
+                    "Send on WhatsApp"
+                  )}
+
+                  {/* Inline keyframes for spinner rotation */}
+                  <style>
+                    {`
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    `}
+                  </style>
                 </button>
-                <p className="cctv-meta cctv-mt-8">
-                  Or email{" "}
-                  <a href="mailto:info@ecovoltex.co.uk">
-                    <b>info@ecovoltex.co.uk</b>
-                  </a>
-                  . We’ll reply with the earliest slot.
-                </p>
               </div>
             </div>
 
