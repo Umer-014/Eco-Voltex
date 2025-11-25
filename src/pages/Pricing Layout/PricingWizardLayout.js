@@ -638,6 +638,7 @@ export default function PricingWizardLayout() {
               Fill the three steps below. Fields marked <b>*</b> are required to
               book.
             </p>
+            {/* ---------- Count Down ---------- */}
             <div
               style={{
                 textAlign: "center",
@@ -646,7 +647,7 @@ export default function PricingWizardLayout() {
                 color: "red",
               }}
             >
-              {/* Inline CSS animation */}
+              {/* Inline animation */}
               <style>
                 {`
       @keyframes pulseBlinkInline {
@@ -657,20 +658,27 @@ export default function PricingWizardLayout() {
     `}
               </style>
 
-              {/* Discount Text */}
+              {/* Line 1 – Discount text */}
               <div
                 style={{
                   fontSize: "1rem",
-                  marginBottom: "6px",
+                  marginBottom: "12px",
                   animation: "pulseBlinkInline 1.4s infinite ease-in-out",
-                  display: "inline-block",
+                  display: "block",
                 }}
               >
                 🎉 25% OFF on all services! 🎉
               </div>
 
-              {/* Countdown */}
-              <Countdown targetDate={new Date("2025-12-25T00:00:00")} />
+              {/* Line 2 – Countdown */}
+              <div
+                style={{
+                  animation: "pulseBlinkInline 1.4s infinite ease-in-out",
+                  display: "block",
+                }}
+              >
+                <Countdown targetDate={new Date("2025-12-25T00:00:00")} />
+              </div>
             </div>
 
             <div className="cctv-grid cctv-grid-3 cctv-mt-16">
