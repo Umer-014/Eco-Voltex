@@ -152,6 +152,34 @@ const PRICING = {
   },
 };
 
+function Countdown({ targetDate }) {
+  const [timeLeft, setTimeLeft] = useState("");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        setTimeLeft("🎉 It's Christmas! 🎉");
+        clearInterval(interval);
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      setTimeLeft(`${days}d ${hours}h ${minutes}m ${seconds}s`);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [targetDate]);
+
+  return <span>{timeLeft}</span>;
+}
+
 // ---------- helpers ----------
 const currency = (n) =>
   new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" }).format(
@@ -409,15 +437,25 @@ export default function PricingWizardLayout() {
   // Validation
   const [sending, setSending] = useState(false);
   const nameOk = customer.name.trim().length >= 2;
-  const phoneOk = isUKMobile(customer.phone);
+  // Check for valid UK number (mobile or landline)
+  const phoneOk = (() => {
+    const len = customer.phone.length;
+    // Mobile: 10 digits starting with 7
+    if (len === 10 && customer.phone[0] === "7") return true;
+    // Landline: 9–10 digits starting with valid area codes (2–8)
+    if ((len === 9 || len === 10) && /^[2-8]/.test(customer.phone)) return true;
+    return false;
+  })();
+
   const addressOk = customer.address.trim().length >= 5;
   const allOk = nameOk && phoneOk && addressOk && selectedServices.length > 0;
 
   // WhatsApp message (lists all selected services)
+  // WhatsApp message (lists all selected services, grand total with 25% discount)
   const waMsg = encodeURIComponent(
     [
       `Name: ${customer.name}`,
-      `Phone: ${customer.phone}`,
+      `Phone: +44${customer.phone}`,
       `Address: ${customer.address}`,
       `Eco Voltex – Booking Request`,
       `Domain: ${domain}`,
@@ -427,21 +465,30 @@ export default function PricingWizardLayout() {
         const inputs = serviceInputs[k] || {};
         const adds = serviceAddons[k] || {};
         const lines = [];
+
         lines.push(`- ${k}`);
+
+        // Inputs (numbers)
         (svc.inputs || []).forEach((i) =>
           lines.push(`${i.label}: ${inputs[i.key] || 0}`)
         );
+
+        // Banded type
         if (svc.model === "select_banded")
           lines.push(
             `Type: ${
               svc.bands?.find((b) => b.key === inputs._band)?.label || ""
             }`
           );
+
+        // Quantity type
         if (
           svc.model === "quantity_banded" ||
           svc.model === "quantity_banded_with_extra"
         )
           lines.push(`Qty (${svc.unit}): ${inputs[svc.quantityKey] || 0}`);
+
+        // Option range type
         if (svc.model === "option_range")
           lines.push(
             `Option: ${
@@ -449,6 +496,7 @@ export default function PricingWizardLayout() {
             }`
           );
 
+        // Addons
         const enabled = (svc.addons || [])
           .filter(
             (a) =>
@@ -462,13 +510,19 @@ export default function PricingWizardLayout() {
                 )})`
               : a.label
           );
+
         if (enabled.length) lines.push(`Add-ons: ${enabled.join(", ")}`);
 
+        // Total per service (original value)
         const b = breakdown.perService[k] || { subtotal: 0, vat: 0, total: 0 };
         lines.push(`Total for ${k}: ${currency(b.total)}`);
+
         return lines;
       }),
-      `Estimated total: ${currency(breakdown.grandTotal)}`,
+      // Grand total (after 25% discount)
+      `Estimated total (after 25% discount): ${currency(
+        breakdown.grandTotal * 0.75
+      )}`,
       "Price shown in total is the mid-point. Final invoice will be within the displayed range after site review.",
       "Please confirm my booking and availability.",
     ]
@@ -486,30 +540,79 @@ export default function PricingWizardLayout() {
       <main className="cctv cctv--page">
         {/* HERO omitted (unchanged) */}
 
-        <section className="cctv-section cctv-hero" aria-labelledby="hero-title">
+        <section
+          className="cctv-section cctv-hero"
+          aria-labelledby="hero-title"
+        >
           <div className="cctv-container cctv-grid cctv-grid-12 cctv-align-center">
             <div className="cctv-col-7">
-              
-              <h1 id="hero-title" className="cctv-h1">Instant Quote & Booking</h1>
-              <p className="cctv-hero-sub">Three quick steps. Clear pricing. WhatsApp confirmation in one tap.</p>
-              <div className="cctv-row" role="tablist" aria-label="Audience selector">
-                <button className={`cctv-chip ${audience === "home" ? "cctv-chip--active" : ""}`} onClick={() => setAudience("home")} role="tab" aria-selected={audience === "home"}>Home</button>
-                <button className={`cctv-chip ${audience === "business" ? "cctv-chip--active" : ""}`} onClick={() => setAudience("business")} role="tab" aria-selected={audience === "business"}>Business</button>
+              <h1 id="hero-title" className="cctv-h1">
+                Instant Quote & Booking
+              </h1>
+              <p className="cctv-hero-sub">
+                Three quick steps. Clear pricing. WhatsApp confirmation in one
+                tap.
+              </p>
+              <div
+                className="cctv-row"
+                role="tablist"
+                aria-label="Audience selector"
+              >
+                <button
+                  className={`cctv-chip ${
+                    audience === "home" ? "cctv-chip--active" : ""
+                  }`}
+                  onClick={() => setAudience("home")}
+                  role="tab"
+                  aria-selected={audience === "home"}
+                >
+                  Home
+                </button>
+                <button
+                  className={`cctv-chip ${
+                    audience === "business" ? "cctv-chip--active" : ""
+                  }`}
+                  onClick={() => setAudience("business")}
+                  role="tab"
+                  aria-selected={audience === "business"}
+                >
+                  Business
+                </button>
               </div>
               <ul className="cctv-hero-bullets">
                 {(audience === "home"
-                  ? ["EICR, PAT, fire alarms", "Neat, certified installations", "1-hour response on emergencies"]
-                  : ["PPM programmes & remedials", "Distribution & containment", "Asset lists, certs, reports"]
-                ).map((x) => <li key={x}>{x}</li>)}
+                  ? [
+                      "EICR, PAT, fire alarms",
+                      "Neat, certified installations",
+                      "1-hour response on emergencies",
+                    ]
+                  : [
+                      "PPM programmes & remedials",
+                      "Distribution & containment",
+                      "Asset lists, certs, reports",
+                    ]
+                ).map((x) => (
+                  <li key={x}>{x}</li>
+                ))}
               </ul>
               <div className="cctv-row cctv-hero-ctas">
-                <a href="#wizard" className="cctv-btn cctv-btnPrimary">Start in 10 seconds</a>
-                <a href="/contact" className="cctv-btn cctv-btnOutline">Talk To Us</a>
+                <a href="#wizard" className="cctv-btn cctv-btnPrimary">
+                  Start in 10 seconds
+                </a>
+                <a href="/contact" className="cctv-btn cctv-btnOutline">
+                  Talk To Us
+                </a>
               </div>
             </div>
             <div className="cctv-col-5">
               <div className="cctv-figure">
-                <img src="https://res.cloudinary.com/dug1siluu/image/upload/v1764085502/20251125_2042_Modern_Electrical_Workspace_Banner_simple_compose_01kaxtree2fykv11a2qkc4ar7z_rvc6l6.png" alt="Eco Voltex price wizard preview" className="cctv-img" loading="lazy" decoding="async" />
+                <img
+                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1764085502/20251125_2042_Modern_Electrical_Workspace_Banner_simple_compose_01kaxtree2fykv11a2qkc4ar7z_rvc6l6.png"
+                  alt="Eco Voltex price wizard preview"
+                  className="cctv-img"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
             </div>
           </div>
@@ -527,6 +630,22 @@ export default function PricingWizardLayout() {
               Fill the three steps below. Fields marked <b>*</b> are required to
               book.
             </p>
+            <div
+              style={{
+                textAlign: "center",
+                margin: "12px 0",
+                fontWeight: "900",
+                color: "red",
+              }}
+            >
+              {/* Discount Note */}
+              <div style={{ fontSize: "1rem", marginBottom: "6px" }}>
+                🎉 25% OFF on all services! 🎉
+              </div>
+
+              {/* Countdown Timer */}
+              <Countdown targetDate={new Date("2025-12-25T00:00:00")} />
+            </div>
 
             <div className="cctv-grid cctv-grid-3 cctv-mt-16">
               {/* Column 1 – Step 1 */}
@@ -865,7 +984,7 @@ export default function PricingWizardLayout() {
                   className={`cctv-input ${
                     touched.name && !nameOk ? "cctv-input--error" : ""
                   }`}
-                  placeholder="e.g., Mudassar Riaz"
+                  placeholder="e.g., James Smith"
                   value={customer.name}
                   onBlur={() => setTouched((t) => ({ ...t, name: true }))}
                   onChange={(e) =>
@@ -879,22 +998,45 @@ export default function PricingWizardLayout() {
                 <label className="cctv-label cctv-mt-8">
                   Phone <b>*</b>
                 </label>
-                <input
-                  className={`cctv-input ${
-                    touched.phone && !phoneOk ? "cctv-input--error" : ""
-                  }`}
-                  placeholder="07XXXXXXXXX"
-                  value={customer.phone}
-                  onBlur={() => setTouched((t) => ({ ...t, phone: true }))}
-                  onChange={(e) =>
-                    setCustomer((prev) => ({ ...prev, phone: e.target.value }))
-                  }
-                />
-                {touched.phone && !phoneOk && (
-                  <p style={{ color: "red" }}>
-                    Enter a UK mobile (07XXXXXXXXX).
-                  </p>
-                )}
+                <div>
+                  <div style={{ display: "flex", gap: "8px" }}>
+                    <span
+                      style={{
+                        padding: "10px 12px",
+                        background: "#f5f5f5",
+                        borderRadius: "6px",
+                        border: "1px solid #ccc",
+                        fontSize: "14px",
+                      }}
+                    >
+                      +44
+                    </span>
+
+                    <input
+                      className={`cctv-input ${
+                        touched.phone && !phoneOk ? "cctv-input--error" : ""
+                      }`}
+                      type="tel"
+                      placeholder="e.g., 7123456789 or 2012345678"
+                      maxLength={11} // Maximum digits for UK number after +44
+                      value={customer.phone}
+                      onBlur={() => setTouched((t) => ({ ...t, phone: true }))}
+                      onChange={(e) => {
+                        // Allow only digits
+                        const cleaned = e.target.value.replace(/\D/g, "");
+                        if (cleaned.length <= 11) {
+                          setCustomer((prev) => ({ ...prev, phone: cleaned }));
+                        }
+                      }}
+                    />
+                  </div>
+
+                  {touched.phone && !phoneOk && (
+                    <p style={{ color: "red", marginTop: "4px" }}>
+                      Enter a valid UK number (mobile or landline) after +44.
+                    </p>
+                  )}
+                </div>
 
                 <label className="cctv-label cctv-mt-8">
                   Address <b>*</b>
@@ -952,12 +1094,34 @@ export default function PricingWizardLayout() {
                   }}
                 />
                 <div
-                  className="cctv-row"
-                  style={{ justifyContent: "space-between" }}
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "6px",
+                  }}
                 >
-                  <div>Grand total</div>
-                  <div className="cctv-h3">
-                    {currency(breakdown.grandTotal)}
+                  {/* Row 1 – 25% Discount */}
+                  <div
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <div>25% Discount</div>
+                    <div className="cctv-strong">
+                      -{currency(breakdown.grandTotal * 0.25)}
+                    </div>
+                  </div>
+
+                  {/* Row 2 – Grand Total */}
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      marginTop: "4px",
+                    }}
+                  >
+                    <div>Grand total</div>
+                    <div className="cctv-h3">
+                      {currency(breakdown.grandTotal)}
+                    </div>
                   </div>
                 </div>
 
