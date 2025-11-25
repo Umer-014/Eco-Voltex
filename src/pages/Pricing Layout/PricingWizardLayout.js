@@ -667,6 +667,16 @@ export default function PricingWizardLayout() {
                   display: "block",
                 }}
               >
+                Christmas Special Offer!
+              </div>
+              <div
+                style={{
+                  fontSize: "1rem",
+                  marginBottom: "12px",
+                  animation: "pulseBlinkInline 1.4s infinite ease-in-out",
+                  display: "block",
+                }}
+              >
                 🎉 25% OFF on all services! 🎉
               </div>
 
