@@ -646,12 +646,30 @@ export default function PricingWizardLayout() {
                 color: "red",
               }}
             >
-              {/* Discount Note */}
-              <div style={{ fontSize: "1rem", marginBottom: "6px" }}>
+              {/* Inline CSS animation */}
+              <style>
+                {`
+      @keyframes pulseBlinkInline {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.15); opacity: 0.6; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+    `}
+              </style>
+
+              {/* Discount Text */}
+              <div
+                style={{
+                  fontSize: "1rem",
+                  marginBottom: "6px",
+                  animation: "pulseBlinkInline 1.4s infinite ease-in-out",
+                  display: "inline-block",
+                }}
+              >
                 🎉 25% OFF on all services! 🎉
               </div>
 
-              {/* Countdown Timer */}
+              {/* Countdown */}
               <Countdown targetDate={new Date("2025-12-25T00:00:00")} />
             </div>
 
