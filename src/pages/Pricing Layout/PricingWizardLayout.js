@@ -33,14 +33,6 @@ const PRICING = {
       maxHandled: 15,
       addons: [
         {
-          key: "extra_board",
-          label: "Additional consumer unit",
-          type: "stepper",
-          unitPrice: 75,
-          min: 0,
-          max: 5,
-        },
-        {
           key: "out_of_hours",
           label: "Out-of-hours testing",
           type: "toggle",
@@ -73,7 +65,7 @@ const PRICING = {
         { upTo: 20, price: 99 },
         { upTo: 40, price: 149 },
       ],
-      extraPerUnit: 2.99,
+
       addons: [],
     },
     EmergencyLighting_Commercial: {
@@ -141,7 +133,7 @@ const PRICING = {
         { upTo: 6, price: 89 },
         { upTo: 12, price: 119 },
       ],
-      extraPerUnit: 9,
+
       addons: [],
     },
     Fire_Alarm_Commercial: {
@@ -476,7 +468,8 @@ export default function PricingWizardLayout() {
         lines.push(`Total for ${k}: ${currency(b.total)}`);
         return lines;
       }),
-      `Grand total: ${currency(breakdown.grandTotal)}`,
+      `Estimated total: ${currency(breakdown.grandTotal)}`,
+      "Price shown in total is the mid-point. Final invoice will be within the displayed range after site review.",
       "Please confirm my booking and availability.",
     ]
       .filter(Boolean)
@@ -492,6 +485,36 @@ export default function PricingWizardLayout() {
       <Header />
       <main className="cctv cctv--page">
         {/* HERO omitted (unchanged) */}
+
+        <section className="cctv-section cctv-hero" aria-labelledby="hero-title">
+          <div className="cctv-container cctv-grid cctv-grid-12 cctv-align-center">
+            <div className="cctv-col-7">
+              
+              <h1 id="hero-title" className="cctv-h1">Instant Quote & Booking</h1>
+              <p className="cctv-hero-sub">Three quick steps. Clear pricing. WhatsApp confirmation in one tap.</p>
+              <div className="cctv-row" role="tablist" aria-label="Audience selector">
+                <button className={`cctv-chip ${audience === "home" ? "cctv-chip--active" : ""}`} onClick={() => setAudience("home")} role="tab" aria-selected={audience === "home"}>Home</button>
+                <button className={`cctv-chip ${audience === "business" ? "cctv-chip--active" : ""}`} onClick={() => setAudience("business")} role="tab" aria-selected={audience === "business"}>Business</button>
+              </div>
+              <ul className="cctv-hero-bullets">
+                {(audience === "home"
+                  ? ["EICR, PAT, fire alarms", "Neat, certified installations", "1-hour response on emergencies"]
+                  : ["PPM programmes & remedials", "Distribution & containment", "Asset lists, certs, reports"]
+                ).map((x) => <li key={x}>{x}</li>)}
+              </ul>
+              <div className="cctv-row cctv-hero-ctas">
+                <a href="#wizard" className="cctv-btn cctv-btnPrimary">Start in 10 seconds</a>
+                <a href="/contact" className="cctv-btn cctv-btnOutline">Talk To Us</a>
+              </div>
+            </div>
+            <div className="cctv-col-5">
+              <div className="cctv-figure">
+                <img src="https://res.cloudinary.com/dug1siluu/image/upload/v1758040001/ev_electrical_install_hero_placeholder.png" alt="Eco Voltex price wizard preview" className="cctv-img" loading="lazy" decoding="async" />
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="wizard" className="cctv-section cctv-soft">
           <div className="cctv-container">
             <div className="cctv-progress" aria-hidden>
@@ -695,11 +718,6 @@ export default function PricingWizardLayout() {
                             {(svc.bands || [])
                               .map((b) => `${b.upTo} → ${currency(b.price)}`)
                               .join(", ")}
-                            {svc.model === "quantity_banded_with_extra"
-                              ? `. Extra beyond last band: ${currency(
-                                  svc.extraPerUnit || 0
-                                )} per ${svc.unit.slice(0, -1)}.`
-                              : "."}
                           </p>
                         </div>
                       )}
@@ -1006,14 +1024,59 @@ export default function PricingWizardLayout() {
               </div>
             </div>
 
-            <p className="cctv-meta cctv-mt-16">
-              Guide pricing for Greater London. Final quotes depend on routes,
-              heights, fabric, access and specification.
+            <p
+              className="cctv-strong"
+              style={{ textAlign: "center", fontSize: "1.1rem" }}
+            >
+              All prices shown are guide estimates. You’ll receive a clear,
+              confirmed quote before any work begins.
             </p>
           </div>
         </section>
 
-        {/* COMPLIANCE omitted for brevity */}
+        <section className="cctv-section">
+          <div className="cctv-container cctv-grid cctv-grid-2 cctv-mt-16">
+            <div className="cctv-card">
+              <p className="cctv-strong" style={{ fontSize: "1.1rem" }}>
+                Deliverables & Turnaround
+              </p>
+              <ul className="cctv-list cctv-list--disc cctv-mt-8">
+                <li>
+                  PDF certificates and reports with clear supporting photos.
+                </li>
+                <li>
+                  Remedial schedule when needed (EICR codes C1, C2, C3 or FI).
+                </li>
+                <li>
+                  Building Control notifications for all Part P and Third-Party
+                  certified work.
+                </li>
+                <li>
+                  Turnaround: usually within 24 hours for single-system tests,
+                  or 48 hours for multi-system visits.
+                </li>
+              </ul>
+            </div>
+
+            <div className="cctv-card">
+              <p className="cctv-strong" style={{ fontSize: "1.1rem" }}>
+                General Terms
+              </p>
+              <ul className="cctv-list cctv-list--disc cctv-mt-8">
+                <li>All estimates are shared before any work begins.</li>
+                <li>
+                  Prices exclude parking, congestion zones and any required
+                  materials.
+                </li>
+                <li>Payment is due upon invoice.</li>
+                <li>
+                  Cancellations made within 24 hours of a confirmed visit may
+                  incur a charge.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </>
