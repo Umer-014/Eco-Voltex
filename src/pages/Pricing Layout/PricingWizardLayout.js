@@ -1128,7 +1128,9 @@ export default function PricingWizardLayout() {
                   >
                     <div>Grand total</div>
                     <div className="cctv-h3">
-                      {currency(breakdown.grandTotal)}
+                      {currency(
+                        breakdown.grandTotal - breakdown.grandTotal * 0.25
+                      )}
                     </div>
                   </div>
                 </div>
