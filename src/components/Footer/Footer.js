@@ -97,8 +97,8 @@ const Footer = () => {
 
               </li>
               <li>
-                <Link to="/pricing-wizard" className="text-light text-decoration-none">
-                  Pricing Wizard
+                <Link to="/Book Now(" className="text-light text-decoration-none">
+                  Book Now
                 </Link>
               </li>
               <li>
