@@ -97,7 +97,7 @@ const Footer = () => {
 
               </li>
               <li>
-                <Link to="/Book Now(" className="text-light text-decoration-none">
+                <Link to="/Book Now" className="text-light text-decoration-none">
                   Book Now
                 </Link>
               </li>
