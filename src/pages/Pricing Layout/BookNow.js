@@ -197,7 +197,7 @@ const stripPhone = (s) => (s || "").replace(/[^\d]/g, "");
 const isUKMobile = (s) =>
   /^[+]?\d{0,2}\s?0?7\d{9}$/.test((s || "").replace(/\s+/g, ""));
 
-export default function PricingWizardLayout() {
+export default function BookNow() {
   const [audience, setAudience] = useState("home");
 
   // Domain & multi-service selections

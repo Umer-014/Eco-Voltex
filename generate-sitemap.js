@@ -11,11 +11,12 @@ const links = [
   { url: '/faq', changefreq: 'monthly', priority: 0.7 },
   { url: '/contact', changefreq: 'monthly', priority: 0.7 },
   { url: '/areas-we-cover', changefreq: 'monthly', priority: 0.7 },
-  { url: '/services/electrical', changefreq: 'monthly', priority: 0.8 },
-  { url: '/services/Installation-Maintenance', changefreq: 'monthly', priority: 0.7 },
+  { url: '/services/Emergency-Electrical', changefreq: 'monthly', priority: 0.9 },
+  { url: '/services/Electrical-Installation-Maintenance', changefreq: 'monthly', priority: 0.8 },
   { url: '/services/Fire-alarms', changefreq: 'monthly', priority: 0.7 },
   { url: '/services/CCTV', changefreq: 'monthly', priority: 0.7 },
   { url: '/services/PAT-testing', changefreq: 'monthly', priority: 0.7 },
+
 
 ];
 
