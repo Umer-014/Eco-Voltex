@@ -91,7 +91,7 @@ const Header = () => {
             </Link>
           </ListItem>
           <ListItem button onClick={() => toggleDrawer(false)}>
-            <Link to="/Book Now(" className="nav-link">
+            <Link to="/Book Now" className="nav-link">
               Book Now
             </Link>
           </ListItem>
@@ -156,7 +156,7 @@ const Header = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/Book Now(" className="nav-link">
+            <Link to="/Book Now" className="nav-link">
               Book Now
             </Link>
           </li>
