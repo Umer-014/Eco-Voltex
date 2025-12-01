@@ -12,7 +12,28 @@ export default function ElectricalServices() {
     if (!pc) return false;
     const s = pc.toUpperCase().replace(/\s+/g, "");
     const allowed = [
-      "E","EC","N","NW","W","WC","SE","SW","BR","CR","DA","EN","HA","IG","KT","TW","UB","SM","RM","WD","SL","AL"
+      "E",
+      "EC",
+      "N",
+      "NW",
+      "W",
+      "WC",
+      "SE",
+      "SW",
+      "BR",
+      "CR",
+      "DA",
+      "EN",
+      "HA",
+      "IG",
+      "KT",
+      "TW",
+      "UB",
+      "SM",
+      "RM",
+      "WD",
+      "SL",
+      "AL",
     ];
     return allowed.some((p) => s.startsWith(p));
   };
@@ -109,41 +130,105 @@ export default function ElectricalServices() {
   const plans = audience === "home" ? homePlans : businessPlans;
 
   const featureItems = [
-    {  title: "24/7 Emergency Support", text: "Rapid response for urgent faults and safety issues." },
-    {  title: "1-Hour Rapid Response", text: "Same-day attendance available across Greater London." },
-    {  title: "Fully Qualified Engineers", text: "NAPIT-approved, ECS Gold Card, and audit-ready documentation." },
-    {  title: "UKAS & NAPIT Approved", text: "Independent assessment of competence and compliance." },
-    {  title: "Free Estimates", text: "Clear, itemised quotes with no hidden extras." },
-    {  title: "12-Month Guarantee", text: "Workmanship warranty as standard on installations." },
-    {  title: "Proper Certification", text: "EIC/MEIWC issued with circuit schedules and labelling." },
-    {  title: "Excellent Reviews", text: "Trusted by homeowners, landlords and facilities teams." },
+    {
+      title: "24/7 Emergency Support",
+      text: "Rapid response for urgent faults and safety issues.",
+    },
+    {
+      title: "1-Hour Rapid Response",
+      text: "Same-day attendance available across Greater London.",
+    },
+    {
+      title: "Fully Qualified Engineers",
+      text: "NAPIT-approved, ECS Gold Card, and audit-ready documentation.",
+    },
+    {
+      title: "UKAS & NAPIT Approved",
+      text: "Independent assessment of competence and compliance.",
+    },
+    {
+      title: "Free Estimates",
+      text: "Clear, itemised quotes with no hidden extras.",
+    },
+    {
+      title: "12-Month Guarantee",
+      text: "Workmanship warranty as standard on installations.",
+    },
+    {
+      title: "Proper Certification",
+      text: "EIC/MEIWC issued with circuit schedules and labelling.",
+    },
+    {
+      title: "Excellent Reviews",
+      text: "Trusted by homeowners, landlords and facilities teams.",
+    },
   ];
 
   const boroughs = [
-    "Barking & Dagenham","Barnet","Bexley","Brent","Bromley","Camden","City of London","Croydon",
-    "Ealing","Enfield","Greenwich","Hackney","Hammersmith & Fulham","Haringey","Harrow","Havering",
-    "Hillingdon","Hounslow","Islington","Kensington & Chelsea","Lambeth","Lewisham","Merton","Newham",
-    "Redbridge","Richmond upon Thames","Southwark","Sutton","Tower Hamlets","Waltham Forest","Wandsworth","Westminster"
+    "Barking & Dagenham",
+    "Barnet",
+    "Bexley",
+    "Brent",
+    "Bromley",
+    "Camden",
+    "City of London",
+    "Croydon",
+    "Ealing",
+    "Enfield",
+    "Greenwich",
+    "Hackney",
+    "Hammersmith & Fulham",
+    "Haringey",
+    "Harrow",
+    "Havering",
+    "Hillingdon",
+    "Hounslow",
+    "Islington",
+    "Kensington & Chelsea",
+    "Lambeth",
+    "Lewisham",
+    "Merton",
+    "Newham",
+    "Redbridge",
+    "Richmond upon Thames",
+    "Southwark",
+    "Sutton",
+    "Tower Hamlets",
+    "Waltham Forest",
+    "Wandsworth",
+    "Westminster",
   ];
 
   return (
     <>
       <Header />
       <main className="cctv cctv--page">
-             
-
         {/* HERO */}
-        <section id="overview" className="cctv-section cctv-hero" aria-labelledby="hero-title">
+        <section
+          id="overview"
+          className="cctv-section cctv-hero"
+          aria-labelledby="hero-title"
+        >
           <div className="cctv-container cctv-grid cctv-grid-12 cctv-align-center">
             <div className="cctv-col-7">
-              <h1 id="hero-title" className="cctv-h1">Reliable Electrical Installations Across Greater London</h1>
+              <h1 id="hero-title" className="cctv-h1">
+                Reliable Electrical Installations Across Greater London
+              </h1>
               <p className="cctv-hero-sub">
-                Safe, efficient and compliant electrical work for homes and businesses — from new lighting and additional sockets to consumer unit upgrades and full rewiring.
+                Safe, efficient and compliant electrical work for homes and
+                businesses — from new lighting and additional sockets to
+                consumer unit upgrades and full rewiring.
               </p>
-              
-              <div className="cctv-row" role="tablist" aria-label="Audience selector">
+
+              <div
+                className="cctv-row"
+                role="tablist"
+                aria-label="Audience selector"
+              >
                 <button
-                  className={`cctv-chip ${audience === "home" ? "cctv-chip--active" : ""}`}
+                  className={`cctv-chip ${
+                    audience === "home" ? "cctv-chip--active" : ""
+                  }`}
                   onClick={() => setAudience("home")}
                   role="tab"
                   aria-selected={audience === "home"}
@@ -151,7 +236,9 @@ export default function ElectricalServices() {
                   Home
                 </button>
                 <button
-                  className={`cctv-chip ${audience === "business" ? "cctv-chip--active" : ""}`}
+                  className={`cctv-chip ${
+                    audience === "business" ? "cctv-chip--active" : ""
+                  }`}
                   onClick={() => setAudience("business")}
                   role="tab"
                   aria-selected={audience === "business"}
@@ -171,12 +258,19 @@ export default function ElectricalServices() {
                       "Distribution boards, sub-mains & containment",
                       "Emergency lighting to BS 5266 & life-safety feeds",
                       "PPM schedules with remedial tracking",
-                    ]).map((x) => <li key={x}>{x}</li>)}
+                    ]
+                ).map((x) => (
+                  <li key={x}>{x}</li>
+                ))}
               </ul>
 
               <div className="cctv-row cctv-hero-ctas">
-                <a href="#packages" className="cctv-btn cctv-btnPrimary">See Packages</a>
-                <a href="/contact" className="cctv-btn cctv-btnOutline">Book A Survey</a>
+                <a href="#packages" className="cctv-btn cctv-btnPrimary">
+                  See Packages
+                </a>
+                <a href="/contact" className="cctv-btn cctv-btnOutline">
+                  Book A Survey
+                </a>
               </div>
             </div>
 
@@ -196,17 +290,40 @@ export default function ElectricalServices() {
 
         {/* SOLUTIONS */}
         <section id="solutions" className="cctv-section">
-          <h2 className="cctv-h2" style={{ textAlign: "center" }}>Professional Electrical Installations — Homes & Businesses</h2>
+          <h2 className="cctv-h2" style={{ textAlign: "center" }}>
+            Professional Electrical Installations — Homes & Businesses
+          </h2>
 
           <div
             className="cctv-container"
-            style={{ display:"grid", gridTemplateColumns:"2fr 1fr", gap:"24px", alignItems:"stretch" }}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "12px",
+              alignItems: "stretch",
+            }}
           >
             {/* LEFT */}
             <div>
-              <div style={{ display:"grid", gridTemplateColumns:"1fr", gap:"12px", marginTop:"2px" }}>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr",
+                  gap: "10px",
+                  marginTop: "2px",
+                }}
+              >
                 <div className="cctv-card">
                   <p className="cctv-h3">Lighting — Indoor & Outdoor</p>
+                  <ul className="cctv-list cctv-list--disc cctv-mt-8">
+                    <li>Ambient, task & feature lighting (LED)</li>
+                    <li>Security and landscape lighting</li>
+                    <li>Switching & control upgrades</li>
+                    <li>Testing and certification included</li>
+                  </ul>
+                </div>
+                <div className="cctv-card">
+                  <p className="cctv-h3">Installation & Upgrades</p>
                   <ul className="cctv-list cctv-list--disc cctv-mt-8">
                     <li>Ambient, task & feature lighting (LED)</li>
                     <li>Security and landscape lighting</li>
@@ -234,25 +351,21 @@ export default function ElectricalServices() {
                     <li>Building Regulations (Part P) notification</li>
                   </ul>
                 </div>
-
-                <div className="cctv-card">
-                  <p className="cctv-h3">Smart Home & Security</p>
-                  <ul className="cctv-list cctv-list--disc cctv-mt-8">
-                    <li>Smart lighting, heating & automation</li>
-                    <li>CCTV and alarm system power points</li>
-                    <li>Network & comms containment</li>
-                    <li>O&M pack and user guidance</li>
-                  </ul>
-                </div>
               </div>
             </div>
 
             {/* RIGHT */}
-            <div className="cctv-figure" style={{ marginLeft:"auto" }}>
+            <div>
               <img
-                src="https://res.cloudinary.com/dug1siluu/image/upload/v1758040137/ev_electrical_solutions_placeholder.png"
+                src="https://res.cloudinary.com/dug1siluu/image/upload/v1764426580/20251129_1926_Premium_Electrical_Installation_simple_compose_01kb801eb6fecrs3wnd533a0ca_zngnuz.png"
                 alt="Examples of lighting, power and consumer unit works"
-                className="cctv-img"
+                style={{
+                  width: "100%",
+                  height: "auto", // or "300px" if you want a fixed height
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  display: "block",
+                }}
                 loading="lazy"
                 decoding="async"
               />
@@ -269,7 +382,7 @@ export default function ElectricalServices() {
               {featureItems.map((f) => (
                 <article key={f.title} className="feature" role="listitem">
                   <header className="feature-head">
-                                        <div className="feature-title">{f.title}</div>
+                    <div className="feature-title">{f.title}</div>
                   </header>
                   <p>{f.text}</p>
                 </article>
@@ -280,29 +393,81 @@ export default function ElectricalServices() {
 
         {/* PROCESS */}
         <section id="process" className="cctv-section">
-          <div className="cctv-container" style={{ display:"grid", gridTemplateColumns:"2fr 1fr", gap:"24px", alignItems:"start" }}>
+          <div
+            className="cctv-container"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "2fr 1fr",
+              gap: "24px",
+              alignItems: "start",
+            }}
+          >
             {/* LEFT */}
             <div>
               <h2 className="cctv-h2">Our Electrical Installation Process</h2>
               <ol
-                style={{ display:"grid", gridTemplateColumns:"repeat(2,1fr)", gap:"16px", marginTop:"16px", padding:0, listStyle:"none" }}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(2,1fr)",
+                  gap: "16px",
+                  marginTop: "16px",
+                  padding: 0,
+                  listStyle: "none",
+                }}
                 aria-label="Installation steps"
               >
                 {[
-                  ["Initial Contact & Assessment","Tell us what you need — we’ll advise on urgency and next steps."],
-                  ["Survey & Design","We agree the scope, routes, protective devices and programme."],
-                  ["Quote & Booking","Clear, itemised proposal with options; choose a convenient slot."],
-                  ["First Fix","Containment and cabling installed neatly, with minimal disruption."],
-                  ["Second Fix","Accessories, luminaires and boards fitted and labelled."],
-                  ["Test, Certify & Handover","BS 7671 testing, EIC/MEIWC issued, O&M pack and user guidance."],
-                ].map(([k,v],i)=>(
+                  [
+                    "Initial Contact & Assessment",
+                    "Tell us what you need — we’ll advise on urgency and next steps.",
+                  ],
+                  [
+                    "Survey & Design",
+                    "We agree the scope, routes, protective devices and programme.",
+                  ],
+                  [
+                    "Quote & Booking",
+                    "Clear, itemised proposal with options; choose a convenient slot.",
+                  ],
+                  [
+                    "First Fix",
+                    "Containment and cabling installed neatly, with minimal disruption.",
+                  ],
+                  [
+                    "Second Fix",
+                    "Accessories, luminaires and boards fitted and labelled.",
+                  ],
+                  [
+                    "Test, Certify & Handover",
+                    "BS 7671 testing, EIC/MEIWC issued, O&M pack and user guidance.",
+                  ],
+                ].map(([k, v], i) => (
                   <li
                     key={i}
-                    style={{ background:"#F7FAF8", border:"1px solid #E6EDF3", borderRadius:"12px", padding:"16px", boxShadow:"0 4px 12px rgba(0,0,0,0.06)" }}
+                    style={{
+                      background: "#F7FAF8",
+                      border: "1px solid #E6EDF3",
+                      borderRadius: "12px",
+                      padding: "16px",
+                      boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
+                    }}
                   >
-                    <div className="cctv-strong" style={{ color:"var(--ev-green)" }}>Step {i+1}</div>
-                    <p style={{ fontWeight:700, marginBottom:4, color:"var(--ev-navy)" }}>{k}</p>
-                    <p style={{ fontSize:14, color:"#374151" }}>{v}</p>
+                    <div
+                      className="cctv-strong"
+                      style={{ color: "var(--ev-green)" }}
+                    >
+                      Step {i + 1}
+                    </div>
+                    <p
+                      style={{
+                        fontWeight: 700,
+                        marginBottom: 4,
+                        color: "var(--ev-navy)",
+                      }}
+                    >
+                      {k}
+                    </p>
+                    <p style={{ fontSize: 14, color: "#374151" }}>{v}</p>
                   </li>
                 ))}
               </ol>
@@ -311,7 +476,7 @@ export default function ElectricalServices() {
             {/* RIGHT */}
             <div className="cctv-figure">
               <img
-                src="https://res.cloudinary.com/dug1siluu/image/upload/v1758040209/ev_electrical_process_placeholder.png"
+                src="https://res.cloudinary.com/dug1siluu/image/upload/v1764610639/20251201_2235_Electrical_Installation_Stages_remix_01kbdfk46dfdmbrwkx8rrxvx7p_tikjlh.png"
                 alt="Eco Voltex installation process overview"
                 className="cctv-img"
                 loading="lazy"
@@ -326,17 +491,29 @@ export default function ElectricalServices() {
           <div className="cctv-container">
             <h2 className="cctv-h2">Clear Packages & Great Value</h2>
 
-            <div className="cctv-row cctv-mt-8" role="tablist" aria-label="Package audience selector">
+            <div
+              className="cctv-row cctv-mt-8"
+              role="tablist"
+              aria-label="Package audience selector"
+            >
               <button
-                className={`cctv-btn ${audience === "home" ? "cctv-btnPrimary" : "cctv-btnOutline"}`}
-                role="tab" aria-selected={audience === "home"}
+                className={`cctv-btn ${
+                  audience === "home" ? "cctv-btnPrimary" : "cctv-btnOutline"
+                }`}
+                role="tab"
+                aria-selected={audience === "home"}
                 onClick={() => setAudience("home")}
               >
                 Home
               </button>
               <button
-                className={`cctv-btn ${audience === "business" ? "cctv-btnPrimary" : "cctv-btnOutline"}`}
-                role="tab" aria-selected={audience === "business"}
+                className={`cctv-btn ${
+                  audience === "business"
+                    ? "cctv-btnPrimary"
+                    : "cctv-btnOutline"
+                }`}
+                role="tab"
+                aria-selected={audience === "business"}
                 onClick={() => setAudience("business")}
               >
                 Business
@@ -344,7 +521,8 @@ export default function ElectricalServices() {
             </div>
 
             <p className="cctv-meta cctv-mt-8">
-              Guide pricing for Greater London. Final quotes depend on routes, heights, fabric, access and specification. Out-of-hours: +20%.
+              Guide pricing for Greater London. Final quotes depend on routes,
+              heights, fabric, access and specification. Out-of-hours: +20%.
             </p>
 
             <div className="cctv-grid cctv-grid-3 cctv-mt-16">
@@ -357,13 +535,22 @@ export default function ElectricalServices() {
                   <p className="cctv-meta">{pkg.meta}</p>
                   <p className="cctv-price">{pkg.price}</p>
                   <ul className="cctv-list cctv-mt-8">
-                    {pkg.bullets.map((b) => <li key={b}>{b}</li>)}
+                    {pkg.bullets.map((b) => (
+                      <li key={b}>{b}</li>
+                    ))}
                   </ul>
-                  <a href="/contact" className="cctv-btn cctv-btnPrimary cctv-btn--block cctv-mt-12">
-                    {pkg.name.includes("Rewiring") || pkg.name.includes("Fit-Out") ? "Speak To Us" : "Book Survey"}
+                  <a
+                    href="/contact"
+                    className="cctv-btn cctv-btnPrimary cctv-btn--block cctv-mt-12"
+                  >
+                    {pkg.name.includes("Rewiring") ||
+                    pkg.name.includes("Fit-Out")
+                      ? "Speak To Us"
+                      : "Book Survey"}
                   </a>
                   <p className="cctv-meta cctv-mt-8">
-                    Add-ons: EICR packages, emergency lighting tests, surge protection, AFDDs where applicable.
+                    Add-ons: EICR packages, emergency lighting tests, surge
+                    protection, AFDDs where applicable.
                   </p>
                 </div>
               ))}
@@ -371,7 +558,11 @@ export default function ElectricalServices() {
 
             <div className="cctv-card cctv-mt-16" id="quote">
               <p className="cctv-strong">Quick Coverage Check</p>
-              <form className="cctv-row cctv-mt-8" onSubmit={checkPostcode} aria-label="Coverage checker">
+              <form
+                className="cctv-row cctv-mt-8"
+                onSubmit={checkPostcode}
+                aria-label="Coverage checker"
+              >
                 <input
                   className="cctv-input"
                   placeholder="Enter your postcode (e.g., E1 6AN)"
@@ -379,18 +570,22 @@ export default function ElectricalServices() {
                   onChange={(e) => setPostcode(e.target.value)}
                   aria-label="Postcode"
                 />
-                <button className="cctv-btn cctv-btnOutline" type="submit">Check</button>
+                <button className="cctv-btn cctv-btnOutline" type="submit">
+                  Check
+                </button>
               </form>
               {pcResult && (
                 <div className="cctv-meta cctv-mt-8" aria-live="polite">
-                  {pcResult} <a href="/contact"><b>Contact us</b></a> today to book your survey.
+                  {pcResult}{" "}
+                  <a href="/contact">
+                    <b>Contact us</b>
+                  </a>{" "}
+                  today to book your survey.
                 </div>
               )}
             </div>
           </div>
         </section>
-
-        
 
         {/* COMPLIANCE */}
         <section id="compliance" className="cctv-section">
@@ -404,22 +599,26 @@ export default function ElectricalServices() {
                   <li>Building Regulations Part P (domestic)</li>
                   <li>Electricity at Work Regulations 1989 (EAWR)</li>
                 </ul>
-                <p className="cctv-meta cctv-mt-8">General guidance — specific requirements confirmed on survey.</p>
+                <p className="cctv-meta cctv-mt-8">
+                  General guidance — specific requirements confirmed on survey.
+                </p>
               </div>
               <div className="cctv-card">
                 <p className="cctv-strong">Certification & Notification</p>
                 <ul className="cctv-list cctv-list--disc cctv-mt-8">
                   <li>EIC/MEIWC issued on completion</li>
                   <li>Circuit schedules & labelling provided</li>
-                  <li>Part P notification to Building Control where applicable</li>
+                  <li>
+                    Part P notification to Building Control where applicable
+                  </li>
                 </ul>
-                <p className="cctv-meta cctv-mt-8">Eco Voltex is NAPIT-approved and UKAS-accredited.</p>
+                <p className="cctv-meta cctv-mt-8">
+                  Eco Voltex is NAPIT-approved and UKAS-accredited.
+                </p>
               </div>
             </div>
           </div>
         </section>
-
-        
       </main>
       <Footer />
     </>
