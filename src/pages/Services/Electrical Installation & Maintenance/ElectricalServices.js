@@ -277,7 +277,7 @@ export default function ElectricalServices() {
             <div className="cctv-col-5">
               <div className="cctv-figure">
                 <img
-                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1758040001/ev_electrical_install_hero_placeholder.png"
+                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1764613806/20251201_2323_Eco_Energy_Illustration_remix_01kbdjc4q0f2vayyppswy3sa31_dlrchb.png"
                   alt="Eco Voltex electricians installing lighting and consumer unit"
                   className="cctv-img"
                   loading="lazy"
