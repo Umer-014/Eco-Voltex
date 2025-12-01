@@ -358,6 +358,8 @@ export default function EmergencyElectrical() {
                     <li>Burnt sockets or smell of burning plastic</li>
                     <li>Water-damaged lights and socket circuits</li>
                     <li>No power to rooms or consumer unit faults</li>
+                    <li>Electrical shocks or sparking outlets</li>
+                    <li>Faulty or outdated wiring</li>
                   </ul>
                 </div>
 
@@ -368,17 +370,24 @@ export default function EmergencyElectrical() {
                     <li>Overheating in boards/distribution</li>
                     <li>Cable damage during works/fit-out</li>
                     <li>Emergency lighting failures and repairs</li>
+                    <li>Power surges and electrical fires</li>
+                    <li>Electrical shocks or sparking outlets</li>
                   </ul>
                 </div>
               </div>
             </div>
 
             {/* RIGHT */}
-            <div className="cctv-figure" style={{ marginLeft: "auto" }}>
+            <div>
               <img
-                src="https://res.cloudinary.com/dug1siluu/image/upload/v1758041188/ev_emergency_solutions_placeholder.png"
+                src="https://res.cloudinary.com/dug1siluu/image/upload/v1764610802/20251201_2236_Emergency_Electrician_at_Night_simple_compose_01kbdfmrvjfpztxjyac95f7par_y7dmag.png"
                 alt="Emergency electrical scenarios"
-                className="cctv-img"
+                style={{
+                  width: "100%",
+                  height: "500px", // or "300px" if you want a fixed height
+                  objectFit: "cover",
+                  display: "block",
+                }}
                 loading="lazy"
                 decoding="async"
               />
@@ -483,11 +492,15 @@ export default function EmergencyElectrical() {
             </div>
 
             {/* RIGHT */}
-            <div className="cctv-figure">
+            <div>
               <img
-                src="https://res.cloudinary.com/dug1siluu/image/upload/v1758041255/ev_emergency_process_placeholder.png"
+                src="https://res.cloudinary.com/dug1siluu/image/upload/v1764611915/20251201_2256_Electrician_with_Logo_remix_01kbdgswr3ezmvmm5s1n0dfp07_vjimgr.png"
                 alt="Eco Voltex emergency process"
-                className="cctv-img"
+                style={{
+                  width: "100%",
+                  height: "400px",
+                  display: "block",
+                }}
                 loading="lazy"
                 decoding="async"
               />
