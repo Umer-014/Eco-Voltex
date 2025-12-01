@@ -528,8 +528,8 @@ export default function BookNow() {
         return lines;
       }),
       // Grand total (after 25% discount)
-      `Estimated total (after 25% discount): ${currency(
-        breakdown.grandTotal * 0.75
+      `Estimated total (after 20% discount): ${currency(
+        breakdown.grandTotal * 0.80
       )}`,
       "Price shown in total is the mid-point. Final invoice will be within the displayed range after site review.",
       "Please confirm my booking and availability.",
@@ -677,7 +677,7 @@ export default function BookNow() {
                   display: "block",
                 }}
               >
-                🎉 25% OFF on all services! 🎉
+                🎉 20% OFF on all services! 🎉
               </div>
 
               {/* Line 2 – Countdown */}
@@ -1144,13 +1144,13 @@ export default function BookNow() {
                     gap: "6px",
                   }}
                 >
-                  {/* Row 1 – 25% Discount */}
+                  {/* Row 1 – 20% Discount */}
                   <div
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
-                    <div>25% Discount</div>
+                    <div>20% Discount</div>
                     <div className="cctv-strong">
-                      -{currency(breakdown.grandTotal * 0.25)}
+                      -{currency(breakdown.grandTotal * 0.20)}
                     </div>
                   </div>
 
@@ -1165,7 +1165,7 @@ export default function BookNow() {
                     <div>Grand total</div>
                     <div className="cctv-h3">
                       {currency(
-                        breakdown.grandTotal - breakdown.grandTotal * 0.25
+                        breakdown.grandTotal - breakdown.grandTotal * 0.20
                       )}
                     </div>
                   </div>
