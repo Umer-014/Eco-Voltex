@@ -238,7 +238,7 @@ export default function EmergencyElectrical() {
             <div className="cctv-col-5">
               <div className="cctv-figure">
                 <img
-                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1758041101/ev_emergency_hero_placeholder.png"
+                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1764613919/20251201_2325_Futuristic_Electrical_Emergency_Scene_remix_01kbdjen2vf9w98300a6fphk62_1_aeuopm.png"
                   alt="Emergency electrical response"
                   className="cctv-img"
                   loading="lazy"
@@ -494,7 +494,7 @@ export default function EmergencyElectrical() {
             {/* RIGHT */}
             <div>
               <img
-                src="https://res.cloudinary.com/dug1siluu/image/upload/v1764613919/20251201_2325_Futuristic_Electrical_Emergency_Scene_remix_01kbdjen2vf9w98300a6fphk62_1_aeuopm.png"
+                src="https://res.cloudinary.com/dug1siluu/image/upload/v1764611915/20251201_2256_Electrician_with_Logo_remix_01kbdgswr3ezmvmm5s1n0dfp07_vjimgr.png"
                 alt="Eco Voltex emergency process"
                 style={{
                   width: "100%",
