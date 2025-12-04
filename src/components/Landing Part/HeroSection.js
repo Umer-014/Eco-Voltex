@@ -280,16 +280,7 @@ const HeroSection = () => {
               </button>
             </div>
 
-            {/* Stats */}
-            <div className="home-stat-row" aria-label="Eco Voltex at a glance">
-              {stats.map((s) => (
-                <div key={s.label} className="home-stat-card">
-                  <div className="home-stat-value">{s.value}</div>
-                  <div className="home-stat-label">{s.label}</div>
-                  <div className="home-stat-hint">{s.hint}</div>
-                </div>
-              ))}
-            </div>
+            
 
             <div className="home-hero-meta">
               BS 7671 • BS 5839 • BS 5266 • IET Code of Practice — every job
