@@ -219,7 +219,7 @@ const HeroSection = () => {
               <a href="/about" className="about__link">
                 <strong>Eco Voltex</strong>
               </a>{" "}
-              —{" "}
+              {" "}
               <span className="home-hero-highlight">
                 Sustainable Electrical Solutions
               </span>
