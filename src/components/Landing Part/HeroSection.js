@@ -452,7 +452,7 @@ const HeroSection = () => {
           </div>
           <div className="home-strip-ctas">
             <button
-              className="home-btn home-btn--primary"
+              className="home-btn home-btn--primary" style={{marginBottom: '10px'}}
               onClick={() => navigateTo("/book now")}
             >
               Start Booking Wizard
