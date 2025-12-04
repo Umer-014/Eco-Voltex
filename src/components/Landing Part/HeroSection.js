@@ -458,7 +458,7 @@ const HeroSection = () => {
               Start Booking Wizard
             </button>
             <button
-              className="home-btn home-btn--ghost home-btn--ghost-light"
+              className="home-btn home-btn--ghost home-btn--ghost-light" style={{marginBottom: '10px'}}
               onClick={() => navigateTo("/contact")}
             >
               Email us your requirements
