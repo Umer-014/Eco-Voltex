@@ -1,380 +1,481 @@
-body {
-/* London Badge Styles */
+/* HeroSection.css */
+/* Brand base (aligned with your other pages) */
+:root {
+  --ev-navy: #0f172a;
+  --ev-navy-soft: #111827;
+  --ev-green: #15803d;
+  --ev-green-soft: #bbf7d0;
+  --ev-amber: #f97316;
+  --ev-bg: #f3f4f6;
+  --ev-border: #e5e7eb;
+  --ev-radius-lg: 18px;
+  --ev-radius-xl: 24px;
+  --ev-shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.25);
+  --ev-shadow-card: 0 10px 30px rgba(15, 23, 42, 0.18);
+}
+
+/* London badge */
 .london-badge {
   display: inline-block;
-  background: linear-gradient(90deg, #ff5722, #ffc107);
+  background: linear-gradient(90deg, #f97316, #facc15);
   color: #fff;
-  font-weight: bold;
-  font-size: 1.2rem;
-  padding: 8px 24px;
-  border-radius: 30px;
-  margin-bottom: 18px;
-  box-shadow: 0 2px 8px rgba(44,62,80,0.15);
-  letter-spacing: 1px;
-  animation: badgePulse 1.5s infinite alternate;
-}
-.london-badge span {
-  font-weight: 900;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 6px 18px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.35);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  animation: badgePulse 1.6s ease-in-out infinite alternate;
+}
+
+.london-badge span {
+  font-weight: 800;
 }
 
 @keyframes badgePulse {
-  0% { transform: scale(1); box-shadow: 0 2px 8px rgba(44,62,80,0.15); }
-  100% { transform: scale(1.08); box-shadow: 0 4px 16px rgba(44,62,80,0.25); }
-}
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  color: #333;
+  0% {
+    transform: scale(1);
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.35);
+  }
+  100% {
+    transform: scale(1.06);
+    box-shadow: 0 4px 22px rgba(15, 23, 42, 0.65);
+  }
 }
 
 .home-page {
-  text-align: center;
-  overflow-x: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  color: #111827;
+  background: #ffffff;
 }
 
-/* Hero Section */
+/* HERO */
 .home-hero {
-  background: linear-gradient(135deg, #14532d 0%, #287271 100%);
-  height: 50vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
   position: relative;
+  padding: 72px 16px 72px;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at top left,
+    #0f172a 0,
+    #020617 45%,
+    #020617 100%
+  );
+  color: #f9fafb;
 }
 
-.home-hero-overlay {
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
+.home-hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at 10% 0,
+      rgba(52, 211, 153, 0.18) 0,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 80% 40%,
+      rgba(59, 130, 246, 0.18) 0,
+      transparent 55%
+    );
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.home-hero-container {
+  position: relative;
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1.1fr);
+  gap: 36px;
   align-items: center;
+  z-index: 1;
 }
 
-.home-hero-content h1 {
+.home-hero-left h1 {
   font-size: 2.8rem;
+  line-height: 1.1;
+  margin-bottom: 14px;
+  letter-spacing: 0.01em;
+}
+
+.home-hero-highlight {
+  color: var(--ev-green-soft);
+}
+
+.home-hero-sub {
+  font-size: 1.05rem;
+  line-height: 1.5;
   margin-bottom: 18px;
-  animation: fadeIn 2s ease-in-out;
-  font-weight: 900;
-  color: #fff;
-  letter-spacing: 1px;
+  color: #e5e7eb;
 }
 
-.home-hero-content p {
-  font-size: 1.2rem;
-  margin-bottom: 24px;
-  color: #f5f5f5;
+/* Toggle */
+.home-toggle {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  margin: 10px 0 12px;
 }
 
-.home-cta-btn {
-  background-color: #ff5722;
-  color: white;
+.home-toggle-btn {
   border: none;
-  padding: 15px 35px;
-  font-size: 1.2rem;
-  border-radius: 30px;
+  background: transparent;
+  color: #e5e7eb;
+  font-size: 0.9rem;
+  padding: 6px 16px;
+  border-radius: 999px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.12s ease;
 }
 
-.home-cta-btn:hover {
-  background-color: #e64a19;
-  transform: scale(1.1);
-}
-/* Services Section */
-.home-services {
-  padding: 50px 20px;
-  background-color: #f4f4f4;
+.home-toggle-btn--active {
+  background: #f9fafb;
+  color: #0f172a;
+  transform: translateY(-1px);
 }
 
-.home-services h2 {
-  margin-bottom: 40px;
-  font-size: 2.5rem;
-  color: #333;
-  font-weight: bold;
+/* Bullets */
+.home-hero-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 16px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr);
+  gap: 6px;
 }
 
-.home-services h3 {
-  font-weight: bold;
+.home-hero-bullets li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 0.95rem;
+  color: #d1d5db;
 }
 
-.home-service-cards {
+.home-hero-bullets li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  color: var(--ev-green-soft);
+  font-size: 1.1rem;
+}
+
+/* CTAs */
+.home-hero-ctas {
   display: flex;
-  justify-content: space-around;
-  gap: 20px;
   flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
-.home-service-cards .slick-slide {
-  padding: 0 10px; /* Spacing between slides */
-}
-
-.home-service-card {
-  background: white;
-  border: 1px solid #ddd;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  width: calc(100% - 20px); /* Full width within slide */
-  border-radius: 12px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.home-service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-}
-
-.home-service-card i {
-  font-size: 3rem;
-  color: #28a745;
-  margin-bottom: 20px;
-}
-
-.home-service-card h3 {
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 15px;
-  text-decoration: none;
-}
-
-/* Add or update this for all "Read More" buttons in service cards */
-.home-service-card button {
-  background: #757575;
-  color: #fff;
-  border: none;
-  padding: 12px 28px;
-  border-radius: 22px;
-  font-size: 1rem;
+.home-btn {
+  border-radius: 999px;
+  padding: 11px 22px;
+  border: 1px solid transparent;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
-  margin-top: 10px;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease,
+    transform 0.12s ease, box-shadow 0.12s ease;
 }
 
-.home-service-card button:hover,
-.home-service-card button:focus {
-  background: #616161;
-  transform: translateY(-2px) scale(1.04);
+.home-btn--primary {
+  background: linear-gradient(135deg, var(--ev-green), #16a34a);
+  color: #f9fafb;
+  box-shadow: 0 16px 40px rgba(22, 163, 74, 0.55);
 }
 
+.home-btn--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 45px rgba(22, 163, 74, 0.65);
+}
 
-/* Testimonials Section */
+.home-btn--ghost {
+  background: transparent;
+  color: #e5e7eb;
+  border-color: rgba(148, 163, 184, 0.8);
+}
+
+.home-btn--ghost:hover {
+  background: rgba(15, 23, 42, 0.65);
+}
+
+/* Meta text */
+.home-hero-meta {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
+/* Right side cards */
+.home-hero-right {
+  display: flex;
+  justify-content: center;
+}
+
+.home-hero-card-grid {
+  display: grid;
+  grid-template-columns: 1.25fr;
+  gap: 10px;
+  background: rgba(15, 23, 42, 0.87);
+  border-radius: var(--ev-radius-xl);
+  padding: 18px;
+  box-shadow: var(--ev-shadow-soft);
+  border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+.home-hero-card {
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: var(--ev-radius-lg);
+  padding: 12px 14px;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+}
+
+.home-hero-card--primary {
+  background: radial-gradient(circle at top left, #22c55e, #166534);
+  border: none;
+  box-shadow: 0 18px 45px rgba(22, 163, 74, 0.8);
+}
+
+.home-hero-card h3,
+.home-hero-card h4 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+  color: #f9fafb;
+}
+
+.home-hero-card p {
+  margin: 0 0 6px;
+  font-size: 0.9rem;
+  color: #e5e7eb;
+}
+
+.home-link-btn {
+  border: none;
+  background: transparent;
+  color: #a5b4fc;
+  font-size: 0.87rem;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.home-link-btn:hover {
+  color: #c4b5fd;
+}
+
+/* SECTION – SERVICE TILES */
+.home-section {
+  padding: 56px 16px 40px;
+  background: #f9fafb;
+}
+
+.home-section-header {
+  max-width: 840px;
+  margin: 0 auto 24px;
+  text-align: center;
+}
+
+.home-section-header h2 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.home-section-header p {
+  color: #4b5563;
+  font-size: 0.98rem;
+}
+
+.home-tile-grid {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.home-tile {
+  background: #ffffff;
+  border-radius: var(--ev-radius-lg);
+  border: 1px solid var(--ev-border);
+  padding: 16px 16px 18px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+.home-tile-tag {
+  display: inline-flex;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: #ecfdf3;
+  color: #166534;
+  margin-bottom: 8px;
+}
+
+.home-tile-title {
+  font-size: 1.05rem;
+  margin: 0 0 6px;
+  color: #111827;
+}
+
+.home-tile-text {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+/* STRIP CTA */
+.home-strip {
+  background: #0b1120;
+  color: #e5e7eb;
+  padding: 32px 16px;
+}
+
+.home-strip-content {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  justify-content: space-between;
+}
+
+.home-strip h2 {
+  margin: 0 0 4px;
+  font-size: 1.5rem;
+}
+
+.home-strip p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #cbd5f5;
+}
+
+.home-strip-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* TESTIMONIALS */
 .home-testimonials {
-  padding: 50px 20px;
-  background-color: white;
+  padding: 48px 16px 60px;
+  background: #ffffff;
 }
 
 .home-testimonials h2 {
-  margin-bottom: 40px;
-  font-size: 2.5rem;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 26px;
+  color: #111827;
 }
 
-/* Testimonials Row Layout */
 .home-testimonials-row {
-  display: flex;
-  gap: 24px;
-  justify-content: center;
-  flex-wrap: wrap;
+  max-width: 1120px;
+  margin: 0 auto;
 }
 
 .home-testimonial {
-  background:#D3D3D3;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(44, 62, 80, 0.08);
-  padding: 28px 22px;
-  margin-bottom: 30px;
-  font-style: italic;
-  max-width: 340px;
-  flex: 1 1 300px;
-  min-width: 260px;
-  display: flex;
+  background: #f9fafb;
+  border-radius: var(--ev-radius-lg);
+  padding: 18px 18px 16px;
+  border: 1px solid #e5e7eb;
+  margin: 0 8px;
+  min-height: 170px;
+  display: flex !important;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.home-testimonial-quote {
+  font-size: 0.95rem;
+  color: #374151;
+  margin-bottom: 10px;
 }
 
 .home-client-info {
-  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .home-client-info h4 {
   margin: 0;
-  font-weight: bold;
+  font-size: 0.9rem;
+  font-weight: 700;
 }
 
 .home-client-info p {
-  color: #555;
-  margin-top: 5px;
+  margin: 0;
+  font-size: 0.8rem;
+  color: #6b7280;
 }
 
-@media (max-width: 600px) {
-  .home-service-card,
-  .home-testimonial {
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    box-sizing: border-box;
+/* Slick spacing */
+.home-testimonials-row .slick-slide {
+  padding: 0 4px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  .home-hero-container {
+    grid-template-columns: minmax(0, 1fr);
   }
-  .home-service-cards,
-  .home-testimonials-row {
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    margin: 0;
-    padding: 0;
+
+  .home-hero-right {
+    order: -1;
   }
-  body, .home-page {
-    overflow-x: hidden;
+
+  .home-hero {
+    padding-top: 64px;
+  }
+
+  .home-hero-left h1 {
+    font-size: 2.2rem;
+  }
+
+  .home-tile-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-/* Mobile Responsiveness */
-@media screen and (max-width: 768px) {
-  .home-hero-content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+
+@media (max-width: 640px) {
+  .home-hero {
+    padding: 56px 16px 52px;
   }
 
-  .home-hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
+  .home-hero-left h1 {
+    font-size: 1.9rem;
   }
 
-  .home-cta-btn {
-    padding: 12px 25px;
-    font-size: 1rem;
+  .home-hero-sub {
+    font-size: 0.98rem;
   }
 
-  .home-services h2,
-  .home-why-us h2,
-  .home-testimonials h2 {
-    font-size: 2rem;
+  .home-hero-card-grid {
+    padding: 14px;
   }
 
-  .home-service-cards {
-    justify-content: space-evenly;
-    flex-direction: row;
-    align-items: center;
-    gap: 30px;
+  .home-tile-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .home-service-card {
-    width: 90%;
-    padding: 20px;
-  }
-
-  .home-service-card button {
-    background: #757575;
-    color: #fff;
-    border: none;
-    padding: 12px 28px;
-    border-radius: 22px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
-    margin-top: 10px;
-  }
-
-  .home-service-card button:hover,
-  .home-service-card button:focus {
-    background: #616161;
-    transform: translateY(-2px) scale(1.04);
-  }
-
-  .home-features {
+  .home-strip-content {
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .home-feature {
-    max-width: 100%;
+    align-items: flex-start;
   }
 
   .home-testimonial {
-    margin-bottom: 20px;
-  }
-
-  .home-client-info {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .home-client-info img {
     margin-bottom: 10px;
-  }
-
-  .home-cta-section h2 {
-    font-size: 2rem;
-  }
-
-  .home-cta-section .home-cta-btn {
-    padding: 12px 25px;
-    font-size: 1rem;
-  }
-}
-
-/* Small Mobile Responsiveness */
-@media screen and (max-width: 480px) {
-  .home-hero-content h1 {
-    font-size: 2rem;
-  }
-
-  .home-hero-content p {
-    font-size: 1rem;
-  }
-
-  .home-cta-btn {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-  }
-
-  .home-service-cards {
-    justify-content: space-evenly;
-    flex-direction: row;
-    align-items: center;
-    gap: 30px;
-  }
-
-  .home-service-card {
-    width: 100%;
-    padding: 15px;
-  }
-
-  .home-service-card i {
-    font-size: 2.5rem;
-  }
-
-  .home-service-card button {
-    background: #757575;
-    color: #fff;
-    border: none;
-    padding: 12px 28px;
-    border-radius: 22px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
-    margin-top: 10px;
-  }
-
-  .home-service-card button:hover,
-  .home-service-card button:focus {
-    background: #616161;
-    transform: translateY(-2px) scale(1.04);
-  }
-
-  .home-feature i {
-    font-size: 2rem;
-  }
-
-  .home-cta-section h2 {
-    font-size: 1.8rem;
-  }
-
-  .home-cta-section .home-cta-btn {
-    padding: 10px 20px;
-    font-size: 1rem;
   }
 }
