@@ -207,9 +207,7 @@ const HeroSection = () => {
             variants={cardVariants}
           >
             <div className="home-badge-row">
-              <div className="london-badge" aria-label="Service area">
-                Greater London • <span>Sustainable Electrical Solutions</span>
-              </div>
+              
               <div className="home-badge-chip">
                 Eco Voltex • NAPIT Approved • Fully Insured
               </div>
