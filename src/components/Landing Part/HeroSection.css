@@ -207,7 +207,7 @@
 }
 
 .home-btn--primary {
-  background: linear-gradient(140deg, var(--ev-green), #22c55e);
+  background: linear-gradient(140deg, var(--ev-green), #0fcd55);
   color: #f9fafb;
   box-shadow: 0 20px 55px rgba(22, 163, 74, 0.7);
 }
