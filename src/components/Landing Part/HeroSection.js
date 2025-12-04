@@ -216,15 +216,15 @@ const HeroSection = () => {
             <h1 id="home-hero-title">
               Eco Voltex —{" "}
               <span className="home-hero-highlight">
-                Sustainable Electrical & Fire Safety
+                Sustainable Electrical Solutions
               </span>
               .
             </h1>
 
             <p className="home-hero-sub">
               We design, install and maintain{" "}
-              <strong>electrical systems, fire alarms, CCTV, PAT</strong> and{" "}
-              <strong>emergency protection</strong> so your home or business
+              <strong>electrical systems,<strong>emergency protection</strong>, fire alarms, CCTV and PAT</strong> {" "}
+               so your home or business
               stays safe, compliant and efficient.
             </p>
 
