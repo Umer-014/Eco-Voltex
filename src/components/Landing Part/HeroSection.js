@@ -214,7 +214,7 @@ const HeroSection = () => {
             </div>
 
             <h1 id="home-hero-title">
-              Eco Voltex —{" "}
+              Eco Voltex {" "}
               <span className="home-hero-highlight">
                 Sustainable Electrical Solutions
               </span>
