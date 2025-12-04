@@ -207,14 +207,19 @@ const HeroSection = () => {
             variants={cardVariants}
           >
             <div className="home-badge-row">
-              
               <div className="home-badge-chip">
-                Eco Voltex • NAPIT Approved • Fully Insured
+                <a href="/about" className="about__link">
+                  <strong>Eco Voltex</strong>
+                </a>{" "}
+                • NAPIT Approved • Fully Insured
               </div>
             </div>
 
             <h1 id="home-hero-title">
-              Eco Voltex —{" "}
+              <a href="/about" className="about__link">
+                <strong>Eco Voltex</strong>
+              </a>{" "}
+              —{" "}
               <span className="home-hero-highlight">
                 Sustainable Electrical Solutions
               </span>
@@ -223,9 +228,11 @@ const HeroSection = () => {
 
             <p className="home-hero-sub">
               We design, install and maintain{" "}
-              <strong>electrical systems,<strong>emergency protection</strong>, fire alarms, CCTV and PAT</strong> {" "}
-               so your home or business
-              stays safe, compliant and efficient.
+              <strong>
+                electrical systems,<strong>emergency protection</strong>, fire
+                alarms, CCTV and PAT
+              </strong>{" "}
+              so your home or business stays safe, compliant and efficient.
             </p>
 
             {/* Audience toggle */}
@@ -278,8 +285,6 @@ const HeroSection = () => {
               </button>
             </div>
 
-            
-
             <div className="home-hero-meta">
               BS 7671 • BS 5839 • BS 5266 • IET Code of Practice — every job
               tested, labelled and documented.
@@ -296,7 +301,12 @@ const HeroSection = () => {
             <div className="home-hero-panel">
               <div className="home-hero-panel-header">
                 <span className="home-status-dot" aria-hidden="true" />
-                <span className="home-status-text">Eco Voltex service hub</span>
+                <span className="home-status-text">
+                  <a href="/about" className="about__link">
+                    <strong>Eco Voltex</strong>
+                  </a>{" "}
+                  service hub
+                </span>
                 <span className="home-status-pill">Slots this week</span>
               </div>
 
@@ -372,7 +382,10 @@ const HeroSection = () => {
                   <div className="home-mini-card">
                     <p className="home-mini-label">Coverage</p>
                     <p className="home-mini-text">
-                      Greater London and nearby towns. Check if Eco Voltex
+                      Greater London and nearby towns. Check if{" "}
+                      <a href="/about" className="about__link">
+                        <strong>Eco Voltex</strong>
+                      </a>
                       covers your postcode in seconds.
                     </p>
                     <button
@@ -389,8 +402,6 @@ const HeroSection = () => {
         </div>
       </section>
 
-      
-
       {/* SERVICE TILES (all main pages) */}
       <section className="home-section" aria-labelledby="home-services-title">
         <div className="home-section-header">
@@ -399,8 +410,12 @@ const HeroSection = () => {
           </h2>
           <p>
             Instead of juggling different electricians, PAT testers and fire
-            alarm firms, Eco Voltex delivers a joined-up service with neat
-            installs and audit-ready paperwork.
+            alarm firms,{" "}
+            <a href="/about" className="about__link">
+              <strong>Eco Voltex</strong>
+            </a>{" "}
+            delivers a joined-up service with neat installs and audit-ready
+            paperwork.
           </p>
         </div>
 
@@ -414,7 +429,6 @@ const HeroSection = () => {
               viewport={{ once: true, amount: 0.25 }}
               variants={cardVariants}
             >
-              
               <h3 className="home-tile-title">{svc.title}</h3>
               {svc.image && (
                 <div className="home-tile-image-wrap">
@@ -426,7 +440,7 @@ const HeroSection = () => {
                   />
                 </div>
               )}
-              
+
               <p className="home-tile-text">{svc.text}</p>
               <button
                 className="home-link-btn"
@@ -441,34 +455,39 @@ const HeroSection = () => {
 
       {/* STRIP CTA */}
       <section className="home-strip">
-        
-          <div className="home-strip-content">
-            <h2>Your Safety. Our Expertise. One Clear Plan.</h2>
-            <p>
-              Tell us your goals — Eco Voltex designs safe, efficient and sustainable systems that minimise downtime and maximise long-term reliability.
-            </p>
-          </div>
-          <div className="home-strip-ctas">
-            <button
-              className="home-btn home-btn--primary" style={{marginBottom: '10px'}}
-              onClick={() => navigateTo("/book now")}
-            >
-              Start Booking Wizard
-            </button>
-            <button
-              className="home-btn home-btn--ghost home-btn--ghost-light" style={{marginBottom: '10px'}}
-              onClick={() => navigateTo("/contact")}
-            >
-              Email us your requirements
-            </button>
-            <button
-              className="home-btn home-btn--ghost home-btn--ghost-light"
-              onClick={() => navigateTo("/areas-we-cover")}
-            >
-              Check service coverage
-            </button>
-          </div>
-        
+        <div className="home-strip-content">
+          <h2>Your Safety. Our Expertise. One Clear Plan.</h2>
+          <p>
+            Tell us your goals —{" "}
+            <a href="/about" className="about__link">
+              <strong>Eco Voltex</strong>
+            </a>{" "}
+            designs safe, efficient and sustainable systems that minimise
+            downtime and maximise long-term reliability.
+          </p>
+        </div>
+        <div className="home-strip-ctas">
+          <button
+            className="home-btn home-btn--primary"
+            style={{ marginBottom: "10px" }}
+            onClick={() => navigateTo("/book now")}
+          >
+            Start Booking Wizard
+          </button>
+          <button
+            className="home-btn home-btn--ghost home-btn--ghost-light"
+            style={{ marginBottom: "10px" }}
+            onClick={() => navigateTo("/contact")}
+          >
+            Email us your requirements
+          </button>
+          <button
+            className="home-btn home-btn--ghost home-btn--ghost-light"
+            onClick={() => navigateTo("/areas-we-cover")}
+          >
+            Check service coverage
+          </button>
+        </div>
       </section>
 
       {/* TESTIMONIALS */}
@@ -476,7 +495,12 @@ const HeroSection = () => {
         className="home-testimonials"
         aria-labelledby="home-testimonials-title"
       >
-        <h2 id="home-testimonials-title">What Clients Say About Eco Voltex</h2>
+        <h2 id="home-testimonials-title">
+          What Clients Say About{" "}
+          <a href="/about" className="about__link">
+            <strong>Eco Voltex</strong>
+          </a>
+        </h2>
         <Slider className="home-testimonials-row" {...testimonialSettings}>
           {testimonials.map((t) => (
             <div className="home-testimonial" key={t.name}>
