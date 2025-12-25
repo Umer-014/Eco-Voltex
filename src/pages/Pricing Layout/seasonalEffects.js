@@ -27,23 +27,24 @@ function loadSnow() {
 let fireworksIntervalId = null;
 function loadFireworks() {
   if (document.getElementById("fireworks-script")) return;
+
   const script = document.createElement("script");
   script.id = "fireworks-script";
   script.src =
     "https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js";
   script.async = true;
   document.body.appendChild(script);
+
   script.onload = () => {
-    if (fireworksIntervalId) return; // prevent duplicates
-    fireworksIntervalId = window.setInterval(() => {
-      window.confetti?.({
-        particleCount: 120,
-        spread: 80,
-        origin: { y: 0.6 },
-      });
-    }, 2500);
+    // Fireworks only once
+    window.confetti?.({
+      particleCount: 120,
+      spread: 80,
+      origin: { y: 0.6 },
+    });
   };
 }
+
 export function cleanupSeasonalEffects() {
   if (fireworksIntervalId) {
     clearInterval(fireworksIntervalId);
