@@ -1,7 +1,9 @@
 import React, { useMemo, useState, useEffect } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+
 import "../Services/CCTV/CCTV.css";
+
 
 const PRICING = {
   meta: { currency: "GBP", vatRate: 0.0, companyPhone: "+44 7930 558824" },
@@ -169,7 +171,7 @@ function Countdown({ targetDate }) {
       const diff = targetDate - now;
 
       if (diff <= 0) {
-        setTimeLeft("🎉 It's Christmas! 🎉");
+        setTimeLeft("🎉 It's New Year! 🎉");
         clearInterval(interval);
         return;
       }
@@ -198,6 +200,9 @@ const isUKMobile = (s) =>
   /^[+]?\d{0,2}\s?0?7\d{9}$/.test((s || "").replace(/\s+/g, ""));
 
 export default function BookNow() {
+
+ 
+
   const [audience, setAudience] = useState("home");
 
   // Domain & multi-service selections
@@ -667,7 +672,7 @@ export default function BookNow() {
                   display: "block",
                 }}
               >
-                Christmas Special Offer!
+                New Year Special Offer!
               </div>
               <div
                 style={{
@@ -687,7 +692,7 @@ export default function BookNow() {
                   display: "block",
                 }}
               >
-                <Countdown targetDate={new Date("2025-12-25T00:00:00")} />
+                <Countdown targetDate={new Date("2025-12-31T23:59:59")} />
               </div>
             </div>
 
