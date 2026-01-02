@@ -207,14 +207,13 @@ const HeroSection = () => {
             variants={cardVariants}
           >
             <div className="home-badge-row">
-              
               <div className="home-badge-chip">
                 Eco Voltex • NAPIT Approved • Fully Insured
               </div>
             </div>
 
             <h1 id="home-hero-title">
-              Eco Voltex {" "}
+              Eco Voltex{" "}
               <span className="home-hero-highlight">
                 Sustainable Electrical Solutions
               </span>
@@ -223,9 +222,11 @@ const HeroSection = () => {
 
             <p className="home-hero-sub">
               We design, install and maintain{" "}
-              <strong>electrical systems,<strong>emergency protection</strong>, fire alarms, CCTV and PAT</strong> {" "}
-               so your home or business
-              stays safe, compliant and efficient.
+              <strong>
+                electrical systems,<strong>emergency protection</strong>, fire
+                alarms, CCTV and PAT
+              </strong>{" "}
+              so your home or business stays safe, compliant and efficient.
             </p>
 
             {/* Audience toggle */}
@@ -277,8 +278,6 @@ const HeroSection = () => {
                 Talk To An Engineer
               </button>
             </div>
-
-            
 
             <div className="home-hero-meta">
               BS 7671 • BS 5839 • BS 5266 • IET Code of Practice — every job
@@ -389,8 +388,6 @@ const HeroSection = () => {
         </div>
       </section>
 
-      
-
       {/* SERVICE TILES (all main pages) */}
       <section className="home-section" aria-labelledby="home-services-title">
         <div className="home-section-header">
@@ -413,9 +410,17 @@ const HeroSection = () => {
               whileInView="visible"
               viewport={{ once: true, amount: 0.25 }}
               variants={cardVariants}
+              role="button"
+              tabIndex={0}
+              onClick={() => navigateTo(svc.path)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  navigateTo(svc.path);
+                }
+              }}
             >
-              
               <h3 className="home-tile-title">{svc.title}</h3>
+
               {svc.image && (
                 <div className="home-tile-image-wrap">
                   <img
@@ -426,14 +431,10 @@ const HeroSection = () => {
                   />
                 </div>
               )}
-              
+
               <p className="home-tile-text">{svc.text}</p>
-              <button
-                className="home-link-btn"
-                onClick={() => navigateTo(svc.path)}
-              >
-                {svc.linkLabel} →
-              </button>
+
+              <span className="home-link-btn">{svc.linkLabel} →</span>
             </motion.article>
           ))}
         </div>
@@ -441,34 +442,36 @@ const HeroSection = () => {
 
       {/* STRIP CTA */}
       <section className="home-strip">
-        
-          <div className="home-strip-content">
-            <h2>Your Safety. Our Expertise. One Clear Plan.</h2>
-            <p>
-              Tell us your goals — Eco Voltex designs safe, efficient and sustainable systems that minimise downtime and maximise long-term reliability.
-            </p>
-          </div>
-          <div className="home-strip-ctas">
-            <button
-              className="home-btn home-btn--primary" style={{marginBottom: '10px'}}
-              onClick={() => navigateTo("/book now")}
-            >
-              Start Booking Wizard
-            </button>
-            <button
-              className="home-btn home-btn--ghost home-btn--ghost-light" style={{marginBottom: '10px'}}
-              onClick={() => navigateTo("/contact")}
-            >
-              Email us your requirements
-            </button>
-            <button
-              className="home-btn home-btn--ghost home-btn--ghost-light"
-              onClick={() => navigateTo("/areas-we-cover")}
-            >
-              Check service coverage
-            </button>
-          </div>
-        
+        <div className="home-strip-content">
+          <h2>Your Safety. Our Expertise. One Clear Plan.</h2>
+          <p>
+            Tell us your goals — Eco Voltex designs safe, efficient and
+            sustainable systems that minimise downtime and maximise long-term
+            reliability.
+          </p>
+        </div>
+        <div className="home-strip-ctas">
+          <button
+            className="home-btn home-btn--primary"
+            style={{ marginBottom: "10px" }}
+            onClick={() => navigateTo("/book now")}
+          >
+            Start Booking Wizard
+          </button>
+          <button
+            className="home-btn home-btn--ghost home-btn--ghost-light"
+            style={{ marginBottom: "10px" }}
+            onClick={() => navigateTo("/contact")}
+          >
+            Email us your requirements
+          </button>
+          <button
+            className="home-btn home-btn--ghost home-btn--ghost-light"
+            onClick={() => navigateTo("/areas-we-cover")}
+          >
+            Check service coverage
+          </button>
+        </div>
       </section>
 
       {/* TESTIMONIALS */}
