@@ -4,7 +4,6 @@ import Footer from "../../components/Footer/Footer";
 
 import "../Services/CCTV/CCTV.css";
 
-
 const PRICING = {
   meta: { currency: "GBP", vatRate: 0.0, companyPhone: "+44 7930 558824" },
   domains: ["Select the Domain first", "Residential", "Commercial"],
@@ -14,14 +13,13 @@ const PRICING = {
       domain: "Residential",
       model: "select_banded",
       bands: [
-        { key: "studio", label: "Studio Flat", price: 111.25 },
-        { key: "1-2", label: "1–2 Bedrooms", price: 123.75 },
-        { key: "3-4", label: "3–4 Bedrooms", price: 161.25 },
-        { key: "5-6", label: "5–6 Bedrooms", price: 198.75 },
+        { key: "studio", label: "Studio Flat", price: 89 },
+        { key: "1-2", label: "1–2 Bedrooms", price: 99 },
+        { key: "3-4", label: "3–4 Bedrooms", price: 129 },
+        { key: "5-6", label: "5–6 Bedrooms", price: 159 },
       ],
       addons: [],
     },
-
     EICR_Commercial: {
       name: "EICR Per Circuit",
       domain: "Commercial",
@@ -29,9 +27,9 @@ const PRICING = {
       unit: "circuits",
       quantityKey: "circuits",
       bands: [
-        { upTo: 5, price: 186.25 },
-        { upTo: 10, price: 248.75 },
-        { upTo: 15, price: 311.25 },
+        { upTo: 5, price: 149 },
+        { upTo: 10, price: 199 },
+        { upTo: 15, price: 249 },
       ],
       maxHandled: 15,
       addons: [
@@ -39,11 +37,10 @@ const PRICING = {
           key: "out_of_hours",
           label: "Out-of-hours testing",
           type: "toggle",
-          price: 100,
+          price: 80,
         },
       ],
     },
-
     PAT_Residential: {
       name: "PAT Testing – Residential",
       domain: "Residential",
@@ -51,13 +48,13 @@ const PRICING = {
       unit: "appliances",
       quantityKey: "devices",
       bands: [
-        { upTo: 10, price: 86.25 },
-        { upTo: 20, price: 123.75 },
-        { upTo: 40, price: 186.25 },
+        { upTo: 10, price: 69 },
+        { upTo: 20, price: 99 },
+        { upTo: 40, price: 149 },
       ],
+
       addons: [],
     },
-
     PAT_Commercial: {
       name: "PAT Testing – Commercial",
       domain: "Commercial",
@@ -65,13 +62,13 @@ const PRICING = {
       unit: "appliances",
       quantityKey: "devices",
       bands: [
-        { upTo: 10, price: 86.25 },
-        { upTo: 20, price: 123.75 },
-        { upTo: 40, price: 186.25 },
+        { upTo: 10, price: 69 },
+        { upTo: 20, price: 99 },
+        { upTo: 40, price: 149 },
       ],
+
       addons: [],
     },
-
     EmergencyLighting_Commercial: {
       name: "Emergency Lighting Testing (BS 5266-1)",
       domain: "Commercial",
@@ -79,13 +76,12 @@ const PRICING = {
       unit: "lights",
       quantityKey: "lights",
       bands: [
-        { upTo: 3, price: 73.75 },
-        { upTo: 6, price: 98.75 },
-        { upTo: 12, price: 161.25 },
+        { upTo: 3, price: 59 },
+        { upTo: 6, price: 79 },
+        { upTo: 12, price: 129 },
       ],
       addons: [],
     },
-
     EmergencyLighting_Residential: {
       name: "Emergency Lighting Testing (BS 5266-1)",
       domain: "Residential",
@@ -93,23 +89,19 @@ const PRICING = {
       unit: "lights",
       quantityKey: "lights",
       bands: [
-        { upTo: 3, price: 73.75 },
-        { upTo: 6, price: 98.75 },
-        { upTo: 12, price: 161.25 },
+        { upTo: 3, price: 59 },
+        { upTo: 6, price: 79 },
+        { upTo: 12, price: 129 },
       ],
       addons: [],
     },
-
     Part_P: {
       name: "Part P – Certificate & LABC Notification",
       domain: "",
       model: "select_banded",
-      bands: [
-        { key: "reissue", label: "Reissue of certificate", price: 106.25 },
-      ],
+      bands: [{ key: "reissue", label: "Reissue of certificate", price: 85 }],
       addons: [],
     },
-
     Third_Party_Certification: {
       name: "Third-Party Certification (TPC)",
       domain: "Commercial",
@@ -118,20 +110,19 @@ const PRICING = {
         {
           key: "small",
           label: "Small job (1 new/altered circuit)",
-          min: 137.5,
-          max: 162.5,
+          min: 110,
+          max: 130,
         },
-        { key: "medium", label: "Medium (2–4 circuits)", min: 175, max: 212.5 },
+        { key: "medium", label: "Medium (2–4 circuits)", min: 140, max: 170 },
         {
           key: "large",
           label: "Larger (5–8 circuits or CU change)",
-          min: 225,
-          max: 275,
+          min: 180,
+          max: 220,
         },
       ],
       addons: [],
     },
-
     Fire_Alarm_Residential: {
       name: "Fire Alarm Certificate – Residential (BS 5839-6)",
       domain: "Residential",
@@ -139,13 +130,13 @@ const PRICING = {
       unit: "detectors",
       quantityKey: "detectors",
       bands: [
-        { upTo: 3, price: 86.25 },
-        { upTo: 6, price: 111.25 },
-        { upTo: 12, price: 148.75 },
+        { upTo: 3, price: 69 },
+        { upTo: 6, price: 89 },
+        { upTo: 12, price: 119 },
       ],
+
       addons: [],
     },
-
     Fire_Alarm_Commercial: {
       name: "Fire Alarm Certificate – Commercial (BS 5839-1)",
       domain: "Commercial",
@@ -153,42 +144,16 @@ const PRICING = {
       unit: "detectors",
       quantityKey: "detectors",
       bands: [
-        { upTo: 3, price: 98.75 },
-        { upTo: 5, price: 123.75 },
-        { upTo: 10, price: 161.25 },
+        { upTo: 3, price: 79 },
+        { upTo: 5, price: 99 },
+        { upTo: 10, price: 129 },
       ],
       addons: [],
     },
   },
 };
 
-function Countdown({ targetDate }) {
-  const [timeLeft, setTimeLeft] = useState("");
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const now = new Date();
-      const diff = targetDate - now;
-
-      if (diff <= 0) {
-        setTimeLeft("🎉 It's New Year! 🎉");
-        clearInterval(interval);
-        return;
-      }
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-
-      setTimeLeft(`${days}d ${hours}h ${minutes}m ${seconds}s`);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [targetDate]);
-
-  return <span>{timeLeft}</span>;
-}
 
 // ---------- helpers ----------
 const currency = (n) =>
@@ -200,9 +165,6 @@ const isUKMobile = (s) =>
   /^[+]?\d{0,2}\s?0?7\d{9}$/.test((s || "").replace(/\s+/g, ""));
 
 export default function BookNow() {
-
- 
-
   const [audience, setAudience] = useState("home");
 
   // Domain & multi-service selections
@@ -533,9 +495,7 @@ export default function BookNow() {
         return lines;
       }),
       // Grand total (after 25% discount)
-      `Estimated total (after 20% discount): ${currency(
-        breakdown.grandTotal * 0.80
-      )}`,
+      `Estimated total : ${currency(breakdown.grandTotal)}`,
       "Price shown in total is the mid-point. Final invoice will be within the displayed range after site review.",
       "Please confirm my booking and availability.",
     ]
@@ -644,57 +604,6 @@ export default function BookNow() {
               book.
             </p>
             {/* ---------- Count Down ---------- */}
-            <div
-              style={{
-                textAlign: "center",
-                margin: "12px 0",
-                fontWeight: "900",
-                color: "red",
-              }}
-            >
-              {/* Inline animation */}
-              <style>
-                {`
-      @keyframes pulseBlinkInline {
-        0% { transform: scale(1); opacity: 1; }
-        50% { transform: scale(1.15); opacity: 0.6; }
-        100% { transform: scale(1); opacity: 1; }
-      }
-    `}
-              </style>
-
-              {/* Line 1 – Discount text */}
-              <div
-                style={{
-                  fontSize: "1rem",
-                  marginBottom: "12px",
-                  animation: "pulseBlinkInline 1.4s infinite ease-in-out",
-                  display: "block",
-                }}
-              >
-                New Year Special Offer!
-              </div>
-              <div
-                style={{
-                  fontSize: "1rem",
-                  marginBottom: "12px",
-                  animation: "pulseBlinkInline 1.4s infinite ease-in-out",
-                  display: "block",
-                }}
-              >
-                🎉 20% OFF on all services! 🎉
-              </div>
-
-              {/* Line 2 – Countdown */}
-              <div
-                style={{
-                  animation: "pulseBlinkInline 1.4s infinite ease-in-out",
-                  display: "block",
-                }}
-              >
-                <Countdown targetDate={new Date("2025-12-31T23:59:59")} />
-              </div>
-            </div>
 
             <div className="cctv-grid cctv-grid-3 cctv-mt-16">
               {/* Column 1 – Step 1 */}
@@ -1149,16 +1058,6 @@ export default function BookNow() {
                     gap: "6px",
                   }}
                 >
-                  {/* Row 1 – 20% Discount */}
-                  <div
-                    style={{ display: "flex", justifyContent: "space-between" }}
-                  >
-                    <div>20% Discount</div>
-                    <div className="cctv-strong">
-                      -{currency(breakdown.grandTotal * 0.20)}
-                    </div>
-                  </div>
-
                   {/* Row 2 – Grand Total */}
                   <div
                     style={{
@@ -1169,9 +1068,7 @@ export default function BookNow() {
                   >
                     <div>Grand total</div>
                     <div className="cctv-h3">
-                      {currency(
-                        breakdown.grandTotal - breakdown.grandTotal * 0.20
-                      )}
+                      {currency(breakdown.grandTotal)}
                     </div>
                   </div>
                 </div>
