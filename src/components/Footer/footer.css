@@ -107,3 +107,54 @@ footer .social-icons {
     font-size: 12px;
   }
 }
+
+/* NAPIT Certification */
+.napit-section {
+  flex-wrap: wrap;
+}
+
+.napit-logo {
+  height: 50px;
+  background: #fff;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.napit-verify-btn {
+  font-size: 13px;
+  padding: 6px 14px;
+}
+
+.napit-text {
+  font-size: 13px;
+  color: #d3d3d3;
+}
+
+/* NAPIT Certification */
+.napit-certification h5 {
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.napit-section {
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.napit-logo {
+  height: 130px; /* increased size */
+  background: #fff;
+  padding: 8px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.napit-verify-btn {
+  font-size: 14px;
+  padding: 8px 16px;
+}
+
+.napit-text {
+  font-size: 14px;
+  color: #d3d3d3;
+}

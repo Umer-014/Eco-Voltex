@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./footer.css";
+import napitLogo from "../../assets/Certification.jpg";
 
 import {
   FaFacebook,
@@ -29,10 +30,8 @@ const Footer = () => {
               5-7 Vine Street, Uxbridge London, UB81QE, United Kingdom
             </p>
             <p>
-             
-                <Mail className="me-2" />
-                info@ecovoltex.co.uk
-             
+              <Mail className="me-2" />
+              info@ecovoltex.co.uk
             </p>
           </div>
 
@@ -91,13 +90,18 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/location" className="text-light text-decoration-none">
+                <Link
+                  to="/location"
+                  className="text-light text-decoration-none"
+                >
                   Location
                 </Link>
-
               </li>
               <li>
-                <Link to="/Book Now" className="text-light text-decoration-none">
+                <Link
+                  to="/Book Now"
+                  className="text-light text-decoration-none"
+                >
                   Book Now
                 </Link>
               </li>
@@ -151,7 +155,26 @@ const Footer = () => {
                 <FaLinkedin size={30} />
               </a>
             </div>
-              <p className="mt-3 fw-bold">24 Hour Service</p>
+            <p className="mt-3 fw-bold">24 Hour Service</p>
+
+            {/* NAPIT Certification */}
+            <div className="napit-certification mt-4 text-center">
+              <h5 className="fw-bold mb-3" style={{ textAlign: 'left' }}>NAPIT Certification</h5>
+
+              <div className="napit-section d-flex align-items-left justify-content-left gap-3 flex-wrap" >
+                <a
+                  href="https://search.napit.org.uk/member/81305/eco-voltex-ltd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={napitLogo}
+                    alt="NAPIT Registered Installer"
+                    className="napit-logo"
+                  />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
