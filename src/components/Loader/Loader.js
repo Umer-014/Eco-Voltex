@@ -326,16 +326,25 @@ function clamp(n, min, max) {
 
 // Sleek, right-leaning leaf replacing the old bulky shape.
 // Base connects directly to the top left and top right of the bolt.
+// Leaf — DO NOT CHANGE
 const LEAF_D =
-  "M 515,305 " +               // Start at bottom left (connecting to bolt)
-  "C 480,160 620,50 810,35 " + // Smooth, long upward sweep forming the left/top edge
-  "C 750,170 660,285 580,300 " + // Tighter convex curve returning to the base
-  "Z";                         // Close the path
+  "M 515,305 " +
+  "C 480,160 620,50 810,35 " +
+  "C 750,170 660,285 580,300 " +
+  "Z";
 
-// The light crease following the exact contour and curve of the newly shaped leaf.
-const CREASE_D = 
-  "M 535,298 " +               // Start slightly offset from the base
-  "C 585,200 670,110 790,50";  // Curve up perfectly splitting the new leaf shape
+// White line inside the leaf — DO NOT CHANGE
+const CREASE_D =
+  "M 535,298 " +
+  "C 585,200 670,110 790,50";
 
-// The bolt remains perfectly in place where the 'T' goes
-const BOLT_D = "M580,300 L500,392 L546,392 L478,548 L632,404 L566,404 Z";
+// Energy bolt — starts exactly from the bottom of the white leaf line
+const BOLT_D =
+  "M 535,298 " +
+  "L 500,390 " +
+  "L 545,390 " +
+  "L 478,548 " +
+  "L 632,404 " +
+  "L 566,404 " +
+  "L 535,298 " +
+  "Z";
