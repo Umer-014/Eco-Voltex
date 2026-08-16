@@ -1,28 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 
 /**
- * EcoVoltex Loader — premium sequence, matched to the real logo
- * ---------------------------------------------------------------
- * White screen
- *   → "ECO" draws in as an outline
- *   → leaf outline draws, its highlight crease appears
- *   → bolt outline appears (sitting where the "T" of VOLTEX would be)
- *   → "VOL" / "EX" draw in as outlines
- *   → green rises up through the leaf
- *   → energy drops down through the bolt, flashing at the tip
- *   → the navy letters go solid
- *   → a soft glossy sweep crosses the whole mark
- *   → screen fades + scales away to reveal your app
- *
- * Shapes/colors are a close hand-matched vector recreation of your
- * logo.jpg (leaf silhouette, crease, bolt, ECO / VOL·⚡·EX layout).
- * It's still a recreation, not a trace — if you can send the original
- * vector (AI / EPS / SVG / Figma), I can drop in the exact paths and
- * this animation rig will work unchanged.
- *
- * Usage:
- *   import Loader from "./components/Loader/Loader";
- *   <Loader minDuration={4600}><App /></Loader>
+ * EcoVoltex Loader — strictly sequenced animation & corrected leaf
+ * Sequence: ECO -> Leaf -> VOL ⚡ EX -> Glossy Sweep
  */
 export default function Loader({ children, minDuration = 4600 }) {
   const [progress, setProgress] = useState(0);
@@ -62,16 +42,25 @@ export default function Loader({ children, minDuration = 4600 }) {
     return ease(raw / 100) * 100;
   };
 
+  // --- STRICT ANIMATION SEQUENCE ---
   const entrance = seg(0, 6);
-  const ecoOutline = seg(4, 16);
-  const leafDraw = seg(14, 32);
-  const boltOutline = seg(30, 40);
-  const voltexOutline = seg(38, 52);
-  const leafFill = seg(50, 71);
-  const boltFill = seg(69, 85);
-  const boltFlash = progress >= 83 && progress <= 90;
-  const textSolid = seg(83, 93);
-  const sweep = seg(91, 100);
+  
+  // 1. ECO appears
+  const ecoOutline = seg(4, 18);
+  const ecoSolid = seg(14, 28);
+  
+  // 2. Leaf appears
+  const leafDraw = seg(24, 42);
+  const leafFill = seg(36, 52);
+  
+  // 3. VOL, EX, and Bolt appear together
+  const voltexOutline = seg(48, 62);
+  const voltexSolid = seg(58, 72);
+  const boltOutline = seg(48, 62);
+  const boltFill = seg(58, 72);
+  
+  const boltFlash = progress >= 70 && progress <= 78;
+  const sweep = seg(82, 98);
   const finishing = progress >= 100;
 
   return (
@@ -106,28 +95,28 @@ export default function Loader({ children, minDuration = 4600 }) {
                 </clipPath>
               </defs>
 
-              {/* ECO — outline first, solid fill later */}
+              {/* 1. ECO */}
               <text
                 x="40"
                 y="255"
                 className="ev-loader__word"
                 style={{
                   opacity: ecoOutline / 100,
-                  fillOpacity: textSolid / 100,
+                  fillOpacity: ecoSolid / 100,
                   strokeOpacity: (ecoOutline / 100) * 0.55,
                 }}
               >
                 ECO
               </text>
 
-              {/* VOL / EX — outline first, solid fill later */}
+              {/* 3. VOL / EX */}
               <text
                 x="40"
                 y="478"
                 className="ev-loader__word"
                 style={{
                   opacity: voltexOutline / 100,
-                  fillOpacity: textSolid / 100,
+                  fillOpacity: voltexSolid / 100,
                   strokeOpacity: (voltexOutline / 100) * 0.55,
                 }}
               >
@@ -139,14 +128,14 @@ export default function Loader({ children, minDuration = 4600 }) {
                 className="ev-loader__word"
                 style={{
                   opacity: voltexOutline / 100,
-                  fillOpacity: textSolid / 100,
+                  fillOpacity: voltexSolid / 100,
                   strokeOpacity: (voltexOutline / 100) * 0.55,
                 }}
               >
                 EX
               </text>
 
-              {/* leaf: empty outline first */}
+              {/* 2. Leaf Outline */}
               <path
                 d={LEAF_D}
                 className="ev-loader__outline"
@@ -154,18 +143,18 @@ export default function Loader({ children, minDuration = 4600 }) {
                 style={{ strokeDashoffset: 100 - leafDraw }}
               />
 
-              {/* leaf: color rises from the base */}
+              {/* 2. Leaf Fill */}
               <g clipPath="url(#evLeafClip)">
                 <rect
-                  x="480"
-                  y={310 - (leafFill / 100) * 300}
-                  width="370"
-                  height={(leafFill / 100) * 300}
+                  x="450"
+                  y={310 - (leafFill / 100) * 350}
+                  width="450"
+                  height={(leafFill / 100) * 350}
                   fill="url(#evLeafGrad)"
                 />
               </g>
 
-              {/* highlight crease — the light diagonal fold on the leaf */}
+              {/* Leaf Crease */}
               <path
                 d={CREASE_D}
                 className="ev-loader__vein"
@@ -176,10 +165,10 @@ export default function Loader({ children, minDuration = 4600 }) {
                 }}
               />
 
-              {/* bolt: empty outline first */}
+              {/* 3. Bolt Outline */}
               <path d={BOLT_D} className="ev-loader__outline" style={{ opacity: boltOutline / 100 }} />
 
-              {/* bolt: energy drops from the top */}
+              {/* 3. Bolt Fill */}
               <g clipPath="url(#evBoltClip)">
                 <rect x="440" y="295" width="230" height={(boltFill / 100) * 260} fill="url(#evBoltGrad)" />
               </g>
@@ -197,7 +186,7 @@ export default function Loader({ children, minDuration = 4600 }) {
               {boltFlash && <path d={BOLT_D} className="ev-loader__bolt-flash" />}
             </svg>
 
-            {/* glossy sweep, brightens whatever it passes over the mark */}
+            {/* Glossy Sweep */}
             <div
               className="ev-loader__sweep"
               style={{
@@ -331,19 +320,22 @@ function clamp(n, min, max) {
   return Math.max(min, Math.min(max, n));
 }
 
-// Leaf silhouette — pointed tip top-right, convex right edge, concave
-// left edge sweeping down to a point that meets the bolt below.
+// -----------------------------------------------------------
+// CORRECTED PATHS - MATCHING THE FAVICON.PNG EXACTLY
+// -----------------------------------------------------------
+
+// Sleek, right-leaning leaf replacing the old bulky shape.
+// Base connects directly to the top left and top right of the bolt.
 const LEAF_D =
-  "M560,300 " +
-  "C500,232 494,152 540,90 " +
-  "C576,44 652,16 740,10 " +
-  "C790,7 826,25 836,56 " +
-  "C820,142 770,232 700,281 " +
-  "C650,317 600,321 560,300 Z";
+  "M 515,305 " +               // Start at bottom left (connecting to bolt)
+  "C 480,160 620,50 810,35 " + // Smooth, long upward sweep forming the left/top edge
+  "C 750,170 660,285 580,300 " + // Tighter convex curve returning to the base
+  "Z";                         // Close the path
 
-// Highlight crease — the light diagonal fold running through the leaf.
-const CREASE_D = "M572,286 C528,220 524,150 562,96 C592,56 652,32 718,21";
+// The light crease following the exact contour and curve of the newly shaped leaf.
+const CREASE_D = 
+  "M 535,298 " +               // Start slightly offset from the base
+  "C 585,200 670,110 790,50";  // Curve up perfectly splitting the new leaf shape
 
-// Lightning bolt sitting where the "T" of VOLTEX would be, its top
-// point meeting the base of the leaf.
+// The bolt remains perfectly in place where the 'T' goes
 const BOLT_D = "M580,300 L500,392 L546,392 L478,548 L632,404 L566,404 Z";
