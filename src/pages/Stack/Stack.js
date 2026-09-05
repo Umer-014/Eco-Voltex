@@ -13,6 +13,7 @@ import LiveChat from '../../components/Chat Icon/LiveChat';
 import ElectricalServices from "../Services/Electrical Installation & Maintenance/ElectricalServices";
 import EmergencyElectrical from "../Services/Electrical Installation & Maintenance/EmergencyElectrical";
 import BookNow from "../Pricing Layout/BookNow";
+import Feedback from "../Feedback/Feedback";
 
 
 import Location from "../Locations/Location";
@@ -41,6 +42,7 @@ const Stack = () => {
         <Route path="/Book Now" element={<BookNow />} />
         <Route path="/book-now" element={<Navigate to="/Book Now" replace />} />
         <Route path="/book now" element={<Navigate to="/Book Now" replace />} />
+        <Route path="/feedback" element={<Feedback />} />
       </Routes>
     </Router>
   );

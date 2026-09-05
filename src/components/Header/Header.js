@@ -22,6 +22,7 @@ const navItems = [
   { to: "/areas-we-cover", label: "Areas We Cover" },
   { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
+  { to: "/feedback", label: "Feedback" }
 ];
 
 const Header = () => {
