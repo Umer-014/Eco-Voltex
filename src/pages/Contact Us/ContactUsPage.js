@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import emailjs from "emailjs-com";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./contactus.css";
@@ -16,33 +15,45 @@ const ContactUs = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setShowPopup(false);
 
-    emailjs
-      .send(
-        process.env.REACT_APP_EMAILJS_SERVICE_ID,
-        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-        formData,
-        process.env.REACT_APP_EMAILJS_USER_ID
-      )
-      .then(
-        (result) => {
-          setPopupMessage("Thank you! Your message has been sent successfully.");
-          setPopupClass("alert-success");
-          setFormData({ name: "", email: "", message: "" });
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
         },
-        (error) => {
-          setPopupMessage("Failed to send your message. Please try again later.");
-          setPopupClass("alert-danger");
-        }
-      )
-      .finally(() => {
-        setShowPopup(true);
-        setIsSubmitting(false);
+        body: JSON.stringify({
+          access_key: process.env.REACT_APP_WEB3FORMS_ACCESS_KEY,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: "New Contact Form Submission from ecovoltex.co.uk",
+          from_name: "Ecovoltex Website"
+        })
       });
+
+      const result = await response.json();
+
+      if (response.status === 200) {
+        setPopupMessage("Thank you! Your message has been sent successfully.");
+        setPopupClass("alert-success");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setPopupMessage(result.message || "Failed to send your message. Please try again later.");
+        setPopupClass("alert-danger");
+      }
+    } catch (error) {
+      setPopupMessage("An error occurred. Please check your internet connection.");
+      setPopupClass("alert-danger");
+    } finally {
+      setShowPopup(true);
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -118,4 +129,5 @@ const ContactUs = () => {
   );
 };
 
+export class ContactUsPage {}
 export default ContactUs;
