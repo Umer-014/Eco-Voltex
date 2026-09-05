@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 import HomePage from "../Home Page/HomePage";
 import AboutUsPage from "../About/AboutUsPage";
 import PAT from "../Services/PAT/PAT";
@@ -34,8 +34,13 @@ const Stack = () => {
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/services/Electrical-Installation-Maintenance" element={<ElectricalServices />} />
         <Route path="/services/Emergency-Electrical" element={<EmergencyElectrical />} />
+        <Route path="/services/emergency-electrical" element={<Navigate to="/services/Emergency-Electrical" replace />} />
         <Route path="/areas-we-cover" element={<Location />} />
+        <Route path="/locations" element={<Navigate to="/areas-we-cover" replace />} />
+        <Route path="/location" element={<Navigate to="/areas-we-cover" replace />} />
         <Route path="/Book Now" element={<BookNow />} />
+        <Route path="/book-now" element={<Navigate to="/Book Now" replace />} />
+        <Route path="/book now" element={<Navigate to="/Book Now" replace />} />
       </Routes>
     </Router>
   );

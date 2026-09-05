@@ -1,9 +1,28 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Drawer, List, ListItem, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../../assets/logo.jpg";
 import "./header.css";
+
+const services = [
+  {
+    to: "/services/Electrical-Installation-Maintenance",
+    label: "Electrical Installation & Maintenance",
+  },
+  { to: "/services/Emergency-Electrical", label: "Emergency Electrical Services" },
+  { to: "/services/Fire-alarms", label: "Fire Alarm Systems" },
+  { to: "/services/CCTV", label: "CCTV & Security Systems" },
+  { to: "/services/PAT-testing", label: "PAT Testing" },
+];
+
+const navItems = [
+  { to: "/", label: "Home", end: true },
+  { to: "/about", label: "About Us" },
+  { to: "/areas-we-cover", label: "Areas We Cover" },
+  { to: "/faq", label: "FAQ" },
+  { to: "/contact", label: "Contact" },
+];
 
 const Header = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false); // Desktop dropdown state
@@ -24,18 +43,19 @@ const Header = () => {
 
   return (
     <header className="header">
-      <div className="logo">
-        <a href="/" className="logo">
+      <div className="header-inner">
+        <div className="logo">
+        <Link to="/" className="logo">
           <img src={logo} alt="Eco Voltex Logo" className="logo-image" />
           <div className="text-container">
             <h1 className="company-name">Eco Voltex</h1>
             <p className="tagline">Sustainable Electrical Solutions</p>
           </div>
-        </a>
-      </div>
+        </Link>
+        </div>
 
       {/* Mobile Menu Button using Material-UI IconButton */}
-      <IconButton className="menu-toggle" onClick={() => toggleDrawer(true)}>
+      <IconButton className="menu-toggle" onClick={() => toggleDrawer(true)} aria-label="Open navigation menu">
         <MenuIcon style={{ color: "white" }} />
       </IconButton>
 
@@ -46,65 +66,48 @@ const Header = () => {
         onClose={() => toggleDrawer(false)}
       >
         <List className="drawer">
-          <ListItem
-            style={{ width: "300px" }}
-            button
-            onClick={() => toggleDrawer(false)}
-          >
-            <Link to="/" className="nav-link">
-              Home
-            </Link>
-          </ListItem>
-          <ListItem button onClick={() => toggleDrawer(false)}>
-            <Link to="/about" className="nav-link">
-              About Us
-            </Link>
-          </ListItem>
+          {navItems.slice(0, 2).map((item) => (
+            <ListItem
+              key={item.to}
+              style={{ width: "300px" }}
+              onClick={() => toggleDrawer(false)}
+            >
+              <NavLink to={item.to} end={item.end} className="nav-link">
+                {item.label}
+              </NavLink>
+            </ListItem>
+          ))}
 
           {/* Services Dropdown in Drawer */}
-          <ListItem button onClick={toggleDrawerDropdown}>
-            <button className="nav-link dropdown-toggle">Services</button>
+          <ListItem onClick={toggleDrawerDropdown} className="drawer-dropdown-item">
+            <button className="nav-link dropdown-toggle" type="button">Services</button>
             <div
               className={`dropdown-menu ${drawerDropdownOpen ? "show" : ""}`}
             >
-              <Link to="/services/Electrical-Installation-Maintenance" className="dropdown-item">
-                Electrical Installation & Maintenance
-              </Link>
-              <Link to="/services/Emergency-Electrical" className="dropdown-item">
-                Emergency Electrical Services
-              </Link>
-              <Link to="/services/Fire-alarms" className="dropdown-item">
-                Fire Alarm Systems
-              </Link>
-              <Link to="/services/CCTV" className="dropdown-item">
-                CCTV & Security Systems
-              </Link>
-              <Link to="/services/PAT-testing" className="dropdown-item">
-                PAT Testing
-              </Link>
+              {services.map((service) => (
+                <NavLink
+                  key={service.to}
+                  to={service.to}
+                  className="dropdown-item"
+                  onClick={() => toggleDrawer(false)}
+                >
+                  {service.label}
+                </NavLink>
+              ))}
             </div>
           </ListItem>
 
-          <ListItem button onClick={() => toggleDrawer(false)}>
-            <Link to="/areas-we-cover" className="nav-link">
-              Areas We Cover
-            </Link>
-          </ListItem>
-          <ListItem button onClick={() => toggleDrawer(false)}>
-            <Link to="/Book Now" className="nav-link">
+          {navItems.slice(2).map((item) => (
+            <ListItem key={item.to} onClick={() => toggleDrawer(false)}>
+              <NavLink to={item.to} className="nav-link">
+                {item.label}
+              </NavLink>
+            </ListItem>
+          ))}
+          <ListItem onClick={() => toggleDrawer(false)}>
+            <NavLink to="/Book Now" className="nav-link drawer-cta">
               Book Now
-            </Link>
-          </ListItem>
-
-          <ListItem button onClick={() => toggleDrawer(false)}>
-            <Link to="/faq" className="nav-link">
-              FAQ
-            </Link>
-          </ListItem>
-          <ListItem button onClick={() => toggleDrawer(false)}>
-            <Link to="/contact" className="nav-link">
-              Contact
-            </Link>
+            </NavLink>
           </ListItem>
         </List>
       </Drawer>
@@ -112,67 +115,47 @@ const Header = () => {
       {/* Desktop Menu */}
       <nav className="nav">
         <ul className="nav-links">
-          <li className="nav-item">
-            <Link to="/" className="nav-link">
-              Home
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/about" className="nav-link">
-              About Us
-            </Link>
-          </li>
+          {navItems.slice(0, 2).map((item) => (
+            <li className="nav-item" key={item.to}>
+              <NavLink to={item.to} end={item.end} className="nav-link">
+                {item.label}
+              </NavLink>
+            </li>
+          ))}
           <li className="nav-item dropdown">
             <button
               onClick={toggleDropdown}
               className="nav-link dropdown-toggle"
+              type="button"
             >
               Services
             </button>
             {dropdownOpen && (
               <div className="dropdown-menu">
-                <Link to="/services/Electrical-Installation-Maintenance" className="dropdown-item">
-                  Electrical Installation & Maintenance
-                </Link>
-                <Link to="/services/Emergency-Electrical" className="dropdown-item">
-                  Emergency Electrical Services
-                </Link>
-                <Link to="/services/Fire-alarms" className="dropdown-item">
-                  Fire Alarm Systems
-                </Link>
-                <Link to="/services/CCTV" className="dropdown-item">
-                  CCTV & Security Systems
-                </Link>
-                <Link to="/services/PAT-testing" className="dropdown-item">
-                  PAT Testing
-                </Link>
+                {services.map((service) => (
+                  <NavLink key={service.to} to={service.to} className="dropdown-item">
+                    {service.label}
+                  </NavLink>
+                ))}
               </div>
             )}
           </li>
 
+          {navItems.slice(2).map((item) => (
+            <li className="nav-item" key={item.to}>
+              <NavLink to={item.to} className="nav-link">
+                {item.label}
+              </NavLink>
+            </li>
+          ))}
           <li className="nav-item">
-            <Link to="/areas-we-cover" className="nav-link">
-              Areas We Cover
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/Book Now" className="nav-link">
+            <NavLink to="/Book Now" className="nav-link nav-link--cta">
               Book Now
-            </Link>
-          </li>
-          
-          <li className="nav-item">
-            <Link to="/faq" className="nav-link">
-              FAQ
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/contact" className="nav-link">
-              Contact
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </nav>
+      </div>
     </header>
   );
 };

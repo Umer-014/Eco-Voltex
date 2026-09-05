@@ -1,500 +1,348 @@
-// HeroSection.js
-import "./HeroSection.css";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
+import { motion } from "framer-motion";
+import {
+  ArrowUpRight,
+  Award,
+  Camera,
+  CheckCircle2,
+  ClipboardCheck,
+  Clock3,
+  Flame,
+  MapPin,
+  Plug,
+  ShieldCheck,
+  Siren,
+  Zap,
+} from "lucide-react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { motion } from "framer-motion";
+import "./HeroSection.css";
+
+const services = [
+  {
+    key: "electrical",
+    icon: Plug,
+    title: "Electrical Installations",
+    tag: "Homes & business",
+    text: "Rewires, consumer units, lighting, circuits and planned maintenance.",
+    path: "/services/Electrical-Installation-Maintenance",
+    image:
+      "https://res.cloudinary.com/dug1siluu/image/upload/v1764613806/20251201_2323_Eco_Energy_Illustration_remix_01kbdjc4q0f2vayyppswy3sa31_dlrchb.png",
+  },
+  {
+    key: "emergency",
+    icon: Siren,
+    title: "Emergency Electrician",
+    tag: "24/7 response",
+    text: "Fast make-safe visits for tripping circuits, power loss and urgent faults.",
+    path: "/services/Emergency-Electrical",
+    image:
+      "https://res.cloudinary.com/dug1siluu/image/upload/v1764613919/20251201_2325_Futuristic_Electrical_Emergency_Scene_remix_01kbdjen2vf9w98300a6fphk62_1_aeuopm.png",
+  },
+  {
+    key: "fire",
+    icon: Flame,
+    title: "Fire Alarm Systems",
+    tag: "BS 5839",
+    text: "Design, installation, commissioning and maintenance for compliant sites.",
+    path: "/services/Fire-alarms",
+    image:
+      "https://res.cloudinary.com/dug1siluu/image/upload/v1759097756/ChatGPT_Image_Sep_29_2025_03_14_50_AM_xruenn.png",
+  },
+  {
+    key: "cctv",
+    icon: Camera,
+    title: "CCTV & Security",
+    tag: "Smart protection",
+    text: "Clean camera installs, secure storage and reliable coverage planning.",
+    path: "/services/CCTV",
+    image:
+      "https://res.cloudinary.com/dug1siluu/image/upload/v1757790538/ChatGPT_Image_Sep_14_2025_12_08_45_AM_lmyc78.png",
+  },
+  {
+    key: "pat",
+    icon: ClipboardCheck,
+    title: "PAT Testing",
+    tag: "Audit ready",
+    text: "Asset registers, CSV exports and clear risk-based test reports.",
+    path: "/services/PAT-testing",
+    image:
+      "https://res.cloudinary.com/dug1siluu/image/upload/v1757788696/ChatGPT_Image_Sep_13_2025_11_37_58_PM_blssbd.png",
+  },
+];
+
+const credentials = [
+  { icon: Award, label: "NAPIT approved" },
+  { icon: ShieldCheck, label: "Fully insured" },
+  { icon: Clock3, label: "24/7 support" },
+  { icon: MapPin, label: "London & M25" },
+];
+
+const steps = [
+  [
+    "01",
+    "Tell us what you need",
+    "Share the site type, urgency and compliance goal.",
+  ],
+  ["02", "Engineer attends", "We test, install or repair with tidy workmanship."],
+  ["03", "Clear report", "You receive photos, notes, certificates and next steps."],
+];
+
+const testimonials = [
+  {
+    quote:
+      "Eco Voltex handled our office upgrade, fire alarm and PAT with zero hassle.",
+    name: "Sarah J.",
+    role: "Business Owner, Central London",
+  },
+  {
+    quote:
+      "They upgraded the consumer unit, completed the EICR and explained everything clearly.",
+    name: "Michael B.",
+    role: "Landlord, West London",
+  },
+  {
+    quote:
+      "Perfect for multi-site PAT testing. The reports were clean and easy to file.",
+    name: "Linda K.",
+    role: "Facilities Manager",
+  },
+  {
+    quote:
+      "Emergency electrician arrived quickly and got our restaurant trading again.",
+    name: "James T.",
+    role: "Restaurant Owner, Croydon",
+  },
+];
+
+const sliderSettings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  arrows: false,
+  autoplay: true,
+  autoplaySpeed: 3200,
+  pauseOnHover: true,
+  responsive: [
+    { breakpoint: 1024, settings: { slidesToShow: 2 } },
+    { breakpoint: 720, settings: { slidesToShow: 1 } },
+  ],
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
 
 const HeroSection = () => {
   const navigate = useNavigate();
-  const [audience, setAudience] = React.useState("home");
-
-  const navigateTo = (path) => navigate(path);
-
-  const testimonialSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    arrows: false,
-    autoplay: true,
-    autoplaySpeed: 2600,
-    pauseOnHover: true,
-    adaptiveHeight: true,
-    responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } },
-    ],
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 26 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
-
-  const serviceTiles = [
-    {
-      key: "electrical",
-      title: "Electrical Installations & Upgrades",
-      tag: "Homes & Businesses",
-      text: "Rewires, new circuits, containment and consumer units to BS 7671.",
-      linkLabel: "View electrical services",
-      path: "/services/Electrical-Installation-Maintenance",
-      image:
-        "https://res.cloudinary.com/dug1siluu/image/upload/v1764613806/20251201_2323_Eco_Energy_Illustration_remix_01kbdjc4q0f2vayyppswy3sa31_dlrchb.png",
-    },
-    {
-      key: "emergency",
-      title: "24/7 Emergency Electrician",
-      tag: "1-Hour Aim",
-      text: "Fault-finding, make-safe & repairs for loss of power, burning, tripping and more.",
-      linkLabel: "See emergency options",
-      path: "/services/emergency-electrical",
-      image:
-        "https://res.cloudinary.com/dug1siluu/image/upload/v1764613919/20251201_2325_Futuristic_Electrical_Emergency_Scene_remix_01kbdjen2vf9w98300a6fphk62_1_aeuopm.png",
-    },
-    {
-      key: "fire",
-      title: "Fire Alarms & Life Safety",
-      tag: "BS 5839-1 / -6",
-      text: "Design, installation, commissioning & maintenance for HMOs and commercial sites.",
-      linkLabel: "Explore fire alarm page",
-      path: "/services/Fire-alarms",
-      image:
-        "https://res.cloudinary.com/dug1siluu/image/upload/v1759097756/ChatGPT_Image_Sep_29_2025_03_14_50_AM_xruenn.png",
-    },
-    {
-      key: "pat",
-      title: "PAT Testing Programmes",
-      tag: "Offices, Retail, Education",
-      text: "Risk-based PAT testing with asset registers, CSV exports and clear reports.",
-      linkLabel: "View PAT testing",
-      path: "/services/PAT-testing",
-      image:
-        "https://res.cloudinary.com/dug1siluu/image/upload/v1757788696/ChatGPT_Image_Sep_13_2025_11_37_58_PM_blssbd.png",
-    },
-    {
-      key: "cctv",
-      title: "CCTV & Security",
-      tag: "Homes & Business",
-      text: "Neat PoE CCTV systems with secure storage and privacy best practice.",
-      linkLabel: "View CCTV page",
-      path: "/services/CCTV",
-      image:
-        "https://res.cloudinary.com/dug1siluu/image/upload/v1757790538/ChatGPT_Image_Sep_14_2025_12_08_45_AM_lmyc78.png",
-    },
-
-    {
-      key: "booking",
-      title: "Instant Quote & Booking",
-      tag: "Online Wizard",
-      text: "Build EICR, PAT, fire or emergency quotes in minutes — sent straight to WhatsApp.",
-      linkLabel: "Use booking wizard",
-      path: "/book now",
-      image:
-        "https://res.cloudinary.com/dug1siluu/image/upload/v1764085502/20251125_2042_Modern_Electrical_Workspace_Banner_simple_compose_01kaxtree2fykv11a2qkc4ar7z_rvc6l6.png",
-    },
-  ];
-
-  const stats = [
-    {
-      label: "Projects completed",
-      value: "1,000+",
-      hint: "EICR, PAT, upgrades and alarms",
-    },
-    {
-      label: "Emergency response aim",
-      value: "< 2 hrs",
-      hint: "Call-outs across Greater London",
-    },
-    {
-      label: "Service area",
-      value: "London + M25",
-      hint: "32 boroughs and nearby towns",
-    },
-  ];
-
-  const testimonials = [
-    {
-      quote:
-        "Eco Voltex handled our office upgrade, fire alarm and PAT with zero hassle. One team, everything sorted.",
-      name: "Sarah J.",
-      role: "Business Owner, Central London",
-    },
-    {
-      quote:
-        "They upgraded the consumer unit, completed the EICR and guided me as a landlord. Very clear and professional.",
-      name: "Michael B.",
-      role: "Landlord, West London",
-    },
-    {
-      quote:
-        "Perfect for multi-site PAT and testing. CSVs dropped straight into our CAFM system.",
-      name: "Linda K.",
-      role: "Facilities Manager, Retail Group",
-    },
-    {
-      quote:
-        "Emergency electrician arrived within the hour and got our restaurant back trading the same evening.",
-      name: "James T.",
-      role: "Restaurant Owner, Croydon",
-    },
-    {
-      quote:
-        "Fire alarm works, electrical upgrades and documentation were all neat and aligned with BS standards.",
-      name: "Priya S.",
-      role: "Property Manager, Uxbridge",
-    },
-    {
-      quote:
-        "From the first WhatsApp to final certificate, communication was brilliant. Highly recommended.",
-      name: "Omar R.",
-      role: "Homeowner, East London",
-    },
-  ];
-
-  const previewBlocks = [
-    {
-      key: "fire-preview",
-      title: "Fire Alarms That Stand Up To Scrutiny",
-      text: "L1–L5, P1–P2 and Grade A–D/LD systems, with documentation your consultants will respect.",
-      cta: "Open fire alarm page",
-      path: "/services/Fire-alarms",
-    },
-    {
-      key: "pat-preview",
-      title: "PAT Testing Built For Audits",
-      text: "Detailed CSVs, asset IDs and clear defect notes — ideal for schools, offices and portfolios.",
-      cta: "See PAT testing page",
-      path: "/services/PAT-testing",
-    },
-    {
-      key: "cctv-preview",
-      title: "CCTV That Looks Good And Works Hard",
-      text: "Smart coverage, neat cabling and privacy-aware recording for homes and businesses.",
-      cta: "Explore CCTV page",
-      path: "/services/CCTV",
-    },
-  ];
-
-  const heroBullets =
-    audience === "home"
-      ? [
-          "Safe, tidy work in homes, flats and HMOs",
-          "Consumer units, EICRs, PAT and smoke/heat alarms",
-          "24/7 emergency support when something fails",
-        ]
-      : [
-          "Planned testing, maintenance and upgrades",
-          "Fire alarms, distribution, lighting and PAT programmes",
-          "Reports your insurers and auditors can trust",
-        ];
+  const goTo = (path) => navigate(path);
 
   return (
-    <div className="home-page">
-      {/* HERO */}
-      <section className="home-hero" aria-labelledby="home-hero-title">
-        <div className="home-hero-glow" />
-        <div className="home-hero-inner">
-          {/* LEFT */}
+    <main className="ev-home">
+      <section className="ev-hero" aria-labelledby="ev-hero-title">
+        <div className="ev-hero__shade" />
+        <div className="ev-shell ev-hero__grid">
           <motion.div
-            className="home-hero-left"
+            className="ev-hero__copy"
             initial="hidden"
             animate="visible"
-            variants={cardVariants}
+            variants={fadeUp}
           >
-            <div className="home-badge-row">
-              <div className="home-badge-chip">
-                Eco Voltex • NAPIT Approved • Fully Insured
-              </div>
-            </div>
-
-            <h1 id="home-hero-title">
-              Eco Voltex{" "}
-              <span className="home-hero-highlight">
-                Sustainable Electrical Solutions
-              </span>
-              .
+            <span className="ev-kicker">
+              <Zap size={16} aria-hidden="true" />
+              Electrical, fire and security specialists
+            </span>
+            <h1 id="ev-hero-title">
+              Safer, smarter electrical work for London properties.
             </h1>
-
-            <p className="home-hero-sub">
-              We design, install and maintain{" "}
-              <strong>
-                electrical systems,<strong>emergency protection</strong>, fire
-                alarms, CCTV and PAT
-              </strong>{" "}
-              so your home or business stays safe, compliant and efficient.
+            <p>
+              Eco Voltex delivers electrical installations, emergency repairs,
+              fire alarms, CCTV and PAT testing for homes, landlords and
+              businesses that need work done properly.
             </p>
 
-            {/* Audience toggle */}
+            <div className="ev-hero__actions">
+              <button
+                className="ev-button ev-button--primary"
+                onClick={() => goTo("/Book Now")}
+              >
+                Get a quote
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </button>
+              <button
+                className="ev-button ev-button--ghost"
+                onClick={() => goTo("/contact")}
+              >
+                Speak to an engineer
+              </button>
+            </div>
+
             <div
-              className="home-toggle"
-              role="tablist"
-              aria-label="Choose services for home or business"
+              className="ev-hero__credentials"
+              aria-label="Eco Voltex credentials"
             >
-              <button
-                className={`home-toggle-btn ${
-                  audience === "home" ? "home-toggle-btn--active" : ""
-                }`}
-                role="tab"
-                aria-selected={audience === "home"}
-                onClick={() => setAudience("home")}
-              >
-                Home & Landlords
-              </button>
-              <button
-                className={`home-toggle-btn ${
-                  audience === "business" ? "home-toggle-btn--active" : ""
-                }`}
-                role="tab"
-                aria-selected={audience === "business"}
-                onClick={() => setAudience("business")}
-              >
-                Business & Facilities
-              </button>
-            </div>
-
-            <ul className="home-hero-bullets">
-              {heroBullets.map((item) => (
-                <li key={item}>{item}</li>
+              {credentials.map(({ icon: Icon, label }) => (
+                <span key={label}>
+                  <Icon size={17} aria-hidden="true" />
+                  {label}
+                </span>
               ))}
-            </ul>
-
-            {/* CTAs */}
-            <div className="home-hero-ctas">
-              <button
-                className="home-btn home-btn--primary"
-                onClick={() => navigateTo("/book now")}
-              >
-                Get Instant Quote & Booking
-              </button>
-              <button
-                className="home-btn home-btn--ghost"
-                onClick={() => navigateTo("/contact")}
-              >
-                Talk To An Engineer
-              </button>
-            </div>
-
-            <div className="home-hero-meta">
-              BS 7671 • BS 5839 • BS 5266 • IET Code of Practice — every job
-              tested, labelled and documented.
             </div>
           </motion.div>
 
-          {/* RIGHT VISUAL PILLAR */}
           <motion.div
-            className="home-hero-right"
-            initial={{ opacity: 0, x: 40 }}
+            className="ev-hero__visual"
+            initial={{ opacity: 0, x: 32 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className="home-hero-panel">
-              <div className="home-hero-panel-header">
-                <span className="home-status-dot" aria-hidden="true" />
-                <span className="home-status-text">Eco Voltex service hub</span>
-                <span className="home-status-pill">Slots this week</span>
-              </div>
-
-              <div className="home-hero-panel-body">
-                <div className="home-hero-panel-main">
-                  <h3>Electrical & Fire Compliance Bundle</h3>
-                  <p>
-                    Bring{" "}
-                    <strong>
-                      EICR, PAT, fire alarms and emergency lighting
-                    </strong>{" "}
-                    into one planned visit, with less disruption and clear
-                    reports at the end.
-                  </p>
-                  <div className="home-hero-panel-tags">
-                    <span>Homes & businesses</span>
-                    <span>Single & multi-site</span>
-                    <span>Digital reports & WhatsApp updates</span>
-                  </div>
-                  <button
-                    className="home-link-btn"
-                    onClick={() => navigateTo("/book-now")}
-                  >
-                    Build my bundle →
-                  </button>
-                </div>
-
-                <div className="home-hero-panel-grid">
-                  <div className="home-mini-card">
-                    <p className="home-mini-label">Fire & Life Safety</p>
-                    <p className="home-mini-text">
-                      BS 5839 fire alarm design, installation and maintenance
-                      with zone charts, asset lists and logbooks.
-                    </p>
-                    <button
-                      className="home-mini-link"
-                      onClick={() => navigateTo("/services/Fire-alarms")}
-                    >
-                      Open fire alarm page →
-                    </button>
-                  </div>
-
-                  <div className="home-mini-card">
-                    <p className="home-mini-label">Testing & PAT</p>
-                    <p className="home-mini-text">
-                      EICR and PAT programmes aligned with EAWR 1989 and IET
-                      Code of Practice, with tidy certificates and CSVs.
-                    </p>
-                    <button
-                      className="home-mini-link"
-                      onClick={() => navigateTo("/services/PAT-testing")}
-                    >
-                      Open PAT testing page →
-                    </button>
-                  </div>
-
-                  <div className="home-mini-card">
-                    <p className="home-mini-label">Emergency Call-Out</p>
-                    <p className="home-mini-text">
-                      Make-safe first, then repairs — clear notes for your
-                      records and insurers after every call-out.
-                    </p>
-                    <button
-                      className="home-mini-link"
-                      onClick={() =>
-                        navigateTo("/services/emergency-electrical")
-                      }
-                    >
-                      Open emergency page →
-                    </button>
-                  </div>
-
-                  <div className="home-mini-card">
-                    <p className="home-mini-label">Coverage</p>
-                    <p className="home-mini-text">
-                      Greater London and nearby towns. Check if Eco Voltex
-                      covers your postcode in seconds.
-                    </p>
-                    <button
-                      className="home-mini-link"
-                      onClick={() => navigateTo("/locations")}
-                    >
-                      View areas we cover →
-                    </button>
-                  </div>
-                </div>
-              </div>
+            <img
+              src="https://res.cloudinary.com/dug1siluu/image/upload/v1764085502/20251125_2042_Modern_Electrical_Workspace_Banner_simple_compose_01kaxtree2fykv11a2qkc4ar7z_rvc6l6.png"
+              alt="Eco Voltex electrical engineer workspace"
+            />
+            <div className="ev-hero__card ev-hero__card--top">
+              <strong>24/7</strong>
+              <span>Emergency response available</span>
+            </div>
+            <div className="ev-hero__card ev-hero__card--bottom">
+              <strong>1,000+</strong>
+              <span>Projects, tests and call-outs completed</span>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* SERVICE TILES (all main pages) */}
-      <section className="home-section" aria-labelledby="home-services-title">
-        <div className="home-section-header">
-          <h2 id="home-services-title">
-            Everything You Need In One Contractor
-          </h2>
-          <p>
-            Instead of juggling different electricians, PAT testers and fire
-            alarm firms, Eco Voltex delivers a joined-up service with neat
-            installs and audit-ready paperwork.
-          </p>
-        </div>
+      <section className="ev-services" aria-labelledby="ev-services-title">
+        <div className="ev-shell">
+          <div className="ev-section-head">
+            <span className="ev-kicker">Our services</span>
+            <h2 id="ev-services-title">One trusted contractor for the whole site.</h2>
+            <p>
+              Clear routes into every core service, with strong visuals and
+              quick actions for visitors who already know what they need.
+            </p>
+          </div>
 
-        <div className="home-tile-grid">
-          {serviceTiles.map((svc) => (
-            <motion.article
-              key={svc.key}
-              className="home-tile"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.25 }}
-              variants={cardVariants}
-              role="button"
-              tabIndex={0}
-              onClick={() => navigateTo(svc.path)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  navigateTo(svc.path);
-                }
-              }}
+          <div className="ev-services__grid">
+            {services.map(({ icon: Icon, ...service }) => (
+              <motion.article
+                className={`ev-service-card ev-service-card--${service.key}`}
+                key={service.key}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                onClick={() => goTo(service.path)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    goTo(service.path);
+                  }
+                }}
+              >
+                <img src={service.image} alt={service.title} loading="lazy" />
+                <div className="ev-service-card__overlay" />
+                <div className="ev-service-card__icon">
+                  <Icon size={22} aria-hidden="true" />
+                </div>
+                <div className="ev-service-card__content">
+                  <span>{service.tag}</span>
+                  <h3>{service.title}</h3>
+                  <p>{service.text}</p>
+                  <div className="ev-service-card__link">
+                    View service
+                    <ArrowUpRight size={17} aria-hidden="true" />
+                  </div>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="ev-process">
+        <div className="ev-shell ev-process__grid">
+          <div className="ev-process__copy">
+            <span className="ev-kicker">How it works</span>
+            <h2>From first call to final certificate.</h2>
+            <p>
+              No confusing handover, no messy paperwork. Just a professional
+              visit, clear communication and documentation you can keep.
+            </p>
+            <button
+              className="ev-button ev-button--dark"
+              onClick={() => goTo("/areas-we-cover")}
             >
-              <h3 className="home-tile-title">{svc.title}</h3>
+              Check areas we cover
+            </button>
+          </div>
 
-              {svc.image && (
-                <div className="home-tile-image-wrap">
-                  <img
-                    src={svc.image}
-                    alt={svc.imageAlt}
-                    className="home-tile-image"
-                    loading="lazy"
-                  />
-                </div>
-              )}
-
-              <p className="home-tile-text">{svc.text}</p>
-
-              <span className="home-link-btn">{svc.linkLabel} →</span>
-            </motion.article>
-          ))}
+          <div className="ev-process__cards">
+            {steps.map(([number, title, text]) => (
+              <article key={number} className="ev-step-card">
+                <span>{number}</span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* STRIP CTA */}
-      <section className="home-strip">
-        <div className="home-strip-content">
-          <h2>Your Safety. Our Expertise. One Clear Plan.</h2>
-          <p>
-            Tell us your goals — Eco Voltex designs safe, efficient and
-            sustainable systems that minimise downtime and maximise long-term
-            reliability.
-          </p>
-        </div>
-        <div className="home-strip-ctas">
-          <button
-            className="home-btn home-btn--primary"
-            style={{ marginBottom: "10px" }}
-            onClick={() => navigateTo("/book now")}
-          >
-            Start Booking Wizard
-          </button>
-          <button
-            className="home-btn home-btn--ghost home-btn--ghost-light"
-            style={{ marginBottom: "10px" }}
-            onClick={() => navigateTo("/contact")}
-          >
-            Email us your requirements
-          </button>
-          <button
-            className="home-btn home-btn--ghost home-btn--ghost-light"
-            onClick={() => navigateTo("/areas-we-cover")}
-          >
-            Check service coverage
-          </button>
+      <section className="ev-cta">
+        <div className="ev-shell ev-cta__inner">
+          <div>
+            <span className="ev-kicker">Ready when you are</span>
+            <h2>Book a visit or send your requirements today.</h2>
+          </div>
+          <div className="ev-cta__actions">
+            <button
+              className="ev-button ev-button--primary"
+              onClick={() => goTo("/Book Now")}
+            >
+              Start booking
+              <CheckCircle2 size={18} aria-hidden="true" />
+            </button>
+            <button
+              className="ev-button ev-button--ghost"
+              onClick={() => goTo("/contact")}
+            >
+              Contact Eco Voltex
+            </button>
+          </div>
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section
-        className="home-testimonials"
-        aria-labelledby="home-testimonials-title"
-      >
-        <h2 id="home-testimonials-title">What Clients Say About Eco Voltex</h2>
-        <Slider className="home-testimonials-row" {...testimonialSettings}>
-          {testimonials.map((t) => (
-            <div className="home-testimonial" key={t.name}>
-              <p className="home-testimonial-quote">“{t.quote}”</p>
-              <div className="home-client-info">
+      <section className="ev-testimonials" aria-labelledby="ev-testimonials-title">
+        <div className="ev-shell">
+          <div className="ev-section-head">
+            <span className="ev-kicker">Client feedback</span>
+            <h2 id="ev-testimonials-title">
+              Trusted by homeowners, landlords and businesses.
+            </h2>
+          </div>
+
+          <Slider className="ev-testimonials__slider" {...sliderSettings}>
+            {testimonials.map((testimonial) => (
+              <article className="ev-testimonial" key={testimonial.name}>
+                <p>"{testimonial.quote}"</p>
                 <div>
-                  <h4>{t.name}</h4>
-                  <p>{t.role}</p>
+                  <strong>{testimonial.name}</strong>
+                  <span>{testimonial.role}</span>
                 </div>
-              </div>
-            </div>
-          ))}
-        </Slider>
+              </article>
+            ))}
+          </Slider>
+        </div>
       </section>
-    </div>
+    </main>
   );
 };
 

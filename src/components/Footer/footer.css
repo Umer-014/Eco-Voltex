@@ -1,18 +1,21 @@
-footer {
-  background-color: #343a40; /* Dark background for footer */
-  
+.ev-footer {
+  background:
+    radial-gradient(circle at top left, rgba(22, 163, 74, 0.22), transparent 34%),
+    #020617;
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
 }
 
 footer h5 {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 750;
   color: #ffffff; /* White text for headers */
 }
 
 footer p, footer ul li a {
   font-size: 14px;
-  color: #d3d3d3;
+  color: #d1d5db !important;
   transition: color 0.3s ease;
+  line-height: 1.65;
 }
 
 footer p a, footer ul li a:hover {
@@ -44,7 +47,7 @@ footer .text-center p {
 footer .social-icons {
   display: flex;
   gap: 20px;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 20px;
 }
 
@@ -142,10 +145,10 @@ footer .social-icons {
 }
 
 .napit-logo {
-  height: 130px; /* increased size */
+  height: 108px;
   background: #fff;
   padding: 8px;
-  border-radius: 6px;
+  border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 

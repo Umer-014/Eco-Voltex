@@ -6,24 +6,32 @@ import napitLogo from "../../assets/Certification.jpg";
 
 import {
   FaFacebook,
-  FaTwitter,
   FaInstagram,
   FaLinkedin,
   FaMapMarkerAlt,
   FaEnvelope as Mail,
+  FaPhoneAlt,
 } from "react-icons/fa";
+
+const footerServices = [
+  { to: "/services/Electrical-Installation-Maintenance", label: "Electrical Installation & Maintenance" },
+  { to: "/services/Emergency-Electrical", label: "Emergency Electrical Services" },
+  { to: "/services/PAT-testing", label: "PAT Testing Services" },
+  { to: "/services/Fire-alarms", label: "Fire Alarm Services" },
+  { to: "/services/CCTV", label: "CCTV & Security Systems" },
+];
 
 const Footer = () => {
   return (
-    <footer className="bg-dark text-light py-5">
+    <footer className="ev-footer text-light py-5">
       <div className="container">
         <div className="row">
           {/* Company Info Section */}
           <div className="col-md-4">
             <h5 className="fw-bold">Eco Voltex</h5>
             <p>
-              Your trusted partner in electrical services. We provide
-              high-quality solutions for all your electrical needs.
+              Professional electrical, fire alarm, CCTV and PAT services for
+              homes, landlords and businesses across London.
             </p>
             <p>
               <FaMapMarkerAlt className="me-2" />
@@ -32,6 +40,10 @@ const Footer = () => {
             <p>
               <Mail className="me-2" />
               info@ecovoltex.co.uk
+            </p>
+            <p>
+              <FaPhoneAlt className="me-2" />
+              24/7 emergency electrical support
             </p>
           </div>
 
@@ -49,52 +61,19 @@ const Footer = () => {
                   About Us
                 </Link>
               </li>
+              {footerServices.map((service) => (
+                <li key={service.to}>
+                  <Link to={service.to} className="text-light text-decoration-none">
+                    {service.label}
+                  </Link>
+                </li>
+              ))}
               <li>
                 <Link
-                  to="/services/Electrical-Installation-Maintenance"
+                  to="/areas-we-cover"
                   className="text-light text-decoration-none"
                 >
-                  Electrical Installation & Maintenance
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/services/Emergency-Electrical"
-                  className="text-light text-decoration-none"
-                >
-                  Emergency Electrical Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/services/PAT-testing"
-                  className="text-light text-decoration-none"
-                >
-                  PAT Testing Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/services/Fire-alarms"
-                  className="text-light text-decoration-none"
-                >
-                  Fire Alarms Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/services/CCTV"
-                  className="text-light text-decoration-none"
-                >
-                  CCTV Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/location"
-                  className="text-light text-decoration-none"
-                >
-                  Location
+                  Areas We Cover
                 </Link>
               </li>
               <li>
@@ -131,14 +110,6 @@ const Footer = () => {
                 <FaFacebook size={30} />
               </a>
               <a
-                href="https://twitter.com/EcoVoltex"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-light"
-              >
-                <FaTwitter size={30} />
-              </a>
-              <a
                 href="https://www.instagram.com/EcoVoltex"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -155,7 +126,7 @@ const Footer = () => {
                 <FaLinkedin size={30} />
               </a>
             </div>
-            <p className="mt-3 fw-bold">24 Hour Service</p>
+            <p className="mt-3 fw-bold">NAPIT approved. Fully insured. Audit-ready reports.</p>
 
             {/* NAPIT Certification */}
             <div className="napit-certification mt-4 text-center">
@@ -180,7 +151,7 @@ const Footer = () => {
 
         {/* Bottom Footer */}
         <div className="text-center mt-4">
-          <p className="mb-0">&copy; 2025 Eco Voltex. All Rights Reserved.</p>
+          <p className="mb-0">&copy; 2026 Eco Voltex. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
