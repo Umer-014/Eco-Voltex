@@ -14,7 +14,7 @@ const Feedback = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   // Ensure trailing slash handling for clean endpoint URL concatenation
-  const API_BASE = process.env.REACT_APP_API_GATEWAY_URL || "https://46msvobr5h.execute-api.eu-west-2.amazonaws.com/prod/";
+  const API_BASE = process.env.REACT_APP_API_GATEWAY_URL;
   const CLEAN_BASE = API_BASE.endsWith('/') ? API_BASE : `${API_BASE}/`;
 
   const fetchFeedbacks = async () => {
