@@ -7,133 +7,232 @@ import Footer from "../../components/Footer/Footer";
 
 const FAQPage = () => {
   const navigate = useNavigate();
-  const faqSections = [
-    {
-      category: "General Questions",
-      faqs: [
-        { question: "What services does Eco Voltex provide?", answer: "We offer residential, commercial, and industrial electrical services, including fire alarm and CCTV installations, and electrical certifications." },
-        { question: "Where is Eco Voltex located, and which areas do you serve?", answer: "We are based in the UK and provide services in London and the surrounding regions. Contact us to check availability in your area." },
-        { question: "Are your electricians licensed and insured?", answer: "Yes, all our electricians are fully licensed, certified, and insured for your safety." }
-      ],
-    },
-    {
-      category: "Service-Related Questions",
-      faqs: [
-        { question: "How do I book an electrical service appointment?", answer: (
+const faqSections = [
+  {
+    category: "About Eco Voltex",
+    faqs: [
+      {
+        question: "What services does Eco Voltex provide?",
+        answer:
+          "Eco Voltex provides professional electrical, fire safety and security services for residential and commercial properties. Our services include electrical installations and maintenance, consumer unit upgrades, electrical inspection and testing, fire alarm systems, CCTV installations and other electrical safety solutions."
+      },
+      {
+        question: "Do you work on both residential and commercial properties?",
+        answer:
+          "Yes. We provide services for homes, landlords, offices, shops, restaurants, commercial premises and other properties. Every project is assessed based on its individual requirements."
+      },
+      {
+        question: "Which areas does Eco Voltex cover?",
+        answer:
+          "Eco Voltex is based in London and provides services across London and surrounding areas. Contact us with your postcode and project details to check availability in your location."
+      },
+      {
+        question: "Why should I choose Eco Voltex?",
+        answer:
+          "We focus on providing reliable workmanship, clear communication, professional service and practical solutions. We take the time to understand the requirements of each property and recommend suitable solutions for safety, compliance and long-term reliability."
+      }
+    ]
+  },
+
+  {
+    category: "Electrical Services",
+    faqs: [
+      {
+        question: "What electrical services do you provide?",
+        answer:
+          "We provide a wide range of electrical services including new installations, electrical upgrades, rewiring, additional sockets and lighting, consumer unit upgrades, fault finding, electrical maintenance, inspection and testing."
+      },
+      {
+        question: "Can you upgrade or replace an old consumer unit?",
+        answer:
+          "Yes. We can inspect your existing consumer unit and discuss suitable upgrade options based on the condition of your installation and your property's electrical requirements."
+      },
+      {
+        question: "Do you carry out electrical fault finding?",
+        answer:
+          "Yes. If your electrics are tripping, circuits are not working or you are experiencing an electrical fault, we can investigate the issue and identify the cause before recommending the appropriate repair."
+      },
+      {
+        question: "Can you install new sockets, lighting and electrical circuits?",
+        answer:
+          "Yes. We can install additional sockets, lighting, new circuits and other electrical equipment for homes and commercial properties, subject to the requirements of the installation."
+      },
+      {
+        question: "Do you provide electrical work for renovations and new projects?",
+        answer:
+          "Yes. We can assist with electrical installations for renovations, refurbishments, extensions and new projects. We recommend discussing the project with us before work begins so that the electrical installation can be properly planned."
+      }
+    ]
+  },
+
+  {
+    category: "Electrical Certificates & Testing",
+    faqs: [
+      {
+        question: "What is an EICR?",
+        answer:
+          "An EICR stands for Electrical Installation Condition Report. It involves inspecting and testing the fixed electrical installation to assess its condition and identify any observations that may require attention."
+      },
+      {
+        question: "Do you provide EICR certificates?",
+        answer:
+          "Yes. Eco Voltex can carry out electrical inspection and testing and provide the appropriate documentation where applicable."
+      },
+      {
+        question: "Do landlords need an electrical inspection certificate?",
+        answer:
+          "Landlords have legal responsibilities regarding the safety of electrical installations in rented properties. The requirements can depend on the type and location of the property, so we can discuss your property and inspection requirements with you."
+      },
+      {
+        question: "What happens if an electrical installation fails an inspection?",
+        answer:
+          "If issues are identified during an inspection, they will be recorded in the report. We can explain the observations and, where requested, provide a quotation for any remedial work required."
+      },
+      {
+        question: "Can you carry out electrical testing for commercial properties?",
+        answer:
+          "Yes. We can discuss electrical inspection and testing requirements for offices, shops and other commercial premises."
+      }
+    ]
+  },
+
+  {
+    category: "Fire Alarm & Fire Safety",
+    faqs: [
+      {
+        question: "Do you install fire alarm systems?",
+        answer:
+          "Yes. Eco Voltex provides fire alarm installation services for suitable residential and commercial properties. The recommended system will depend on the size, layout and requirements of the property."
+      },
+      {
+        question: "Can you upgrade an existing fire alarm system?",
+        answer:
+          "Yes. We can assess an existing fire alarm installation and discuss whether repairs, upgrades or replacement may be required."
+      },
+      {
+        question: "How many smoke or heat detectors do I need?",
+        answer:
+          "The number and type of detectors required depends on the property's layout, rooms, use and fire safety requirements. We can assess the property and recommend a suitable solution."
+      },
+      {
+        question: "Do you provide fire alarm maintenance and testing?",
+        answer:
+          "We can discuss maintenance, testing and servicing requirements for existing fire alarm systems. Contact us with details of your current system for further information."
+      }
+    ]
+  },
+
+  {
+    category: "CCTV & Security Systems",
+    faqs: [
+      {
+        question: "Do you install CCTV systems?",
+        answer:
+          "Yes. Eco Voltex provides CCTV installation services for homes and businesses, helping customers improve security and monitor their property."
+      },
+      {
+        question: "Can I view my CCTV cameras on my phone?",
+        answer:
+          "Many modern CCTV systems can be configured for remote viewing through a compatible mobile application, subject to the equipment and internet connection."
+      },
+      {
+        question: "Can you upgrade my existing CCTV system?",
+        answer:
+          "Yes. We can assess your existing CCTV system and discuss suitable upgrade options, including improved camera coverage, higher resolution cameras or replacement equipment."
+      },
+      {
+        question: "How many CCTV cameras do I need?",
+        answer:
+          "The number of cameras depends on the size and layout of the property and the areas you want to monitor. We can discuss your requirements and recommend suitable camera locations."
+      },
+      {
+        question: "Do you install CCTV systems for businesses?",
+        answer:
+          "Yes. We provide CCTV solutions for homes, shops, offices and other commercial properties."
+      }
+    ]
+  },
+
+  {
+    category: "Pricing & Quotations",
+    faqs: [
+      {
+        question: "Do you provide free quotations?",
+        answer:
+          "Yes. We can provide a quotation for your project after discussing the requirements. For larger or more complex work, a site visit may be required before providing an accurate quotation."
+      },
+      {
+        question: "How is the price of electrical work calculated?",
+        answer:
+          "The cost depends on several factors including the type of work, size of the project, materials required, access, existing installation and the time required to complete the work."
+      },
+      {
+        question: "Will I know the cost before work starts?",
+        answer:
+          "Where possible, we aim to clearly explain the proposed work and provide the relevant quotation before work begins. If additional work is identified during the project, we will discuss this with you."
+      },
+      {
+        question: "Do you provide quotations for commercial projects?",
+        answer:
+          "Yes. We can provide quotations for electrical, fire alarm and CCTV projects for commercial properties."
+      }
+    ]
+  },
+
+  {
+    category: "Booking & Customer Support",
+    faqs: [
+      {
+        question: "How do I book a service with Eco Voltex?",
+        answer: (
           <>
-            You can book an appointment by calling us or using the 'Get in Touch' button or you can also press the WhatsApp chat icon to chat via WhatsApp.<br />
+            You can contact us through our website, phone or WhatsApp. Tell us about your property and the work you require, and our team will discuss the next steps with you.
+            <br />
             <button
               style={{
-                marginTop: '10px',
-                background: '#ff5722',
-                color: '#fff',
-                border: 'none',
-                borderRadius: '6px',
-                padding: '8px 18px',
+                marginTop: "15px",
+                background: "#ff5722",
+                color: "#fff",
+                border: "none",
+                borderRadius: "6px",
+                padding: "10px 20px",
                 fontWeight: 600,
-                cursor: 'pointer',
-                fontSize: '1rem',
-                display: 'block',
-                marginLeft: 'auto',
-                marginRight: 'auto',
+                cursor: "pointer",
+                fontSize: "1rem",
+                display: "block",
+                marginLeft: "auto",
+                marginRight: "auto"
               }}
-              onClick={() => navigate('/contact')}
+              onClick={() => navigate("/contact")}
             >
               Get in Touch
             </button>
           </>
-        ) },
-        { question: "Do you provide emergency electrical repair services?", answer: "Yes, we offer 24/7 emergency electrical repair services." },
-        { question: "Can I get a free consultation or quote before hiring your services?", answer: "Yes, we provide free consultations and quotes for our services." },
-        { question: "What is included in your electrical certification service?", answer: "Our certification service includes inspection, testing, and compliance verification for electrical installations." },
-      ],
-    },
-    {
-      category: "Pricing & Payment Questions",
-      faqs: [
-        { question: "How are your service charges calculated?", answer: "Service charges depend on the complexity of the work, materials used, and time required." },
-        { question: "Do you offer flexible payment options or installment plans?", answer: "Yes, we provide multiple payment options and installment plans for large projects." },
-      ],
-    },
-    {
-      category: "Technical & Safety Questions",
-      faqs: [
-        { question: "What safety measures do you follow during installations?", answer: "We follow strict safety guidelines, including proper grounding, circuit protection, and compliance with local regulations." },
-        { question: "What should I do in case of an electrical emergency?", answer: "Turn off the power source if possible, avoid touching electrical components, and call our emergency service immediately." },
-        { question: "How often should I get my wiring or electrical system inspected?", answer: "It is recommended to get your electrical system inspected every 3-5 years or sooner if you experience issues." }
-      ],
-    },
-    {
-      category: "Website & Customer Support",
-      faqs: [
-        {
-          question: "How can I contact Eco Voltex for support?",
-          answer: (
-            <>
-              You can reach us via phone, email, or WhatsApp using the 'Get in Touch' button on our website.<br />
-              <button
-                style={{
-                  marginTop: '10px',
-                  background: '#ff5722',
-                  color: '#fff',
-                  border: 'none',
-                  borderRadius: '6px',
-                  padding: '8px 18px',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  fontSize: '1rem',
-                  display: 'block',
-                  marginLeft: 'auto',
-                  marginRight: 'auto',
-                }}
-                onClick={() => navigate('/contact')}
-              >
-                Get in Touch
-              </button>
-            </>
-          )
-        },
-        {
-          question: "How do I use the WhatsApp chat feature on your website?",
-          answer: "Click the WhatsApp chat icon at the bottom right of the website to instantly start a conversation with our support team."
-        },
-        {
-          question: "Is my personal information safe when I contact you through the website?",
-          answer: "Absolutely. We use secure protocols to protect your data and never share your information with third parties."
-        },
-        {
-          question: "How quickly can I expect a response from customer support?",
-          answer: "We aim to respond to all inquiries within 1 business day. For urgent matters, please use the WhatsApp chat or call us directly."
-        },
-        {
-          question: "What should I do if I have trouble using the website or booking a service?",
-          answer: (
-            <>
-              If you encounter any issues, please contact us via the WhatsApp chat, email, or the 'Get in Touch' button. Our support team is happy to assist you.<br  />
-              <button
-                style={{
-                  marginTop: '10px',
-                  background: '#ff5722',
-                  color: '#fff',
-                  border: 'none',
-                  borderRadius: '6px',
-                  padding: '8px 18px',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  fontSize: '1rem',
-                  display: 'block',
-                  marginLeft: 'auto',
-                  marginRight: 'auto',
-                }}
-              >
-                Get in Touch
-              </button>
-            </>
-          )
-        },
-      ],
-    },
-  ];
+        )
+      },
+      {
+        question: "What information should I provide when requesting a quotation?",
+        answer:
+          "Please provide as much information as possible about the work you require, including the property type, location, description of the work and any relevant photographs or existing reports. This helps us understand your requirements and provide more accurate advice."
+      },
+      {
+        question: "How quickly will Eco Voltex respond to my enquiry?",
+        answer:
+          "We aim to respond to enquiries as soon as possible. Response times may vary depending on workload and the nature of the enquiry."
+      },
+      {
+        question: "Can I contact Eco Voltex through WhatsApp?",
+        answer:
+          "Yes. You can use the WhatsApp chat option on our website to contact us directly and discuss your requirements."
+      },
+      {
+        question: "What if I am not sure which service I need?",
+        answer:
+          "No problem. Contact us and explain the issue or project you have. We will discuss your requirements and help you understand which service may be suitable."
+      }
+    ]
+  }
+];
 
   const [openIndex, setOpenIndex] = useState(null);
 
