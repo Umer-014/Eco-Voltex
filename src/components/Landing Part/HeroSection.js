@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import { motion } from "framer-motion";
@@ -90,32 +90,7 @@ const steps = [
   ["03", "Clear report", "You receive photos, notes, certificates and next steps."],
 ];
 
-const testimonials = [
-  {
-    quote:
-      "Eco Voltex handled our office upgrade, fire alarm and PAT with zero hassle.",
-    name: "Sarah J.",
-    role: "Business Owner, Central London",
-  },
-  {
-    quote:
-      "They upgraded the consumer unit, completed the EICR and explained everything clearly.",
-    name: "Michael B.",
-    role: "Landlord, West London",
-  },
-  {
-    quote:
-      "Perfect for multi-site PAT testing. The reports were clean and easy to file.",
-    name: "Linda K.",
-    role: "Facilities Manager",
-  },
-  {
-    quote:
-      "Emergency electrician arrived quickly and got our restaurant trading again.",
-    name: "James T.",
-    role: "Restaurant Owner, Croydon",
-  },
-];
+
 
 const sliderSettings = {
   dots: true,
@@ -141,6 +116,31 @@ const fadeUp = {
 const HeroSection = () => {
   const navigate = useNavigate();
   const goTo = (path) => navigate(path);
+  const [testimonials, setTestimonials] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // API Gateway Base URL configuration
+  const API_BASE = process.env.REACT_APP_API_GATEWAY_URL ;
+  const CLEAN_BASE = API_BASE.endsWith('/') ? API_BASE : `${API_BASE}/`;
+
+  useEffect(() => {
+    const fetchLiveFeedbacks = async () => {
+      try {
+        const response = await fetch(`${CLEAN_BASE}get-response`);
+        const data = await response.json();
+        if (response.ok) {
+          const results = Array.isArray(data) ? data : data.feedbacks || [];
+          setTestimonials(results);
+        }
+      } catch (error) {
+        console.error("Failed to fetch live feedbacks for Hero section", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchLiveFeedbacks();
+  }, [CLEAN_BASE]);
 
   return (
     <main className="ev-home">
@@ -329,19 +329,29 @@ const HeroSection = () => {
             </h2>
           </div>
 
-          <Slider className="ev-testimonials__slider" {...sliderSettings}>
-            {testimonials.map((testimonial) => (
-              <article className="ev-testimonial" key={testimonial.name}>
-                <p>"{testimonial.quote}"</p>
-                <div>
-                  <strong>{testimonial.name}</strong>
-                  <span>{testimonial.role}</span>
-                </div>
-              </article>
-            ))}
-          </Slider>
+          {isLoading ? (
+            <div className="text-center py-4">Loading real feedback...</div>
+          ) : testimonials.length === 0 ? (
+            <p className="text-center text-muted">No client reviews available yet.</p>
+          ) : (
+            <Slider className="ev-testimonials__slider" {...sliderSettings}>
+              {testimonials.map((item, index) => (
+                <article className="ev-testimonial" key={index}>
+                  <div className="mb-2 text-warning">
+                    {"⭐".repeat(Math.min(Number(item.rating) || 5, 5))}
+                  </div>
+                  <p>"{item.comment || item.feedback}"</p>
+                  <div>
+                    <strong>{item.name || item.clientName || "Valued Client"}</strong>
+                    <span>Verified Customer</span>
+                  </div>
+                </article>
+              ))}
+            </Slider>
+          )}
         </div>
       </section>
+
     </main>
   );
 };
