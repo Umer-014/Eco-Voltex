@@ -13,6 +13,7 @@ import {
   MapPin,
   Plug,
   ShieldCheck,
+  Headphones,
   Siren,
   Zap,
 } from "lucide-react";
@@ -71,6 +72,16 @@ const services = [
     image:
       "https://res.cloudinary.com/dug1siluu/image/upload/v1757788696/ChatGPT_Image_Sep_13_2025_11_37_58_PM_blssbd.png",
   },
+  {
+    key: "it-services",
+    icon: Headphones, // or Server, Code2, Cloud
+    title: "IT Support & Managed Services",
+    tag: "24/7 Helpdesk",
+    
+    path: "/services/it-digital-services",
+    image:
+      "https://res.cloudinary.com/dug1siluu/image/upload/v1788796506/Gemini_Generated_Image_rb8sr1rb8sr1rb8s_i92ncu.jpg",
+  },
 ];
 
 const credentials = [
@@ -86,11 +97,17 @@ const steps = [
     "Tell us what you need",
     "Share the site type, urgency and compliance goal.",
   ],
-  ["02", "Engineer attends", "We test, install or repair with tidy workmanship."],
-  ["03", "Clear report", "You receive photos, notes, certificates and next steps."],
+  [
+    "02",
+    "Engineer attends",
+    "We test, install or repair with tidy workmanship.",
+  ],
+  [
+    "03",
+    "Clear report",
+    "You receive photos, notes, certificates and next steps.",
+  ],
 ];
-
-
 
 const sliderSettings = {
   dots: true,
@@ -120,8 +137,8 @@ const HeroSection = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   // API Gateway Base URL configuration
-  const API_BASE = process.env.REACT_APP_API_GATEWAY_URL ;
-  const CLEAN_BASE = API_BASE.endsWith('/') ? API_BASE : `${API_BASE}/`;
+  const API_BASE = process.env.REACT_APP_API_GATEWAY_URL;
+  const CLEAN_BASE = API_BASE.endsWith("/") ? API_BASE : `${API_BASE}/`;
 
   useEffect(() => {
     const fetchLiveFeedbacks = async () => {
@@ -221,7 +238,9 @@ const HeroSection = () => {
         <div className="ev-shell">
           <div className="ev-section-head">
             <span className="ev-kicker">Our services</span>
-            <h2 id="ev-services-title">One trusted contractor for the whole site.</h2>
+            <h2 id="ev-services-title">
+              One trusted contractor for the whole site.
+            </h2>
             <p>
               Clear routes into every core service, with strong visuals and
               quick actions for visitors who already know what they need.
@@ -320,7 +339,10 @@ const HeroSection = () => {
         </div>
       </section>
 
-      <section className="ev-testimonials" aria-labelledby="ev-testimonials-title">
+      <section
+        className="ev-testimonials"
+        aria-labelledby="ev-testimonials-title"
+      >
         <div className="ev-shell">
           <div className="ev-section-head">
             <span className="ev-kicker">Client feedback</span>
@@ -332,7 +354,9 @@ const HeroSection = () => {
           {isLoading ? (
             <div className="text-center py-4">Loading real feedback...</div>
           ) : testimonials.length === 0 ? (
-            <p className="text-center text-muted">No client reviews available yet.</p>
+            <p className="text-center text-muted">
+              No client reviews available yet.
+            </p>
           ) : (
             <Slider className="ev-testimonials__slider" {...sliderSettings}>
               {testimonials.map((item, index) => (
@@ -342,7 +366,9 @@ const HeroSection = () => {
                   </div>
                   <p>"{item.comment || item.feedback}"</p>
                   <div>
-                    <strong>{item.name || item.clientName || "Valued Client"}</strong>
+                    <strong>
+                      {item.name || item.clientName || "Valued Client"}
+                    </strong>
                     <span>Verified Customer</span>
                   </div>
                 </article>
@@ -351,7 +377,6 @@ const HeroSection = () => {
           )}
         </div>
       </section>
-
     </main>
   );
 };

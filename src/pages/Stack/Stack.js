@@ -14,6 +14,7 @@ import ElectricalServices from "../Services/Electrical Installation & Maintenanc
 import EmergencyElectrical from "../Services/Electrical Installation & Maintenance/EmergencyElectrical";
 import BookNow from "../Pricing Layout/BookNow";
 import Feedback from "../Feedback/Feedback";
+import ITDigitalServices from "../Services/IT & Digital Services/ITDigitalServices";
 
 
 import Location from "../Locations/Location";
@@ -36,6 +37,7 @@ const Stack = () => {
         <Route path="/services/Electrical-Installation-Maintenance" element={<ElectricalServices />} />
         <Route path="/services/Emergency-Electrical" element={<EmergencyElectrical />} />
         <Route path="/services/emergency-electrical" element={<Navigate to="/services/Emergency-Electrical" replace />} />
+        <Route path="/services/IT-Digital-Services" element={<ITDigitalServices />} />
         <Route path="/areas-we-cover" element={<Location />} />
         <Route path="/locations" element={<Navigate to="/areas-we-cover" replace />} />
         <Route path="/location" element={<Navigate to="/areas-we-cover" replace />} />

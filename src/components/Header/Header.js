@@ -14,6 +14,7 @@ const services = [
   { to: "/services/Fire-alarms", label: "Fire Alarm Systems" },
   { to: "/services/CCTV", label: "CCTV & Security Systems" },
   { to: "/services/PAT-testing", label: "PAT Testing" },
+  { to: "/services/IT-Digital-Services", label: "IT & Digital Services" },
 ];
 
 const navItems = [
