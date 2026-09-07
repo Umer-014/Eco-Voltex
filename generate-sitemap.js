@@ -17,6 +17,7 @@ const links = [
   { url: '/services/Fire-alarms', changefreq: 'monthly', priority: 0.7 },
   { url: '/services/CCTV', changefreq: 'monthly', priority: 0.7 },
   { url: '/services/PAT-testing', changefreq: 'monthly', priority: 0.7 },
+  { url: '/services/IT-Digital-Services', changefreq: 'monthly', priority: 0.7 },
 
 
 ];
