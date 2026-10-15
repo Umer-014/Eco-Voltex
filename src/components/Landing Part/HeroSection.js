@@ -408,10 +408,11 @@ const HeroSection = () => {
                   }
                 }}
               >
-                <img src={service.image} alt={service.title} loading="lazy" />
-                <div className="ev-service-card__overlay" />
-                <div className="ev-service-card__icon">
-                  <Icon size={22} aria-hidden="true" />
+                <div className="ev-service-card__visual">
+                  <img src={service.image} alt={service.title} loading="lazy" />
+                  <div className="ev-service-card__icon">
+                    <Icon size={22} aria-hidden="true" />
+                  </div>
                 </div>
                 <div className="ev-service-card__content">
                   <span>{service.tag}</span>

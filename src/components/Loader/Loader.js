@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Loader.css";
 
-const WORD_COLOR = "#0b3654";
 
 export default function Loader({ children, minDuration = 4200 }) {
   const [progress, setProgress] = useState(0);
