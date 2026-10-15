@@ -1,0 +1,670 @@
+.ev-charging {
+  --ev-charge-navy: #08283d;
+  --ev-charge-blue: #103e59;
+  --ev-charge-green: #20a45a;
+  --ev-charge-green-dark: #147a43;
+  --ev-charge-text: #142b38;
+  --ev-charge-muted: #5d7079;
+  --ev-charge-border: #dce8e5;
+  --ev-charge-soft: #f1f8f4;
+  color: var(--ev-charge-text);
+  background: #fff;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.ev-charging *,
+.ev-charging *::before,
+.ev-charging *::after {
+  box-sizing: border-box;
+}
+
+.ev-charging__container {
+  width: min(1160px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.ev-charging__hero {
+  position: relative;
+  overflow: hidden;
+  padding: 76px 0 72px;
+  background:
+    radial-gradient(ellipse at 80% 15%, rgba(40, 164, 93, 0.12), transparent 36%),
+    linear-gradient(135deg, #f3faf6 0%, #fff 54%, #edf6f4 100%);
+}
+
+.ev-charging__hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+  align-items: center;
+  gap: 56px;
+}
+
+.ev-charging__hero-copy {
+  max-width: 630px;
+}
+
+.ev-charging__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ev-charge-green-dark);
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.ev-charging__hero h1 {
+  margin: 18px 0;
+  color: var(--ev-charge-navy);
+  font-size: clamp(38px, 5vw, 60px);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.08;
+}
+
+.ev-charging__hero-copy > p:not(.ev-charging__note) {
+  max-width: 600px;
+  color: var(--ev-charge-muted);
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.ev-charging__checks {
+  display: grid;
+  gap: 12px;
+  margin: 22px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ev-charging__checks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #29414d;
+  line-height: 1.5;
+}
+
+.ev-charging__checks svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: var(--ev-charge-green-dark);
+}
+
+.ev-charging__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.ev-charging__button {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 750;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 160ms ease, background-color 160ms ease;
+}
+
+.ev-charging__button:hover {
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.ev-charging__button--primary {
+  color: #fff;
+  background: var(--ev-charge-green);
+}
+
+.ev-charging__button--primary:hover {
+  color: #fff;
+  background: var(--ev-charge-green-dark);
+}
+
+.ev-charging__button--secondary {
+  border: 1px solid #cbdcd4;
+  color: var(--ev-charge-navy);
+  background: #fff;
+}
+
+.ev-charging__button--secondary:hover {
+  color: var(--ev-charge-navy);
+  background: #f7fbf8;
+}
+
+.ev-charging__note {
+  margin: 14px 0 0;
+  color: var(--ev-charge-muted);
+  font-size: 12px;
+}
+
+.ev-charging__visual {
+  position: relative;
+  display: flex;
+  min-height: 440px;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 24px;
+  color: #fff;
+  background: linear-gradient(145deg, #0a2b40, #0c4051 64%, #176344);
+  box-shadow: 0 28px 64px rgba(8, 40, 61, 0.2);
+}
+
+.ev-charging__visual-glow {
+  position: absolute;
+  top: 25%;
+  right: -12%;
+  width: 330px;
+  height: 330px;
+  border-radius: 50%;
+  background: rgba(60, 217, 126, 0.2);
+  filter: blur(50px);
+}
+
+.ev-charging__visual-topline,
+.ev-charging__visual-caption {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ev-charging__visual-topline span,
+.ev-charging__visual-caption {
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.ev-charging__visual-topline span:first-child,
+.ev-charging__visual-caption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ev-charging__status-dot {
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ev-charging__charger {
+  position: absolute;
+  z-index: 1;
+  top: 95px;
+  left: 17%;
+  width: 126px;
+  height: 205px;
+  padding: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 22px;
+  background: linear-gradient(150deg, #f9fcfa, #dce9e4);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.24);
+  transform: rotate(-5deg);
+}
+
+.ev-charging__charger-screen {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 13px;
+  color: #fff;
+  background: linear-gradient(160deg, #123a4b, #071f33);
+}
+
+.ev-charging__charger-screen span {
+  color: #a9d3bc;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.ev-charging__charger-screen svg {
+  color: #5ee28f;
+}
+
+.ev-charging__charger-screen strong {
+  font-size: 19px;
+  letter-spacing: 0.12em;
+}
+
+.ev-charging__charger-port {
+  position: absolute;
+  right: -5px;
+  bottom: 20px;
+  width: 11px;
+  height: 24px;
+  border: 3px solid #dce9e4;
+  border-radius: 8px;
+  background: #13394a;
+}
+
+.ev-charging__cable {
+  position: absolute;
+  z-index: 0;
+  top: 203px;
+  left: 33%;
+  width: 140px;
+  height: 132px;
+  border-right: 5px solid rgba(235, 247, 241, 0.88);
+  border-bottom: 5px solid rgba(235, 247, 241, 0.88);
+  border-radius: 0 0 90px 0;
+}
+
+.ev-charging__car {
+  position: absolute;
+  right: 7%;
+  bottom: 90px;
+  display: flex;
+  width: 58%;
+  height: 120px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 68px 58px 25px 25px;
+  color: #e1f1e9;
+  background: linear-gradient(150deg, #5cae83, #174c46);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.2);
+}
+
+.ev-charging__car svg {
+  width: 100%;
+  height: 100%;
+  opacity: 0.92;
+}
+
+.ev-charging__visual-caption {
+  justify-content: flex-start;
+  color: #dbf5e4;
+}
+
+.ev-charging__trust {
+  border-bottom: 1px solid var(--ev-charge-border);
+  background: #fff;
+}
+
+.ev-charging__trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding-top: 23px;
+  padding-bottom: 23px;
+}
+
+.ev-charging__trust-grid span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  color: #294652;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.ev-charging__trust-grid svg {
+  flex: 0 0 auto;
+  color: var(--ev-charge-green-dark);
+}
+
+.ev-charging__section {
+  padding: 76px 0;
+}
+
+.ev-charging__section--soft {
+  background: var(--ev-charge-soft);
+}
+
+.ev-charging__section-heading {
+  max-width: 700px;
+  margin: 0 auto 34px;
+  text-align: center;
+}
+
+.ev-charging__section h2,
+.ev-charging__cta h2 {
+  margin: 12px 0;
+  color: var(--ev-charge-navy);
+  font-size: clamp(29px, 3.5vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+.ev-charging__section-heading > p,
+.ev-charging__planning-grid > div > p {
+  color: var(--ev-charge-muted);
+  line-height: 1.7;
+}
+
+.ev-charging__service-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.ev-charging__service-card {
+  min-height: 224px;
+  padding: 24px;
+  border: 1px solid var(--ev-charge-border);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(8, 40, 61, 0.045);
+}
+
+.ev-charging__service-icon,
+.ev-charging__planning-icon {
+  display: inline-flex;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 13px;
+  color: var(--ev-charge-green-dark);
+  background: #e7f6eb;
+}
+
+.ev-charging__service-card h3,
+.ev-charging__planning-card h3,
+.ev-charging__steps h3 {
+  margin: 18px 0 9px;
+  color: var(--ev-charge-navy);
+  font-size: 18px;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.ev-charging__service-card p,
+.ev-charging__planning-card p,
+.ev-charging__steps p {
+  margin: 0;
+  color: var(--ev-charge-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.ev-charging__planning-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  align-items: center;
+  gap: 56px;
+}
+
+.ev-charging__planning-grid > div > p {
+  max-width: 650px;
+}
+
+.ev-charging__checks--dark {
+  margin-bottom: 0;
+}
+
+.ev-charging__planning-card {
+  padding: 30px;
+  border: 1px solid var(--ev-charge-border);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 16px 38px rgba(8, 40, 61, 0.08);
+}
+
+.ev-charging__planning-card h3 {
+  margin-top: 20px;
+  font-size: 22px;
+}
+
+.ev-charging__planning-card a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+  color: var(--ev-charge-green-dark);
+  font-size: 14px;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.ev-charging__planning-card a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ev-charging__steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ev-charging__steps li {
+  padding: 24px;
+  border: 1px solid var(--ev-charge-border);
+  border-radius: 14px;
+  background: #fff;
+}
+
+.ev-charging__step-number {
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--ev-charge-green);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.ev-charging__steps h3 {
+  margin-top: 16px;
+}
+
+.ev-charging__faq {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.75fr) minmax(0, 1.25fr);
+  gap: 54px;
+}
+
+.ev-charging__faq .ev-charging__section-heading {
+  margin: 0;
+  text-align: left;
+}
+
+.ev-charging__faq-list {
+  display: grid;
+  gap: 10px;
+}
+
+.ev-charging__faq-list details {
+  padding: 18px 20px;
+  border: 1px solid var(--ev-charge-border);
+  border-radius: 11px;
+  background: #fff;
+}
+
+.ev-charging__faq-list summary {
+  color: var(--ev-charge-navy);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+.ev-charging__faq-list details p {
+  margin: 12px 0 0;
+  color: var(--ev-charge-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.ev-charging__cta {
+  padding: 52px 0;
+  color: #fff;
+  background: linear-gradient(115deg, #08283d, #0e4c4b);
+}
+
+.ev-charging__cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.ev-charging__cta .ev-charging__eyebrow {
+  color: #94e1ac;
+}
+
+.ev-charging__cta h2 {
+  margin: 10px 0;
+  color: #fff;
+}
+
+.ev-charging__cta p {
+  margin: 0;
+  color: #d1e3df;
+  line-height: 1.6;
+}
+
+.ev-charging__button--light {
+  flex: 0 0 auto;
+  color: var(--ev-charge-navy);
+  background: #fff;
+}
+
+.ev-charging__button--light:hover {
+  color: var(--ev-charge-navy);
+  background: #e8f7ed;
+}
+
+@media (max-width: 900px) {
+  .ev-charging__hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.85fr);
+    gap: 30px;
+  }
+
+  .ev-charging__visual {
+    min-height: 390px;
+  }
+
+  .ev-charging__service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ev-charging__trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .ev-charging__container {
+    width: min(100% - 36px, 520px);
+  }
+
+  .ev-charging__hero {
+    padding: 54px 0;
+  }
+
+  .ev-charging__hero-grid,
+  .ev-charging__planning-grid,
+  .ev-charging__faq {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .ev-charging__hero h1 {
+    font-size: clamp(36px, 11vw, 48px);
+  }
+
+  .ev-charging__hero-copy > p:not(.ev-charging__note) {
+    font-size: 16px;
+  }
+
+  .ev-charging__visual {
+    min-height: 360px;
+    padding: 18px;
+  }
+
+  .ev-charging__charger {
+    top: 83px;
+    left: 12%;
+    transform: scale(0.86) rotate(-5deg);
+    transform-origin: top left;
+  }
+
+  .ev-charging__cable {
+    top: 183px;
+    left: 30%;
+  }
+
+  .ev-charging__car {
+    right: 5%;
+    bottom: 76px;
+    width: 62%;
+    height: 96px;
+  }
+
+  .ev-charging__section {
+    padding: 56px 0;
+  }
+
+  .ev-charging__service-grid,
+  .ev-charging__steps {
+    grid-template-columns: 1fr;
+  }
+
+  .ev-charging__service-card {
+    min-height: auto;
+  }
+
+  .ev-charging__faq .ev-charging__section-heading {
+    text-align: center;
+  }
+
+  .ev-charging__cta-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 420px) {
+  .ev-charging__container {
+    width: min(100% - 28px, 520px);
+  }
+
+  .ev-charging__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .ev-charging__trust-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ev-charging *,
+  .ev-charging *::before,
+  .ev-charging *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
   ArrowUpRight,
   Award,
+  BatteryCharging,
   Camera,
   CheckCircle2,
   ClipboardCheck,
@@ -41,6 +42,16 @@ const services = [
     path: "/services/Emergency-Electrical",
     image:
       "https://res.cloudinary.com/dug1siluu/image/upload/v1764613919/20251201_2325_Futuristic_Electrical_Emergency_Scene_remix_01kbdjen2vf9w98300a6fphk62_1_aeuopm.png",
+  },
+  {
+    key: "ev-charging",
+    icon: BatteryCharging,
+    title: "EV Charger Installation",
+    tag: "Home & business",
+    text: "EV charging solutions planned around your site and electrical supply.",
+    path: "/services/EV-Charging",
+    image:
+      "https://res.cloudinary.com/dug1siluu/image/upload/v1764613806/20251201_2323_Eco_Energy_Illustration_remix_01kbdjc4q0f2vayyppswy3sa31_dlrchb.png",
   },
   {
     key: "fire",

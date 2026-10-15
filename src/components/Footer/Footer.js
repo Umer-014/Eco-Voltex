@@ -16,9 +16,12 @@ import {
 const footerServices = [
   { to: "/services/Electrical-Installation-Maintenance", label: "Electrical Installation & Maintenance" },
   { to: "/services/Emergency-Electrical", label: "Emergency Electrical Services" },
+  { to: "/services/EV-Charging", label: "EV Charger Installation" },
   { to: "/services/PAT-testing", label: "PAT Testing Services" },
   { to: "/services/Fire-alarms", label: "Fire Alarm Services" },
   { to: "/services/CCTV", label: "CCTV & Security Systems" },
+  { to: "/services/IT-Digital-Services", label: "IT & Digital Services" },
+  
 ];
 
 const Footer = () => {
@@ -27,7 +30,7 @@ const Footer = () => {
       <div className="container">
         <div className="row">
           {/* Company Info Section */}
-          <div className="col-md-4">
+          <div className="col-12 col-md-6 col-lg-3">
             <h5 className="fw-bold">Eco Voltex</h5>
             <p>
               Professional electrical, fire alarm, CCTV and PAT services for
@@ -48,7 +51,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links Section */}
-          <div className="col-md-4">
+          <div className="col-12 col-md-6 col-lg-3">
             <h5 className="fw-bold">Quick Links</h5>
             <ul className="list-unstyled">
               <li>
@@ -61,13 +64,6 @@ const Footer = () => {
                   About Us
                 </Link>
               </li>
-              {footerServices.map((service) => (
-                <li key={service.to}>
-                  <Link to={service.to} className="text-light text-decoration-none">
-                    {service.label}
-                  </Link>
-                </li>
-              ))}
               <li>
                 <Link
                   to="/areas-we-cover"
@@ -97,8 +93,22 @@ const Footer = () => {
             </ul>
           </div>
 
+          {/* Services Section */}
+          <div className="col-12 col-md-6 col-lg-3">
+            <h5 className="fw-bold">Services</h5>
+            <ul className="list-unstyled">
+              {footerServices.map((service) => (
+                <li key={service.to}>
+                  <Link to={service.to} className="text-light text-decoration-none">
+                    {service.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Social Media Section */}
-          <div className="col-md-4">
+          <div className="col-12 col-md-6 col-lg-3">
             <h5 className="fw-bold">Follow Us</h5>
             <div className="social-icons d-flex gap-3">
               <a

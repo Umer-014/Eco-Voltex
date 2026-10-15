@@ -11,9 +11,11 @@ const services = [
     label: "Electrical Installation & Maintenance",
   },
   { to: "/services/Emergency-Electrical", label: "Emergency Electrical Services" },
+  { to: "/services/EV-Charging", label: "EV Charger Installation" },
   { to: "/services/Fire-alarms", label: "Fire Alarm Systems" },
   { to: "/services/CCTV", label: "CCTV & Security Systems" },
   { to: "/services/PAT-testing", label: "PAT Testing" },
+  
   { to: "/services/IT-Digital-Services", label: "IT & Digital Services" },
 ];
 
