@@ -120,7 +120,7 @@ export default function Loader({ children, minDuration = 4200 }) {
                 VOL
               </text>
               <text
-                x="622"
+                x="550"
                 y="482"
                 className="loader-word loader-word--bottom"
                 style={{
@@ -132,46 +132,48 @@ export default function Loader({ children, minDuration = 4200 }) {
                 EX
               </text>
 
-              <g clipPath="url(#loaderLeafClip)">
-                <rect
-                  x="400"
-                  y={0 + (1 - leafFill) * 300}
-                  width="450"
-                  height={300 * 1.5}
-                  fill="url(#loaderLeafGradient)"
+              <g transform="translate(-32 0)">
+                <g clipPath="url(#loaderLeafClip)">
+                  <rect
+                    x="400"
+                    y={0 + (1 - leafFill) * 300}
+                    width="450"
+                    height={300 * 1.5}
+                    fill="url(#loaderLeafGradient)"
+                  />
+                </g>
+                <path
+                  d={LEAF_PATH}
+                  className="loader-mark-outline"
+                  pathLength="1"
+                  style={{ strokeDashoffset: 1 - leafTrace }}
                 />
-              </g>
-              <path
-                d={LEAF_PATH}
-                className="loader-mark-outline"
-                pathLength="1"
-                style={{ strokeDashoffset: 1 - leafTrace }}
-              />
-              <path
-                d={LEAF_VEIN_PATH}
-                className="loader-leaf-vein"
-                pathLength="1"
-                style={{
-                  opacity: leafFill,
-                  strokeDashoffset: 1 - leafTrace,
-                }}
-              />
+                <path
+                  d={LEAF_VEIN_PATH}
+                  className="loader-leaf-vein"
+                  pathLength="1"
+                  style={{
+                    opacity: leafFill,
+                    strokeDashoffset: 1 - leafTrace,
+                  }}
+                />
 
-              <g clipPath="url(#loaderBoltClip)">
-                <rect
-                  x="430"
-                  y={240 + (1 - boltFill) * 300}
-                  width="180"
-                  height={300 * 1.5}
-                  fill="url(#loaderBoltGradient)"
+                <g clipPath="url(#loaderBoltClip)">
+                  <rect
+                    x="430"
+                    y={240 + (1 - boltFill) * 300}
+                    width="180"
+                    height={300 * 1.5}
+                    fill="url(#loaderBoltGradient)"
+                  />
+                </g>
+                <path
+                  d={BOLT_PATH}
+                  className="loader-mark-outline loader-mark-outline--bolt"
+                  pathLength="1"
+                  style={{ strokeDashoffset: 1 - boltTrace }}
                 />
               </g>
-              <path
-                d={BOLT_PATH}
-                className="loader-mark-outline loader-mark-outline--bolt"
-                pathLength="1"
-                style={{ strokeDashoffset: 1 - boltTrace }}
-              />
             </svg>
 
             <div
