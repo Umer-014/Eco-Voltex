@@ -152,6 +152,21 @@ const adSliderSettings = {
   accessibility: true,
 };
 
+const heroImageSliderSettings = {
+  dots: true,
+  infinite: true,
+  speed: 700,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: false,
+  autoplay: true,
+  autoplaySpeed: 3800,
+  pauseOnHover: true,
+  pauseOnFocus: true,
+  fade: true,
+  accessibility: true,
+};
+
 const advertisingSlides = [
   {
     id: "electrical",
@@ -219,6 +234,7 @@ const fadeUp = {
 const HeroSection = () => {
   const navigate = useNavigate();
   const goTo = (path) => navigate(path);
+  const [activeHeroService, setActiveHeroService] = useState(services[0]);
   const [testimonials, setTestimonials] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -333,13 +349,24 @@ const HeroSection = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <img
-              src="https://res.cloudinary.com/dug1siluu/image/upload/v1764085502/20251125_2042_Modern_Electrical_Workspace_Banner_simple_compose_01kaxtree2fykv11a2qkc4ar7z_rvc6l6.png"
-              alt="Eco Voltex electrical engineer workspace"
-            />
+            <Slider
+              className="ev-hero__image-slider"
+              {...heroImageSliderSettings}
+              afterChange={(index) => setActiveHeroService(services[index])}
+            >
+              {services.map((service, index) => (
+                <div className="ev-hero__image-slide" key={service.key}>
+                  <img
+                    src={service.image}
+                    alt={`${service.title} service`}
+                    loading={index === 0 ? "eager" : "lazy"}
+                  />
+                </div>
+              ))}
+            </Slider>
             <div className="ev-hero__card ev-hero__card--top">
-              <strong>24/7</strong>
-              <span>Emergency response available</span>
+              <strong>{activeHeroService.title}</strong>
+              <span>{activeHeroService.tag}</span>
             </div>
             <div className="ev-hero__card ev-hero__card--bottom">
               <strong>1,000+</strong>
