@@ -51,7 +51,7 @@ const services = [
     text: "EV charging solutions planned around your site and electrical supply.",
     path: "/services/EV-Charging",
     image:
-      "https://res.cloudinary.com/dug1siluu/image/upload/v1764613806/20251201_2323_Eco_Energy_Illustration_remix_01kbdjc4q0f2vayyppswy3sa31_dlrchb.png",
+      "https://res.cloudinary.com/dug1siluu/image/upload/v1792080149/Neon_Green_EV_Charging_Station_didjes.png",
   },
   {
     key: "fire",
