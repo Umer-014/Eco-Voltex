@@ -302,8 +302,7 @@ const HeroSection = () => {
             variants={fadeUp}
           >
             <span className="ev-kicker">
-              <Zap size={16} aria-hidden="true" />
-              Electrical, fire and security specialists
+              
             </span>
             <h1 id="ev-hero-title">
               Safer, smarter electrical work for London properties.
