@@ -74,10 +74,10 @@ const services = [
   },
   {
     key: "it-services",
-    icon: Headphones, // or Server, Code2, Cloud
+    icon: Headphones,
     title: "IT Support & Managed Services",
     tag: "24/7 Helpdesk",
-    
+    text: "Reliable network, digital, and IT infrastructure support for modern enterprises.",
     path: "/services/it-digital-services",
     image:
       "https://res.cloudinary.com/dug1siluu/image/upload/v1788796506/Gemini_Generated_Image_rb8sr1rb8sr1rb8s_i92ncu.jpg",
@@ -125,6 +125,81 @@ const sliderSettings = {
   ],
 };
 
+/* Increased slider transition speed and reduced autoplay interval */
+const adSliderSettings = {
+  dots: true,
+  infinite: true,
+  speed: 400, // Faster transition animation duration (ms)
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: false,
+  autoplay: true,
+  autoplaySpeed: 3000, // Faster interval between slide changes (ms)
+  pauseOnHover: true,
+  pauseOnFocus: true,
+  adaptiveHeight: false,
+  accessibility: true,
+};
+
+const advertisingSlides = [
+  {
+    id: "electrical",
+    eyebrow: "Electrical Installation & Maintenance",
+    title: "Professional wiring and maintenance.",
+    text: "Rewires, consumer units, lighting, circuits and planned electrical maintenance.",
+    action: "View service",
+    path: "/services/Electrical-Installation-Maintenance",
+  },
+  {
+    id: "ev-charging",
+    eyebrow: "EV Charging Solutions",
+    title: "Scalable electric vehicle charging.",
+    text: "Design, installation, and management of EV charging infrastructure for businesses and residential properties.",
+    action: "View service",
+    path: "/services/EV-Charging",
+  },
+  {
+    id: "emergency",
+    eyebrow: "Emergency Electrical Services",
+    title: "Fast 24/7 emergency response.",
+    text: "Make-safe visits for tripping circuits, total power loss, and urgent electrical faults.",
+    action: "Get emergency help",
+    path: "/services/Emergency-Electrical",
+  },
+  {
+    id: "fire",
+    eyebrow: "Fire Alarm Systems",
+    title: "BS 5839 compliant fire protection.",
+    text: "Full design, installation, commissioning, and servicing for compliant properties.",
+    action: "Explore fire safety",
+    path: "/services/Fire-alarms",
+  },
+  {
+    id: "cctv",
+    eyebrow: "CCTV & Security Systems",
+    title: "Smart site and property protection.",
+    text: "High-definition camera installations, secure storage, and clear coverage planning.",
+    action: "View security",
+    path: "/services/CCTV",
+  },
+  {
+    id: "pat",
+    eyebrow: "PAT Testing",
+    title: "Audit-ready appliance testing.",
+    text: "Asset registers, complete CSV exports, and clear risk-based test reports.",
+    action: "Book PAT test",
+    path: "/services/PAT-testing",
+  },
+  {
+    id: "it-services",
+    eyebrow: "IT & Digital Services",
+    title: "Managed IT support & helpdesk.",
+    text: "Reliable network infrastructure and digital support solutions for your business.",
+    action: "Explore IT services",
+    path: "/services/it-digital-services",
+  },
+];
+
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -138,7 +213,7 @@ const HeroSection = () => {
 
   // API Gateway Base URL configuration
   const API_BASE = process.env.REACT_APP_API_GATEWAY_URL;
-  const CLEAN_BASE = API_BASE.endsWith("/") ? API_BASE : `${API_BASE}/`;
+  const CLEAN_BASE = API_BASE?.endsWith("/") ? API_BASE : `${API_BASE}/`;
 
   useEffect(() => {
     const fetchLiveFeedbacks = async () => {
@@ -161,6 +236,35 @@ const HeroSection = () => {
 
   return (
     <main className="ev-home">
+      <section className="ev-advertising" aria-label="Eco Voltex announcements">
+        <Slider className="ev-advertising__slider" {...adSliderSettings}>
+          {advertisingSlides.map((slide) => (
+            <article
+              className={`ev-advertising__slide ev-advertising__slide--${slide.id}`}
+              key={slide.id}
+            >
+              <div className="ev-shell ev-advertising__inner">
+                <div className="ev-advertising__copy">
+                  <span className="ev-advertising__eyebrow">
+                    <Zap size={14} aria-hidden="true" />
+                    {slide.eyebrow}
+                  </span>
+                  <h2>{slide.title}</h2>
+                  <p>{slide.text}</p>
+                </div>
+                <button
+                  className="ev-advertising__button"
+                  onClick={() => goTo(slide.path)}
+                >
+                  {slide.action}
+                  <ArrowUpRight size={17} aria-hidden="true" />
+                </button>
+              </div>
+            </article>
+          ))}
+        </Slider>
+      </section>
+
       <section className="ev-hero" aria-labelledby="ev-hero-title">
         <div className="ev-hero__shade" />
         <div className="ev-shell ev-hero__grid">
