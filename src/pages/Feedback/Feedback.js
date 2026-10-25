@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./feedback.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+const API_BASE = process.env.REACT_APP_API_GATEWAY_URL;
+const CLEAN_BASE = API_BASE.endsWith("/") ? API_BASE : `${API_BASE}/`;
 
 const Feedback = () => {
   const [formData, setFormData] = useState({ name: "", rating: 5, comment: "" });
@@ -13,11 +16,7 @@ const Feedback = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Ensure trailing slash handling for clean endpoint URL concatenation
-  const API_BASE = process.env.REACT_APP_API_GATEWAY_URL;
-  const CLEAN_BASE = API_BASE.endsWith('/') ? API_BASE : `${API_BASE}/`;
-
-  const fetchFeedbacks = async () => {
+  const fetchFeedbacks = useCallback(async () => {
     setIsLoading(true);
     try {
       const response = await fetch(`${CLEAN_BASE}get-response`);
@@ -30,11 +29,11 @@ const Feedback = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchFeedbacks();
-  }, []);
+  }, [fetchFeedbacks]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -83,7 +82,7 @@ const Feedback = () => {
           <div className="row justify-content-center mb-5">
             <div className="col-lg-6 col-md-8">
               <div className="card shadow-lg p-4 border-0 rounded-4">
-                <h2 className="fw-bold text-center text-success mb-2">Share Your Experience</h2>
+                <h1 className="h2 fw-bold text-center text-success mb-2">Share Your Experience</h1>
                 <p className="text-center text-muted mb-4">We value your feedback to help us improve our services.</p>
                 
                 {showPopup && (

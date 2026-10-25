@@ -52,7 +52,7 @@ const Header = () => {
         <Link to="/" className="logo">
           <img src={logo} alt="Eco Voltex Logo" className="logo-image" />
           <div className="text-container">
-            <h1 className="company-name">Eco Voltex</h1>
+            <span className="company-name">Eco Voltex</span>
             <p className="tagline">Sustainable Electrical Solutions</p>
           </div>
         </Link>

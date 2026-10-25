@@ -69,7 +69,7 @@ const ContactUs = () => {
           <div className="row justify-content-center">
             <div className="col-lg-6 col-md-8">
               <div className="card shadow-lg p-4 border-0 rounded-4">
-                <h2 className="fw-bold text-center text-success mb-3">Contact Us</h2>
+                <h1 className="h2 fw-bold text-center text-success mb-3">Contact Us</h1>
                 <p className="text-center text-muted mb-4">We’d love to hear from you! Fill out the form below to get in touch.</p>
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">

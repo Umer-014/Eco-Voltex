@@ -244,7 +244,7 @@ const faqSections = [
     <>
     <Header />
     <div className="faq-container">
-      <h2 className="faq-title">Frequently Asked Questions</h2>
+      <h1 className="faq-title">Frequently Asked Questions</h1>
       {faqSections.map((section, sectionIndex) => (
         <div key={sectionIndex} className="faq-section">
           <h3 className="faq-category">{section.category}</h3>

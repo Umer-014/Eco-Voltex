@@ -19,6 +19,8 @@ import EVCharging from "../Services/EV Charging/EVCharging";
 
 
 import Location from "../Locations/Location";
+import SiteMetadata from "../../components/SEO/SiteMetadata";
+import NotFoundPage from "../NotFound/NotFoundPage";
 
 const Stack = () => {
   return (
@@ -48,7 +50,9 @@ const Stack = () => {
         <Route path="/book-now" element={<Navigate to="/Book Now" replace />} />
         <Route path="/book now" element={<Navigate to="/Book Now" replace />} />
         <Route path="/feedback" element={<Feedback />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <SiteMetadata />
     </Router>
   );
 };
