@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import "./PAT.css";
 import Header from "../../../components/Header/Header";
 import Footer from "../../../components/Footer/Footer";
+import PageImage from "../../../components/Images/PageImage";
 
 export default function PatTestingPage() {
   const [isMobile, setIsMobile] = useState(false);
@@ -176,12 +177,13 @@ export default function PatTestingPage() {
                 justifyContent: "center",
               }}
             >
-              <img
+              <PageImage
                 src={
                   "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757788696/ChatGPT_Image_Sep_13_2025_11_37_58_PM_blssbd.png"
                 }
                 alt="PAT testing in action"
                 loading="lazy"
+                priority
                 style={{
                   width: "100%",
                   height: "auto",
@@ -432,7 +434,7 @@ export default function PatTestingPage() {
                   justifyContent: "center",
                 }}
               >
-                <img
+                <PageImage
                   src={
                     "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757617624/ChatGPT_Image_Sep_12_2025_12_06_32_AM_fkdbv7.png"
                   }
@@ -674,7 +676,7 @@ export default function PatTestingPage() {
                   justifyContent: "center",
                 }}
               >
-                <img
+                <PageImage
                   src={
                     "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757617505/ChatGPT_Image_Sep_12_2025_12_04_49_AM_vidu8z.png"
                   }
@@ -829,7 +831,7 @@ export default function PatTestingPage() {
                   width: "100%",
                 }}
               >
-                <img
+                <PageImage
                   src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757602608/ChatGPT_Image_Sep_11_2025_07_56_32_PM_afleph.png"
                   alt="Sample PAT testing results"
                   loading="lazy"
@@ -840,7 +842,7 @@ export default function PatTestingPage() {
                     width: "100%",
                   }}
                 />
-                <img
+                <PageImage
                   src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757601945/ChatGPT_Image_Sep_11_2025_07_41_31_PM_fzya3v.png"
                   alt="Sample PAT testing certificate"
                   loading="lazy"
@@ -897,7 +899,7 @@ export default function PatTestingPage() {
                   height: "100%",
                 }}
               >
-                <img
+                <PageImage
                   src={
                     "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757617738/ChatGPT_Image_Sep_12_2025_12_08_49_AM_dwwdn9.png"
                   }

@@ -13,7 +13,7 @@ const App = () => {
   }, []);
 
   return (
-    <Loader minDuration={4600}>
+    <Loader minDuration={500}>
       <Analytics />
       <SpeedInsights />
       <Stack />

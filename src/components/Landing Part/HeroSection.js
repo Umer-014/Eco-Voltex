@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import { motion } from "framer-motion";
+import PageImage from "../Images/PageImage";
 import {
   ArrowUpRight,
   Award,
@@ -355,12 +356,13 @@ const HeroSection = () => {
             >
               {services.map((service, index) => (
                 <div className="ev-hero__image-slide" key={service.key}>
-                  <img
+                  <PageImage
                     src={service.image}
                     alt={`${service.title} service`}
                     loading={index === 0 ? "eager" : "lazy"}
                     fetchpriority={index === 0 ? "high" : "auto"}
                     decoding="async"
+                    priority={index === 0}
                   />
                 </div>
               ))}
@@ -410,7 +412,11 @@ const HeroSection = () => {
                 }}
               >
                 <div className="ev-service-card__visual">
-                  <img src={service.image} alt={service.title} loading="lazy" />
+                  <PageImage
+                    src={service.image}
+                    alt={service.title}
+                    loading="lazy"
+                  />
                   <div className="ev-service-card__icon">
                     <Icon size={22} aria-hidden="true" />
                   </div>

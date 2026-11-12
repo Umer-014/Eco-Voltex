@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PageImage from "../Images/PageImage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./footer.css";
 import napitLogo from "../../assets/Certification.jpg";
@@ -148,7 +149,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img
+                  <PageImage
                     src={napitLogo}
                     alt="NAPIT Registered Installer"
                     className="napit-logo"

@@ -1,21 +1,25 @@
 import React, { useEffect, useRef, useState } from "react";
-import { preloadImageAssets } from "./imageAssets";
+import {
+  preloadCurrentPageImage,
+  preloadImageAssets,
+} from "./imageAssets";
+import ImagesLoadingContext from "../Images/ImagesLoadingContext";
 import "./Loader.css";
 
 
-export default function Loader({ children, minDuration = 4200 }) {
+export default function Loader({ children, minDuration = 500 }) {
   const [progress, setProgress] = useState(0);
   const [hidden, setHidden] = useState(false);
-  const [imagesReady, setImagesReady] = useState(false);
+  const [currentImageReady, setCurrentImageReady] = useState(false);
   const startRef = useRef(null);
   const rafRef = useRef(null);
 
   useEffect(() => {
     let cancelled = false;
 
-    preloadImageAssets().then(() => {
+    preloadCurrentPageImage().then(() => {
       if (!cancelled) {
-        setImagesReady(true);
+        setCurrentImageReady(true);
       }
     });
 
@@ -55,23 +59,49 @@ export default function Loader({ children, minDuration = 4200 }) {
   }, [minDuration]);
 
   useEffect(() => {
-    if (!imagesReady) {
+    if (!currentImageReady || progress < 100) {
       return undefined;
     }
 
     const reducedMotion = window.matchMedia?.(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-    const elapsed = startRef.current
-      ? performance.now() - startRef.current
-      : minDuration;
-    const hideDelay = reducedMotion
-      ? 250
-      : Math.max(0, minDuration + 650 - elapsed);
+    const hideDelay = reducedMotion ? 250 : 350;
     const hideTimer = setTimeout(() => setHidden(true), hideDelay);
 
     return () => clearTimeout(hideTimer);
-  }, [imagesReady, minDuration]);
+  }, [currentImageReady, progress]);
+
+  useEffect(() => {
+    if (!hidden) {
+      return undefined;
+    }
+
+    let cancelled = false;
+    let idleCallbackId;
+    let timeoutId;
+    const startPreloading = () => {
+      if (!cancelled) {
+        preloadImageAssets();
+      }
+    };
+
+    if ("requestIdleCallback" in window) {
+      idleCallbackId = window.requestIdleCallback(startPreloading, {
+        timeout: 2000,
+      });
+    } else {
+      timeoutId = setTimeout(startPreloading, 500);
+    }
+
+    return () => {
+      cancelled = true;
+      if (idleCallbackId !== undefined) {
+        window.cancelIdleCallback(idleCallbackId);
+      }
+      clearTimeout(timeoutId);
+    };
+  }, [hidden]);
 
   const stageIn = segment(progress, 0, 10);
   const ecoIn = segment(progress, 4, 25);
@@ -81,7 +111,7 @@ export default function Loader({ children, minDuration = 4200 }) {
   const boltFill = segment(progress, 58, 82);
   const voltexIn = segment(progress, 66, 88);
   const shine = segment(progress, 84, 100);
-  const leaving = progress >= 100 && imagesReady;
+  const leaving = progress >= 100 && currentImageReady;
 
   return (
     <>
@@ -215,7 +245,9 @@ export default function Loader({ children, minDuration = 4200 }) {
         </div>
       )}
 
-      {children}
+      <ImagesLoadingContext.Provider value={hidden}>
+        {children}
+      </ImagesLoadingContext.Provider>
     </>
   );
 }

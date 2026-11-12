@@ -42,7 +42,9 @@ const imageAssets = [
 ].filter(Boolean);
 
 const cachedImages = new Map();
-const MAX_CONCURRENT_PRELOADS = 6;
+const MAX_CONCURRENT_PRELOADS = 3;
+const IMAGE_LOAD_TIMEOUT = 15000;
+const CRITICAL_IMAGE_TIMEOUT = 1600;
 
 export function preloadImageAssets() {
   let nextIndex = 0;
@@ -58,7 +60,26 @@ export function preloadImageAssets() {
   return Promise.all(workers);
 }
 
-function preloadImage(source) {
+export function preloadCurrentPageImage() {
+  const pageImage = document.querySelector("main img, figure img");
+  const source = pageImage?.currentSrc || pageImage?.src;
+
+  if (!source) {
+    return Promise.resolve();
+  }
+
+  let timeoutId;
+  const timeout = new Promise((resolve) => {
+    timeoutId = setTimeout(resolve, CRITICAL_IMAGE_TIMEOUT);
+  });
+
+  return Promise.race([
+    preloadImage(source, "high"),
+    timeout,
+  ]).finally(() => clearTimeout(timeoutId));
+}
+
+function preloadImage(source, priority = "low") {
   if (cachedImages.has(source)) {
     return cachedImages.get(source);
   }
@@ -66,11 +87,20 @@ function preloadImage(source) {
   const imagePromise = new Promise((resolve) => {
     const image = new Image();
     image.decoding = "async";
-    image.fetchPriority = "low";
-    image.onload = resolve;
+    image.fetchPriority = priority;
+    const timeout = setTimeout(() => {
+      console.warn(`Timed out while preloading site image: ${source}`);
+      resolve();
+    }, IMAGE_LOAD_TIMEOUT);
+    const finish = () => {
+      clearTimeout(timeout);
+      resolve();
+    };
+
+    image.onload = finish;
     image.onerror = () => {
       console.error(`Unable to preload site image: ${source}`);
-      resolve();
+      finish();
     };
     image.src = source;
   });

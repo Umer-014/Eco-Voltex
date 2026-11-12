@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import PageImage from "../Images/PageImage";
 import { Drawer, List, ListItem, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../../assets/logo.jpg";
@@ -50,7 +51,7 @@ const Header = () => {
       <div className="header-inner">
         <div className="logo">
         <Link to="/" className="logo">
-          <img src={logo} alt="Eco Voltex Logo" className="logo-image" />
+          <PageImage src={logo} alt="Eco Voltex Logo" className="logo-image" />
           <div className="text-container">
             <span className="company-name">Eco Voltex</span>
             <p className="tagline">Sustainable Electrical Solutions</p>

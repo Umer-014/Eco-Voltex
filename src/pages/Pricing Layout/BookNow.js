@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useEffect } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import PageImage from "../../components/Images/PageImage";
 
 import "../Services/CCTV/CCTV.css";
 
@@ -579,12 +580,13 @@ export default function BookNow() {
             </div>
             <div className="cctv-col-5">
               <div className="cctv-figure">
-                <img
+                <PageImage
                   src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1764085502/20251125_2042_Modern_Electrical_Workspace_Banner_simple_compose_01kaxtree2fykv11a2qkc4ar7z_rvc6l6.png"
                   alt="Eco Voltex price wizard preview"
                   className="cctv-img"
                   loading="lazy"
                   decoding="async"
+                  priority
                 />
               </div>
             </div>

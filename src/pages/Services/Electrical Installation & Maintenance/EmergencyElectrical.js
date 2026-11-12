@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../../../components/Header/Header";
 import Footer from "../../../components/Footer/Footer";
+import PageImage from "../../../components/Images/PageImage";
 import "../CCTV/CCTV.css"; // Reuse identical styling for a consistent look
 
 export default function EmergencyElectrical() {
@@ -237,12 +238,13 @@ export default function EmergencyElectrical() {
 
             <div className="cctv-col-5">
               <div className="cctv-figure">
-                <img
+                <PageImage
                   src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1764613919/20251201_2325_Futuristic_Electrical_Emergency_Scene_remix_01kbdjen2vf9w98300a6fphk62_1_aeuopm.png"
                   alt="Emergency electrical response"
                   className="cctv-img"
                   loading="lazy"
                   decoding="async"
+                  priority
                 />
               </div>
             </div>
@@ -379,7 +381,7 @@ export default function EmergencyElectrical() {
 
             {/* RIGHT */}
             <div>
-              <img
+              <PageImage
                 src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1764610802/20251201_2236_Emergency_Electrician_at_Night_simple_compose_01kbdfmrvjfpztxjyac95f7par_y7dmag.png"
                 alt="Emergency electrical scenarios"
                 style={{
@@ -493,7 +495,7 @@ export default function EmergencyElectrical() {
 
             {/* RIGHT */}
             <div>
-              <img
+              <PageImage
                 src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1764611915/20251201_2256_Electrician_with_Logo_remix_01kbdgswr3ezmvmm5s1n0dfp07_vjimgr.png"
                 alt="Eco Voltex emergency process"
                 style={{

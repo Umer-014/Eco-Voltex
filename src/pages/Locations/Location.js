@@ -2,6 +2,7 @@
 import React, { useMemo, useState, useEffect, useRef } from "react";
 import Header from "../../components/Header/Header.js";
 import Footer from "../../components/Footer/Footer.js";
+import PageImage from "../../components/Images/PageImage";
 
 export default function LocationsPreview() {
   const [active, setActive] = useState("central");
@@ -1110,11 +1111,12 @@ export default function LocationsPreview() {
 
             {/* RIGHT IMAGE */}
             <figure className="hero-map">
-              <img
+              <PageImage
                 src={mapImageUrl}
                 alt="Eco Voltex coverage map of Greater London and nearby counties with service regions"
                 loading="eager"
                 decoding="async"
+                priority
                 width="960"
                 height="640"
                 sizes="(max-width: 900px) 100vw, 45vw"

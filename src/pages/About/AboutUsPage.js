@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PageImage from "../../components/Images/PageImage";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Slider from "react-slick";
@@ -188,11 +189,12 @@ const AboutUsPage = () => {
                 </section>
 
                 <div className="about-flex__image">
-                  <img
+                  <PageImage
                     src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757342482/ChatGPT_Image_Sep_8_2025_07_33_54_PM_pkgwsr.png"
                     alt="Eco Voltex Services"
                     loading="lazy"
                     decoding="async"
+                    priority
                   />
                 </div>
               </div>
@@ -222,7 +224,7 @@ const AboutUsPage = () => {
 
             <div className="why-ev__media">
               <div className="why-ev__media-inner">
-                <img
+                <PageImage
                   src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757354106/ChatGPT_Image_Sep_8_2025_10_52_27_PM_krwpik.png"
                   alt="Engineer installing CCTV turret camera for Eco Voltex client"
                   loading="lazy"

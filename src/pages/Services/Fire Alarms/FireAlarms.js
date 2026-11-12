@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../../../components/Header/Header";
 import Footer from "../../../components/Footer/Footer";
+import PageImage from "../../../components/Images/PageImage";
 
 /**
  * Eco Voltex — Fire Alarms (10/10 edition)
@@ -811,9 +812,10 @@ export default function FireAlarmsPremium() {
                   margin: isNarrow ? "16px 0 0" : 0, // push image below text on phones
                 }}
               >
-                <img
+                <PageImage
                   loading="eager"
                   decoding="async"
+                  priority
                   src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1759097756/ChatGPT_Image_Sep_29_2025_03_14_50_AM_xruenn.png"
                   width="1600"
                   height="900"
@@ -924,7 +926,7 @@ export default function FireAlarmsPremium() {
                   height: isNarrow ? "100%" : "auto", // auto height on mobile
                 }}
               >
-                <img
+                <PageImage
                   loading="lazy"
                   decoding="async"
                   src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1759102806/ChatGPT_Image_Sep_29_2025_04_39_49_AM_eiyvjh.png"
@@ -1412,7 +1414,7 @@ export default function FireAlarmsPremium() {
                   height: "100%",
                 }}
               >
-                <img
+                <PageImage
                   loading="lazy"
                   decoding="async"
                   src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1759104095/ChatGPT_Image_Sep_29_2025_04_50_17_AM_jstum0.png"
@@ -1700,7 +1702,7 @@ export default function FireAlarmsPremium() {
                     }}
                   >
                     <div className="thumb" style={{ marginBottom: 8 }}>
-                      <img
+                      <PageImage
                         loading="lazy"
                         decoding="async"
                         src={sectorImages[i]}

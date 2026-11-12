@@ -9,8 +9,8 @@
     radial-gradient(circle at 50% 45%, rgba(113, 214, 93, 0.14), transparent 28%),
     #ffffff;
   transition:
-    opacity 650ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .loader-screen--hide {
