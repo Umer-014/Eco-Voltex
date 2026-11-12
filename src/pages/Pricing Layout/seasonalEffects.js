@@ -4,6 +4,8 @@ const SNOWFLAKE_COUNT = 48;
 
 let snowAnimationFrameId = null;
 let snowResizeHandler = null;
+let fireworksIntervalId = null;
+let fireworksEndTimeoutId = null;
 
 export function loadSeasonalEffects() {
   if (typeof window === "undefined" || typeof document === "undefined") return;
@@ -13,7 +15,9 @@ export function loadSeasonalEffects() {
   const date = today.getDate();
   const hour = today.getHours();
   const showSnow = month === 10 || month === 11 || month === 0;
-  const showFireworks = month === 11 && date === 31 && hour >= 18;
+  const showFireworks =
+    (month === 11 && date === 31 && hour >= 18) ||
+    (month === 0 && date === 1 && hour < 23);
 
   if (showSnow) loadSnow();
   if (showFireworks) loadFireworks();
@@ -97,22 +101,77 @@ function loadSnow() {
 }
 
 function loadFireworks() {
-  if (document.getElementById("fireworks-script")) return;
+  if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
 
-  const script = document.createElement("script");
-  script.id = "fireworks-script";
-  script.src =
-    "https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js";
-  script.async = true;
-  document.body.appendChild(script);
+  const scriptId = "fireworks-script";
+  let script = document.getElementById(scriptId);
+  if (!script) {
+    script = document.createElement("script");
+    script.id = scriptId;
+    script.src =
+      "https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }
 
-  script.onload = () => {
-    window.confetti?.({
-      particleCount: 120,
-      spread: 80,
-      origin: { y: 0.6 },
-    });
+  const startCelebration = () => {
+    if (typeof window.confetti !== "function" || fireworksIntervalId !== null) {
+      return;
+    }
+
+    const launchFirework = () => {
+      window.confetti({
+        particleCount: window.innerWidth < 600 ? 32 : 64,
+        spread: 65,
+        startVelocity: 38,
+        gravity: 0.85,
+        ticks: 110,
+        scalar: 0.9,
+        colors: ["#18b86b", "#0b8f83", "#b6d84a", "#e7a64b", "#a778e8"],
+        origin: {
+          x: 0.12 + Math.random() * 0.76,
+          y: 0.28 + Math.random() * 0.25,
+        },
+      });
+    };
+
+    launchFirework();
+    fireworksIntervalId = window.setInterval(launchFirework, 2400);
+
+    const now = new Date();
+    const celebrationEnds = new Date(now.getFullYear(), 0, 1, 23, 0, 0);
+    if (now.getMonth() === 11) {
+      celebrationEnds.setFullYear(now.getFullYear() + 1);
+    }
+    fireworksEndTimeoutId = window.setTimeout(
+      stopFireworks,
+      Math.max(0, celebrationEnds.getTime() - now.getTime()),
+    );
   };
+
+  if (typeof window.confetti === "function") {
+    startCelebration();
+  } else {
+    script.addEventListener("load", startCelebration, { once: true });
+    script.addEventListener(
+      "error",
+      () => console.error("Unable to load the New Year fireworks effect."),
+      { once: true },
+    );
+  }
+}
+
+function stopFireworks() {
+  if (fireworksIntervalId !== null) {
+    window.clearInterval(fireworksIntervalId);
+    fireworksIntervalId = null;
+  }
+  if (fireworksEndTimeoutId !== null) {
+    window.clearTimeout(fireworksEndTimeoutId);
+    fireworksEndTimeoutId = null;
+  }
 }
 
 export function cleanupSeasonalEffects() {
@@ -125,4 +184,5 @@ export function cleanupSeasonalEffects() {
     snowResizeHandler = null;
   }
   document.getElementById(SNOW_CANVAS_ID)?.remove();
+  stopFireworks();
 }
