@@ -24,7 +24,7 @@ export default function LocationsPreview() {
 
   const contactHref = "/contact";
   const mapImageUrl =
-    "https://res.cloudinary.com/dug1siluu/image/upload/v1757800346/ChatGPT_Image_Sep_11_2025_01_13_07_PM_jxvdi4.png";
+    "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757800346/ChatGPT_Image_Sep_11_2025_01_13_07_PM_jxvdi4.png";
 
   const palette = {
     central: "#16a34a",

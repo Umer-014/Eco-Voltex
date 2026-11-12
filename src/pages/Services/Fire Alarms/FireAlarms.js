@@ -131,14 +131,14 @@ html,body{background:var(--soft)}
 `;
 
 const sectorImages = [
-  "https://res.cloudinary.com/dug1siluu/image/upload/v1759099841/ChatGPT_Image_Sep_29_2025_03_33_11_AM_ejopfy.png",
-  "https://res.cloudinary.com/dug1siluu/image/upload/v1759099816/ChatGPT_Image_Sep_29_2025_03_33_12_AM_ko5o9e.png",
-  "https://res.cloudinary.com/dug1siluu/image/upload/v1759099746/ChatGPT_Image_Sep_29_2025_03_33_13_AM_uf25yc.png",
-  "https://res.cloudinary.com/dug1siluu/image/upload/v1759099788/ChatGPT_Image_Sep_29_2025_03_33_14_AM_xujkcg.png",
-  "https://res.cloudinary.com/dug1siluu/image/upload/v1759099766/ChatGPT_Image_Sep_29_2025_03_33_15_AM_tf8l71.png",
-  "https://res.cloudinary.com/dug1siluu/image/upload/v1759099716/ChatGPT_Image_Sep_29_2025_03_33_16_AM_hleh8x.png",
-  "https://res.cloudinary.com/dug1siluu/image/upload/v1759099690/ChatGPT_Image_Sep_29_2025_03_33_17_AM_wgschc.png",
-  "https://res.cloudinary.com/dug1siluu/image/upload/v1759099664/ChatGPT_Image_Sep_29_2025_03_33_18_AM_nder4t.png",
+  "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1759099841/ChatGPT_Image_Sep_29_2025_03_33_11_AM_ejopfy.png",
+  "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1759099816/ChatGPT_Image_Sep_29_2025_03_33_12_AM_ko5o9e.png",
+  "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1759099746/ChatGPT_Image_Sep_29_2025_03_33_13_AM_uf25yc.png",
+  "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1759099788/ChatGPT_Image_Sep_29_2025_03_33_14_AM_xujkcg.png",
+  "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1759099766/ChatGPT_Image_Sep_29_2025_03_33_15_AM_tf8l71.png",
+  "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1759099716/ChatGPT_Image_Sep_29_2025_03_33_16_AM_hleh8x.png",
+  "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1759099690/ChatGPT_Image_Sep_29_2025_03_33_17_AM_wgschc.png",
+  "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1759099664/ChatGPT_Image_Sep_29_2025_03_33_18_AM_nder4t.png",
 ];
 
 export default function FireAlarmsPremium() {
@@ -383,7 +383,7 @@ export default function FireAlarmsPremium() {
       "@type": "ImageObject",
       name: "Eco Voltex Fire Alarm Hero Image",
       contentUrl:
-        "https://res.cloudinary.com/dug1siluu/image/upload/v1759097756/ChatGPT_Image_Sep_29_2025_03_14_50_AM_xruenn.png",
+        "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1759097756/ChatGPT_Image_Sep_29_2025_03_14_50_AM_xruenn.png",
       caption:
         "Clean UK fire alarm detector with tidy FP red cabling and labelled trunking",
       width: 1600,
@@ -814,7 +814,7 @@ export default function FireAlarmsPremium() {
                 <img
                   loading="eager"
                   decoding="async"
-                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1759097756/ChatGPT_Image_Sep_29_2025_03_14_50_AM_xruenn.png"
+                  src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1759097756/ChatGPT_Image_Sep_29_2025_03_14_50_AM_xruenn.png"
                   width="1600"
                   height="900"
                   alt="Clean UK fire alarm detector with tidy FP red cabling and labelled trunking"
@@ -927,7 +927,7 @@ export default function FireAlarmsPremium() {
                 <img
                   loading="lazy"
                   decoding="async"
-                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1759102806/ChatGPT_Image_Sep_29_2025_04_39_49_AM_eiyvjh.png"
+                  src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1759102806/ChatGPT_Image_Sep_29_2025_04_39_49_AM_eiyvjh.png"
                   alt="Clean UK fire alarm detector with tidy FP red cabling and labelled trunking"
                   style={{
                     width: "100%",
@@ -1415,7 +1415,7 @@ export default function FireAlarmsPremium() {
                 <img
                   loading="lazy"
                   decoding="async"
-                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1759104095/ChatGPT_Image_Sep_29_2025_04_50_17_AM_jstum0.png"
+                  src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1759104095/ChatGPT_Image_Sep_29_2025_04_50_17_AM_jstum0.png"
                   alt="System comparison illustrated with vertical layout"
                   style={{
                     width: "100%",

@@ -189,7 +189,7 @@ const AboutUsPage = () => {
 
                 <div className="about-flex__image">
                   <img
-                    src="https://res.cloudinary.com/dug1siluu/image/upload/v1757342482/ChatGPT_Image_Sep_8_2025_07_33_54_PM_pkgwsr.png"
+                    src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757342482/ChatGPT_Image_Sep_8_2025_07_33_54_PM_pkgwsr.png"
                     alt="Eco Voltex Services"
                     loading="lazy"
                     decoding="async"
@@ -223,7 +223,7 @@ const AboutUsPage = () => {
             <div className="why-ev__media">
               <div className="why-ev__media-inner">
                 <img
-                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1757354106/ChatGPT_Image_Sep_8_2025_10_52_27_PM_krwpik.png"
+                  src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757354106/ChatGPT_Image_Sep_8_2025_10_52_27_PM_krwpik.png"
                   alt="Engineer installing CCTV turret camera for Eco Voltex client"
                   loading="lazy"
                   decoding="async"

@@ -178,7 +178,7 @@ export default function PatTestingPage() {
             >
               <img
                 src={
-                  "https://res.cloudinary.com/dug1siluu/image/upload/v1757788696/ChatGPT_Image_Sep_13_2025_11_37_58_PM_blssbd.png"
+                  "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757788696/ChatGPT_Image_Sep_13_2025_11_37_58_PM_blssbd.png"
                 }
                 alt="PAT testing in action"
                 loading="lazy"
@@ -434,7 +434,7 @@ export default function PatTestingPage() {
               >
                 <img
                   src={
-                    "https://res.cloudinary.com/dug1siluu/image/upload/v1757617624/ChatGPT_Image_Sep_12_2025_12_06_32_AM_fkdbv7.png"
+                    "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757617624/ChatGPT_Image_Sep_12_2025_12_06_32_AM_fkdbv7.png"
                   }
                   alt="PAT testing step"
                   loading="lazy"
@@ -676,7 +676,7 @@ export default function PatTestingPage() {
               >
                 <img
                   src={
-                    "https://res.cloudinary.com/dug1siluu/image/upload/v1757617505/ChatGPT_Image_Sep_12_2025_12_04_49_AM_vidu8z.png"
+                    "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757617505/ChatGPT_Image_Sep_12_2025_12_04_49_AM_vidu8z.png"
                   }
                   alt="Sector illustration"
                   loading="lazy"
@@ -830,7 +830,7 @@ export default function PatTestingPage() {
                 }}
               >
                 <img
-                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1757602608/ChatGPT_Image_Sep_11_2025_07_56_32_PM_afleph.png"
+                  src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757602608/ChatGPT_Image_Sep_11_2025_07_56_32_PM_afleph.png"
                   alt="Sample PAT testing results"
                   loading="lazy"
                   style={{
@@ -841,7 +841,7 @@ export default function PatTestingPage() {
                   }}
                 />
                 <img
-                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1757601945/ChatGPT_Image_Sep_11_2025_07_41_31_PM_fzya3v.png"
+                  src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757601945/ChatGPT_Image_Sep_11_2025_07_41_31_PM_fzya3v.png"
                   alt="Sample PAT testing certificate"
                   loading="lazy"
                   style={{
@@ -899,7 +899,7 @@ export default function PatTestingPage() {
               >
                 <img
                   src={
-                    "https://res.cloudinary.com/dug1siluu/image/upload/v1757617738/ChatGPT_Image_Sep_12_2025_12_08_49_AM_dwwdn9.png"
+                    "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757617738/ChatGPT_Image_Sep_12_2025_12_08_49_AM_dwwdn9.png"
                   }
                   alt="PAT testing in action"
                   loading="lazy"

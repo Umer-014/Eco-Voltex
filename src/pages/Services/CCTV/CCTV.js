@@ -179,7 +179,7 @@ export default function EcoVoltexCctvPagePreview() {
             <div className="cctv-col-5">
               <div className="cctv-figure">
                 <img
-                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1757790538/ChatGPT_Image_Sep_14_2025_12_08_45_AM_lmyc78.png"
+                  src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757790538/ChatGPT_Image_Sep_14_2025_12_08_45_AM_lmyc78.png"
                   alt="CCTV installation and monitoring preview"
                   className="cctv-img"
                   loading="lazy"
@@ -226,7 +226,7 @@ export default function EcoVoltexCctvPagePreview() {
             {/* RIGHT */}
             <div className="cctv-figure" style={{ marginLeft:"auto" }}>
               <img
-                src="https://res.cloudinary.com/dug1siluu/image/upload/v1757775249/ChatGPT_Image_Sep_13_2025_07_52_01_PM_n8opip.png"
+                src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757775249/ChatGPT_Image_Sep_13_2025_07_52_01_PM_n8opip.png"
                 alt="CCTV solutions"
                 className="cctv-img"
                 loading="lazy"
@@ -288,7 +288,7 @@ export default function EcoVoltexCctvPagePreview() {
             {/* RIGHT */}
             <div className="cctv-figure">
               <img
-                src="https://res.cloudinary.com/dug1siluu/image/upload/v1757778102/20250913_2018_CCTV_Installation_Process_simple_compose_01k51tdb4kfctaywayb6nk255s_lbvgkf.png"
+                src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757778102/20250913_2018_CCTV_Installation_Process_simple_compose_01k51tdb4kfctaywayb6nk255s_lbvgkf.png"
                 alt="Eco Voltex CCTV process"
                 className="cctv-img"
                 loading="lazy"

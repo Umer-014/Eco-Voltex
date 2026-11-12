@@ -31,7 +31,7 @@ const services = [
     text: "Rewires, consumer units, lighting, circuits and planned maintenance.",
     path: "/services/Electrical-Installation-Maintenance",
     image:
-      "https://res.cloudinary.com/dug1siluu/image/upload/v1764613806/20251201_2323_Eco_Energy_Illustration_remix_01kbdjc4q0f2vayyppswy3sa31_dlrchb.png",
+      "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1764613806/20251201_2323_Eco_Energy_Illustration_remix_01kbdjc4q0f2vayyppswy3sa31_dlrchb.png",
   },
   {
     key: "emergency",
@@ -41,7 +41,7 @@ const services = [
     text: "Fast make-safe visits for tripping circuits, power loss and urgent faults.",
     path: "/services/Emergency-Electrical",
     image:
-      "https://res.cloudinary.com/dug1siluu/image/upload/v1764613919/20251201_2325_Futuristic_Electrical_Emergency_Scene_remix_01kbdjen2vf9w98300a6fphk62_1_aeuopm.png",
+      "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1764613919/20251201_2325_Futuristic_Electrical_Emergency_Scene_remix_01kbdjen2vf9w98300a6fphk62_1_aeuopm.png",
   },
   {
     key: "ev-charging",
@@ -51,7 +51,7 @@ const services = [
     text: "EV charging solutions planned around your site and electrical supply.",
     path: "/services/EV-Charging",
     image:
-      "https://res.cloudinary.com/dug1siluu/image/upload/v1792080149/Neon_Green_EV_Charging_Station_didjes.png",
+      "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1792080149/Neon_Green_EV_Charging_Station_didjes.png",
   },
   {
     key: "fire",
@@ -61,7 +61,7 @@ const services = [
     text: "Design, installation, commissioning and maintenance for compliant sites.",
     path: "/services/Fire-alarms",
     image:
-      "https://res.cloudinary.com/dug1siluu/image/upload/v1759097756/ChatGPT_Image_Sep_29_2025_03_14_50_AM_xruenn.png",
+      "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1759097756/ChatGPT_Image_Sep_29_2025_03_14_50_AM_xruenn.png",
   },
   {
     key: "cctv",
@@ -71,7 +71,7 @@ const services = [
     text: "Clean camera installs, secure storage and reliable coverage planning.",
     path: "/services/CCTV",
     image:
-      "https://res.cloudinary.com/dug1siluu/image/upload/v1757790538/ChatGPT_Image_Sep_14_2025_12_08_45_AM_lmyc78.png",
+      "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757790538/ChatGPT_Image_Sep_14_2025_12_08_45_AM_lmyc78.png",
   },
   {
     key: "pat",
@@ -81,7 +81,7 @@ const services = [
     text: "Asset registers, CSV exports and clear risk-based test reports.",
     path: "/services/PAT-testing",
     image:
-      "https://res.cloudinary.com/dug1siluu/image/upload/v1757788696/ChatGPT_Image_Sep_13_2025_11_37_58_PM_blssbd.png",
+      "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1757788696/ChatGPT_Image_Sep_13_2025_11_37_58_PM_blssbd.png",
   },
   {
     key: "it-services",
@@ -91,7 +91,7 @@ const services = [
     text: "Reliable network, digital, and IT infrastructure support for modern enterprises.",
     path: "/services/it-digital-services",
     image:
-      "https://res.cloudinary.com/dug1siluu/image/upload/v1788796506/Gemini_Generated_Image_rb8sr1rb8sr1rb8s_i92ncu.jpg",
+      "https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1788796506/Gemini_Generated_Image_rb8sr1rb8sr1rb8s_i92ncu.jpg",
   },
 ];
 
@@ -359,6 +359,8 @@ const HeroSection = () => {
                     src={service.image}
                     alt={`${service.title} service`}
                     loading={index === 0 ? "eager" : "lazy"}
+                    fetchpriority={index === 0 ? "high" : "auto"}
+                    decoding="async"
                   />
                 </div>
               ))}

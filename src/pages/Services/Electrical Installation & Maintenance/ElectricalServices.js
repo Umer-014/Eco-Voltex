@@ -277,7 +277,7 @@ export default function ElectricalServices() {
             <div className="cctv-col-5">
               <div className="cctv-figure">
                 <img
-                  src="https://res.cloudinary.com/dug1siluu/image/upload/v1764613806/20251201_2323_Eco_Energy_Illustration_remix_01kbdjc4q0f2vayyppswy3sa31_dlrchb.png"
+                  src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1764613806/20251201_2323_Eco_Energy_Illustration_remix_01kbdjc4q0f2vayyppswy3sa31_dlrchb.png"
                   alt="Eco Voltex electricians installing lighting and consumer unit"
                   className="cctv-img"
                   loading="lazy"
@@ -357,7 +357,7 @@ export default function ElectricalServices() {
             {/* RIGHT */}
             <div>
               <img
-                src="https://res.cloudinary.com/dug1siluu/image/upload/v1764426580/20251129_1926_Premium_Electrical_Installation_simple_compose_01kb801eb6fecrs3wnd533a0ca_zngnuz.png"
+                src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1764426580/20251129_1926_Premium_Electrical_Installation_simple_compose_01kb801eb6fecrs3wnd533a0ca_zngnuz.png"
                 alt="Examples of lighting, power and consumer unit works"
                 style={{
                   width: "100%",
@@ -476,7 +476,7 @@ export default function ElectricalServices() {
             {/* RIGHT */}
             <div className="cctv-figure">
               <img
-                src="https://res.cloudinary.com/dug1siluu/image/upload/v1764610639/20251201_2235_Electrical_Installation_Stages_remix_01kbdfk46dfdmbrwkx8rrxvx7p_tikjlh.png"
+                src="https://res.cloudinary.com/dug1siluu/image/upload/f_auto,q_auto/v1764610639/20251201_2235_Electrical_Installation_Stages_remix_01kbdfk46dfdmbrwkx8rrxvx7p_tikjlh.png"
                 alt="Eco Voltex installation process overview"
                 className="cctv-img"
                 loading="lazy"

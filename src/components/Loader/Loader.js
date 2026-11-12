@@ -1,12 +1,28 @@
 import React, { useEffect, useRef, useState } from "react";
+import { preloadImageAssets } from "./imageAssets";
 import "./Loader.css";
 
 
 export default function Loader({ children, minDuration = 4200 }) {
   const [progress, setProgress] = useState(0);
   const [hidden, setHidden] = useState(false);
+  const [imagesReady, setImagesReady] = useState(false);
   const startRef = useRef(null);
   const rafRef = useRef(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    preloadImageAssets().then(() => {
+      if (!cancelled) {
+        setImagesReady(true);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     const reducedMotion = window.matchMedia?.(
@@ -15,8 +31,7 @@ export default function Loader({ children, minDuration = 4200 }) {
 
     if (reducedMotion) {
       setProgress(100);
-      const timer = setTimeout(() => setHidden(true), 250);
-      return () => clearTimeout(timer);
+      return undefined;
     }
 
     startRef.current = performance.now();
@@ -34,15 +49,29 @@ export default function Loader({ children, minDuration = 4200 }) {
 
     rafRef.current = requestAnimationFrame(loop);
 
-    const hideTimer = setTimeout(() => {
-      setHidden(true);
-    }, minDuration + 650);
-
     return () => {
       cancelAnimationFrame(rafRef.current);
-      clearTimeout(hideTimer);
     };
   }, [minDuration]);
+
+  useEffect(() => {
+    if (!imagesReady) {
+      return undefined;
+    }
+
+    const reducedMotion = window.matchMedia?.(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const elapsed = startRef.current
+      ? performance.now() - startRef.current
+      : minDuration;
+    const hideDelay = reducedMotion
+      ? 250
+      : Math.max(0, minDuration + 650 - elapsed);
+    const hideTimer = setTimeout(() => setHidden(true), hideDelay);
+
+    return () => clearTimeout(hideTimer);
+  }, [imagesReady, minDuration]);
 
   const stageIn = segment(progress, 0, 10);
   const ecoIn = segment(progress, 4, 25);
@@ -52,7 +81,7 @@ export default function Loader({ children, minDuration = 4200 }) {
   const boltFill = segment(progress, 58, 82);
   const voltexIn = segment(progress, 66, 88);
   const shine = segment(progress, 84, 100);
-  const leaving = progress >= 100;
+  const leaving = progress >= 100 && imagesReady;
 
   return (
     <>
